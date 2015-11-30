@@ -12,8 +12,8 @@ class Login extends CI_Controller {
 
         // VALIDATION RULES
         $this->load->library('form_validation');
-        $this->form_validation->set_rules('username', 'Login', 'required');
-        $this->form_validation->set_rules('senha', 'Senha', 'required');
+        $this->form_validation->set_rules('username', 'Login', 'required','O campo de login é obrigatório!');
+        $this->form_validation->set_rules('senha', 'Senha', 'required', 'O campo de senha é obrigatório!');
         $this->form_validation->set_error_delimiters('<p class="error">', '</p>');
 
 

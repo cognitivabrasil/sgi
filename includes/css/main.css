@@ -1,0 +1,12 @@
+/*css particular*/
+#form_login{
+  width: 830px;
+  margin: 0 auto;
+  text-align: center;
+}
+#form_login h2{
+  margin-bottom: 40px;
+}
+#form_login input{
+  margin-bottom: 10px;
+}
