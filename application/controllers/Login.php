@@ -22,8 +22,10 @@ class Login extends CI_Controller {
         $query = $this->usuarios->validate();
 
         if ($this->form_validation->run() == FALSE) {
+            $this->load->view('header');
+            $this->load->view('login_view');
+            $this->load->view('footer');
 
-            $this->load->view('login/login_view');
         } else {
 
             if ($query) { // VERIFICA LOGIN E SENHA
