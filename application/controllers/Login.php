@@ -16,7 +16,6 @@ class Login extends CI_Controller {
         $this->form_validation->set_rules('senha', 'Senha', 'required', 'O campo de senha é obrigatório!');
         $this->form_validation->set_error_delimiters('<p class="error">', '</p>');
 
-
         // MODELO MEMBERSHIP
         $this->load->model('usuarios_model', 'usuarios');
         $query = $this->usuarios->validate();
@@ -34,7 +33,7 @@ class Login extends CI_Controller {
                     'logged' => true
                 );
                 $this->session->set_userdata($data);
-                redirect('login/area_restrita');
+                redirect('inicial');
             } else {
                 redirect($this->index());
             }

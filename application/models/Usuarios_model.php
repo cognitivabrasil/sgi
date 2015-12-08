@@ -8,8 +8,10 @@ class Usuarios_model extends CI_Model {
 
         $query = $this->db->get('erp_usuarios');
 
-        if ($query->num_rows == 1) {
+        if ($query->num_rows() == 1) {
             return true; // RETORNA VERDADEIRO
+        }else{
+          return false;
         }
     }
 
