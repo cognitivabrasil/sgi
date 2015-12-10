@@ -10,3 +10,6 @@
 #form_login input{
   margin-bottom: 10px;
 }
+nav{
+  border: 1px solid #000;
+}
