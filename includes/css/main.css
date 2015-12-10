@@ -1,4 +1,7 @@
 /*css particular*/
+
+/* Pagina inicial de login */
+
 #form_login{
   width: 830px;
   margin: 0 auto;
@@ -10,6 +13,41 @@
 #form_login input{
   margin-bottom: 10px;
 }
+
+/* Final da pagina de login*/
+
+/* CSS geral para pagina após logado */
+
+#container-geral{
+  width: 70%;
+  margin: 50px auto;
+}
+#container-central{
+  border: 1px solid #000;
+  width: 70%;
+  margin-left: 14%;
+}
+#topo-logado p{
+  font-size: 25px;
+}
+#topo-logado p.titulo-principal{
+  font-weight: bold;
+}
+
+/* Final da pagina pós logado*/
+
+/* Menu */
+
 nav{
   border: 1px solid #000;
+  width: 13%;
+  float: left;
 }
+nav ul{
+  margin: 5px;
+  padding: 0;
+  padding-left: 10px;
+  list-style: none;
+}
+
+/* Final menu */
