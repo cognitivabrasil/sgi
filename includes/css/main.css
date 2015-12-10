@@ -49,5 +49,7 @@ nav ul{
   padding-left: 10px;
   list-style: none;
 }
-
+nav ul li{
+  cursor: pointer;
+}
 /* Final menu */
