@@ -1,5 +1,11 @@
 /*css particular*/
 
+/* CSS GERAL*/
+.alert{
+  text-align: center !important;
+}
+/* Fim css geral*/
+
 /* Pagina inicial de login */
 
 #form_login{
@@ -52,4 +58,32 @@ nav ul{
 nav ul li{
   cursor: pointer;
 }
+
 /* Final menu */
+
+/* Usuários */
+
+#titulo_usuario{
+  width: 90%;
+  margin: 30px auto 10px auto;
+}
+#block_usuario{
+    border: 1px solid #000;
+    width: 90%;
+    margin: 0 auto 30px auto;
+    padding: 20px;
+}
+#block_usuario input, #block_usuario select{
+  display: block;
+  margin: 5px;
+  width: 200px;
+}
+#block_usuario select{
+  background: #FFF;
+  height: 28px;
+}
+#mapa_cei{
+  width: 90%;
+  margin: 0 auto 20px auto;
+}
+/* Final usuários */

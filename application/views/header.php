@@ -15,6 +15,12 @@
         <!-- Latest compiled and minified JavaScript -->
         <script src="<?php echo base_url('includes/bootstrap/js/bootstrap.min.js') ?>"></script>
 
+        <!-- Javascript para responsividade de image map -->
+        <script src="<?php echo base_url('includes/js/imageMapResizer.min.js') ?>"></script>
+
+        <!-- Particular JS -->
+        <script src="<?php echo base_url('includes/js/main.js') ?>"></script>
+
     </head>
 
     <body>
