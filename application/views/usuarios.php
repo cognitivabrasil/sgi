@@ -29,11 +29,28 @@
     </map>
   </div>
   <div id="block_usuario">
+    <?php
+    foreach($data as $row){ ?>
     <div class="row">
-      <div class="col-md-4">Alan Santos</div>
+      <div class="col-md-4"><?php echo $row->nome; ?></div>
       <div class="col-md-4">CEI</div>
-      <div class="col-md-4">Administrador</div>
+      <div class="col-md-4"><?php    
+      switch ($row->id_acesso) {
+        case 1:
+          echo "Administrador";
+          break;
+        case 2:
+          echo "CEI";
+          break;
+        case 3:
+          echo "Usuário";
+          break;
+      }
+       ?></div>
     </div>
+    <?php
+    }
+    ?>
     <div style="text-align:center; margin-top:15px;">
       <a href="<?php echo base_url();?>usuarios/cadastra">Cadastrar novo usuário</a>
     </div>

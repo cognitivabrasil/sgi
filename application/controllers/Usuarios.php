@@ -12,7 +12,11 @@ class Usuarios extends CI_Controller {
       $this->load->view('header');
       $this->load->view('head_logado');
       $this->load->view('menu');
-      $this->load->view('usuarios');
+
+      $this->load->model('usuarios_model');
+      $query = $this->usuarios_model->select();
+
+      $this->load->view('usuarios', array('data'=>$query->result()));
       $this->load->view('footer');
     }
 
@@ -30,9 +34,13 @@ class Usuarios extends CI_Controller {
 
       $this->load->view('header');
       $this->load->view('head_logado');
-      $this->load->view('menu');
       echo "<div class='alert alert-success fade in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Usuário cadastrado com sucesso!</div>";
-      $this->load->view('usuarios_cadastra');
+      $this->load->view('menu');
+
+      $this->load->model('usuarios_model');
+      $query = $this->usuarios_model->select();
+
+      $this->load->view('usuarios', array('data'=>$query->result()));
       $this->load->view('footer');
     }
 }

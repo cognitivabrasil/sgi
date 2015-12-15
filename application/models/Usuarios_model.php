@@ -33,6 +33,7 @@ class Usuarios_model extends CI_Model {
       $this->id_empreendimento = $_POST['empresa'];
       $this->id_acesso = $_POST['acesso'];
       $this->contato = $_POST['contato'];
+      $this->nome = $_POST['nome'];
       $this->db->insert('erp_usuarios',$this);
     }
 
