@@ -12,7 +12,11 @@ class Inicial extends CI_Controller {
       $this->load->view('header');
       $this->load->view('head_logado');
       $this->load->view('menu');
-      $this->load->view('inicial_view');
+
+      $this->load->model('usuarios_model');
+      $query = $this->usuarios_model->selectBySession();
+
+      $this->load->view('inicial_view', array('data'=>$query->result()[0]->nome));
       $this->load->view('footer');
     }
 }

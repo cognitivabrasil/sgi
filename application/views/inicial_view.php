@@ -1,6 +1,8 @@
 <div id="container-central">
-  <p class="titulo_central">Seja bem vindo</p>
-  <p>Veja abaixo o mapa do CEI e clique em cada sala para visualizar informações detalhadas</p>
+  <div id="topo_principal">
+    <p class="titulo_principal">Seja bem vindo <strong><?php echo $data;?></strong></p>
+    <p>Veja abaixo o mapa do CEI e clique em cada sala para visualizar informações detalhadas</p>
+  </div>
   <div id="mapa_cei">
     <img src="<?php echo base_url();?>includes/img/mapa_cei.png" style="width:100%; margin:0 auto;" border="0" usemap="#map" />
 

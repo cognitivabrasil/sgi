@@ -1,7 +1,7 @@
 <nav>
   <ul>
     <li><a href="<?php echo base_url();?>inicial">Inicial</a></li>
-    <li>Empreendimentos</li>
+    <li><a href="<?php echo base_url();?>empreendimentos">Empreendimentos</a></li>
     <li>Funcionários</li>
     <li>Faturamento</li>
     <li><a href="<?php echo base_url();?>usuarios">Usuários</a></li>
