@@ -1,6 +1,6 @@
 <div id="form_login">
     <h1>CEI - Centro de Empreendimentos em Informática</h1>
-    <h2>Sistema de gerenciamento de incubadoras</h2>
+    <h2>Sistema de gerenciamento</h2>
     <?php echo validation_errors(); ?>
     <?php
     echo form_open();

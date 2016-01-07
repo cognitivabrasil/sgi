@@ -40,7 +40,7 @@
           <label for="contrato" style="margin-left:5px; font-weight:normal;">Contrato: </label><input type="file" name="contrato" id="contrato">
           <span style="float:right;">Previsão de término: 99/99/9999</span>
 
-          <input type="submit" value="Criar usuário" style="clear:both;">
+          <input type="submit" value="Cadastra empreendimento" style="clear:both;">
       </form>
     </div>
   </div>

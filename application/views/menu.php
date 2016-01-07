@@ -3,10 +3,10 @@
     <li><a href="<?php echo base_url();?>inicial">Inicial</a></li>
     <li><a href="<?php echo base_url();?>empreendimentos">Empreendimentos</a></li>
     <li>Funcionários</li>
-    <li>Faturamento</li>
+    <li><a href="<?php echo base_url();?>faturamento">Faturamento</a></li>
     <li><a href="<?php echo base_url();?>usuarios">Usuários</a></li>
-    <li>Patrimônio</li>
-    <li>Reserva de Salas</li>
+    <li><a href="<?php echo base_url();?>patrimonios">Patrimônio</a></li>
+    <li><a href="<?php echo base_url();?>reserva">Reserva de Salas</a></li>
     <li>Pendências</li>
     <li>Releasing</li>
   </ul>
