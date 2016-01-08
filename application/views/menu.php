@@ -8,6 +8,6 @@
     <li><a href="<?php echo base_url();?>patrimonios">Patrimônio</a></li>
     <li><a href="<?php echo base_url();?>reserva">Reserva de Salas</a></li>
     <li><a href="<?php echo base_url();?>pendencias">Pendências</a></li>
-    <li>Releasing</li>
+    <li><a href="<?php echo base_url();?>releasing">Releasing</a></li>
   </ul>
 </nav>
