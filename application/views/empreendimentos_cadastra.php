@@ -2,11 +2,11 @@
   <div>
     <p id="titulo_usuario">Cadastro de empreendimento</p>
     <div id="block_usuario">
-      <form method="post" action="<?php echo base_url();?>empreendimentos/insert">
+      <form method="post" action="<?php echo base_url();?>empreendimentos/insert" enctype="multipart/form-data">
           <p class="subtitulo_empreendimentos">Dados Gerais</p>
           <div style="float:left;">
             <input type="text" name="nome" placeholder="Nome">
-            <select name="acesso">
+            <select name="vinculo">
               <option value="0">Vínculo</option>
               <option value="1">Pré-Incubada</option>
               <option value="2">Incubada</option>
@@ -16,7 +16,7 @@
             <input type="text" name="cpfcnpj" placeholder="CPF / CNPJ">
           </div>
           <div style="float:left; margin-left:40px; padding-bottom:3px;">
-            <input type="password" name="fantasia" placeholder="Nome Fantasia">
+            <input type="text" name="fantasia" placeholder="Nome Fantasia">
             <input type="text" name="rs" placeholder="Razão social">
             <input type="text" name="responsavel" placeholder="Nome responsável">
             <input type="text" name="emailresponsavel" placeholder="e-mail responsável">
@@ -27,18 +27,22 @@
 
           <hr>
 
-          <p class="subtitulo_empreendimentos">Produtos / Serviços</p>
-          <input type="button" value="Adicionar mais um" style="float:right">
-          <input type="text" name="nome_produto" placeholder="Nome">
-          <textarea name="descricao_produto" placeholder="Descrição" style="clear:both; width:70%; height:150px;"></textarea>
+          <div id="produtos_container">
+            <p class="subtitulo_empreendimentos">Produtos / Serviços</p>
+            <input type="button" id="add_produto" value="Adicionar mais um" style="float:right">
+            <input type="text" name="nome_produto[]" placeholder="Nome">
+            <textarea name="descricao_produto[]" placeholder="Descrição" style="clear:both; width:70%; height:150px;"></textarea>
+          </div>
 
           <hr>
 
-          <p class="subtitulo_empreendimentos">Contrato</p>
-          <input type="button" value="Adicionar mais um" style="float:right">
-          <input type="text" name="assinatura_contrato" placeholder="Data de assinatura">
-          <label for="contrato" style="margin-left:5px; font-weight:normal;">Contrato: </label><input type="file" name="contrato" id="contrato">
-          <span style="float:right;">Previsão de término: 99/99/9999</span>
+          <div id="contrato_container">
+            <p class="subtitulo_empreendimentos">Contrato</p>
+            <input type="button" id="add_contrato" value="Adicionar mais um" style="float:right">
+            <input type="text" name="assinatura_contrato[]" placeholder="Data de assinatura">
+            <label for="contrato" style="margin-left:5px; font-weight:normal;">Contrato: </label><input type="file" name="contrato[]" id="contrato">
+            <span style="float:right;">Previsão de término: 99/99/9999</span>
+          </div>
 
           <input type="submit" value="Cadastra empreendimento" style="clear:both;">
       </form>

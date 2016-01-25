@@ -13,10 +13,10 @@ class Colaboradores extends CI_Controller {
       $this->load->view('head_logado');
       $this->load->view('menu');
 
-      //$this->load->model('usuarios_model');
-      //$query = $this->usuarios_model->select();
+      $this->load->model('empreendimentos_model');
+      $query = $this->empreendimentos_model->select();
 
-      $this->load->view('colaboradores');
+      $this->load->view('colaboradores', array('data'=>$query->result()));
       $this->load->view('footer');
     }
 
