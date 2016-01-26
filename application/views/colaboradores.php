@@ -16,17 +16,18 @@
         case 3:
           echo "Parque";
           break;
-      }?><br>sala 107<br>4 funcionários</div>
+      }?><br>sala 107<br><?php echo $row->nr;?> colaborador(es)</div>
       <div class="col-md-4">
         <div class="selo_gamification_pequeno">Empresa<br>Consciente</div>
       </div>
       <div class="col-md-4">
         <div class="visualizar_dados">
-          <a href="<?php echo base_url();?>colaboradores/lista">Visualizar colaboradores</a>
+          <a href="<?php echo base_url();?>colaboradores/lista/<?php echo $row->id;?>">Visualizar colaboradores</a>
         </div>
         <span class="sobrescrito_empreendimento">Última atualização em 10 dias</span>
       </div>
     </div>
+    <br>
     <?php
     }
     ?>

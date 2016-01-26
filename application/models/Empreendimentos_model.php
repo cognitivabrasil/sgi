@@ -103,9 +103,9 @@ class Empreendimentos_model extends CI_Model {
 
     function select($id=0) {
         if($id==0){
-          $query = $this->db->get('erp_empreendimentos');
+          $query = $this->db->query('Select emp.*, count(*) as nr from erp_colaboradores col, erp_empreendimentos emp where col.id_empreendimento = emp.id group by id_empreendimento');
         }else{
-          $query = $this->db->query("Select * from erp_empreendimentos where erp_empreendimentos.id = 15");
+          $query = $this->db->query("Select emp.*, count(*) as nr from erp_colaboradores col, erp_empreendimentos emp where col.id_empreendimento = emp.id and emp.id = ".$id." group by id_empreendimento");
         }
 
         return $query;

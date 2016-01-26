@@ -6,7 +6,7 @@
     foreach($data as $row){
     ?>
     <div class="row empreendimento_row">
-      <div class="col-md-4"><?php echo $row->nome;?><br><?php echo $row->funcao;?><br><?php switch ($row->vinculo) {
+      <div class="col-md-12"><?php echo $row->nome;?><br><?php echo $row->funcao;?><br><?php switch ($row->vinculo) {
         case 1:
           echo "Aluno UFRGS";
           break;
@@ -17,17 +17,15 @@
           echo "Sem Vinculo com a UFRGS";
           break;
 
+      }?><br><?php echo $row->email;?><br>Entrada: <?php echo $row->entrada;?> - <?php if($row->em_atividade == 1){echo "Ainda em atividade";}else{echo "Saída: ".$row->saida;}?>
+      <?php
+      if($row->sem_funcao == 1){
+        echo "<br>Sem função designada";
+      }
+      if($row->socio == 1){
+        echo "<br>Sócio";
       }?></div>
-      <div class="col-md-4">
-        &nbsp;
-      </div>
-      <div class="col-md-4">
-        <div class="visualizar_dados">
-          <a href="<?php echo base_url();?>colaboradores/visualiza/<?php echo $row->id;?>">Visualizar dados</a>
-        </div>
-      </div>
     </div>
-    <br>
     <?php
     }
     ?>
