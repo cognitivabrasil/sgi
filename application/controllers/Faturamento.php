@@ -43,4 +43,11 @@ class Faturamento extends CI_Controller {
       $this->load->view('usuarios', array('data'=>$query->result()));
       $this->load->view('footer');
     }
+
+    function salvaPrevisao() {
+      $this->load->model('faturamento_model');
+	    $this->faturamento_model->salvaPrevisao();
+
+      echo "funcionou";
+    }
 }

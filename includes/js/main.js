@@ -11,4 +11,25 @@ $(document).ready(function(){
   });
   /*Fim Empreendimentos*/
 
+  /*Faturamento*/
+  $('#add_ano').click(function(){
+    $('#faturamento_prev').append('<div style="clear:both;"><input type="text" name="ano[]" placeholder="Ano" style="float:left;" onblur="salvaPrevisao();"><input type="text" name="previsao[]" placeholder="Previsão de faturamento" style="float:left;" onblur="salvaPrevisao();"></div>');
+  });
+
+  $('.ano').on('blur',function(){
+    alert('teste');
+  });
+
+  $('#add_nota').click(function(){
+  });
+  /*Fim Faturamento*/
+
 });
+
+function salvaPrevisao(){
+  $.post('faturamento/salvaPrevisao',$('#faturamentoForm').serialize(),function(data){
+    $("#autosave").fadeTo(1000, 200).slideUp(200, function(){
+        $("#autosave").hide();
+    });
+  });
+}
