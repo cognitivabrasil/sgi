@@ -9,38 +9,54 @@ class Reserva extends CI_Controller {
     }
 
     function index() {
+
       $this->load->view('header');
       $this->load->view('head_logado');
       $this->load->view('menu');
-
-      //$this->load->model('usuarios_model');
-      //$query = $this->usuarios_model->select();
-
       $this->load->view('reserva');
       $this->load->view('footer');
+
     }
 
-    function cadastra() {
+    function sala_ajax() {
+
+      $this->load->model('reserva_model');
+      $query = $this->reserva_model->selectSala();
+
+      $this->load->view('sala_ajax', array('data'=>$query->result()[0]));
+    }
+
+    function efetua_reserva() {
+
+      $this->load->model('reserva_model');
+      $query = $this->reserva_model->efetuaReserva();
+
+      if($query){
+        $this->load->view('success');
+      }else{
+        $this->load->view('error');
+      }
       $this->load->view('header');
       $this->load->view('head_logado');
       $this->load->view('menu');
-      $this->load->view('patrimonios_cadastra');
+      $this->load->view('reserva');
       $this->load->view('footer');
+
     }
 
-    function insert() {
-      $this->load->model('usuarios_model');
-	    $this->usuarios_model->insert();
+    function verifica() {
 
       $this->load->view('header');
       $this->load->view('head_logado');
-      echo "<div class='alert alert-success fade in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Usuário cadastrado com sucesso!</div>";
       $this->load->view('menu');
 
-      $this->load->model('usuarios_model');
-      $query = $this->usuarios_model->select();
+      $this->load->model('reserva_model');
+      $query = $this->reserva_model->verificaReserva();
 
-      $this->load->view('usuarios', array('data'=>$query->result()));
+      $this->load->view('reserva_verifica', array('data'=>$query->result()));
+
       $this->load->view('footer');
+
     }
+
 }

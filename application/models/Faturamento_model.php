@@ -39,22 +39,100 @@ class Faturamento_model extends CI_Model {
     function salvaPrevisao() {
 
       $cont = 0;
+      $id_empreendimento = 1;
       foreach($_POST['ano'] as $ano){
         if(isset($ano)){
           $this->ano = $ano;
           $this->previsao = '';
           if(isset($_POST['previsao'][$cont])){
-            $this->previsao = $_POST['previsao'];
+            $this->previsao = $_POST['previsao'][$cont];
           }
-          $this->id_empreendimento = 1;
+          $this->id_empreendimento = $id_empreendimento;
 
           $query = $this->db->query("Select * from erp_faturamento where id_empreendimento = ".$id_empreendimento." and ano = ".$ano);
-          
 
-          $this->db->insert('erp_faturamento',$this);
+          $data = $query->result();
+
+          if(isset($data[0])){
+            $this->db->where('id',$data[0]->id);
+            $this->db->update('erp_faturamento',$this);
+          }else{
+            $this->db->insert('erp_faturamento',$this);
+          }
         }
         $cont++;
       }
+
+    }
+
+    function salvaNota() {
+
+      $cont = 0;
+      $id_empreendimento = 1;
+      foreach($_POST['numero'] as $numero){
+        if(isset($numero)){
+          $this->numero = $numero;
+          $this->data = '';
+          $this->valor = '';
+          if(isset($_POST['data'][$cont])){
+            $this->data = $_POST['data'][$cont];
+          }
+          if(isset($_POST['valor'][$cont])){
+            $this->valor = $_POST['valor'][$cont];
+          }
+          $this->id_empreendimento = $id_empreendimento;
+
+          if($numero!=''){
+            $query = $this->db->query("Select * from erp_faturamento_notas where id_empreendimento = ".$id_empreendimento." and numero = ".$numero);
+
+            $data = $query->result();
+
+            if(isset($data[0])){
+              $this->db->where('id',$data[0]->id);
+              $this->db->update('erp_faturamento_notas',$this);
+            }else{
+              $this->db->insert('erp_faturamento_notas',$this);
+            }
+          }
+        }
+        $cont++;
+      }
+
+    }
+
+    function salvaRoyalt() {
+
+      $cont = 0;
+      $id_empreendimento = 1;
+      /*foreach($_POST['numero'] as $numero){
+        if(isset($numero)){
+          $this->numero = $numero;
+          $this->data = '';
+          $this->valor = '';
+          if(isset($_POST['data'][$cont])){
+            $this->data = $_POST['data'][$cont];
+          }
+          if(isset($_POST['valor'][$cont])){
+            $this->valor = $_POST['valor'][$cont];
+          }
+          $this->id_empreendimento = $id_empreendimento;
+
+          if($numero!=''){
+            $query = $this->db->query("Select * from erp_faturamento_notas where id_empreendimento = ".$id_empreendimento." and numero = ".$numero);
+
+
+            $data = $query->result();
+
+            if(isset($data[0])){
+              $this->db->where('id',$data[0]->id);
+              $this->db->update('erp_faturamento_notas',$this);
+            }else{
+              $this->db->insert('erp_faturamento_notas',$this);
+            }
+          }
+        }
+        $cont++;
+      }*/
 
     }
 

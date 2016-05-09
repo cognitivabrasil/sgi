@@ -47,7 +47,10 @@ class Faturamento extends CI_Controller {
     function salvaPrevisao() {
       $this->load->model('faturamento_model');
 	    $this->faturamento_model->salvaPrevisao();
+    }
 
-      echo "funcionou";
+    function salvaNota() {
+      $this->load->model('faturamento_model');
+	    $this->faturamento_model->salvaNota();
     }
 }

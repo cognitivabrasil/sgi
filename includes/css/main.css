@@ -118,12 +118,12 @@ nav ul li{
 /* Final empreendimentos*/
 
 /* Faturamento */
-#block_nota{
+.block_nota{
   border: 1px solid #000;
   width: 90%;
   margin: 10px auto;
 }
-#block_nota input{
+.block_nota input{
   width: 300px;
 }
 /* Final faturamento */

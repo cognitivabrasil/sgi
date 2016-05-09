@@ -9,36 +9,39 @@
         </div>
         <input type="button" value="Adicionar Ano" id="add_ano" style="float:left; margin-left:10px;">
         <input type="text" name="contador" placeholder="Contador responsável" style="clear:both; float:left;">
-        <input type="submit">
       </form>
-      <p id="titulo_usuario" style="clear:both;">Notas</p>
-      <div id="block_nota">
-        <input type="text" name="data" placeholder="Data" style="float:right; margin-right:40px;">
-        <input type="text" name="numero" placeholder="Número">
-        <input type="text" name="valor" placeholder="Valor" style="margin:0 auto;">
-        <div style="width:20%; height:30px;"><input type="checkbox" name="royalt" style="float:left; width:10px;"><span style="float:left;">Royalt Pago</span></div>
-      </div>
-      <div id="block_nota">
-        <input type="text" name="data" placeholder="Data" style="float:right; margin-right:40px;">
-        <input type="text" name="numero" placeholder="Número">
-        <input type="text" name="valor" placeholder="Valor" style="margin:0 auto;">
-        <div style="width:20%; height:30px;"><input type="checkbox" name="royalt" style="float:left; width:10px;"><span style="float:left;">Royalt Pago</span></div>
-      </div>
-      <div id="block_nota">
-        <input type="text" name="data" placeholder="Data" style="float:right; margin-right:40px;">
-        <input type="text" name="numero" placeholder="Número">
-        <input type="text" name="valor" placeholder="Valor" style="margin:0 auto;">
-        <div style="width:20%; height:30px;"><input type="checkbox" name="royalt" style="float:left; width:10px;"><span style="float:left;">Royalt Pago</span></div>
-      </div>
-      <div id="block_nota">
-        <input type="text" name="data" placeholder="Data" style="float:right; margin-right:40px;">
-        <input type="text" name="numero" placeholder="Número">
-        <input type="text" name="valor" placeholder="Valor" style="margin:0 auto;">
-        <div style="width:20%; height:30px;"><input type="checkbox" name="royalt" style="float:left; width:10px;"><span style="float:left;">Royalt Pago</span></div>
-      </div>
-      <div style="text-align:center; margin-top:15px;">
-        <a href="#" id="add_nota">Adicionar mais notas</a>
-      </div>
+      <form method="post" action="faturamento/salvaNota" id="notasform">
+        <p id="titulo_usuario" style="clear:both;">Notas</p>
+        <div id="notas_div">
+          <div class="block_nota">
+            <input type="text" name="data[]" placeholder="Data" style="float:right; margin-right:40px;" onblur="salvaNota();">
+            <input type="text" name="numero[]" placeholder="Número" onblur="salvaNota();">
+            <input type="text" name="valor[]" placeholder="Valor" style="margin:0 auto;" onblur="salvaNota();">
+            <div style="width:20%; height:30px;"><input type="checkbox" name="royalt[]" style="float:left; width:10px;" onclick="salvaRoyalt();"><span style="float:left;">Royalt Pago</span></div>
+          </div>
+          <div class="block_nota">
+            <input type="text" name="data[]" placeholder="Data" style="float:right; margin-right:40px;" onblur="salvaNota();">
+            <input type="text" name="numero[]" placeholder="Número" onblur="salvaNota();">
+            <input type="text" name="valor[]" placeholder="Valor" style="margin:0 auto;" onblur="salvaNota();">
+            <div style="width:20%; height:30px;"><input type="checkbox" name="royalt[]" style="float:left; width:10px;"><span style="float:left;">Royalt Pago</span></div>
+          </div>
+          <div class="block_nota">
+            <input type="text" name="data[]" placeholder="Data" style="float:right; margin-right:40px;" onblur="salvaNota();">
+            <input type="text" name="numero[]" placeholder="Número" onblur="salvaNota();">
+            <input type="text" name="valor[]" placeholder="Valor" style="margin:0 auto;" onblur="salvaNota();">
+            <div style="width:20%; height:30px;"><input type="checkbox" name="royalt[]" style="float:left; width:10px;"><span style="float:left;">Royalt Pago</span></div>
+          </div>
+          <div class="block_nota">
+            <input type="text" name="data[]" placeholder="Data" style="float:right; margin-right:40px;" onblur="salvaNota();">
+            <input type="text" name="numero[]" placeholder="Número" onblur="salvaNota();">
+            <input type="text" name="valor[]" placeholder="Valor" style="margin:0 auto;" onblur="salvaNota();">
+            <div style="width:20%; height:30px;"><input type="checkbox" name="royalt[]" style="float:left; width:10px;"><span style="float:left;">Royalt Pago</span></div>
+          </div>
+        </div>
+        <div style="text-align:center; margin-top:15px;">
+          <a href="#" id="add_nota">Adicionar mais notas</a>
+        </div>
+      </form>
     </div>
   </div>
 </div>
