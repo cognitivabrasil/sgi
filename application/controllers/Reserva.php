@@ -53,7 +53,7 @@ class Reserva extends CI_Controller {
       $this->load->model('reserva_model');
       $query = $this->reserva_model->verificaReserva();
 
-      $this->load->view('reserva_verifica', array('data'=>$query->result()));
+      $this->load->view('reserva_verifica', array('data'=>$query));
 
       $this->load->view('footer');
 

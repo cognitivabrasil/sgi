@@ -52,6 +52,13 @@ class Usuarios_model extends CI_Model {
         return $query;
     }
 
+    function selectByID($id) {
+        $this->db->where('id_usuario', $id);
+        $query = $this->db->get('erp_usuarios');
+
+        return $query;
+    }
+
     function selectBySession() {
         $username = $this->session->userdata('username');
         $this->db->where('username', $username);
