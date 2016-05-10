@@ -11,11 +11,13 @@
   </div>
   <select multiple size="4" style="height:70px;" name="horario[]">
     <?php
-    for($i=7,$j=1;$i<18;$j++){
-      $min="00";
+    for($i=8,$j=1;$i<18;$j++){
+      $min="30";
       if(($j % 2) == 0){
-        $min = "30";
-      }else{
+        if($i==17){
+          break;
+        }
+        $min = "00";
         $i++;
       }
     ?>
