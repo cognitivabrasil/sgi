@@ -13,10 +13,10 @@ class Pendencias extends CI_Controller {
       $this->load->view('head_logado');
       $this->load->view('menu');
 
-      //$this->load->model('usuarios_model');
-      //$query = $this->usuarios_model->select();
+      $this->load->model('pendencias_model');
+      $query = $this->pendencias_model->select();
 
-      $this->load->view('pendencias');
+      $this->load->view('pendencias', array('data'=>$query->result()));
       $this->load->view('footer');
     }
 
@@ -28,19 +28,32 @@ class Pendencias extends CI_Controller {
       $this->load->view('footer');
     }
 
+    function visualiza($id) {
+      $this->load->view('header');
+      $this->load->view('head_logado');
+      $this->load->view('menu');
+
+      $this->load->model('pendencias_model');
+      $query = $this->pendencias_model->select($id);
+
+      $this->load->view('pendencias_visualiza', array('data'=>$query->result()));
+      $this->load->view('footer');
+    }
+
     function insert() {
-      $this->load->model('usuarios_model');
-	    $this->usuarios_model->insert();
+      $this->load->model('pendencias_model');
+	    $this->pendencias_model->insert();
 
       $this->load->view('header');
       $this->load->view('head_logado');
-      echo "<div class='alert alert-success fade in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Usuário cadastrado com sucesso!</div>";
+      echo "<div class='alert alert-success fade in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Pendência cadastrada com sucesso!</div>";
       $this->load->view('menu');
 
-      $this->load->model('usuarios_model');
-      $query = $this->usuarios_model->select();
+      //$this->load->model('pendencias_model');
+      //$query = $this->usuarios_model->select();
 
-      $this->load->view('usuarios', array('data'=>$query->result()));
+      $this->load->view('pendencias');
       $this->load->view('footer');
+
     }
 }

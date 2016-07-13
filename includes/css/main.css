@@ -46,25 +46,6 @@
 
 /* Final da pagina pós logado*/
 
-/* Menu */
-
-nav{
-  border: 1px solid #000;
-  width: 13%;
-  float: left;
-}
-nav ul{
-  margin: 5px;
-  padding: 0;
-  padding-left: 10px;
-  list-style: none;
-}
-nav ul li{
-  cursor: pointer;
-}
-
-/* Final menu */
-
 /* Usuários */
 
 #titulo_usuario{

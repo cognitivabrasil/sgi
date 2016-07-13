@@ -24,7 +24,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 $config['base_url'] = '';
-
+//configuração para o servidor
+//$config['base_url'] = 'http://inf.ufrgs.br/gestaocei/';
 /*
 |--------------------------------------------------------------------------
 | Index File

@@ -33,7 +33,7 @@ class Login extends CI_Controller {
                     'logged' => true
                 );
                 $this->session->set_userdata($data);
-                redirect('inicial');
+                redirect('index.php/inicial');
             } else {
                 redirect($this->index());
             }
