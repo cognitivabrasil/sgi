@@ -4,7 +4,7 @@
 <?php
   if($data->disponivel=='1'){
 ?>
-<form method="post" action="<?php echo base_url();?>reserva/efetua_reserva">
+<form method="post" action="<?php echo base_url();?>index.php/reserva/efetua_reserva">
   <input type="hidden" value="<?php echo $data->id; ?>" name="id_sala">
   <div style="width:50%; float:right;">
     <input type="date" name="data">

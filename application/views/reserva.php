@@ -1,6 +1,6 @@
 <div id="container-central">
   <div id="topo_principal">
-    <p style="float:right;"><a href="<?php echo base_url();?>reserva/verifica">Verificar reservas</a></p>
+    <p style="float:right;"><a href="<?php echo base_url();?>index.php/reserva/verifica">Verificar reservas</a></p>
     <p>Reserva de Salas</p>
   </div>
   <div id="mapa_cei">

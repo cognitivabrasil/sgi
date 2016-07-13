@@ -1,4 +1,3 @@
-var server = 'http://143.54.5.55/erpcei/';
 $(document).ready(function(){
 
   $('map').imageMapResize();
@@ -51,7 +50,7 @@ function salvaRoyalt(){
 }
 
 function carregaSala(nrSala){
-  $.post(server+'reserva/sala_ajax',{'nrSala':nrSala},function(data){
+  $.post('reserva/sala_ajax',{'nrSala':nrSala},function(data){
     $('#dados_sala').html(data);
   });
   return false;
