@@ -11,7 +11,6 @@ class Faturamento extends CI_Controller {
     function index() {
       $this->load->view('header');
       $this->load->view('head_logado');
-      $this->load->view('menu');
 
       //$this->load->model('usuarios_model');
       //$query = $this->usuarios_model->select();
@@ -23,7 +22,6 @@ class Faturamento extends CI_Controller {
     function cadastra() {
       $this->load->view('header');
       $this->load->view('head_logado');
-      $this->load->view('menu');
       $this->load->view('patrimonios_cadastra');
       $this->load->view('footer');
     }
@@ -34,8 +32,7 @@ class Faturamento extends CI_Controller {
 
       $this->load->view('header');
       $this->load->view('head_logado');
-      echo "<div class='alert alert-success fade in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Usuário cadastrado com sucesso!</div>";
-      $this->load->view('menu');
+      echo "<div class='alert alert-success fade in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Usuário cadastrado com sucesso!</div>";      
 
       $this->load->model('usuarios_model');
       $query = $this->usuarios_model->select();

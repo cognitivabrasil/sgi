@@ -12,7 +12,6 @@ class Reserva extends CI_Controller {
 
       $this->load->view('header');
       $this->load->view('head_logado');
-      $this->load->view('menu');
       $this->load->view('reserva');
       $this->load->view('footer');
 
@@ -38,7 +37,6 @@ class Reserva extends CI_Controller {
       }
       $this->load->view('header');
       $this->load->view('head_logado');
-      $this->load->view('menu');
       $this->load->view('reserva');
       $this->load->view('footer');
 
@@ -47,8 +45,7 @@ class Reserva extends CI_Controller {
     function verifica() {
 
       $this->load->view('header');
-      $this->load->view('head_logado');
-      $this->load->view('menu');
+      $this->load->view('head_logado');      
 
       $this->load->model('reserva_model');
       $query = $this->reserva_model->verificaReserva();

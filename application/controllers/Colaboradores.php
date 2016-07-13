@@ -11,7 +11,6 @@ class Colaboradores extends CI_Controller {
     function index() {
       $this->load->view('header');
       $this->load->view('head_logado');
-      $this->load->view('menu');
 
       $this->load->model('empreendimentos_model');
       $query = $this->empreendimentos_model->select();
@@ -23,7 +22,6 @@ class Colaboradores extends CI_Controller {
     function cadastra() {
       $this->load->view('header');
       $this->load->view('head_logado');
-      $this->load->view('menu');
 
       $this->load->model('empreendimentos_model');
       $query = $this->empreendimentos_model->select();
@@ -35,7 +33,6 @@ class Colaboradores extends CI_Controller {
     function lista($id=0) {
       $this->load->view('header');
       $this->load->view('head_logado');
-      $this->load->view('menu');
 
       $this->load->model('colaboradores_model');
       $query = $this->colaboradores_model->lista($id);
@@ -51,7 +48,6 @@ class Colaboradores extends CI_Controller {
       $this->load->view('header');
       $this->load->view('head_logado');
       echo "<div class='alert alert-success fade in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Colaborador cadastrado com sucesso!</div>";
-      $this->load->view('menu');
 
       $this->load->model('usuarios_model');
       $query = $this->usuarios_model->select();
@@ -62,8 +58,7 @@ class Colaboradores extends CI_Controller {
 
     function visualiza($id=0) {
       $this->load->view('header');
-      $this->load->view('head_logado');
-      $this->load->view('menu');
+      $this->load->view('head_logado');    
 
       $this->load->model('colaboradores_model');
       $query = $this->colaboradores_model->select($id);

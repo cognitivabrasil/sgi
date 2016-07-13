@@ -11,7 +11,6 @@ class Inicial extends CI_Controller {
     function index() {
       $this->load->view('header');
       $this->load->view('head_logado');
-      $this->load->view('menu');
 
       $this->load->model('usuarios_model');
       $query = $this->usuarios_model->selectBySession();

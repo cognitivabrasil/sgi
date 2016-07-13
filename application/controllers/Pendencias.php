@@ -11,7 +11,6 @@ class Pendencias extends CI_Controller {
     function index() {
       $this->load->view('header');
       $this->load->view('head_logado');
-      $this->load->view('menu');
 
       $this->load->model('pendencias_model');
       $query = $this->pendencias_model->select();
@@ -23,7 +22,6 @@ class Pendencias extends CI_Controller {
     function cadastra() {
       $this->load->view('header');
       $this->load->view('head_logado');
-      $this->load->view('menu');
       $this->load->view('pendencias_cadastra');
       $this->load->view('footer');
     }
@@ -31,7 +29,6 @@ class Pendencias extends CI_Controller {
     function visualiza($id) {
       $this->load->view('header');
       $this->load->view('head_logado');
-      $this->load->view('menu');
 
       $this->load->model('pendencias_model');
       $query = $this->pendencias_model->select($id);
@@ -46,8 +43,7 @@ class Pendencias extends CI_Controller {
 
       $this->load->view('header');
       $this->load->view('head_logado');
-      echo "<div class='alert alert-success fade in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Pendência cadastrada com sucesso!</div>";
-      $this->load->view('menu');
+      echo "<div class='alert alert-success fade in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Pendência cadastrada com sucesso!</div>";      
 
       //$this->load->model('pendencias_model');
       //$query = $this->usuarios_model->select();
