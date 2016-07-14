@@ -2,7 +2,7 @@
   <div>
     <p id="titulo_usuario">Cadastro de empreendimento</p>
     <div id="block_usuario">
-      <form method="post" action="<?php echo base_url();?>empreendimentos/insert" enctype="multipart/form-data">
+      <form method="post" action="<?php echo base_url();?>index.php/empreendimentos/insert" enctype="multipart/form-data">
           <p class="subtitulo_empreendimentos">Dados Gerais</p>
           <div style="float:left;">
             <input type="text" name="nome" placeholder="Nome">

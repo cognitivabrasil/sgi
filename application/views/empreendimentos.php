@@ -22,7 +22,7 @@
       </div>
       <div class="col-md-4">
         <div class="visualizar_dados">
-          <a href="<?php echo base_url();?>empreendimentos/visualiza/<?php echo $row->id;?>">Visualizar dados</a>
+          <a href="<?php echo base_url();?>index.php/empreendimentos/visualiza/<?php echo $row->id;?>">Visualizar dados</a>
         </div>
         <span class="sobrescrito_empreendimento">Última atualização em 10 dias</span>
       </div>
@@ -32,7 +32,7 @@
     }
     ?>
     <div style="text-align:center; margin-top:15px;">
-      <a href="<?php echo base_url();?>empreendimentos/cadastra">Cadastrar novo empreendimento</a>
+      <a href="<?php echo base_url();?>index.php/empreendimentos/cadastra">Cadastrar novo empreendimento</a>
     </div>
   </div>
 </div>

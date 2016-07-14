@@ -30,7 +30,7 @@
     }
     ?>
     <div style="text-align:center; margin-top:15px;">
-      <a href="<?php echo base_url();?>colaboradores/cadastra">Cadastrar novo colaborador</a>
+      <a href="<?php echo base_url();?>index.php/colaboradores/cadastra">Cadastrar novo colaborador</a>
     </div>
   </div>
 </div>

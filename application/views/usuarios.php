@@ -34,7 +34,7 @@
     <div class="row">
       <div class="col-md-4"><?php echo $row->nome; ?></div>
       <div class="col-md-4">CEI</div>
-      <div class="col-md-4"><?php    
+      <div class="col-md-4"><?php
       switch ($row->id_acesso) {
         case 1:
           echo "Administrador";
@@ -52,7 +52,7 @@
     }
     ?>
     <div style="text-align:center; margin-top:15px;">
-      <a href="<?php echo base_url();?>usuarios/cadastra">Cadastrar novo usuário</a>
+      <a href="<?php echo base_url();?>index.php/usuarios/cadastra">Cadastrar novo usuário</a>
     </div>
   </div>
 </div>
