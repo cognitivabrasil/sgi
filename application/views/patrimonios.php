@@ -15,10 +15,10 @@
       </div>
     </div>
     <div style="text-align:center; margin-top:15px;">
-      <a href="<?php echo base_url();?>patrimonios/cadastra">Cadastrar novo patrimônio</a>
+      <a href="<?php echo base_url();?>index.php/patrimonios/cadastra">Cadastrar novo patrimônio</a>
     </div>
     <div style="text-align:center; margin-top:15px;">
-      <a href="<?php echo base_url();?>patrimonios/atribui">Atribuir patrimônio</a>
+      <a href="<?php echo base_url();?>index.php/patrimonios/atribui">Atribuir patrimônio</a>
     </div>
   </div>
 </div>

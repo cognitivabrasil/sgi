@@ -10,14 +10,14 @@
         </div>
         <div class="col-md-4">
           <div class="visualizar_dados">
-            <a href="<?php echo base_url();?>pendencias/visualiza/<?php echo $row->id; ?>">Visualizar dados</a>
+            <a href="<?php echo base_url();?>index.php/pendencias/visualiza/<?php echo $row->id; ?>">Visualizar dados</a>
           </div>
           <span class="sobrescrito_empreendimento">Alterada/Criada em 10/10/2010</span>
         </div>
       </div>
     <?php } ?>
     <div style="text-align:center; margin-top:15px;">
-      <a href="<?php echo base_url();?>pendencias/cadastra">Cadastrar nova pendencia</a>
+      <a href="<?php echo base_url();?>index.php/pendencias/cadastra">Cadastrar nova pendencia</a>
     </div>
   </div>
 </div>

@@ -2,7 +2,7 @@
   <div>
     <p id="titulo_usuario">Cadastro de pendências</p>
     <div id="block_usuario">
-      <form method="post" action="<?php echo base_url();?>pendencias/insert">
+      <form method="post" action="<?php echo base_url();?>index.php/pendencias/insert">
           <input type="text" name="nome" placeholder="Nome">
           <select type="text" name="situacao">
             <option value="0">Situação</option>
