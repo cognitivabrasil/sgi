@@ -55,13 +55,12 @@ class Reserva_model extends CI_Model {
         $this->db->order_by("dia", "asc");
         $query = $this->db->get('erp_reservas_salas');
 
-        $data = $query->result();
-
+        $data = $query->result();      
         $this->load->model('usuarios_model');
         foreach($data as $reserva){
             $reserva->dayweek = $dayweek = date('N', strtotime($reserva->dia));
-            $query = $this->usuarios_model->select();
-            $reserva->usuario_data = $query->result()[0]->username;
+            $query = $this->usuarios_model->selectByID($reserva->id_usuario);
+            $reserva->usuario_data = $query->result()->username;
         }
 
         return $data;
