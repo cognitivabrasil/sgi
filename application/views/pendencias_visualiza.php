@@ -1,6 +1,3 @@
-<?php
-  print_r($data);
-?>
 <div id="container-central">
 <div>
   <p id="titulo_usuario">Pendências</p>
