@@ -38,7 +38,13 @@ class Login extends CI_Controller {
                 $this->session->set_userdata($data);
                 redirect('index.php/inicial');
             } else {
-                redirect($this->index());
+                //redirect($this->index());
+                // VALIDATION RULES
+                $this->load->view('header');
+                echo "<div class='alert alert-danger fade in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Usuário ou senha errados!</div>";
+                $this->load->view('login_view');
+                $this->load->view('footer');
+
             }
         }
     }
