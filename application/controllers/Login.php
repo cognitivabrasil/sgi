@@ -26,10 +26,13 @@ class Login extends CI_Controller {
             $this->load->view('footer');
 
         } else {
-
-            if ($query) { // VERIFICA LOGIN E SENHA
+            if (count($query)) { // VERIFICA LOGIN E SENHA
+                print_r($query);
                 $data = array(
-                    'username' => $this->input->post('username'),
+                    'username' => $query[0]->username,
+                    'id_usuario' => $query[0]->id_usuario,
+                    'nome' => $query[0]->nome,
+                    'id_acesso' => $query[0]->id_acesso,
                     'logged' => true
                 );
                 $this->session->set_userdata($data);
@@ -38,5 +41,17 @@ class Login extends CI_Controller {
                 redirect($this->index());
             }
         }
+    }
+
+    function logout() {
+      $data = array(
+        'username' => '',
+        'id_usuario' => 0,
+        'nome' => '',
+        'id_acesso' => 0,
+        'logged' => false
+      );
+      $this->session->set_userdata($data);
+      redirect($this->index());
     }
 }

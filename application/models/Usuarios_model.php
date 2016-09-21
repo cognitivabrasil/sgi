@@ -8,11 +8,22 @@ class Usuarios_model extends CI_Model {
 
         $query = $this->db->get('erp_usuarios');
 
-        if ($query->num_rows() == 1) {
-            return true; // RETORNA VERDADEIRO
-        }else{
-          return false;
-        }
+        return $query->result();
+    }
+
+    function validatepasswd() {
+        $this->db->where('id_usuario', $_POST['id_usuario']);
+        $this->db->where('senha', md5($_POST['senha_antiga']));
+
+        $query = $this->db->get('erp_usuarios');
+
+        return $query->result();
+    }
+
+    function changepasswd() {        
+        $this->senha = md5($_POST['nova_senha']);
+        $this->db->where('id_usuario',$_POST['id_usuario']);
+        $this->db->update('erp_usuarios',$this);
     }
 
     // Verifica se está logado

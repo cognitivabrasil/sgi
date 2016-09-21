@@ -21,6 +21,15 @@ $(document).ready(function(){
   });
   /*Fim Faturamento*/
 
+  /*Usuários*/
+  $('#altera_senha').click(function(){
+    if(($('#nova_senha').val() != $('#confirma_nova_senha').val()) || $('#nova_senha').val() == ''){
+      alert('As novas senhas não conferem!');
+      return false;
+    }    
+  });
+  /*Fim Usuários*/
+
 });
 
 function salvaPrevisao(){

@@ -15,7 +15,44 @@ class Usuarios extends CI_Controller {
       $this->load->model('usuarios_model');
       $query = $this->usuarios_model->select();
 
-      $this->load->view('usuarios', array('data'=>$query->result()));
+      $this->load->view('usuarios', array('data'=>$query->result(),'id_logado'=>$this->session->userdata('id_usuario')));
+      $this->load->view('footer');
+    }
+
+    function alterasenhafinal(){
+
+      $this->load->view('header');
+      $this->load->view('head_logado');
+
+      if(isset($_POST)){
+        $this->load->model('usuarios_model');
+        $query = $this->usuarios_model->validatepasswd();
+        if(count($query)>0){
+          $queryinput = $this->usuarios_model->changepasswd();
+          echo "<div class='alert alert-success fade in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Senha alterada com sucesso!</div>";
+        }else{
+          echo "<div class='alert alert-danger fade in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Senha antiga errada!</div>";
+        }
+      }
+
+      $this->load->model('usuarios_model');
+      $query = $this->usuarios_model->select();
+
+      $this->load->view('usuarios', array('data'=>$query->result(),'id_logado'=>$this->session->userdata('id_usuario')));
+
+      $this->load->view('footer');
+
+    }
+
+    function alterasenha($id) {
+
+      $this->load->view('header');
+      $this->load->view('head_logado');
+
+      $this->load->model('usuarios_model');
+      $query = $this->usuarios_model->selectByID($id);
+
+      $this->load->view('usuarios_alterasenha', array('data'=>$query->result()));
       $this->load->view('footer');
     }
 
@@ -32,7 +69,7 @@ class Usuarios extends CI_Controller {
 
       $this->load->view('header');
       $this->load->view('head_logado');
-      echo "<div class='alert alert-success fade in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Usuário cadastrado com sucesso!</div>";    
+      echo "<div class='alert alert-success fade in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Usuário cadastrado com sucesso!</div>";
 
       $this->load->model('usuarios_model');
       $query = $this->usuarios_model->select();
