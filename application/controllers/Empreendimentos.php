@@ -46,12 +46,31 @@ class Empreendimentos extends CI_Controller {
 
       $this->load->view('header');
       $this->load->view('head_logado');
-      echo "<div class='alert alert-success fade in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Empreendimento cadastrado com sucesso!</div>";      
+      echo "<div class='alert alert-success fade in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Empreendimento cadastrado com sucesso!</div>";
 
       $this->load->model('usuarios_model');
       $query = $this->usuarios_model->select();
 
       $this->load->view('usuarios', array('data'=>$query->result()));
       $this->load->view('footer');
+    }
+
+    function download($id,$tipo) {
+      $this->load->model('empreendimentos_model');
+      switch($tipo){
+        case 'canvas':
+          $query = $this->empreendimentos_model->select($id);
+          $path=$query->result()[0]->canvas;
+          break;
+        case 'logo':
+          $query = $this->empreendimentos_model->select($id);
+          $path= $query->result()[0]->logo;
+          break;
+        case 'ct':
+          $query = $this->empreendimentos_model->select_weak_entities_by_id($id,'ct');
+          $path=$query->result()[0]->contrato;
+          break;
+      }
+      force_download($path,NULL);
     }
 }

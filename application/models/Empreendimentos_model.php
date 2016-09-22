@@ -114,11 +114,24 @@ class Empreendimentos_model extends CI_Model {
       if($type == 'ps'){
         $query = $this->db->query("Select erp_empreendimentos_ps.* from erp_empreendimentos
   inner join erp_empreendimentos_ps on erp_empreendimentos.id = erp_empreendimentos_ps.id_empreendimento
-  where erp_empreendimentos.id = 15");
+  where erp_empreendimentos.id =".$id);
       }else{
         $query = $this->db->query("Select erp_empreendimentos_contrato.* from erp_empreendimentos
   inner join erp_empreendimentos_contrato on erp_empreendimentos.id = erp_empreendimentos_contrato.id_empreendimento
-  where erp_empreendimentos.id = 15");
+  where erp_empreendimentos.id =".$id);
+      }
+      return $query;
+    }
+
+    function select_weak_entities_by_id($id,$type) {
+      if($type == 'ps'){
+        $query = $this->db->query("Select erp_empreendimentos_ps.* from erp_empreendimentos
+  inner join erp_empreendimentos_ps on erp_empreendimentos.id = erp_empreendimentos_ps.id_empreendimento
+  where erp_empreendimentos_ps.id =".$id);
+      }else{
+        $query = $this->db->query("Select erp_empreendimentos_contrato.* from erp_empreendimentos
+  inner join erp_empreendimentos_contrato on erp_empreendimentos.id = erp_empreendimentos_contrato.id_empreendimento
+  where erp_empreendimentos_contrato.id =".$id);
       }
       return $query;
     }

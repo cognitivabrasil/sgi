@@ -25,7 +25,7 @@
         <div class="selo_gamification_pequeno">Empresa<br>Consciente</div>
       </div>
       <div style="clear:both; margin-left:15px; text-align:center;">
-        <a href="#">Download Canvas</a>&nbsp;/&nbsp;<a href="#">Download Logo</a>
+        <a target="_blank" href="<?php echo base_url();?>index.php/empreendimentos/download/<?php echo $data[0]->id;?>/canvas">Download Canvas</a>&nbsp;/&nbsp;<a target="_blank" href="<?php echo base_url();?>index.php/empreendimentos/download/<?php echo $data[0]->id;?>/logo">Download Logo</a>
       </div>
       <div style="clear:both; margin-left:15px;">
         <br><p><b>Produtos/Serviços</b></p>
@@ -38,7 +38,7 @@
       <?php
       foreach($weak_data_ct as $weak_ct){
 
-        echo "<p>".$weak_ct->data." - <a href='#'>Download Contrato</a></p>";
+        echo "<p>".$weak_ct->data." - <a href=".base_url()."index.php/empreendimentos/download/".$weak_ct->id."/ct>Download Contrato</a></p>";
 
       }
       ?>
