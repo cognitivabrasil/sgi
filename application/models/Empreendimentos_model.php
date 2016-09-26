@@ -99,8 +99,6 @@ class Empreendimentos_model extends CI_Model {
       //$this->db->update('entries',$this, array('id',$_POST[]));
     }
 
-    // Seleciona usuários do banco
-
     function select($id=0) {
         if($id==0){
           $query = $this->db->query('Select emp.*, count(*) as nr from erp_colaboradores col, erp_empreendimentos emp where col.id_empreendimento = emp.id group by id_empreendimento');

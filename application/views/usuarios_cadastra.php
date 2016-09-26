@@ -5,7 +5,17 @@
       <form method="post" action="<?php echo base_url();?>index.php/usuarios/insert">
           <input type="text" name="nome" placeholder="Nome">
           <input type="text" name="login" placeholder="Login">
-          <input type="text" name="empresa" placeholder="Empresa">
+          <select name="empresa">
+            <option value="0">Selecione a empresa</value>
+            <option value="1">CEI</value>
+            <?php
+            foreach ($empresas as $empresa) {
+            ?>
+            <option value="<?php echo $empresa->id;?>"><?php echo $empresa->nome_fantasia;?></value>
+            <?php
+            }
+            ?>
+          </select>
           <input type="password" name="senha" placeholder="Senha">
           <select name="acesso">
             <option value="0">Nível de acesso</option>

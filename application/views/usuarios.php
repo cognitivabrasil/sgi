@@ -6,7 +6,7 @@
     foreach($data as $row){ ?>
     <div class="row">
       <div class="col-md-3"><?php echo $row->nome; ?></div>
-      <div class="col-md-3">Empresa que o usuario ficará</div>
+      <div class="col-md-3"><?php echo $row->nome_empreendimento; ?></div>
       <div class="col-md-3"><?php
       switch ($row->id_acesso) {
         case 1:
