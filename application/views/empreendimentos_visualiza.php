@@ -22,7 +22,7 @@
           break;
       }?><br>sala 107<br><?php echo $data[0]->nr;?> colaborador(es)</div>
       <div class="col-md-4">
-        <div class="selo_gamification_pequeno">Empresa<br>Consciente</div>
+      <!--  <div class="selo_gamification_pequeno">Empresa<br>Consciente</div> -->
       </div>
       <div style="clear:both; margin-left:15px; text-align:center;">
         <a target="_blank" href="<?php echo base_url();?>index.php/empreendimentos/download/<?php echo $data[0]->id;?>/canvas">Download Canvas</a>&nbsp;/&nbsp;<a target="_blank" href="<?php echo base_url();?>index.php/empreendimentos/download/<?php echo $data[0]->id;?>/logo">Download Logo</a>

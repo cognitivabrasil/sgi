@@ -12,32 +12,105 @@ class Releasing extends CI_Controller {
       $this->load->view('header');
       $this->load->view('head_logado');
 
-      //$this->load->model('usuarios_model');
-      //$query = $this->usuarios_model->select();
+      $this->load->model('releasing_model');
+      $query = $this->releasing_model->select();
+      $dados = $query->result();
+      $this->load->model('empreendimentos_model');
+      $count=0;
+      foreach ($dados as $releasing) {
+        $dados[$count]->nome_empreendimento = "Sem vínculo";
 
-      $this->load->view('releasing');
+        //Inserindo empreendimento
+        if($releasing->id_empreendimento==1){
+          $dados[$count]->nome_empreendimento = "CEI";
+        }elseif($releasing->id_empreendimento!=0){
+          $queryEmpr = $this->empreendimentos_model->select($releasing->id_empreendimento);
+          $result = $queryEmpr->result();
+          if(count($result)>0){
+            $dados[$count]->nome_empreendimento = $result[0]->nome_fantasia;
+          }
+        }
+
+        //arrumando path da imagem
+        $aux = explode('uploads',$dados[$count]->anexo);
+        $dados[$count]->anexo = "uploads".$aux[1];
+
+        $count++;
+      }
+
+      $this->load->view('releasing', array('data'=>$dados));
+      $this->load->view('footer');
+    }
+
+    function lista($id) {
+      $this->load->view('header');
+      $this->load->view('head_logado');
+
+      $this->load->model('releasing_model');
+      $query = $this->releasing_model->selectByID($id);
+      $dados = $query->result();
+      $this->load->model('empreendimentos_model');
+      $dados[0]->nome_empreendimento = "Sem vínculo";
+
+      //Inserindo empreendimento
+      if($dados[0]->id_empreendimento==1){
+        $dados[0]->nome_empreendimento = "CEI";
+      }elseif($dados[0]->id_empreendimento!=0){
+        $queryEmpr = $this->empreendimentos_model->select($dados[0]->id_empreendimento);
+        $result = $queryEmpr->result();
+        if(count($result)>0){
+          $dados[0]->nome_empreendimento = $result[0]->nome_fantasia;
+        }
+      }
+
+      //arrumando path da imagem
+      $aux = explode('uploads',$dados[0]->anexo);
+      $dados[0]->anexo = "uploads".$aux[1];
+
+      $this->load->view('releasing_visualiza', array('data'=>$dados));
       $this->load->view('footer');
     }
 
     function cadastra() {
       $this->load->view('header');
       $this->load->view('head_logado');
-      $this->load->view('releasing_cadastra');
+
+      $this->load->model('empreendimentos_model');
+      $query = $this->empreendimentos_model->select();
+
+      $this->load->view('releasing_cadastra', array('empresas'=>$query->result()));
       $this->load->view('footer');
     }
 
     function insert() {
-      $this->load->model('usuarios_model');
-	    $this->usuarios_model->insert();
+      $this->load->model('releasing_model');
+	    $this->releasing_model->insert();
 
       $this->load->view('header');
       $this->load->view('head_logado');
-      echo "<div class='alert alert-success fade in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Usuário cadastrado com sucesso!</div>";      
+      echo "<div class='alert alert-success fade in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Releasing inserido com sucesso!</div>";
 
-      $this->load->model('usuarios_model');
-      $query = $this->usuarios_model->select();
+      $query = $this->releasing_model->select();
 
-      $this->load->view('usuarios', array('data'=>$query->result()));
+      $dados = $query->result();
+      $this->load->model('empreendimentos_model');
+      $count=0;
+      foreach ($dados as $releasing) {
+        $dados[$count]->nome_empreendimento = "Sem vínculo";
+
+        if($releasing->id_empreendimento==1){
+          $dados[$count]->nome_empreendimento = "CEI";
+        }elseif($releasing->id_empreendimento!=0){
+          $queryEmpr = $this->empreendimentos_model->select($releasing->id_empreendimento);
+          $result = $queryEmpr->result();
+          if(count($result)>0){
+            $dados[$count]->nome_empreendimento = $result[0]->nome_fantasia;
+          }
+        }
+        $count++;
+      }
+
+      $this->load->view('releasing', array('data'=>$dados));
       $this->load->view('footer');
     }
 }

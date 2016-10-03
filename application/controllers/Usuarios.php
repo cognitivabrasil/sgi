@@ -95,8 +95,25 @@ class Usuarios extends CI_Controller {
 
       $this->load->model('usuarios_model');
       $query = $this->usuarios_model->select();
+      $dados = $query->result();
+      $this->load->model('empreendimentos_model');
+      $count=0;
+      foreach ($dados as $user) {
+        $dados[$count]->nome_empreendimento = "Sem vínculo";
 
-      $this->load->view('usuarios', array('data'=>$query->result()));
+        if($user->id_empreendimento==1){
+          $dados[$count]->nome_empreendimento = "CEI";
+        }elseif($user->id_empreendimento!=0){
+          $queryEmpr = $this->empreendimentos_model->select($user->id_empreendimento);
+          $result = $queryEmpr->result();
+          if(count($result)>0){
+            $dados[$count]->nome_empreendimento = $result[0]->nome_fantasia;
+          }
+        }
+        $count++;
+      }
+
+      $this->load->view('usuarios', array('data'=>$dados));
       $this->load->view('footer');
     }
 }

@@ -18,7 +18,7 @@
           break;
       }?><br>sala 107<br><?php echo $row->nr;?> colaborador(es)</div>
       <div class="col-md-4">
-        <div class="selo_gamification_pequeno">Empresa<br>Consciente</div>
+      <!--  <div class="selo_gamification_pequeno">Empresa<br>Consciente</div> -->
       </div>
       <div class="col-md-4">
         <div class="visualizar_dados">
