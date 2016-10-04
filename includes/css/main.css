@@ -8,6 +8,9 @@
   width: 90%;
   margin: 20px auto;
 }
+.button_action:hover{
+  text-decoration: none;
+}
 /* Fim css geral*/
 
 /* Pagina inicial de login */

@@ -24,7 +24,7 @@
         <li <?php if($atual == 'reserva') echo 'class="active"' ?>><a href="<?php echo base_url();?>index.php/reserva">Reserva de Salas</a></li>
         <li <?php if($atual == 'pendencias') echo 'class="active"' ?>><a href="<?php echo base_url();?>index.php/pendencias">Pendências</a></li>
         <li <?php if($atual == 'releasing') echo 'class="active"' ?>><a href="<?php echo base_url();?>index.php/releasing">Releasing</a></li>
-        <!--<li <?php if($atual == 'servicos') echo 'class="active"' ?>><a href="<?php echo base_url();?>index.php/servicos">Serviços</a></li>-->
+        <li <?php if($atual == 'servicos') echo 'class="active"' ?>><a href="<?php echo base_url();?>index.php/servicos">Serviços</a></li>
         <li <?php if($atual == 'salas') echo 'class="active"' ?>><a href="<?php echo base_url();?>index.php/salas">Salas</a></li>
         <li><a href="<?php echo base_url();?>index.php/login/logout">Sair</a></li>
       </ul>
