@@ -18,7 +18,9 @@
           <p><span style="float:left; margin-top:7px;">&nbsp;Data: </span><input style="float:left;" type="date" name="data"></p>
           <textarea name="descricao" placeholder="Descrição do evento, prêmio ou acontecimento" style="width:400px; height:100px; clear:both;"></textarea>
           <input type="file" name="imagem">
-          <input type="submit" value="Salvar releasing" style="clear:both;">
+          <button type="submit" class="btn btn-default btn-lg">
+            <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Salvar
+          </button>
       </form>
     </div>
   </div>
