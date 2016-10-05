@@ -13,6 +13,18 @@ class Salas_model extends CI_Model {
 
     }
 
+    function save() {
+      $this->nr_sala = $_POST['nr'];
+      $this->funcao = $_POST['funcao'];
+      $this->descricao = $_POST['descricao'];
+      $this->disponivel = $_POST['disponivel'];
+
+      $this->db->where('id', $_POST['id']);
+
+      $this->db->update('erp_salas',$this);
+
+    }
+
     // Seleciona usuários do banco
 
     function select() {
