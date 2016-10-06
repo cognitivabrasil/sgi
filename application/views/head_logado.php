@@ -33,6 +33,6 @@
 </nav>
 <div id="container-geral">
 <div id="topo-logado">
-  <p class="titulo-principal">CEI - Centro de Empreendimentos em Informática</p>
-  <p>Sistema de gerenciamento</p>
+  <p class="titulo-principal">Sistema de Gerenciamento</p>
+  <p>CEI - Centro de Empreendimentos em Informática</p>
 </div>

@@ -1,6 +1,12 @@
 <div id="container-central">
   <div id="topo_principal">
-    <p style="float:right;"><a href="<?php echo base_url();?>index.php/reserva/verifica">Verificar reservas</a></p>
+    <p style="float:right;">
+      <a href="<?php echo base_url();?>index.php/reserva/verifica" class="button_action">
+        <button type="button" class="btn btn-default btn-lg">
+          <span class="glyphicon glyphicon-list" aria-hidden="true"></span> Reservas
+        </button>
+      </a>
+    </p>
     <p>Reserva de Salas</p>
   </div>
   <div id="mapa_cei">

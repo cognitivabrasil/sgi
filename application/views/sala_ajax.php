@@ -9,7 +9,7 @@
   <div style="width:50%; float:right;">
     <input type="date" name="data">
   </div>
-  <select multiple size="4" style="height:70px;" name="horario[]">
+  <select multiple size="4" style="height:140px;" name="horario[]">
     <?php
     for($i=8,$j=1;$i<18;$j++){
       $min="30";
@@ -26,7 +26,9 @@
     }
     ?>
   </select>
-  <input type="submit" value="Efetuar reserva">
+  <button type="submit" class="btn btn-default btn-lg">
+    Efetuar reserva
+  </button>
 </form>
 <?php
   }
