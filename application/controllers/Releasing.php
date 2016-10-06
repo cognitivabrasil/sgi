@@ -178,7 +178,7 @@ class Releasing extends CI_Controller {
           }
         }
         $count++;
-        
+
         //arrumando path da imagem
         $aux = explode('uploads',$dados[$count]->anexo);
         $dados[$count]->anexo = "uploads".$aux[1];

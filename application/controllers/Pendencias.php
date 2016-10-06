@@ -15,7 +15,15 @@ class Pendencias extends CI_Controller {
       $this->load->model('pendencias_model');
       $query = $this->pendencias_model->select();
 
-      $this->load->view('pendencias', array('data'=>$query->result()));
+      $dados = $query->result();
+      $count=0;
+      foreach ($dados as $row) {
+        $queryEmp = $this->pendencias_model->selectEmpreendimento($row->id_usuario);
+        $dados[$count]->nome_empresa = $queryEmp->result()[0]->nome_fantasia;
+        $count++;
+      }
+
+      $this->load->view('pendencias', array('data'=>$dados));
       $this->load->view('footer');
     }
 
@@ -33,8 +41,53 @@ class Pendencias extends CI_Controller {
       $this->load->model('pendencias_model');
       $query = $this->pendencias_model->select($id);
 
-      $this->load->view('pendencias_visualiza', array('data'=>$query->result()));
+      $dados = $query->result()[0];
+
+      $queryEmp = $this->pendencias_model->selectEmpreendimento($dados->id_usuario);
+      $dados->nome_empresa = $queryEmp->result()[0]->nome_fantasia;
+
+      $this->load->view('pendencias_visualiza', array('data'=>$dados));
       $this->load->view('footer');
+    }
+
+    function edita($id) {
+      $this->load->view('header');
+      $this->load->view('head_logado');
+
+      $this->load->model('pendencias_model');
+      $query = $this->pendencias_model->select($id);
+
+      $dados = $query->result()[0];
+
+      $queryEmp = $this->pendencias_model->selectEmpreendimento($dados->id_usuario);
+      $dados->nome_empresa = $queryEmp->result()[0]->nome_fantasia;
+
+      $this->load->view('pendencias_edita', array('data'=>$dados));
+      $this->load->view('footer');
+    }
+
+    function save() {
+      $this->load->model('pendencias_model');
+      $this->pendencias_model->save();
+
+      $this->load->view('header');
+      $this->load->view('head_logado');
+      echo "<div class='alert alert-success fade in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Pendência editada com sucesso!</div>";
+
+      $this->load->model('pendencias_model');
+      $query = $this->pendencias_model->select();
+
+      $dados = $query->result();
+      $count=0;
+      foreach ($dados as $row) {
+        $queryEmp = $this->pendencias_model->selectEmpreendimento($row->id_usuario);
+        $dados[$count]->nome_empresa = $queryEmp->result()[0]->nome_fantasia;
+        $count++;
+      }
+
+      $this->load->view('pendencias', array('data'=>$dados));
+      $this->load->view('footer');
+
     }
 
     function insert() {
@@ -43,12 +96,20 @@ class Pendencias extends CI_Controller {
 
       $this->load->view('header');
       $this->load->view('head_logado');
-      echo "<div class='alert alert-success fade in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Pendência cadastrada com sucesso!</div>";      
+      echo "<div class='alert alert-success fade in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Pendência cadastrada com sucesso!</div>";
 
-      //$this->load->model('pendencias_model');
-      //$query = $this->usuarios_model->select();
+      $this->load->model('pendencias_model');
+      $query = $this->pendencias_model->select();
 
-      $this->load->view('pendencias');
+      $dados = $query->result();
+      $count=0;
+      foreach ($dados as $row) {
+        $queryEmp = $this->pendencias_model->selectEmpreendimento($row->id_usuario);
+        $dados[$count]->nome_empresa = $queryEmp->result()[0]->nome_fantasia;
+        $count++;
+      }
+
+      $this->load->view('pendencias', array('data'=>$dados));
       $this->load->view('footer');
 
     }

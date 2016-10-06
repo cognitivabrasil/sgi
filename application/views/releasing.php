@@ -11,7 +11,7 @@
       echo "<br>";
       echo $releasing->nome_empreendimento;
       echo "<br>";
-      echo $releasing->data;
+      echo date("d/m/Y", strtotime($releasing->data));
       ?></div>
       <div class="col-md-8">
         <?php

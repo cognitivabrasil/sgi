@@ -10,7 +10,9 @@
             <option value="2">Resolvida</option>
           </select>
           <textarea name="descricao" placeholder="Descrição" style="width:70%; height:150px;"></textarea>
-          <input type="submit" value="Cadastra pendência" style="clear:both;">
+          <button type="submit" class="btn btn-default btn-lg">
+            <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Salvar
+          </button>
       </form>
     </div>
   </div>
