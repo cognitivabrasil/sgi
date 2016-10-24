@@ -13,6 +13,16 @@ class Patrimonios_model extends CI_Model {
 
     }
 
+    function save() {
+      $this->nome = $_POST['nome'];
+      $this->nrpatrimonio = $_POST['nr'];
+      $this->responsavel = $_POST['responsavel'];
+      $this->descricao = $_POST['descricao'];
+
+      $this->db->where('id', $_POST['id']);
+      $this->db->update('erp_patrimonios',$this);
+    }
+
 
     function atribuirPatrimonio() {
       $query = $this->db->query('select * from erp_patrimonio_sala

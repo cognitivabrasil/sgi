@@ -14,6 +14,11 @@
     }
     ?>
     <div style="text-align:center; margin-top:15px;">
+      <a href="<?php echo base_url();?>index.php/patrimonios/edita/<?php echo $data->id;?>" class="button_action">
+      <button type="button" class="btn btn-default btn-lg">
+        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Editar
+      </button>
+      </a>
       <a href="<?php echo base_url();?>index.php/patrimonios/atribui/<?php echo $data->id;?>" class="button_action">
         <button type="button" class="btn btn-default btn-lg">
           Atribuir patrimônio <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
