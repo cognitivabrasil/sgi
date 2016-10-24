@@ -24,7 +24,9 @@
             <option value="3">Usuário</option>
           </select>
           <input type="text" name="contato" placeholder="Contato">
-          <input type="submit" value="Criar usuário">
+          <button type="submit" class="btn btn-default btn-lg">
+            <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Salvar
+          </button>
       </form>
     </div>
   </div>

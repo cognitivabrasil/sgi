@@ -24,7 +24,11 @@
          <?php
           if($row->id_usuario == $id_logado){
          ?>
-         <a href="<?php echo base_url();?>index.php/usuarios/alterasenha/<?php echo $row->id_usuario;?>">alterar senha</a>
+         <a href="<?php echo base_url();?>index.php/usuarios/alterasenha/<?php echo $row->id_usuario;?>" class="button_action" alt="Alterar Senha" title="Alterar Senha">
+           <button type="button" class="btn btn-default btn-xs">
+             <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+           </button>
+         </a>
          <?php
           }
          ?>
@@ -34,7 +38,11 @@
     }
     ?>
     <div style="text-align:center; margin-top:15px;">
-      <a href="<?php echo base_url();?>index.php/usuarios/cadastra">Cadastrar novo usuário</a>
+      <a href="<?php echo base_url();?>index.php/usuarios/cadastra" class="button_action">
+        <button type="button" class="btn btn-default btn-lg">
+          <span class="glyphicon glyphicon-duplicate" aria-hidden="true"></span> Novo
+        </button>
+      </a>
     </div>
   </div>
 </div>

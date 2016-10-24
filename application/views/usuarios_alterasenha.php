@@ -8,7 +8,9 @@
           <input type="password" name="senha_antiga" placeholder="Senha Antiga">
           <input type="password" name="nova_senha" id="nova_senha" placeholder="Nova Senha">
           <input type="password" name="nova_senha_review" id="confirma_nova_senha" placeholder="Confirmar Nova senha">
-          <input type="submit" id="altera_senha" value="Alterar senha">
+          <button type="submit" class="btn btn-default btn-lg">
+            <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Salvar
+          </button>
       </form>
     </div>
   </div>
