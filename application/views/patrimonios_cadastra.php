@@ -7,7 +7,9 @@
           <input type="text" name="nr" placeholder="Nr. Patrimônio">
           <input type="text" name="responsavel" placeholder="Responsável na UFRGS">
           <textarea name="descricao" placeholder="Descrição" style="width:70%; height:150px;"></textarea>
-          <input type="submit" value="Cadastra patrimônio" style="clear:both;">
+          <button type="submit" class="btn btn-default btn-lg">
+            <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Salvar
+          </button>
       </form>
     </div>
   </div>

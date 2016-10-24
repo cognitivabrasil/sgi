@@ -21,7 +21,9 @@
               <option value="<?php echo $sala->id; ?>">Sala <?php echo $sala->nr_sala; ?></option>
             <?php } ?>
           </select>
-          <input type="submit" value="Atribui patrimônio" style="clear:both;">
+          <button type="submit" class="btn btn-default btn-lg">
+            <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Salvar
+          </button>
       </form>
     </div>
   </div>
