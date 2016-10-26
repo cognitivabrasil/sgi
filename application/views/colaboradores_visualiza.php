@@ -2,11 +2,8 @@
 <div>
   <p id="titulo_usuario">Colaboradores - Cognitiva Brasil</p>
   <div id="block_usuario">
-    <?php
-    foreach($data as $row){
-    ?>
     <div class="row empreendimento_row">
-      <div class="col-md-12"><?php echo $row->nome;?><br><?php echo $row->funcao;?><br><?php switch ($row->vinculo) {
+      <div class="col-md-12"><?php echo $data->nome;?><br><?php echo $data->funcao;?><br><?php switch ($data->vinculo) {
         case 1:
           echo "Aluno UFRGS";
           break;
@@ -17,20 +14,21 @@
           echo "Sem Vinculo com a UFRGS";
           break;
 
-      }?><br><?php echo $row->email;?><br>Entrada: <?php echo $row->entrada;?> - <?php if($row->em_atividade == 1){echo "Ainda em atividade";}else{echo "Saída: ".$row->saida;}?>
+      }?><br><?php echo $data->email;?><br>Entrada: <?php echo $data->entrada;?> - <?php if($data->em_atividade == 1){echo "Ainda em atividade";}else{echo "Saída: ".$data->saida;}?>
       <?php
-      if($row->sem_funcao == 1){
+      if($data->sem_funcao == 1){
         echo "<br>Sem função designada";
       }
-      if($row->socio == 1){
+      if($data->socio == 1){
         echo "<br>Sócio";
       }?></div>
     </div>
-    <?php
-    }
-    ?>
     <div style="text-align:center; margin-top:15px;">
-      <a href="<?php echo base_url();?>index.php/colaboradores/cadastra">Cadastrar novo colaborador</a>
+      <a href="<?php echo base_url();?>index.php/colaboradores/edita/<?php echo $data->id;?>" class="button_action">
+        <button type="button" class="btn btn-default btn-lg">
+          <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Editar
+        </button>
+      </a>
     </div>
   </div>
 </div>

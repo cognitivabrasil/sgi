@@ -49,21 +49,50 @@ class Colaboradores extends CI_Controller {
       $this->load->view('head_logado');
       echo "<div class='alert alert-success fade in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Colaborador cadastrado com sucesso!</div>";
 
-      $this->load->model('usuarios_model');
-      $query = $this->usuarios_model->select();
+      $this->load->model('empreendimentos_model');
+      $query = $this->empreendimentos_model->select();
 
-      $this->load->view('usuarios', array('data'=>$query->result()));
+      $this->load->view('colaboradores', array('data'=>$query->result()));
+      $this->load->view('footer');
+    }
+
+    function save() {
+      $this->load->model('colaboradores_model');
+	    $this->colaboradores_model->save();
+
+      $this->load->view('header');
+      $this->load->view('head_logado');
+      echo "<div class='alert alert-success fade in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Colaborador salvo com sucesso!</div>";
+
+      $this->load->model('empreendimentos_model');
+      $query = $this->empreendimentos_model->select();
+
+      $this->load->view('colaboradores', array('data'=>$query->result()));
       $this->load->view('footer');
     }
 
     function visualiza($id=0) {
       $this->load->view('header');
-      $this->load->view('head_logado');    
+      $this->load->view('head_logado');
 
       $this->load->model('colaboradores_model');
       $query = $this->colaboradores_model->select($id);
 
-      $this->load->view('colaboradores_visualiza', array('data'=>$query->result()));
+      $this->load->view('colaboradores_visualiza', array('data'=>$query->result()[0]));
+      $this->load->view('footer');
+    }
+
+    function edita($id=0) {
+      $this->load->view('header');
+      $this->load->view('head_logado');
+
+      $this->load->model('colaboradores_model');
+      $query = $this->colaboradores_model->select($id);
+
+      $this->load->model('empreendimentos_model');
+      $queryEmp = $this->empreendimentos_model->select();
+
+      $this->load->view('colaboradores_edita', array('data'=>$query->result()[0],'emp'=>$queryEmp->result()));
       $this->load->view('footer');
     }
 }

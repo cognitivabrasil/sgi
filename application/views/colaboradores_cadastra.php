@@ -23,7 +23,9 @@
             <option value="<?php echo $row->id;?>"><?php echo $row->nome_fantasia;?></option>
             <?php } ?>
           </select>
-          <input type="submit" value="Salvar colaborador" style="clear:both;">
+          <button type="submit" class="btn btn-default btn-lg">
+            <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Salvar
+          </button>
       </form>
     </div>
   </div>
