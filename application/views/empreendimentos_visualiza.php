@@ -25,7 +25,16 @@
       <!--  <div class="selo_gamification_pequeno">Empresa<br>Consciente</div> -->
       </div>
       <div style="clear:both; margin-left:15px; text-align:center;">
-        <a target="_blank" href="<?php echo base_url();?>index.php/empreendimentos/download/<?php echo $data[0]->id;?>/canvas">Download Canvas</a>&nbsp;/&nbsp;<a target="_blank" href="<?php echo base_url();?>index.php/empreendimentos/download/<?php echo $data[0]->id;?>/logo">Download Logo</a>
+        <a target="_blank" href="<?php echo base_url();?>index.php/empreendimentos/download/<?php echo $data[0]->id;?>/canvas">
+          <button type="button" class="btn btn-default btn-lg">
+            <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> Canvas
+          </button>
+        </a>
+        <a target="_blank" href="<?php echo base_url();?>index.php/empreendimentos/download/<?php echo $data[0]->id;?>/logo">
+          <button type="button" class="btn btn-default btn-lg">
+            <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> Logo
+          </button>
+        </a>
       </div>
       <div style="clear:both; margin-left:15px;">
         <br><p><b>Produtos/Serviços</b></p>
@@ -38,11 +47,20 @@
       <?php
       foreach($weak_data_ct as $weak_ct){
 
-        echo "<p>".$weak_ct->data." - <a href=".base_url()."index.php/empreendimentos/download/".$weak_ct->id."/ct>Download Contrato</a></p>";
+        echo "<p>".$weak_ct->data." - <a href=".base_url()."index.php/empreendimentos/download/".$weak_ct->id."/ct><button type='button' class='btn btn-default btn-sm'>
+          <span class='glyphicon glyphicon-download-alt' aria-hidden='true'></span> Contrato
+        </button></a></p>";
 
       }
       ?>
       </div>
+      <div style="text-align:center; margin-top:15px;">
+        <a href="<?php echo base_url();?>index.php/empreendimentos/edita/<?php echo $data[0]->id;?>" class="button_action">
+          <button type="button" class="btn btn-default btn-lg">
+            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Editar
+          </button>
+        </a>
+      </div><br>
       <span class="sobrescrito_empreendimento">Última atualização em 10 dias</span>
     </div>
   </div>

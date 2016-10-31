@@ -1,6 +1,6 @@
 <div id="container-central">
 <div>
-  <p id="titulo_usuario">Pendências</p>
+  <p id="titulo_usuario">Requisições</p>
   <div id="block_usuario">
       <div class="row empreendimento_row" style="padding-left:10px;">
         <p>Nome: <?php echo $data->nome; ?></p>

@@ -92,7 +92,7 @@ class Patrimonios extends CI_Controller {
 
       $this->load->view('header');
       $this->load->view('head_logado');
-      echo "<div class='alert alert-success fade in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Patrimônio atribuído com sucesso!</div>";
+      echo "<div class='alert alert-success fade in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Localização do patrimônio atribuída com sucesso!</div>";
 
       $this->load->model('patrimonios_model');
       $query = $this->patrimonios_model->selectByID($_POST['id']);
@@ -140,7 +140,18 @@ class Patrimonios extends CI_Controller {
 
       $query = $this->patrimonios_model->select();
 
-      $this->load->view('patrimonios', array('data'=>$query->result()));
+      $dados = $query->result();
+      $count=0;
+      foreach ($dados as $row) {
+        $queryIn = $this->patrimonios_model->selectSala($row->id);
+        if(count($queryIn->result())>0){
+          $dados[$count]->sala = $queryIn->result()[0];
+          $dados[$count]->sala->data_atribuicao = date("d/m/Y", strtotime($dados[$count]->sala->data_atribuicao));
+        }
+        $count++;
+      }
+
+      $this->load->view('patrimonios', array('data'=>$dados));
       $this->load->view('footer');
     }
 }

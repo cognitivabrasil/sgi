@@ -35,10 +35,10 @@
                 $msg111 = "<td>&nbsp;</td>";
                 foreach($data as $reservas){
                   if($reservas->dayweek == $j && $reservas->horario == $hora."_".$min && $reservas->id_sala == 2){
-                    $msg103 = "<td>Reservado <br>para ".$reservas->usuario_data."</td>";
+                    $msg103 = "<td>".$reservas->usuario_data."</td>";
                   }
                   if($reservas->dayweek == $j && $reservas->horario == $hora."_".$min && $reservas->id_sala == 6){
-                    $msg111 = "<td>Reservado <br>para ".$reservas->usuario_data."</td>";
+                    $msg111 = "<td>".$reservas->usuario_data."</td>";
                   }
                 }
                 $msg = $msg103.$msg111;

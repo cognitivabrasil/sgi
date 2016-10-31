@@ -17,14 +17,19 @@
           echo "Parque";
           break;
       }?><br>sala 107<br><?php echo $row->nr;?> colaborador(es)</div>
-      <div class="col-md-4">
+      <div class="col-md-5">
       <!--  <div class="selo_gamification_pequeno">Empresa<br>Consciente</div> -->
       </div>
-      <div class="col-md-4">
-        <div class="visualizar_dados">
-          <a href="<?php echo base_url();?>index.php/empreendimentos/visualiza/<?php echo $row->id;?>">Visualizar dados</a>
+      <div class="col-md-3">
+        <div class="visualizar_dados" style="float:right; padding-top:10px;">
+          <a href="<?php echo base_url();?>index.php/empreendimentos/visualiza/<?php echo $row->id;?>" class="button_action">
+            <button type="button" class="btn btn-default btn-lg">
+              <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            </button>
+          </a>
+          <br>
+          <span class="sobrescrito_empreendimento">Última atualização em 10 dias</span>
         </div>
-        <span class="sobrescrito_empreendimento">Última atualização em 10 dias</span>
       </div>
     </div>
     <br>
@@ -32,7 +37,11 @@
     }
     ?>
     <div style="text-align:center; margin-top:15px;">
-      <a href="<?php echo base_url();?>index.php/empreendimentos/cadastra">Cadastrar novo empreendimento</a>
+      <a href="<?php echo base_url();?>index.php/empreendimentos/cadastra" class="button_action">
+        <button type="button" class="btn btn-default btn-lg">
+          <span class="glyphicon glyphicon-duplicate" aria-hidden="true"></span> Novo
+        </button>
+      </a>
     </div>
   </div>
 </div>

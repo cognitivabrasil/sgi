@@ -72,7 +72,7 @@ class Pendencias extends CI_Controller {
 
       $this->load->view('header');
       $this->load->view('head_logado');
-      echo "<div class='alert alert-success fade in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Pendência editada com sucesso!</div>";
+      echo "<div class='alert alert-success fade in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Requisição editada com sucesso!</div>";
 
       $this->load->model('pendencias_model');
       $query = $this->pendencias_model->select();
@@ -96,7 +96,7 @@ class Pendencias extends CI_Controller {
 
       $this->load->view('header');
       $this->load->view('head_logado');
-      echo "<div class='alert alert-success fade in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Pendência cadastrada com sucesso!</div>";
+      echo "<div class='alert alert-success fade in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Requisição cadastrada com sucesso!</div>";
 
       $this->load->model('pendencias_model');
       $query = $this->pendencias_model->select();

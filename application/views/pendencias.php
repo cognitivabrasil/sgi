@@ -1,6 +1,6 @@
 <div id="container-central">
 <div>
-  <p id="titulo_usuario">Pendências</p>
+  <p id="titulo_usuario">Requisições</p>
   <div id="block_usuario">
     <?php foreach($data as $row){ ?>
       <div class="row empreendimento_row">

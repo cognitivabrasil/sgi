@@ -29,7 +29,9 @@
 
           <div id="produtos_container">
             <p class="subtitulo_empreendimentos">Produtos / Serviços</p>
-            <input type="button" id="add_produto" value="Adicionar mais um" style="float:right">
+            <button class="btn btn-default btn-lg" id="add_produto" style="float:right;" onClick="return false;">
+              <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            </button>
             <input type="text" name="nome_produto[]" placeholder="Nome">
             <textarea name="descricao_produto[]" placeholder="Descrição" style="clear:both; width:70%; height:150px;"></textarea>
           </div>
@@ -38,13 +40,16 @@
 
           <div id="contrato_container">
             <p class="subtitulo_empreendimentos">Contrato</p>
-            <input type="button" id="add_contrato" value="Adicionar mais um" style="float:right">
-            <input type="text" name="assinatura_contrato[]" placeholder="Data de assinatura">
+            <button class="btn btn-default btn-lg" id="add_contrato" style="float:right;" onClick="return false;">
+              <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            </button>
+            <input type="date" name="assinatura_contrato[]" placeholder="Data de assinatura">
             <label for="contrato" style="margin-left:5px; font-weight:normal;">Contrato: </label><input type="file" name="contrato[]" id="contrato">
-            <span style="float:right;">Previsão de término: 99/99/9999</span>
           </div>
 
-          <input type="submit" value="Cadastra empreendimento" style="clear:both;">
+          <button type="submit" class="btn btn-default btn-lg">
+            <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Salvar
+          </button>
       </form>
     </div>
   </div>

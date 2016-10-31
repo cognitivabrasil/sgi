@@ -1,6 +1,6 @@
 <div id="container-central">
   <div>
-    <p id="titulo_usuario">Atribuição de patrimônio</p>
+    <p id="titulo_usuario">Atribuir localização de patrimônio</p>
     <div id="block_usuario">
       <?php
       echo "<b>Nome:</b> ".$data->nome."<br>";
