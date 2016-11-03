@@ -92,6 +92,28 @@ class Empreendimentos_model extends CI_Model {
       }
     }
 
+    function save() {
+      $this->nome = $_POST['nome'];
+      $this->nome_fantasia = $_POST['fantasia'];
+      $this->vinculo = $_POST['vinculo'];
+      $this->razao_social = $_POST['rs'];
+      $this->site = $_POST['site'];
+      $this->responsavel = $_POST['responsavel'];
+      $this->responsavel_email = $_POST['emailresponsavel'];
+      $this->cpf_cnpj = $_POST['cpfcnpj'];
+      $this->descricao = $_POST['descricao'];
+
+      //Futuramente teremos que editar isso tambem =D
+      $this->logo = $_POST['logo'];
+      $this->canvas = $_POST['canvas'];
+
+      $this->db->where('id', $_POST['id']);
+
+      $this->db->update('erp_empreendimentos',$this);
+
+      //Futuramente tambem editar a questao de contratos e produtos e serviços
+    }
+
     //Atualiza usuário
 
     function update () {

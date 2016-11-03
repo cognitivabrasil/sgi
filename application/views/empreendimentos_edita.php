@@ -2,8 +2,7 @@
   <div>
     <p id="titulo_usuario">Cadastro de empreendimento</p>
     <div id="block_usuario">
-      <!--<form method="post" action="<?php echo base_url();?>index.php/empreendimentos/save" enctype="multipart/form-data"> -->
-      <form method="post" action="#" enctype="multipart/form-data">
+      <form method="post" action="<?php echo base_url();?>index.php/empreendimentos/save" enctype="multipart/form-data">
           <p class="subtitulo_empreendimentos">Dados Gerais</p>
           <div style="float:left;">
             <input type="hidden" name="id" value="<?php echo $data->id;?>" >
@@ -55,15 +54,17 @@
           </div>
 
           <hr>
-          <?php print_r($weak_data_ct);?>
           <div id="contrato_container">
             <p class="subtitulo_empreendimentos">Contrato</p>
             <button class="btn btn-default btn-lg" id="add_contrato" style="float:right;" onClick="return false;">
               <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
             </button>
             <?php foreach ($weak_data_ct as $row) { ?>
-            <input type="date" name="assinatura_contrato[]" value="<?php echo explode(' ',$row->data)[0];?>">
-            <label for="contrato" style="margin-left:5px; font-weight:normal;">Contrato: </label><input type="file" name="contrato[]" id="contrato">
+              <p><?php echo $row->data; ?> - <a href="<?php echo base_url();?>index.php/empreendimentos/download/<?php echo $row->id; ?>/ct"><button type='button' class='btn btn-default btn-sm'>
+                <span class='glyphicon glyphicon-download-alt' aria-hidden='true'></span> Contrato
+              </button></a></p>
+            <!--<input type="date" name="assinatura_contrato[]" value="<?php echo explode(' ',$row->data)[0];?>">
+            <label for="contrato" style="margin-left:5px; font-weight:normal;">Contrato: </label><input type="file" name="contrato[]" id="contrato"> -->
             <?php } ?>
           </div>
 

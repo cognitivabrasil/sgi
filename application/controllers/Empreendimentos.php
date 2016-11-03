@@ -71,7 +71,7 @@ class Empreendimentos extends CI_Controller {
 
     function save() {
       $this->load->model('empreendimentos_model');
-	    $this->empreendimentos_model->insert();
+	    $this->empreendimentos_model->save();
 
       $this->load->view('header');
       $this->load->view('head_logado');
