@@ -30,6 +30,17 @@ $(document).ready(function(){
   });
   /*Fim Usuários*/
 
+  //Colaboradores
+  $('#funcao_colaborador').attr('disabled',true);
+
+  $('#habilita_funcao').click(function(){
+    if($(this).is(':checked')){
+      $('#funcao_colaborador').attr('disabled',true);
+    }else{
+      $('#funcao_colaborador').attr('disabled',false);
+    }
+  });
+
 });
 
 function salvaPrevisao(){

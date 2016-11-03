@@ -4,8 +4,8 @@
     <div id="block_usuario">
       <form method="post" action="<?php echo base_url();?>index.php/colaboradores/insert">
           <input type="text" name="nome" placeholder="Nome">
-          <div style="width:30%; float:right; margin-right:40%;"><input type="checkbox" name="sem_funcao" style="float:left; width:10px;" value="1"><span style="float:left;">Sem função designada</span></div>
-          <input type="text" name="funcao" placeholder="Função">
+          <div style="width:30%; float:right; margin-right:40%;"><input id="habilita_funcao" type="checkbox" name="sem_funcao" style="float:left; width:10px;" value="1" checked><span style="float:left;">Sem função designada</span></div>          
+          <input type="text" name="funcao" placeholder="Função" id="funcao_colaborador">
           <select name="vinculo">
             <option value="0">Vínculo UFRGS</option>
             <option value="1">Aluno</option>
