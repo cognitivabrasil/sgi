@@ -114,3 +114,13 @@
   width: 300px;
 }
 /* Final faturamento */
+
+/* Patrimônio */
+.patrimonio_row{
+  border-bottom: 1px solid #000 !important;
+}
+
+.patrimonio_row:hover{
+  background: #CCCCCC;
+}
+/* Final Patrimônio */
