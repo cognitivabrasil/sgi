@@ -9,6 +9,9 @@ class Pendencias extends CI_Controller {
     }
 
     function index() {
+      $this->load->model('usuarios_model');
+      $this->usuarios_model->verifica_login();
+
       $this->load->view('header');
       $this->load->view('head_logado');
 
@@ -28,6 +31,9 @@ class Pendencias extends CI_Controller {
     }
 
     function cadastra() {
+      $this->load->model('usuarios_model');
+      $this->usuarios_model->verifica_login();
+
       $this->load->view('header');
       $this->load->view('head_logado');
       $this->load->view('pendencias_cadastra');
@@ -35,6 +41,9 @@ class Pendencias extends CI_Controller {
     }
 
     function visualiza($id) {
+      $this->load->model('usuarios_model');
+      $this->usuarios_model->verifica_login();
+
       $this->load->view('header');
       $this->load->view('head_logado');
 
@@ -51,6 +60,9 @@ class Pendencias extends CI_Controller {
     }
 
     function edita($id) {
+      $this->load->model('usuarios_model');
+      $this->usuarios_model->verifica_login();
+
       $this->load->view('header');
       $this->load->view('head_logado');
 
@@ -67,6 +79,9 @@ class Pendencias extends CI_Controller {
     }
 
     function save() {
+      $this->load->model('usuarios_model');
+      $this->usuarios_model->verifica_login();
+
       $this->load->model('pendencias_model');
       $this->pendencias_model->save();
 
@@ -91,6 +106,9 @@ class Pendencias extends CI_Controller {
     }
 
     function insert() {
+      $this->load->model('usuarios_model');
+      $this->usuarios_model->verifica_login();
+      
       $this->load->model('pendencias_model');
 	    $this->pendencias_model->insert();
 

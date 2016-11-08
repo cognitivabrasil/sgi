@@ -9,6 +9,9 @@ class Patrimonios extends CI_Controller {
     }
 
     function index() {
+      $this->load->model('usuarios_model');
+      $this->usuarios_model->verifica_login();
+
       $this->load->view('header');
       $this->load->view('head_logado');
 
@@ -31,6 +34,9 @@ class Patrimonios extends CI_Controller {
     }
 
     function visualiza($id) {
+      $this->load->model('usuarios_model');
+      $this->usuarios_model->verifica_login();
+
       $this->load->view('header');
       $this->load->view('head_logado');
 
@@ -49,6 +55,9 @@ class Patrimonios extends CI_Controller {
     }
 
     function edita($id) {
+      $this->load->model('usuarios_model');
+      $this->usuarios_model->verifica_login();
+
       $this->load->view('header');
       $this->load->view('head_logado');
 
@@ -67,6 +76,9 @@ class Patrimonios extends CI_Controller {
     }
 
     function atribui($id) {
+      $this->load->model('usuarios_model');
+      $this->usuarios_model->verifica_login();
+
       $this->load->view('header');
       $this->load->view('head_logado');
 
@@ -87,6 +99,9 @@ class Patrimonios extends CI_Controller {
     }
 
     function atribuicao() {
+      $this->load->model('usuarios_model');
+      $this->usuarios_model->verifica_login();
+
       $this->load->model('patrimonios_model');
 	    $this->patrimonios_model->atribuirPatrimonio();
 
@@ -110,6 +125,9 @@ class Patrimonios extends CI_Controller {
 
 
     function cadastra() {
+      $this->load->model('usuarios_model');
+      $this->usuarios_model->verifica_login();
+
       $this->load->view('header');
       $this->load->view('head_logado');
       $this->load->view('patrimonios_cadastra');
@@ -117,6 +135,9 @@ class Patrimonios extends CI_Controller {
     }
 
     function insert() {
+      $this->load->model('usuarios_model');
+      $this->usuarios_model->verifica_login();
+
       $this->load->model('patrimonios_model');
 	    $this->patrimonios_model->insert();
 
@@ -131,6 +152,9 @@ class Patrimonios extends CI_Controller {
     }
 
     function save() {
+      $this->load->model('usuarios_model');
+      $this->usuarios_model->verifica_login();
+      
       $this->load->model('patrimonios_model');
 	    $this->patrimonios_model->save();
 

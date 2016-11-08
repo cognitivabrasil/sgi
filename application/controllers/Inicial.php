@@ -9,6 +9,9 @@ class Inicial extends CI_Controller {
     }
 
     function index() {
+      $this->load->model('usuarios_model');
+      $this->usuarios_model->verifica_login();
+      
       $this->load->view('header');
       $this->load->view('head_logado');
 

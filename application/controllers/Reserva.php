@@ -9,6 +9,8 @@ class Reserva extends CI_Controller {
     }
 
     function index() {
+      $this->load->model('usuarios_model');
+      $this->usuarios_model->verifica_login();
 
       $this->load->view('header');
       $this->load->view('head_logado');
@@ -26,6 +28,8 @@ class Reserva extends CI_Controller {
     }
 
     function efetua_reserva() {
+      $this->load->model('usuarios_model');
+      $this->usuarios_model->verifica_login();
 
       $this->load->model('reserva_model');
       $query = $this->reserva_model->efetuaReserva();
@@ -43,7 +47,9 @@ class Reserva extends CI_Controller {
     }
 
     function verifica() {
-
+      $this->load->model('usuarios_model');
+      $this->usuarios_model->verifica_login();
+      
       $this->load->view('header');
       $this->load->view('head_logado');
 

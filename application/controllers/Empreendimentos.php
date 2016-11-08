@@ -9,6 +9,9 @@ class Empreendimentos extends CI_Controller {
     }
 
     function index() {
+      $this->load->model('usuarios_model');
+      $this->usuarios_model->verifica_login();
+
       $this->load->view('header');
       $this->load->view('head_logado');
 
@@ -20,6 +23,9 @@ class Empreendimentos extends CI_Controller {
     }
 
     function visualiza($id) {
+      $this->load->model('usuarios_model');
+      $this->usuarios_model->verifica_login();
+
       $this->load->view('header');
       $this->load->view('head_logado');
 
@@ -34,6 +40,9 @@ class Empreendimentos extends CI_Controller {
     }
 
     function cadastra() {
+      $this->load->model('usuarios_model');
+      $this->usuarios_model->verifica_login();
+
       $this->load->view('header');
       $this->load->view('head_logado');
       $this->load->view('empreendimentos_cadastra');
@@ -41,6 +50,9 @@ class Empreendimentos extends CI_Controller {
     }
 
     function edita($id) {
+      $this->load->model('usuarios_model');
+      $this->usuarios_model->verifica_login();
+
       $this->load->view('header');
       $this->load->view('head_logado');
 
@@ -55,6 +67,9 @@ class Empreendimentos extends CI_Controller {
     }
 
     function insert() {
+      $this->load->model('usuarios_model');
+      $this->usuarios_model->verifica_login();
+
       $this->load->model('empreendimentos_model');
 	    $this->empreendimentos_model->insert();
 
@@ -70,6 +85,9 @@ class Empreendimentos extends CI_Controller {
     }
 
     function save() {
+      $this->load->model('usuarios_model');
+      $this->usuarios_model->verifica_login();
+
       $this->load->model('empreendimentos_model');
 	    $this->empreendimentos_model->save();
 
@@ -85,6 +103,9 @@ class Empreendimentos extends CI_Controller {
     }
 
     function download($id,$tipo) {
+      $this->load->model('usuarios_model');
+      $this->usuarios_model->verifica_login();
+      
       $this->load->model('empreendimentos_model');
       switch($tipo){
         case 'canvas':

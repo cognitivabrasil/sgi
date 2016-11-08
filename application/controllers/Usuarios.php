@@ -9,6 +9,9 @@ class Usuarios extends CI_Controller {
     }
 
     function index() {
+      $this->load->model('usuarios_model');
+      $this->usuarios_model->verifica_login();
+
       $this->load->view('header');
       $this->load->view('head_logado');
 
@@ -38,6 +41,9 @@ class Usuarios extends CI_Controller {
     }
 
     function alterasenhafinal(){
+      $this->load->model('usuarios_model');
+      $this->usuarios_model->verifica_login();
+
 
       $this->load->view('header');
       $this->load->view('head_logado');
@@ -63,6 +69,8 @@ class Usuarios extends CI_Controller {
     }
 
     function alterasenha($id) {
+      $this->load->model('usuarios_model');
+      $this->usuarios_model->verifica_login();
 
       $this->load->view('header');
       $this->load->view('head_logado');
@@ -75,6 +83,9 @@ class Usuarios extends CI_Controller {
     }
 
     function cadastra() {
+      $this->load->model('usuarios_model');
+      $this->usuarios_model->verifica_login();
+
       $this->load->view('header');
       $this->load->view('head_logado');
 
@@ -86,6 +97,9 @@ class Usuarios extends CI_Controller {
     }
 
     function insert() {
+      $this->load->model('usuarios_model');
+      $this->usuarios_model->verifica_login();
+      
       $this->load->model('usuarios_model');
 	    $this->usuarios_model->insert();
 

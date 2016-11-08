@@ -1,6 +1,12 @@
 <?php
 class Usuarios_model extends CI_Model {
 
+    function verifica_login(){
+      if(!$this->session->userdata('id_usuario') && $this->session->userdata('id_usuario') == 0){
+        redirect('/');
+      }
+    }
+
     // Valida usuário
     function validate() {
         $this->db->where('username', $this->input->post('username'));
@@ -20,7 +26,7 @@ class Usuarios_model extends CI_Model {
         return $query->result();
     }
 
-    function changepasswd() {        
+    function changepasswd() {
         $this->senha = md5($_POST['nova_senha']);
         $this->db->where('id_usuario',$_POST['id_usuario']);
         $this->db->update('erp_usuarios',$this);

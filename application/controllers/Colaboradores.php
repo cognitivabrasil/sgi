@@ -9,6 +9,9 @@ class Colaboradores extends CI_Controller {
     }
 
     function index() {
+      $this->load->model('usuarios_model');
+      $this->usuarios_model->verifica_login();
+
       $this->load->view('header');
       $this->load->view('head_logado');
 
@@ -20,6 +23,9 @@ class Colaboradores extends CI_Controller {
     }
 
     function cadastra() {
+      $this->load->model('usuarios_model');
+      $this->usuarios_model->verifica_login();
+
       $this->load->view('header');
       $this->load->view('head_logado');
 
@@ -31,6 +37,9 @@ class Colaboradores extends CI_Controller {
     }
 
     function lista($id=0) {
+      $this->load->model('usuarios_model');
+      $this->usuarios_model->verifica_login();
+
       $this->load->view('header');
       $this->load->view('head_logado');
 
@@ -42,6 +51,9 @@ class Colaboradores extends CI_Controller {
     }
 
     function insert() {
+      $this->load->model('usuarios_model');
+      $this->usuarios_model->verifica_login();
+
       $this->load->model('colaboradores_model');
 	    $this->colaboradores_model->insert();
 
@@ -57,6 +69,9 @@ class Colaboradores extends CI_Controller {
     }
 
     function save() {
+      $this->load->model('usuarios_model');
+      $this->usuarios_model->verifica_login();
+
       $this->load->model('colaboradores_model');
 	    $this->colaboradores_model->save();
 
@@ -72,6 +87,9 @@ class Colaboradores extends CI_Controller {
     }
 
     function visualiza($id=0) {
+      $this->load->model('usuarios_model');
+      $this->usuarios_model->verifica_login();
+
       $this->load->view('header');
       $this->load->view('head_logado');
 
@@ -83,6 +101,9 @@ class Colaboradores extends CI_Controller {
     }
 
     function edita($id=0) {
+      $this->load->model('usuarios_model');
+      $this->usuarios_model->verifica_login();
+      
       $this->load->view('header');
       $this->load->view('head_logado');
 
