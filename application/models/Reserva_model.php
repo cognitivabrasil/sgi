@@ -40,13 +40,19 @@ class Reserva_model extends CI_Model {
         return $possivelReservar;
     }
 
-    function verificaReserva($dataIni = 0,$dataFim = 0) {
-        if($dataIni == 0 && $dataFim == 0){
+    function verificaReserva($semana=0) {
+        if($semana == 0){
           $week = date('W', strtotime(date("Y-m-d")));
           $year = date('Y', strtotime(date("Y-m-d")));
         }else{
-          $week = date('W', strtotime($dataIni));
-          $year = date('Y', strtotime($dataFim));
+          if($semana>0){
+            $week = date('W', strtotime(date("Y-m-d").'+'.$semana.' week'));
+            $year = date('Y', strtotime(date("Y-m-d").'+'.$semana.' week'));
+          }else{
+            $week = date('W', strtotime(date("Y-m-d").$semana.' week'));
+            $year = date('Y', strtotime(date("Y-m-d").$semana.' week'));
+          }
+
         }
         $from = date("Y-m-d", strtotime("{$year}-W{$week}-1"));
         $to = date("Y-m-d", strtotime("{$year}-W{$week}-5"));
@@ -63,7 +69,10 @@ class Reserva_model extends CI_Model {
             $reserva->usuario_data = $query->result()[0]->username;
         }
 
-        return $data;
+        $from = date("d/m/Y", strtotime("{$year}-W{$week}-1"));
+        $to = date("d/m/Y", strtotime("{$year}-W{$week}-5"));
+
+        return array('data'=>$data,'from'=>$from,'to'=>$to);
     }
 
 }

@@ -46,17 +46,21 @@ class Reserva extends CI_Controller {
 
     }
 
-    function verifica() {
+    function verifica($semana=0) {
       $this->load->model('usuarios_model');
       $this->usuarios_model->verifica_login();
-      
+
       $this->load->view('header');
       $this->load->view('head_logado');
 
       $this->load->model('reserva_model');
-      $query = $this->reserva_model->verificaReserva();
+      $query = $this->reserva_model->verificaReserva($semana);
 
-      $this->load->view('reserva_verifica', array('data'=>$query));
+      $proxima_semana = $semana+1;
+      $semana_anterior = $semana-1;
+      $atual = $query['from']." - ".$query['to'];
+
+      $this->load->view('reserva_verifica', array('data'=>$query['data'],'proxima_semana'=>$proxima_semana,'semana_anterior'=>$semana_anterior,'atual'=>$atual));
 
       $this->load->view('footer');
 

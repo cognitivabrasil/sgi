@@ -2,6 +2,19 @@
   <div id="topo_principal">
     <p>Reservas marcadas</p>
   </div>
+  <div style="float:right; padding-right:20px;">
+    <a href="<?php echo base_url();?>index.php/reserva/verifica/<?php echo $semana_anterior;?>" class="button_action">
+      <button type="button" class="btn btn-default btn-xs">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      </button>
+    </a>
+    <?php echo $atual; ?>
+    <a href="<?php echo base_url();?>index.php/reserva/verifica/<?php echo $proxima_semana;?>" class="button_action">
+      <button type="button" class="btn btn-default btn-xs">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      </button>
+    </a>
+  </div><br><br>
   <div id="block_usuario">
     <table class="table table-bordered table-hover">
     <?php
