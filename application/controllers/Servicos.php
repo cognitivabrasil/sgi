@@ -69,7 +69,7 @@ class Servicos extends CI_Controller {
 
       $this->load->view('header');
       $this->load->view('head_logado');
-      echo "<div class='alert alert-success fade in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Serviço cadastrado com sucesso!</div>";
+      echo "<div class='alert alert-success fade in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Parceiro cadastrado com sucesso!</div>";
 
       $query = $this->servicos_model->select();
 
@@ -80,13 +80,13 @@ class Servicos extends CI_Controller {
     function save() {
       $this->load->model('usuarios_model');
       $this->usuarios_model->verifica_login();
-      
+
       $this->load->model('servicos_model');
 	    $this->servicos_model->save();
 
       $this->load->view('header');
       $this->load->view('head_logado');
-      echo "<div class='alert alert-success fade in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Serviço alterado com sucesso!</div>";
+      echo "<div class='alert alert-success fade in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Parceiro alterado com sucesso!</div>";
 
       $query = $this->servicos_model->select();
 

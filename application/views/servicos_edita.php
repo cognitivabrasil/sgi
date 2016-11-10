@@ -1,6 +1,6 @@
 <div id="container-central">
   <div>
-    <p id="titulo_usuario">Edição de serviços</p>
+    <p id="titulo_usuario">Edição de parceiros</p>
     <div id="block_usuario">
       <form method="post" action="<?php echo base_url();?>index.php/servicos/save">
           <input type="hidden" name="id" value="<?php echo $data->id; ?>">

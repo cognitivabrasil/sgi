@@ -1,6 +1,6 @@
 <div id="container-central">
 <div>
-  <p id="titulo_usuario">Serviços</p>
+  <p id="titulo_usuario">Parceiros</p>
   <div id="block_usuario">
     <div class="row empreendimento_row">
       <div class="col-md-8"><p><b><?php echo $data->nome;?></b></p>

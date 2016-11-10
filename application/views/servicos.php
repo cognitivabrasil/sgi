@@ -1,6 +1,6 @@
 <div id="container-central">
 <div>
-  <p id="titulo_usuario">Serviços</p>
+  <p id="titulo_usuario">Parceiros</p>
   <div id="block_usuario">
     <?php
     foreach($data as $row){

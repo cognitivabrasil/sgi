@@ -1,6 +1,6 @@
 <div id="container-central">
   <div>
-    <p id="titulo_usuario">Cadastro de serviços</p>
+    <p id="titulo_usuario">Cadastro de parceiros</p>
     <div id="block_usuario">
       <form method="post" action="<?php echo base_url();?>index.php/servicos/insert">
           <input type="text" name="nome" placeholder="Nome">
