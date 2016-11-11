@@ -1,5 +1,14 @@
 $(document).ready(function(){
 
+  $('.deleta_agendamento').click(function(){
+    if(confirm('Você deseja realmente desagendar este horário?')){      
+      $.get($(this).attr('href'),function(data){
+        location.reload();
+      });
+    }
+    return false;
+  });
+
   $('map').imageMapResize();
 
   /*Empreendimentos*/

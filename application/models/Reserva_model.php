@@ -9,6 +9,12 @@ class Reserva_model extends CI_Model {
         return $query;
     }
 
+    function remove_locacao($id) {
+        $query = $this->db->query('Delete from erp_reservas_salas where id='.$id);
+
+        return $query;
+    }
+
     function efetuaReserva() {
         //verifica se existe algum dos horários já marcado
         $possivelReservar = 1;

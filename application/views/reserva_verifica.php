@@ -48,10 +48,22 @@
                 $msg111 = "<td>&nbsp;</td>";
                 foreach($data as $reservas){
                   if($reservas->dayweek == $j && $reservas->horario == $hora."_".$min && $reservas->id_sala == 2){
-                    $msg103 = "<td>".$reservas->usuario_data."</td>";
+                    $msg103 = "<td>".$reservas->usuario_data;
+                    if($this->session->userdata('id_usuario') == $reservas->id_usuario){
+                      $msg103 .= "&nbsp;&nbsp;&nbsp;<a href='".base_url()."index.php/reserva/remove/".$reservas->id."' class='deleta_agendamento'><button type='button' class='btn btn-default btn-xs'>
+                                    <span class='glyphicon glyphicon-remove' aria-hidden='true'></span>
+                                  </button></a>";
+                    }
+                    $msg103 .= "</td>";
                   }
                   if($reservas->dayweek == $j && $reservas->horario == $hora."_".$min && $reservas->id_sala == 6){
-                    $msg111 = "<td>".$reservas->usuario_data."</td>";
+                    $msg111 = "<td>".$reservas->usuario_data;
+                    if($this->session->userdata('id_usuario') == $reservas->id_usuario){
+                      $msg111 .= "&nbsp;&nbsp;&nbsp;<a href='".base_url()."index.php/reserva/remove/".$reservas->id."' class='deleta_agendamento'><button type='button' class='btn btn-default btn-xs'>
+                                    <span class='glyphicon glyphicon-remove' aria-hidden='true'></span>
+                                  </button></a>";
+                    }
+                    $msg111 .= "</td>";
                   }
                 }
                 $msg = $msg103.$msg111;

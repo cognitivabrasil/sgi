@@ -66,4 +66,9 @@ class Reserva extends CI_Controller {
 
     }
 
+    function remove($id) {
+      $this->load->model('reserva_model');
+      echo $this->reserva_model->remove_locacao($id);
+    }
+
 }
