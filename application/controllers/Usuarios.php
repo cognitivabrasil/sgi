@@ -99,7 +99,7 @@ class Usuarios extends CI_Controller {
     function insert() {
       $this->load->model('usuarios_model');
       $this->usuarios_model->verifica_login();
-      
+
       $this->load->model('usuarios_model');
 	    $this->usuarios_model->insert();
 
@@ -127,7 +127,7 @@ class Usuarios extends CI_Controller {
         $count++;
       }
 
-      $this->load->view('usuarios', array('data'=>$dados));
+      $this->load->view('usuarios', array('data'=>$dados,'id_logado'=>$this->session->userdata('id_usuario')));
       $this->load->view('footer');
     }
 }
