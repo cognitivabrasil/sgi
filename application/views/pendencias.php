@@ -3,7 +3,7 @@
   <p id="titulo_usuario">Requisições</p>
   <div id="block_usuario">
     <?php foreach($data as $row){ ?>
-      <div class="row empreendimento_row">
+      <div class="row <?php if($row->situacao == 3 or $row->situacao_final > 0){ echo 'empreendimento_row_green'; }else{ echo 'empreendimento_row'; }?>">
         <div class="col-md-4"><?php echo $row->nome; ?></div>
         <div class="col-md-5">
           <div class="selo_gamification_pequeno">Empresa<br><?php echo $row->nome_empresa; ?></div><br>

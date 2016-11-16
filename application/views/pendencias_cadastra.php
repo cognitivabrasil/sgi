@@ -6,8 +6,9 @@
           <input type="text" name="nome" placeholder="Nome">
           <select type="text" name="situacao">
             <option value="0">Situação</option>
-            <option value="1">Enviada</option>
-            <option value="2">Resolvida</option>
+            <option value="1">enviada</option>
+            <option value="2">em andamento</option>
+            <option value="3">resolvida</option>
           </select>
           <textarea name="descricao" placeholder="Descrição" style="width:70%; height:150px;"></textarea>
           <button type="submit" class="btn btn-default btn-lg">

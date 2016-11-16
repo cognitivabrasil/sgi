@@ -29,12 +29,36 @@ class Pendencias_model extends CI_Model {
       $this->db->update('erp_pendencias',$this);
     }
 
+    function save_atualiza() {
+      $this->id_pendencia = $_POST['id_pendencia'];
+      $this->situacao = $_POST['situacao'];
+      $this->descricao = $_POST['descricao'];
+      $this->data_modificada = date('Y-m-d');
+      $this->id_usuario = $_POST['usuario'];
+
+      $this->db->insert('erp_pendencia_dados',$this);
+    }
+
+    function verifica_resolvida($id){
+
+      $query = $this->db->query('Select count(*) as count from erp_pendencia_dados where erp_pendencia_dados.situacao=3 and erp_pendencia_dados.id_pendencia = '.$id);
+
+      return $query->result()[0]->count;
+    }
+
     function select($id=0) {
         if($id==0){
           $query = $this->db->query('Select * from erp_pendencias');
         }else{
           $query = $this->db->query("Select * from erp_pendencias where erp_pendencias.id = ".$id);
         }
+
+        return $query;
+    }
+
+    function select_atualizacoes($id=0) {
+
+        $query = $this->db->query("Select * from erp_pendencia_dados where erp_pendencia_dados.id_pendencia = ".$id);
 
         return $query;
     }
