@@ -36,10 +36,18 @@ class Faturamento_model extends CI_Model {
 
     }
 
+    function salvaContador() {
+
+      $this->contador = $_POST['contador'];
+
+      $this->db->where('id',$_POST['id_empreendimento']);
+      $this->db->update('erp_empreendimentos',$this);
+    }
+
     function salvaPrevisao() {
 
       $cont = 0;
-      $id_empreendimento = 1;
+      $id_empreendimento = $_POST['id_empreendimento'];
       foreach($_POST['ano'] as $ano){
         if(isset($ano)){
           $this->ano = $ano;
@@ -68,7 +76,7 @@ class Faturamento_model extends CI_Model {
     function salvaNota() {
 
       $cont = 0;
-      $id_empreendimento = 1;
+      $id_empreendimento = $_POST['id_empreendimento_notas'];
       foreach($_POST['numero'] as $numero){
         if(isset($numero)){
           $this->numero = $numero;
@@ -143,22 +151,25 @@ class Faturamento_model extends CI_Model {
       //$this->db->update('entries',$this, array('id',$_POST[]));
     }
 
-    // Seleciona usuários do banco
+    function buscaFaturamento($id){
 
-    function lista($id=0) {
-        if($id==0){
-          $query = $this->db->get('erp_colaboradores');
-        }else{
-          $query = $this->db->query("Select * from erp_colaboradores where id_empreendimento = ".$id);
-        }
+      $query = $this->db->query("Select * from erp_faturamento where id_empreendimento = ".$id);
 
-        return $query;
+      return $query;
     }
 
-    function select($id) {
-        $query = $this->db->query("Select * from erp_colaboradores where id = ".$id);
+    function buscaNotas($id){
 
-        return $query;
+      $query = $this->db->query("Select * from erp_faturamento_notas where id_empreendimento = ".$id);
+
+      return $query;
+    }
+
+    function buscaContador($id){
+
+      $query = $this->db->query("Select contador from erp_empreendimentos where id = ".$id);
+
+      return $query;
     }
 
 }

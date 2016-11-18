@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
   $('.deleta_agendamento').click(function(){
-    if(confirm('Você deseja realmente desagendar este horário?')){      
+    if(confirm('Você deseja realmente desagendar este horário?')){
       $.get($(this).attr('href'),function(data){
         location.reload();
       });
@@ -26,7 +26,8 @@ $(document).ready(function(){
   });
 
   $('#add_nota').click(function(){
-    $('#notas_div').append('<div class="block_nota"><input type="text" name="data[]" placeholder="Data" style="float:right; margin-right:40px;" onblur="salvaNota();"><input type="text" name="numero[]" placeholder="Número" onblur="salvaNota();"><input type="text" name="valor[]" placeholder="Valor" style="margin:0 auto;" onblur="salvaNota();"><div style="width:20%; height:30px;"><input type="checkbox" name="royalt[]" style="float:left; width:10px;"><span style="float:left;">Royalt Pago</span></div></div>');
+    $('#notas_div').prepend('<div class="block_nota"><input type="date" name="data[]" placeholder="Data" style="float:right; margin-right:40px;" onblur="salvaNota();"><input type="text" name="numero[]" placeholder="Número" onblur="salvaNota();"><input type="text" name="valor[]" placeholder="Valor" style="margin:0 auto;" onblur="salvaNota();"><div style="width:20%; height:30px;"><input type="checkbox" name="royalt[]" style="float:left; width:10px;"><span style="float:left;">Royalt Pago</span></div></div>');
+    return false;
   });
   /*Fim Faturamento*/
 
@@ -53,7 +54,7 @@ $(document).ready(function(){
 });
 
 function salvaPrevisao(){
-  $.post('faturamento/salvaPrevisao',$('#faturamentoForm').serialize(),function(data){
+  $.post('../salvaPrevisao',$('#faturamentoForm').serialize(),function(data){
     $("#autosave").fadeTo(1000, 200).slideUp(200, function(){
         $("#autosave").hide();
     });
@@ -61,8 +62,15 @@ function salvaPrevisao(){
 }
 
 function salvaNota(){
-  $.post('faturamento/salvaNota',$('#notasform').serialize(),function(data){
-    console.log(data);
+  $.post('../salvaNota',$('#notasform').serialize(),function(data){
+    $("#autosave").fadeTo(1000, 200).slideUp(200, function(){
+        $("#autosave").hide();
+    });
+  });
+}
+
+function salvaContador(){
+  $.post('../salvaContador', {'contador': $('#contador').val(), 'id_empreendimento': $('#id_empreendimento').val()},function(data){
     $("#autosave").fadeTo(1000, 200).slideUp(200, function(){
         $("#autosave").hide();
     });
@@ -70,7 +78,7 @@ function salvaNota(){
 }
 
 function salvaRoyalt(){
-  $.post('faturamento/salvaRoyalt',{'royalt':1},function(data){
+  $.post('../salvaRoyalt',{'royalt':1},function(data){
     console.log(data);
     $("#autosave").fadeTo(1000, 200).slideUp(200, function(){
         $("#autosave").hide();
@@ -79,7 +87,7 @@ function salvaRoyalt(){
 }
 
 function carregaSala(nrSala){
-  $.post('reserva/sala_ajax',{'nrSala':nrSala},function(data){
+  $.post('../sala_ajax',{'nrSala':nrSala},function(data){
     $('#dados_sala').html(data);
   });
   return false;

@@ -18,7 +18,6 @@
       <ul class="nav navbar-nav">
         <li <?php if($atual == 'empreendimentos') echo 'class="active"' ?>><a href="<?php echo base_url();?>index.php/empreendimentos">Empreendimentos</a></li>
         <li <?php if($atual == 'colaboradores') echo 'class="active"' ?>><a href="<?php echo base_url();?>index.php/colaboradores">Colaboradores</a></li>
-        <!--<li <?php if($atual == 'faturamento') echo 'class="active"' ?>><a href="<?php echo base_url();?>index.php/faturamento">Faturamento</a></li>-->
         <li <?php if($atual == 'usuarios') echo 'class="active"' ?>><a href="<?php echo base_url();?>index.php/usuarios">Usuários</a></li>
         <li <?php if($atual == 'patrimonios') echo 'class="active"' ?>><a href="<?php echo base_url();?>index.php/patrimonios">Patrimônio</a></li>
         <li <?php if($atual == 'reserva') echo 'class="active"' ?>><a href="<?php echo base_url();?>index.php/reserva">Reserva de Salas</a></li>

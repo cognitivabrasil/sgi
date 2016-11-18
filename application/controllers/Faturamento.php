@@ -15,10 +15,25 @@ class Faturamento extends CI_Controller {
       $this->load->view('header');
       $this->load->view('head_logado');
 
-      //$this->load->model('usuarios_model');
-      //$query = $this->usuarios_model->select();
-
       $this->load->view('faturamento');
+      $this->load->view('footer');
+    }
+
+    function lista($id) {
+      $this->load->model('usuarios_model');
+      $this->usuarios_model->verifica_login();
+
+      $this->load->view('header');
+      $this->load->view('head_logado');
+
+      $this->load->model('faturamento_model');
+      $query = $this->faturamento_model->buscaFaturamento($id);
+
+      $queryCont = $this->faturamento_model->buscaContador($id);
+
+      $queryNotas = $this->faturamento_model->buscaNotas($id);
+
+      $this->load->view('faturamento', array('faturamento'=>$query->result(),'notas'=>$queryNotas->result(),'id_empreendimento'=>$id,'contador'=>$queryCont->result()[0]));
       $this->load->view('footer');
     }
 
@@ -28,7 +43,7 @@ class Faturamento extends CI_Controller {
 
       $this->load->view('header');
       $this->load->view('head_logado');
-      $this->load->view('patrimonios_cadastra');
+      $this->load->view('faturamento_cadastra');
       $this->load->view('footer');
     }
 
@@ -53,6 +68,11 @@ class Faturamento extends CI_Controller {
     function salvaPrevisao() {
       $this->load->model('faturamento_model');
 	    $this->faturamento_model->salvaPrevisao();
+    }
+
+    function salvaContador() {
+      $this->load->model('faturamento_model');
+	    $this->faturamento_model->salvaContador();
     }
 
     function salvaNota() {

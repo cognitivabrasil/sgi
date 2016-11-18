@@ -60,6 +60,11 @@
             <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Editar
           </button>
         </a>
+        <a href="<?php echo base_url();?>index.php/faturamento/lista/<?php echo $data[0]->id;?>" class="button_action">
+          <button type="button" class="btn btn-default btn-lg">
+            <span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> Faturamento
+          </button>
+        </a>
       </div><br>
       <span class="sobrescrito_empreendimento">Última atualização em 10 dias</span>
     </div>
