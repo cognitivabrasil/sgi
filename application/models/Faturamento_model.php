@@ -110,37 +110,11 @@ class Faturamento_model extends CI_Model {
 
     function salvaRoyalt() {
 
-      $cont = 0;
-      $id_empreendimento = 1;
-      /*foreach($_POST['numero'] as $numero){
-        if(isset($numero)){
-          $this->numero = $numero;
-          $this->data = '';
-          $this->valor = '';
-          if(isset($_POST['data'][$cont])){
-            $this->data = $_POST['data'][$cont];
-          }
-          if(isset($_POST['valor'][$cont])){
-            $this->valor = $_POST['valor'][$cont];
-          }
-          $this->id_empreendimento = $id_empreendimento;
+      $this->royalt = $_POST['royalt'];
+      $this->data_royalt = date("Y-m-d H:i:s");
 
-          if($numero!=''){
-            $query = $this->db->query("Select * from erp_faturamento_notas where id_empreendimento = ".$id_empreendimento." and numero = ".$numero);
-
-
-            $data = $query->result();
-
-            if(isset($data[0])){
-              $this->db->where('id',$data[0]->id);
-              $this->db->update('erp_faturamento_notas',$this);
-            }else{
-              $this->db->insert('erp_faturamento_notas',$this);
-            }
-          }
-        }
-        $cont++;
-      }*/
+      $this->db->where('id',$_POST['id_nota']);
+      $this->db->update('erp_faturamento_notas',$this);
 
     }
 

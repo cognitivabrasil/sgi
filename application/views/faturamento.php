@@ -32,7 +32,7 @@
               <input type="date" name="data[]" placeholder="Data" style="float:right; margin-right:40px;" onblur="salvaNota();">
               <input type="text" name="numero[]" placeholder="Número" onblur="salvaNota();">
               <input type="text" name="valor[]" placeholder="Valor" style="margin:0 auto;" onblur="salvaNota();">
-              <div style="width:20%; height:30px;"><input type="checkbox" name="royalt[]" style="float:left; width:10px;" onclick="salvaRoyalt();"><span style="float:left;">Royalt Pago</span></div>
+              <br>
             </div>
           <?php } ?>
           <?php foreach ($notas as $row) { ?>
@@ -40,7 +40,7 @@
               <input type="date" name="data[]" placeholder="Data" style="float:right; margin-right:40px;" onblur="salvaNota();" value="<?php echo $row->data;?>">
               <input type="text" name="numero[]" placeholder="Número" onblur="salvaNota();" value="<?php echo $row->numero;?>">
               <input type="text" name="valor[]" placeholder="Valor" style="margin:0 auto;" onblur="salvaNota();" value="<?php echo $row->valor;?>">
-              <div style="width:20%; height:30px;"><input type="checkbox" name="royalt[]" style="float:left; width:10px;" onclick="salvaRoyalt();"><span style="float:left;">Royalt Pago</span></div>
+              <div style="width:20%; height:30px;"><input type="checkbox" name="royalt[]" style="float:left; width:10px;" id="royalt_pg_<?php echo $row->id;?>" onclick="salvaRoyalt(<?php echo $row->id;?>);" <?php if($row->royalt==1) echo "checked"?>><span style="float:left;">Royalt Pago</span></div>
             </div>
           <?php } ?>
         </div>

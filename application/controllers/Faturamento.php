@@ -79,4 +79,9 @@ class Faturamento extends CI_Controller {
       $this->load->model('faturamento_model');
 	    $this->faturamento_model->salvaNota();
     }
+
+    function salvaRoyalt() {      
+      $this->load->model('faturamento_model');
+	    $this->faturamento_model->salvaRoyalt();
+    }
 }

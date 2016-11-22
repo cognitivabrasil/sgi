@@ -11,6 +11,10 @@ $(document).ready(function(){
 
   $('map').imageMapResize();
 
+  $('#filtra_area').change(function(){
+      window.location.replace('/erpcei/index.php/servicos/area/'+$('#filtra_area').val());
+  });
+
   /*Empreendimentos*/
   $('#add_produto').click(function(){
       $('#produtos_container').append('<hr><input type="text" name="nome_produto[]" placeholder="Nome"><textarea name="descricao_produto[]" placeholder="Descrição" style="clear:both; width:70%; height:150px;"></textarea>');
@@ -26,7 +30,7 @@ $(document).ready(function(){
   });
 
   $('#add_nota').click(function(){
-    $('#notas_div').prepend('<div class="block_nota"><input type="date" name="data[]" placeholder="Data" style="float:right; margin-right:40px;" onblur="salvaNota();"><input type="text" name="numero[]" placeholder="Número" onblur="salvaNota();"><input type="text" name="valor[]" placeholder="Valor" style="margin:0 auto;" onblur="salvaNota();"><div style="width:20%; height:30px;"><input type="checkbox" name="royalt[]" style="float:left; width:10px;"><span style="float:left;">Royalt Pago</span></div></div>');
+    $('#notas_div').prepend('<div class="block_nota"><input type="date" name="data[]" placeholder="Data" style="float:right; margin-right:40px;" onblur="salvaNota();"><input type="text" name="numero[]" placeholder="Número" onblur="salvaNota();"><input type="text" name="valor[]" placeholder="Valor" style="margin:0 auto;" onblur="salvaNota();"><br></div>');
     return false;
   });
   /*Fim Faturamento*/
@@ -77,9 +81,12 @@ function salvaContador(){
   });
 }
 
-function salvaRoyalt(){
-  $.post('../salvaRoyalt',{'royalt':1},function(data){
-    console.log(data);
+function salvaRoyalt(id){
+  var royalt_val = 0;
+  if($('#royalt_pg_'+id).prop('checked')){
+    royalt_val = 1;
+  }
+  $.post('../salvaRoyalt',{'royalt':royalt_val, 'id_nota':id},function(data){
     $("#autosave").fadeTo(1000, 200).slideUp(200, function(){
         $("#autosave").hide();
     });
@@ -87,7 +94,7 @@ function salvaRoyalt(){
 }
 
 function carregaSala(nrSala){
-  $.post('../sala_ajax',{'nrSala':nrSala},function(data){
+  $.post('../index.php/reserva/sala_ajax',{'nrSala':nrSala},function(data){
     $('#dados_sala').html(data);
   });
   return false;

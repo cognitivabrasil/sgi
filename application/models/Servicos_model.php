@@ -43,4 +43,17 @@ class Servicos_model extends CI_Model {
         return $query;
     }
 
+    function selectByArea($area) {
+
+        $query = $this->db->query("Select * from erp_servicos where erp_servicos.atuacao like '%".urldecode(str_replace('_',' ',$area))."%'");
+
+        return $query;
+    }
+
+    function select_areas() {
+
+      $query = $this->db->query('SELECT atuacao FROM erp_servicos group by atuacao');
+
+      return $query;
+    }
 }

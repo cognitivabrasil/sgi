@@ -18,7 +18,25 @@ class Servicos extends CI_Controller {
       $this->load->model('servicos_model');
       $query = $this->servicos_model->select();
 
-      $this->load->view('servicos', array('data'=>$query->result()));
+      $queryAreas = $this->servicos_model->select_areas();
+
+      $this->load->view('servicos', array('data'=>$query->result(), 'areas'=>$queryAreas->result()));
+      $this->load->view('footer');
+    }
+
+    function area($area) {
+      $this->load->model('usuarios_model');
+      $this->usuarios_model->verifica_login();
+
+      $this->load->view('header');
+      $this->load->view('head_logado');
+
+      $this->load->model('servicos_model');
+      $query = $this->servicos_model->selectByArea($area);
+
+      $queryAreas = $this->servicos_model->select_areas();
+
+      $this->load->view('servicos', array('data'=>$query->result(), 'areas'=>$queryAreas->result()));
       $this->load->view('footer');
     }
 
