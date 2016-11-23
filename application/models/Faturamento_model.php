@@ -134,7 +134,14 @@ class Faturamento_model extends CI_Model {
 
     function buscaNotas($id){
 
-      $query = $this->db->query("Select * from erp_faturamento_notas where id_empreendimento = ".$id);
+      $query = $this->db->query("Select * from erp_faturamento_notas where royalt<>1 and id_empreendimento = ".$id);
+
+      return $query;
+    }
+
+    function buscaRoyalties_pagos($id){
+
+      $query = $this->db->query("Select * from erp_faturamento_notas where royalt=1 and id_empreendimento = ".$id);
 
       return $query;
     }

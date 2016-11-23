@@ -19,6 +19,20 @@ class Faturamento extends CI_Controller {
       $this->load->view('footer');
     }
 
+    function royalt_pg($id) {
+      $this->load->model('usuarios_model');
+      $this->usuarios_model->verifica_login();
+
+      $this->load->view('header');
+      $this->load->view('head_logado');
+
+      $this->load->model('faturamento_model');
+      $query = $this->faturamento_model->buscaRoyalties_pagos($id);
+
+      $this->load->view('faturamento_royalt_pg', array('notas'=>$query->result(),'id_empreendimento'=>$id));
+      $this->load->view('footer');
+    }
+
     function lista($id) {
       $this->load->model('usuarios_model');
       $this->usuarios_model->verifica_login();
@@ -80,7 +94,7 @@ class Faturamento extends CI_Controller {
 	    $this->faturamento_model->salvaNota();
     }
 
-    function salvaRoyalt() {      
+    function salvaRoyalt() {
       $this->load->model('faturamento_model');
 	    $this->faturamento_model->salvaRoyalt();
     }

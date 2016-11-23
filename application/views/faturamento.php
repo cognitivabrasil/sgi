@@ -3,6 +3,11 @@
     <div id="autosave" class='alert alert-success fade in' style="display:none;"><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Salvo!</div>
     <p id="titulo_usuario">Faturamento</p>
     <div id="block_usuario">
+      <a href="<?php echo base_url();?>index.php/faturamento/royalt_pg/<?php echo $id_empreendimento;?>" class="button_action" style="float:right;">
+        <button type="button" class="btn btn-default btn-lg">
+          <span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> Royalties pagos
+        </button>
+      </a>
       <form method="post" action="faturamento/salvaPrevisao" id="faturamentoForm">
         <input type="hidden" value="<?php echo $id_empreendimento;?>" name="id_empreendimento" id="id_empreendimento">
         <div id="faturamento_prev">
@@ -36,7 +41,7 @@
             </div>
           <?php } ?>
           <?php foreach ($notas as $row) { ?>
-            <div class="block_nota">
+            <div class="block_nota" id="nota_<?php echo $row->id;?>">
               <input type="date" name="data[]" placeholder="Data" style="float:right; margin-right:40px;" onblur="salvaNota();" value="<?php echo $row->data;?>">
               <input type="text" name="numero[]" placeholder="Número" onblur="salvaNota();" value="<?php echo $row->numero;?>">
               <input type="text" name="valor[]" placeholder="Valor" style="margin:0 auto;" onblur="salvaNota();" value="<?php echo $row->valor;?>">
