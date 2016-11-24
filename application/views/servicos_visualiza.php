@@ -28,11 +28,13 @@
           break;
       }?>
       <br><br>
+      <?php if($this->session->userdata('id_acesso')==1){ ?>
       <a href="<?php echo base_url();?>index.php/servicos/edita/<?php echo $data->id;?>" class="button_action">
       <button type="button" class="btn btn-default btn-lg">
         <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Editar
       </button>
-    </a><br><br>
+      </a><br><br>
+      <?php } ?>
     </div>
   </div>
 </div>

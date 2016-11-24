@@ -1,6 +1,7 @@
 <div id="container-central">
   <div>
     <p id="titulo_usuario">Atribuir localização de patrimônio</p>
+    <?php if($this->session->userdata('id_acesso')==1){ ?>
     <div id="block_usuario">
       <?php
       echo "<b>Nome:</b> ".$data->nome."<br>";
@@ -26,4 +27,5 @@
           </button>
       </form>
     </div>
+    <?php } ?>
   </div>

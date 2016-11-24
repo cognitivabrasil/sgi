@@ -2,6 +2,7 @@
   <div>
     <p id="titulo_usuario">Cadastro de parceiros</p>
     <div id="block_usuario">
+      <?php if($this->session->userdata('id_acesso')==1){ ?>
       <form method="post" action="<?php echo base_url();?>index.php/servicos/insert">
           <input type="text" name="nome" placeholder="Nome">
           <input type="text" name="empresa" placeholder="Empresa">
@@ -22,5 +23,6 @@
             <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Salvar
           </button>
       </form>
+      <?php } ?>
     </div>
   </div>

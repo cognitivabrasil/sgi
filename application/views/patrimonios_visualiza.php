@@ -14,6 +14,7 @@
     }
     ?>
     <div style="text-align:center; margin-top:15px;">
+      <?php if($this->session->userdata('id_acesso')==1){ ?>
       <a href="<?php echo base_url();?>index.php/patrimonios/edita/<?php echo $data->id;?>" class="button_action">
       <button type="button" class="btn btn-default btn-lg">
         <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Editar
@@ -24,6 +25,7 @@
           Atribuir localização <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
         </button>
       </a>
+      <?php } ?>
     </div>
   </div>
 </div>

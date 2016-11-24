@@ -2,7 +2,8 @@
   <div>
     <p id="titulo_usuario">Edição de parceiros</p>
     <div id="block_usuario">
-      <form method="post" action="<?php echo base_url();?>index.php/servicos/save">
+      <?php if($this->session->userdata('id_acesso')==1){ ?>
+        <form method="post" action="<?php echo base_url();?>index.php/servicos/save">
           <input type="hidden" name="id" value="<?php echo $data->id; ?>">
           <input type="text" name="nome" value="<?php echo $data->nome; ?>">
           <input type="text" name="empresa" value="<?php echo $data->empresa; ?>">
@@ -28,5 +29,6 @@
             <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Salvar
           </button>
       </form>
+      <?php }?>
     </div>
   </div>

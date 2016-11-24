@@ -14,16 +14,18 @@
             <button type="button" class="btn btn-default btn-xs">
               <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
             </button>
-          </a>        
+          </a>
       </div>
     </div><br>
     <?php  } ?>
     <div style="text-align:center; margin-top:15px;">
+      <?php if($this->session->userdata('id_acesso')==1){ ?>
       <a href="<?php echo base_url();?>index.php/patrimonios/cadastra" class="button_action">
         <button type="button" class="btn btn-default btn-lg">
           <span class="glyphicon glyphicon-duplicate" aria-hidden="true"></span> Novo
         </button>
       </a>
+      <?php }?>
     </div>
   </div>
 </div>

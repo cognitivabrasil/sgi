@@ -33,6 +33,7 @@ class Login extends CI_Controller {
                     'id_usuario' => $query[0]->id_usuario,
                     'nome' => $query[0]->nome,
                     'id_acesso' => $query[0]->id_acesso,
+                    'id_empreendimento' => $query[0]->id_empreendimento,
                     'logged' => true
                 );
                 $this->session->set_userdata($data);

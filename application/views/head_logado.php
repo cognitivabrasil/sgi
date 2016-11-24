@@ -16,15 +16,25 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li <?php if($atual == 'empreendimentos') echo 'class="active"' ?>><a href="<?php echo base_url();?>index.php/empreendimentos">Empreendimentos</a></li>
-        <li <?php if($atual == 'colaboradores') echo 'class="active"' ?>><a href="<?php echo base_url();?>index.php/colaboradores">Colaboradores</a></li>
+        <?php if($this->session->userdata('id_acesso')==1){ ?>
+          <li <?php if($atual == 'empreendimentos') echo 'class="active"' ?>><a href="<?php echo base_url();?>index.php/empreendimentos">Empreendimentos</a></li>
+        <?php }else{ ?>
+          <li <?php if($atual == 'empreendimentos') echo 'class="active"' ?>><a href="<?php echo base_url();?>index.php/empreendimentos/visualiza/<?php echo $this->session->userdata('id_empreendimento');?>">Empreendimentos</a></li>
+        <?php } ?>
+        <?php if($this->session->userdata('id_acesso')==1){ ?>
+          <li <?php if($atual == 'colaboradores') echo 'class="active"' ?>><a href="<?php echo base_url();?>index.php/colaboradores">Colaboradores</a></li>
+        <?php }else{ ?>
+          <li <?php if($atual == 'colaboradores') echo 'class="active"' ?>><a href="<?php echo base_url();?>index.php/colaboradores/lista/<?php echo $this->session->userdata('id_empreendimento');?>">Colaboradores</a></li>
+        <?php } ?>
         <li <?php if($atual == 'usuarios') echo 'class="active"' ?>><a href="<?php echo base_url();?>index.php/usuarios">Usuários</a></li>
         <li <?php if($atual == 'patrimonios') echo 'class="active"' ?>><a href="<?php echo base_url();?>index.php/patrimonios">Patrimônio</a></li>
         <li <?php if($atual == 'reserva') echo 'class="active"' ?>><a href="<?php echo base_url();?>index.php/reserva">Reserva de Salas</a></li>
         <li <?php if($atual == 'pendencias') echo 'class="active"' ?>><a href="<?php echo base_url();?>index.php/pendencias">Requisições</a></li>
         <li <?php if($atual == 'releasing') echo 'class="active"' ?>><a href="<?php echo base_url();?>index.php/releasing">Releasing</a></li>
         <li <?php if($atual == 'servicos') echo 'class="active"' ?>><a href="<?php echo base_url();?>index.php/servicos">Parceiros</a></li>
-        <li <?php if($atual == 'salas') echo 'class="active"' ?>><a href="<?php echo base_url();?>index.php/salas">Salas</a></li>
+        <?php if($this->session->userdata('id_acesso')==1){ ?>
+          <li <?php if($atual == 'salas') echo 'class="active"' ?>><a href="<?php echo base_url();?>index.php/salas">Salas</a></li>
+        <?php } ?>
         <li><a href="<?php echo base_url();?>index.php/login/logout">Sair</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
