@@ -17,6 +17,13 @@
           <?php } ?>
           <?php foreach ($notas as $row) { ?>
             <div class="block_nota" id="nota_<?php echo $row->id;?>">
+              <?php if(isset($row->arquivo_nota) && $row->arquivo_nota != ""){ ?>
+              <a target="_blank" href="<?php echo base_url();?>index.php/faturamento/download/<?php echo $row->id;?>" style="float:right; margin-right:3px; margin-top:3px;">
+                <button type="button" class="btn btn-default btn-sm">
+                  <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> Nota
+                </button>
+              </a>
+              <?php } ?>
               <input type="date" name="data[]" placeholder="Data" style="float:right; margin-right:40px;" onblur="salvaNota();" value="<?php echo $row->data;?>">
               <input type="text" name="numero[]" placeholder="Número" onblur="salvaNota();" value="<?php echo $row->numero;?>">
               <input type="text" name="valor[]" placeholder="Valor" style="margin:0 auto;" onblur="salvaNota();" value="<?php echo $row->valor;?>">

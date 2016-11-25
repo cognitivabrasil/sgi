@@ -33,7 +33,7 @@ $(document).ready(function(){
   });
 
   $('#add_nota').click(function(){
-    $('#notas_div').prepend('<div class="block_nota"><input type="date" name="data[]" placeholder="Data" style="float:right; margin-right:40px;" onblur="salvaNota();"><input type="text" name="numero[]" placeholder="Número" onblur="salvaNota();"><input type="text" name="valor[]" placeholder="Valor" style="margin:0 auto;" onblur="salvaNota();"><br></div>');
+    $('#notas_div').prepend('<div class="block_nota"><input type="date" name="data[]" placeholder="Data" style="float:right; margin-right:40px;" onblur="salvaNota();"><input type="text" name="numero[]" placeholder="Número" onblur="salvaNota();"><input type="file" name="nota[]" style="float:right; margin-right:40px;" onchange="salvaNota();"><input type="text" name="valor[]" placeholder="Valor" onblur="salvaNota();"><br></div>');
     return false;
   });
   /*Fim Faturamento*/
@@ -69,11 +69,26 @@ function salvaPrevisao(){
 }
 
 function salvaNota(){
-  $.post('../salvaNota',$('#notasform').serialize(),function(data){
+  $.ajax({
+   url: "../salvaNota",
+   type: "POST",
+   data: new FormData($('#notasform')[0]),
+   contentType: false,
+   cache: false,
+   processData:false,
+   success: function(data) {
+     console.log(data);
+     $("#autosave").fadeTo(1000, 200).slideUp(200, function(){
+         $("#autosave").hide();
+     });
+   }
+  });
+  /*$.post('../salvaNota',$('#notasform').serialize(),function(data){
+    console.log(data);
     $("#autosave").fadeTo(1000, 200).slideUp(200, function(){
         $("#autosave").hide();
     });
-  });
+  });*/
 }
 
 function salvaContador(){

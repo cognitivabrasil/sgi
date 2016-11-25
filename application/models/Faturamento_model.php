@@ -75,8 +75,17 @@ class Faturamento_model extends CI_Model {
 
     function salvaNota() {
 
+      //file upload configuration
+      $config['upload_path'] = './uploads/';
+      $config['allowed_types'] = 'gif|jpg|png|pdf';
+      $config['max_size']	= '0';
+      $config['max_width']  = '0';
+      $config['max_height']  = '0';
+      //end of configuration
+
       $cont = 0;
       $id_empreendimento = $_POST['id_empreendimento_notas'];
+      $files = $_FILES;
       foreach($_POST['numero'] as $numero){
         if(isset($numero)){
           $this->numero = $numero;
@@ -88,6 +97,28 @@ class Faturamento_model extends CI_Model {
           if(isset($_POST['valor'][$cont])){
             $this->valor = $_POST['valor'][$cont];
           }
+
+          $this->arquivo_nota = "";
+          if($files['nota']['name'][$cont]!=""){
+
+            $_FILES['userfile']['name']= $files['nota']['name'][$cont];
+            $_FILES['userfile']['type']= $files['nota']['type'][$cont];
+            $_FILES['userfile']['tmp_name']= $files['nota']['tmp_name'][$cont];
+            $_FILES['userfile']['error']= $files['nota']['error'][$cont];
+            $_FILES['userfile']['size']= $files['nota']['size'][$cont];
+
+        		$this->load->library('upload', $config);
+
+            if ( ! $this->upload->do_upload()){
+        			$error = array('error' => $this->upload->display_errors());
+
+        			print_r($error);
+        		}else{
+        			$data = array('upload_nota' => $this->upload->data());
+              $this->arquivo_nota = $data['upload_nota']['full_path'];
+        		}
+          }
+
           $this->id_empreendimento = $id_empreendimento;
 
           if($numero!=''){
@@ -96,6 +127,9 @@ class Faturamento_model extends CI_Model {
             $data = $query->result();
 
             if(isset($data[0])){
+              if($this->arquivo_nota==""){
+                $this->arquivo_nota = $data[0]->arquivo_nota;
+              }
               $this->db->where('id',$data[0]->id);
               $this->db->update('erp_faturamento_notas',$this);
             }else{
@@ -135,6 +169,13 @@ class Faturamento_model extends CI_Model {
     function buscaNotas($id){
 
       $query = $this->db->query("Select * from erp_faturamento_notas where royalt<>1 and id_empreendimento = ".$id);
+
+      return $query;
+    }
+
+    function buscaNotabyID($id){
+
+      $query = $this->db->query("Select * from erp_faturamento_notas where id = ".$id);
 
       return $query;
     }

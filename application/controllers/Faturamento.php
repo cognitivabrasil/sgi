@@ -98,4 +98,13 @@ class Faturamento extends CI_Controller {
       $this->load->model('faturamento_model');
 	    $this->faturamento_model->salvaRoyalt();
     }
+
+    function download($id) {
+      $this->load->model('faturamento_model');
+      $query = $this->faturamento_model->buscaNotabyID($id);
+
+      $path=$query->result()[0]->arquivo_nota;
+
+      force_download($path,NULL);
+    }
 }
