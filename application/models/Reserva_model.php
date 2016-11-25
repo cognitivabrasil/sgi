@@ -37,7 +37,8 @@ class Reserva_model extends CI_Model {
               'id_sala' => $_POST['id_sala'],
               'id_usuario' => $usuario->id_usuario,
               'horario' => $horarios,
-              'dia' => $_POST['data']
+              'dia' => $_POST['data'],
+              'titulo' => $_POST['titulo']
             );
             $this->db->insert('erp_reservas_salas',$data);
           }

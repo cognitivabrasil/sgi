@@ -7,7 +7,8 @@
 <form method="post" action="<?php echo base_url();?>index.php/reserva/efetua_reserva">
   <input type="hidden" value="<?php echo $data->id; ?>" name="id_sala">
   <div style="width:50%; float:right;">
-    <input type="date" name="data">
+    <input type="date" name="data"><br>
+    <input type="text" name="titulo" placeholder="Título">
   </div>
   <select multiple size="4" style="height:140px;" name="horario[]">
     <?php

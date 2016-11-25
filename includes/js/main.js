@@ -1,5 +1,8 @@
 $(document).ready(function(){
 
+  //Inicializando os tooltips
+  $('[data-toggle="tooltip"]').tooltip();
+
   $('.deleta_agendamento').click(function(){
     if(confirm('Você deseja realmente desagendar este horário?')){
       $.get($(this).attr('href'),function(data){
@@ -87,7 +90,7 @@ function salvaRoyalt(id){
     royalt_val = 1;
   }
   $.post('../salvaRoyalt',{'royalt':royalt_val, 'id_nota':id},function(data){
-    $('#nota_'+id).hide();    
+    $('#nota_'+id).hide();
     $("#autosave").fadeTo(1000, 200).slideUp(200, function(){
         $("#autosave").hide();
     });
