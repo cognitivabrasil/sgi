@@ -1,6 +1,6 @@
 <div id="container-central">
   <div>
-    <p id="titulo_usuario">Cadastro de releasing</p>
+    <p id="titulo_usuario">Edição de release</p>
     <div id="block_usuario">
       <form method="post" action="<?php echo base_url();?>index.php/releasing/save" enctype="multipart/form-data">
           <input type="hidden" name="id" value="<?php echo $data->id; ?>">

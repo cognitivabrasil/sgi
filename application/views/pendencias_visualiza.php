@@ -45,16 +45,14 @@
           <hr>
           <?php } ?>
         </div>
-        <a href="<?php echo base_url();?>index.php/pendencias/edita/<?php echo $data->id;?>" class="button_action">
-          <button type="button" class="btn btn-default btn-lg">
-            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Editar
-          </button>
-        </a>
+        <?php if($this->session->userdata('id_acesso')==1){?>
         <a href="<?php echo base_url();?>index.php/pendencias/atualiza_status/<?php echo $data->id;?>" class="button_action">
           <button type="button" class="btn btn-default btn-lg">
             <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Atualizar status
           </button>
-        </a><br><br>
+        </a>
+        <?php } ?>
+        <br><br>
       </div>
   </div>
 </div>

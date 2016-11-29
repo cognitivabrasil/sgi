@@ -1,6 +1,6 @@
 <div id="container-central">
 <div>
-  <p id="titulo_usuario">Releasing</p>
+  <p id="titulo_usuario">Release</p>
   <div id="block_usuario">
       <div class="row empreendimento_row" style="padding-left:10px;">
         <p><?php echo $data->nome; ?></p>
@@ -15,11 +15,13 @@
         }
         ?>
         <br><br>
+        <?php if($this->session->userdata('id_empreendimento]')==$data->id_empreendimento){?>
         <a href="<?php echo base_url();?>index.php/releasing/edita/<?php echo $data->id;?>" class="button_action">
         <button type="button" class="btn btn-default btn-lg">
           <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Editar
         </button>
         </a>
+        <?php } ?>
         <br><br>
       </div>
   </div>
