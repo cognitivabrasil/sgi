@@ -7,7 +7,7 @@ class Salas_model extends CI_Model {
       $this->nr_sala = $_POST['nr'];
       $this->funcao = $_POST['funcao'];
       $this->descricao = $_POST['descricao'];
-      $this->disponivel = $_POST['disponivel'];      
+      $this->disponivel = $_POST['disponivel'];
 
       $this->db->insert('erp_salas',$this);
 

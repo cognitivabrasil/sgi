@@ -16,7 +16,7 @@
       <area shape="rect" coords="3,1,55,79" href="#" onclick="carregaSala(101);" />
       <area shape="rect" coords="55,1,110,79" href="#" onclick="carregaSala(103);" />
       <area shape="poly" coords="110,1,151,1,150,76,192,76,192,131,110,131" href="#" onclick="carregaSala(105);" />
-      <area shape="rect" coords="150,1,192,75" href="#" onclick="carregaSala(105b);" />
+      <area shape="rect" coords="150,1,192,75" href="#" onclick="carregaSala('105b');" />
       <area shape="rect" coords="192,1,255,131" href="#" onclick="carregaSala(107);" />
       <area shape="rect" coords="255,1,336,131" href="#" onclick="carregaSala(109);" />
       <area shape="poly" coords="336,1,408,1,408,42,372,79,337,79" href="#" onclick="carregaSala(111);" />
@@ -29,7 +29,7 @@
       <area shape="rect" coords="783,209,879,340" href="#" onclick="carregaSala(120);" />
       <area shape="rect" coords="683,210,782,340" href="#" onclick="carregaSala(118);" />
       <area shape="rect" coords="582,209,684,340" href="#" onclick="carregaSala(116);" />
-      <area shape="rect" coords="381,158,582,340" href="#" onclick="carregaSala(aud);" />
+      <area shape="rect" coords="381,158,582,340" href="#" onclick="carregaSala('aud');" />
       <area shape="rect" coords="318,209,381,339" href="#" onclick="carregaSala(110);" />
       <area shape="rect" coords="255,209,318,339" href="#" onclick="carregaSala(108);" />
       <area shape="rect" coords="192,210,255,340" href="#" onclick="carregaSala(106);" />

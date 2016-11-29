@@ -113,7 +113,7 @@ function salvaRoyalt(id){
 }
 
 function carregaSala(nrSala){
-  $.post('../index.php/reserva/sala_ajax',{'nrSala':nrSala},function(data){
+  $.post('../index.php/reserva/sala_ajax',{'nrSala': nrSala},function(data){    
     $('#dados_sala').html(data);
   });
   return false;
