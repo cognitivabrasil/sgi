@@ -28,7 +28,7 @@ class Salas_model extends CI_Model {
     // Seleciona usuários do banco
 
     function select() {
-        $query = $this->db->query('Select * from erp_salas');
+        $query = $this->db->query('Select * from erp_salas order by nr_sala');
 
         return $query;
     }
@@ -43,7 +43,7 @@ class Salas_model extends CI_Model {
     }
 
     function selectAllSalas() {
-      $query = $this->db->query('select * from erp_salas');
+      $query = $this->db->query('select * from erp_salas order by nr_sala');
 
       return $query;
 
