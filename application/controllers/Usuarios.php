@@ -30,7 +30,7 @@ class Usuarios extends CI_Controller {
           $queryEmpr = $this->empreendimentos_model->select($user->id_empreendimento);
           $result = $queryEmpr->result();
           if(count($result)>0){
-            $dados[$count]->nome_empreendimento = $result[0]->nome_fantasia;
+            $dados[$count]->nome_empreendimento = $result[0]->nome;
           }
         }
         $count++;
@@ -74,7 +74,7 @@ class Usuarios extends CI_Controller {
           $queryEmpr = $this->empreendimentos_model->select($user->id_empreendimento);
           $result = $queryEmpr->result();
           if(count($result)>0){
-            $dados[$count]->nome_empreendimento = $result[0]->nome_fantasia;
+            $dados[$count]->nome_empreendimento = $result[0]->nome;
           }
         }
         $count++;
@@ -139,7 +139,7 @@ class Usuarios extends CI_Controller {
           $queryEmpr = $this->empreendimentos_model->select($user->id_empreendimento);
           $result = $queryEmpr->result();
           if(count($result)>0){
-            $dados[$count]->nome_empreendimento = $result[0]->nome_fantasia;
+            $dados[$count]->nome_empreendimento = $result[0]->nome;
           }
         }
         $count++;

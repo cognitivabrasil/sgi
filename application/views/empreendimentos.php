@@ -29,7 +29,7 @@
             </button>
           </a>
           <br>
-          <span class="sobrescrito_empreendimento">Última atualização em 10 dias</span>
+          <!-- <span class="sobrescrito_empreendimento">Última atualização em 10 dias</span> -->
         </div>
       </div>
     </div>

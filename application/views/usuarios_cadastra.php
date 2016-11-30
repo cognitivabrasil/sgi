@@ -11,7 +11,7 @@
             <?php
             foreach ($empresas as $empresa) {
             ?>
-            <option value="<?php echo $empresa->id;?>"><?php echo $empresa->nome_fantasia;?></value>
+            <option value="<?php echo $empresa->id;?>"><?php echo $empresa->nome;?></value>
             <?php
             }
             ?>
