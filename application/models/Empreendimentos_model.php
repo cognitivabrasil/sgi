@@ -5,23 +5,23 @@ class Empreendimentos_model extends CI_Model {
 
     function insert() {
       $this->nome = $_POST['nome'];
-      $this->nome_fantasia = $_POST['fantasia'];
+      //$this->nome_fantasia = $_POST['fantasia'];
       $this->vinculo = $_POST['vinculo'];
-      $this->razao_social = $_POST['rs'];
-      $this->site = $_POST['site'];
+      //$this->razao_social = $_POST['rs'];
+      //$this->site = $_POST['site'];
       $this->responsavel = $_POST['responsavel'];
-      $this->responsavel_email = $_POST['emailresponsavel'];
+      //$this->responsavel_email = $_POST['emailresponsavel'];
       $this->cpf_cnpj = $_POST['cpfcnpj'];
-      $this->descricao = $_POST['descricao'];
+      //$this->descricao = $_POST['descricao'];
 
       //file upload
-      $config['upload_path'] = './uploads/';
+    /*$config['upload_path'] = './uploads/';
       $config['allowed_types'] = 'gif|jpg|png';
   		$config['max_size']	= '0';
   		$config['max_width']  = '0';
   		$config['max_height']  = '0';
 
-  		$this->load->library('upload', $config);
+  	  $this->load->library('upload', $config);
 
   		if ( ! $this->upload->do_upload('logo'))
   		{
@@ -46,9 +46,9 @@ class Empreendimentos_model extends CI_Model {
   			$data = array('upload_canvas' => $this->upload->data());
         $this->canvas = $data['upload_canvas']['full_path'];
   		}
-
+      */
       $this->db->insert('erp_empreendimentos',$this);
-      $idEmpreendimento = $this->db->insert_id();
+      /*$idEmpreendimento = $this->db->insert_id();
 
       $i = 0;
       $produto = new stdClass();
@@ -89,7 +89,7 @@ class Empreendimentos_model extends CI_Model {
         }
         $this->db->insert('erp_empreendimentos_contrato',$contrato);
         $i++;
-      }
+      }*/
     }
 
     function save() {
@@ -123,9 +123,9 @@ class Empreendimentos_model extends CI_Model {
 
     function select($id=0) {
         if($id==0){
-          $query = $this->db->query('Select emp.*, count(*) as nr from erp_colaboradores col, erp_empreendimentos emp where col.id_empreendimento = emp.id group by id_empreendimento');
+          $query = $this->db->query('Select emp.*, count(col.id) as nr from erp_empreendimentos emp LEFT JOIN erp_colaboradores col on col.id_empreendimento = emp.id where emp.id<>1 group by emp.id');
         }else{
-          $query = $this->db->query("Select emp.*, count(*) as nr from erp_colaboradores col, erp_empreendimentos emp where col.id_empreendimento = emp.id and emp.id = ".$id." group by id_empreendimento");
+          $query = $this->db->query("Select emp.*, count(col.id) as nr from erp_empreendimentos emp LEFT JOIN erp_colaboradores col on col.id_empreendimento = emp.id where emp.id = ".$id." and emp.id<>1 group by emp.id");
         }
 
         return $query;

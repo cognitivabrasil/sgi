@@ -55,11 +55,13 @@
       ?>
       </div>
       <div style="text-align:center; margin-top:15px;">
+        <?php if($this->session->userdata('id_acesso')==3){?>
         <a href="<?php echo base_url();?>index.php/empreendimentos/edita/<?php echo $data[0]->id;?>" class="button_action">
           <button type="button" class="btn btn-default btn-lg">
             <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Editar
           </button>
         </a>
+        <?php } ?>
         <a href="<?php echo base_url();?>index.php/faturamento/lista/<?php echo $data[0]->id;?>" class="button_action">
           <button type="button" class="btn btn-default btn-lg">
             <span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> Faturamento

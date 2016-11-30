@@ -4,7 +4,6 @@
     <div id="block_usuario">
       <form method="post" action="<?php echo base_url();?>index.php/empreendimentos/insert" enctype="multipart/form-data">
           <p class="subtitulo_empreendimentos">Dados Gerais</p>
-          <div style="float:left;">
             <input type="text" name="nome" placeholder="Nome">
             <select name="vinculo">
               <option value="0">Vínculo</option>
@@ -12,40 +11,8 @@
               <option value="2">Incubada</option>
               <option value="3">Parque</option>
             </select>
-            <input type="text" name="site" placeholder="Site">
             <input type="text" name="cpfcnpj" placeholder="CPF / CNPJ">
-          </div>
-          <div style="float:left; margin-left:40px; padding-bottom:3px;">
-            <input type="text" name="fantasia" placeholder="Nome Fantasia">
-            <input type="text" name="rs" placeholder="Razão social">
-            <input type="text" name="responsavel" placeholder="Nome responsável">
-            <input type="text" name="emailresponsavel" placeholder="e-mail responsável">
-          </div>
-          <textarea name="descricao" placeholder="Descrição" style="clear:both; width:70%; height:150px;"></textarea>
-          <label for="logo" style="margin-left:5px; font-weight:normal;">Logo: </label><input type="file" name="logo" id="logo">
-          <label for="canvas" style="margin-left:5px; font-weight:normal;">Canvas: </label><input type="file" name="canvas" id="canvas">
-
-          <hr>
-
-          <div id="produtos_container">
-            <p class="subtitulo_empreendimentos">Produtos / Serviços</p>
-            <button class="btn btn-default btn-lg" id="add_produto" style="float:right;" onClick="return false;">
-              <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-            </button>
-            <input type="text" name="nome_produto[]" placeholder="Nome">
-            <textarea name="descricao_produto[]" placeholder="Descrição" style="clear:both; width:70%; height:150px;"></textarea>
-          </div>
-
-          <hr>
-
-          <div id="contrato_container">
-            <p class="subtitulo_empreendimentos">Contrato</p>
-            <button class="btn btn-default btn-lg" id="add_contrato" style="float:right;" onClick="return false;">
-              <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-            </button>
-            <input type="date" name="assinatura_contrato[]" placeholder="Data de assinatura">
-            <label for="contrato" style="margin-left:5px; font-weight:normal;">Contrato: </label><input type="file" name="contrato[]" id="contrato">
-          </div>
+            <input type="text" name="responsavel" placeholder="Nome responsável">          
 
           <button type="submit" class="btn btn-default btn-lg">
             <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Salvar
