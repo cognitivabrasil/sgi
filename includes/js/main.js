@@ -15,7 +15,7 @@ $(document).ready(function(){
   $('map').imageMapResize();
 
   $('#filtra_area').change(function(){
-      window.location.replace('/erpcei/index.php/servicos/area/'+$('#filtra_area').val());
+      window.location.replace('/erpcei/index.php/servicos/area/'+encodeURI($('#filtra_area').val()));
   });
 
   /*Empreendimentos*/
