@@ -1,12 +1,13 @@
 <div id="container-central">
 <div>
   <p id="titulo_usuario">Parceiros</p>
-  <!--<select style="float:right; margin-right:20px;" id="filtra_area">
-    <option value="">¡rea de atuaÁ„o</option>
+  <select style="float:right; margin-right:20px;" id="filtra_area">
+    <option value="">√Årea de atua√ß√£o</option>
+    <option value="todos">Todos</option>
     <?php foreach ($areas as $row) { ?>
       <option value="<?php echo urlencode(str_replace(' ','_',$row->atuacao));?>"><?php echo $row->atuacao;?></option>
     <?php } ?>
-  </select>--><br>
+  </select><br>
   <div id="block_usuario">
     <?php
     foreach($data as $row){
@@ -14,7 +15,7 @@
     <div class="row empreendimento_row">
       <div class="col-md-4"><?php echo $row->nome;?><br>
       <?php echo $row->empresa; ?><br>
-      ¡rea: <?php echo $row->atuacao; ?><br>
+      √Årea: <?php echo $row->atuacao; ?><br>
       <?php echo $row->telefone; ?><br>
       </div>
       <div class="col-md-6">

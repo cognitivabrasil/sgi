@@ -15,7 +15,11 @@ $(document).ready(function(){
   $('map').imageMapResize();
 
   $('#filtra_area').change(function(){
-      window.location.replace('/erpcei/index.php/servicos/area/'+encodeURI($('#filtra_area').val()));
+      if($('#filtra_area').val() == 'todos'){
+        window.location.replace('/gestaocei/index.php/servicos');
+      }else{
+        window.location.replace('/gestaocei/index.php/servicos/area/'+$('#filtra_area').val());
+      }
   });
 
   /*Empreendimentos*/
@@ -113,7 +117,7 @@ function salvaRoyalt(id){
 }
 
 function carregaSala(nrSala){
-  $.post('../index.php/reserva/sala_ajax',{'nrSala': nrSala},function(data){    
+  $.post('../index.php/reserva/sala_ajax',{'nrSala': nrSala},function(data){
     $('#dados_sala').html(data);
   });
   return false;
