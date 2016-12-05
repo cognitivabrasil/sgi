@@ -4,7 +4,7 @@ $(document).ready(function(){
   $('[data-toggle="tooltip"]').tooltip();
 
   $('.deleta_agendamento').click(function(){
-    if(confirm('Você deseja realmente desagendar este horário?')){
+    if(confirm('Você deseja realmente excluir?')){
       $.get($(this).attr('href'),function(data){
         location.reload();
       });

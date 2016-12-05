@@ -83,4 +83,10 @@ class Usuarios_model extends CI_Model {
 
         return $query;
     }
+
+    function remove($id) {
+        $query = $this->db->query('Delete from erp_usuarios where id_usuario='.$id);
+
+        return $query;
+    }
 }

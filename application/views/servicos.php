@@ -23,6 +23,15 @@
       &nbsp;
       </div>
       <div class="col-md-2">
+        <?php
+        if($this->session->userdata('id_acesso') == 1){
+        ?>
+          <a href='<?php echo base_url(); ?>index.php/servicos/remove/<?php echo $row->id;?>' class='deleta_agendamento' style="float:right; margin-top:-7px; margin-right:-15px;">
+            <button type='button' class='btn btn-default btn-xs'>
+              <span class='glyphicon glyphicon-remove' aria-hidden='true'></span>
+            </button>
+          </a>
+        <?php } ?>
         <div class="visualizar_dados">
           <a href="<?php echo base_url();?>index.php/servicos/visualiza/<?php echo $row->id;?>" class="button_action">
             <button type="button" class="btn btn-default btn-lg">

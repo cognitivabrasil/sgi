@@ -148,4 +148,9 @@ class Usuarios extends CI_Controller {
       $this->load->view('usuarios', array('data'=>$dados,'id_logado'=>$this->session->userdata('id_usuario')));
       $this->load->view('footer');
     }
+
+    function remove($id) {
+      $this->load->model('usuarios_model');
+      echo $this->usuarios_model->remove($id);
+    }
 }

@@ -80,4 +80,10 @@ class Patrimonios_model extends CI_Model {
         return $query;
     }
 
+    function remove($id) {
+        $query = $this->db->query('Delete from erp_patrimonios where id='.$id);
+
+        return $query;
+    }
+
 }

@@ -92,6 +92,12 @@ class Empreendimentos_model extends CI_Model {
       }*/
     }
 
+    function remove($id) {
+        $query = $this->db->query('Delete from erp_empreendimentos where id='.$id);
+
+        return $query;
+    }
+
     function save() {
       $this->nome = $_POST['nome'];
       $this->nome_fantasia = $_POST['fantasia'];

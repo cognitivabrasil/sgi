@@ -7,6 +7,7 @@
     foreach($data as $row){
     ?>
     <div class="row empreendimento_row">
+
       <div class="col-md-4"><?php echo $row->nome;?><br><?php switch ($row->vinculo) {
         case 1:
           echo "Pré Incubada";
@@ -17,11 +18,17 @@
         case 3:
           echo "Parque";
           break;
-      }?><br><?php echo $row->nr;?> colaborador(es)</div>
+      }?><br><?php echo $row->nr;?> colaborador(es)
+      </div>
       <div class="col-md-5">
       <!--  <div class="selo_gamification_pequeno">Empresa<br>Consciente</div> -->
       </div>
       <div class="col-md-3">
+        <a href='<?php echo base_url(); ?>index.php/empreendimentos/remove/<?php echo $row->id;?>' class='deleta_agendamento' style="float:right; margin-top:-7px; margin-right:-15px;">
+          <button type='button' class='btn btn-default btn-xs'>
+            <span class='glyphicon glyphicon-remove' aria-hidden='true'></span>
+          </button>
+        </a>
         <div class="visualizar_dados" style="float:right; padding-top:10px;">
           <a href="<?php echo base_url();?>index.php/empreendimentos/visualiza/<?php echo $row->id;?>" class="button_action">
             <button type="button" class="btn btn-default btn-lg">

@@ -112,4 +112,9 @@ class Servicos extends CI_Controller {
       $this->load->view('footer');
     }
 
+    function remove($id) {
+      $this->load->model('servicos_model');
+      echo $this->servicos_model->remove($id);
+    }
+
 }

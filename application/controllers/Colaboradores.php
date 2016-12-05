@@ -103,7 +103,7 @@ class Colaboradores extends CI_Controller {
     function edita($id=0) {
       $this->load->model('usuarios_model');
       $this->usuarios_model->verifica_login();
-      
+
       $this->load->view('header');
       $this->load->view('head_logado');
 
@@ -115,5 +115,10 @@ class Colaboradores extends CI_Controller {
 
       $this->load->view('colaboradores_edita', array('data'=>$query->result()[0],'emp'=>$queryEmp->result()));
       $this->load->view('footer');
+    }
+
+    function remove($id) {
+      $this->load->model('colaboradores_model');
+      echo $this->colaboradores_model->remove($id);
     }
 }

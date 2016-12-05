@@ -22,6 +22,15 @@
        ?></div>
        <div class="col-md-3">
          <?php
+         if($this->session->userdata('id_acesso') == 1){
+         ?>
+           <a href='<?php echo base_url(); ?>index.php/usuarios/remove/<?php echo $row->id_usuario;?>' class='deleta_agendamento'>
+             <button type='button' class='btn btn-default btn-xs'>
+               <span class='glyphicon glyphicon-remove' aria-hidden='true'></span>
+             </button>
+           </a>
+         <?php
+          }
           if($row->id_usuario == $id_logado){
          ?>
          <a href="<?php echo base_url();?>index.php/usuarios/alterasenha/<?php echo $row->id_usuario;?>" class="button_action" alt="Alterar Senha" title="Alterar Senha">

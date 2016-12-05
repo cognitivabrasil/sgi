@@ -154,7 +154,7 @@ class Patrimonios extends CI_Controller {
     function save() {
       $this->load->model('usuarios_model');
       $this->usuarios_model->verifica_login();
-      
+
       $this->load->model('patrimonios_model');
 	    $this->patrimonios_model->save();
 
@@ -177,5 +177,10 @@ class Patrimonios extends CI_Controller {
 
       $this->load->view('patrimonios', array('data'=>$dados));
       $this->load->view('footer');
+    }
+
+    function remove($id) {
+      $this->load->model('patrimonios_model');
+      echo $this->patrimonios_model->remove($id);
     }
 }

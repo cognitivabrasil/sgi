@@ -105,7 +105,7 @@ class Empreendimentos extends CI_Controller {
     function download($id,$tipo) {
       $this->load->model('usuarios_model');
       $this->usuarios_model->verifica_login();
-      
+
       $this->load->model('empreendimentos_model');
       switch($tipo){
         case 'canvas':
@@ -123,4 +123,10 @@ class Empreendimentos extends CI_Controller {
       }
       force_download($path,NULL);
     }
+
+    function remove($id) {
+      $this->load->model('empreendimentos_model');
+      echo $this->empreendimentos_model->remove($id);
+    }
+
 }

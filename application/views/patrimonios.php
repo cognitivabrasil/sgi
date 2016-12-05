@@ -15,6 +15,15 @@
               <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
             </button>
           </a>
+          <?php
+          if($this->session->userdata('id_acesso') == 1){
+          ?>
+            <a href='<?php echo base_url(); ?>index.php/patrimonios/remove/<?php echo $row->id;?>' class='deleta_agendamento'>
+              <button type='button' class='btn btn-default btn-xs'>
+                <span class='glyphicon glyphicon-remove' aria-hidden='true'></span>
+              </button>
+            </a>
+          <?php } ?>
       </div>
     </div><br>
     <?php  } ?>
