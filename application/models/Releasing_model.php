@@ -1,7 +1,15 @@
 <?php
 class Releasing_model extends CI_Model {
 
-    // Insere empreendimento
+    function getUnread(){
+      $query = $this->db->query('Select count(*) as count from erp_releasing where visto = 0');
+
+      return $query->result()[0]->count;
+    }
+
+    function zeraUnread(){
+      $query = $this->db->query('UPDATE erp_releasing set visto = 1 where visto = 0');
+    }
 
     function insert() {
       $this->nome = $_POST['nome'];

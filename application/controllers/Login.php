@@ -28,9 +28,12 @@ class Login extends CI_Controller {
         } else {
             if (count($query)) { // VERIFICA LOGIN E SENHA
                 $notificarequisicao = 0;
+                $notificarelease = 0;
                 if($query[0]->id_acesso == 1){
                   $this->load->model('pendencias_model');
                   $notificarequisicao = $this->pendencias_model->getUnread();
+                  $this->load->model('releasing_model');
+                  $notificarelease = $this->releasing_model->getUnread();
                 }
                 $data = array(
                     'username' => $query[0]->username,
@@ -39,7 +42,8 @@ class Login extends CI_Controller {
                     'id_acesso' => $query[0]->id_acesso,
                     'id_empreendimento' => $query[0]->id_empreendimento,
                     'logged' => true,
-                    'notifica_requisicao' => $notificarequisicao
+                    'notifica_requisicao' => $notificarequisicao,
+                    'notifica_release' => $notificarelease
                 );
                 $this->session->set_userdata($data);
                 redirect('index.php/inicial');

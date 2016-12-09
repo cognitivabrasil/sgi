@@ -32,7 +32,9 @@
         <li <?php if($atual == 'pendencias') echo 'class="active"' ?>><a href="<?php echo base_url();?>index.php/pendencias">Requisições
           <?php if($this->session->userdata('id_acesso')==1 && $this->session->userdata('notifica_requisicao')>0){ ?><sup style="color:red;"> <?php echo $this->session->userdata('notifica_requisicao');?></sup><?php } ?>
           </a></li>
-        <li <?php if($atual == 'releasing') echo 'class="active"' ?>><a href="<?php echo base_url();?>index.php/releasing">Release</a></li>
+        <li <?php if($atual == 'releasing') echo 'class="active"' ?>><a href="<?php echo base_url();?>index.php/releasing">Release
+          <?php if($this->session->userdata('id_acesso')==1 && $this->session->userdata('notifica_release')>0){ ?><sup style="color:red;"> <?php echo $this->session->userdata('notifica_release');?></sup><?php } ?>
+          </a></li>
         <li <?php if($atual == 'servicos') echo 'class="active"' ?>><a href="<?php echo base_url();?>index.php/servicos">Parceiros</a></li>
         <?php if($this->session->userdata('id_acesso')==1){ ?>
           <li <?php if($atual == 'salas') echo 'class="active"' ?>><a href="<?php echo base_url();?>index.php/salas">Salas</a></li>

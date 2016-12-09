@@ -34,6 +34,11 @@ class Releasing extends CI_Controller {
           }
         }
 
+        if($this->session->userdata('notifica_release')>0 && $this->session->userdata('id_acesso')==1){
+            $this->releasing_model->zeraUnread();
+            $this->session->set_userdata('notifica_release',0);
+        }
+
         //arrumando path da imagem
         $aux = explode('uploads',$dados[$count]->anexo);
         $dados[$count]->anexo = "uploads".$aux[1];
@@ -170,7 +175,7 @@ class Releasing extends CI_Controller {
     function save() {
       $this->load->model('usuarios_model');
       $this->usuarios_model->verifica_login();
-      
+
       $this->load->model('releasing_model');
 	    $this->releasing_model->save();
 
