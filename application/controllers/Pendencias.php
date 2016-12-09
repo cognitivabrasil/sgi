@@ -31,7 +31,10 @@ class Pendencias extends CI_Controller {
 
         $count++;
       }
-
+      if($this->session->userdata('notifica_requisicao')>0 && $this->session->userdata('id_acesso')==1){
+          $this->pendencias_model->zeraUnread();
+          $this->session->set_userdata('notifica_requisicao',0);
+      }
       $this->load->view('pendencias', array('data'=>$dados));
       $this->load->view('footer');
     }

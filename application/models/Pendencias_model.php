@@ -3,6 +3,16 @@ class Pendencias_model extends CI_Model {
 
     // Insere pendencias no banco
 
+    function getUnread(){
+      $query = $this->db->query('Select count(*) as count from erp_pendencias where visto = 0');
+
+      return $query->result()[0]->count;
+    }
+
+    function zeraUnread(){
+      $query = $this->db->query('UPDATE erp_pendencias set visto = 1 where visto = 0');
+    }
+
     function insert() {
       $this->nome = $_POST['nome'];
       $this->situacao = $_POST['situacao'];

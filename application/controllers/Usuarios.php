@@ -44,7 +44,6 @@ class Usuarios extends CI_Controller {
       $this->load->model('usuarios_model');
       $this->usuarios_model->verifica_login();
 
-
       $this->load->view('header');
       $this->load->view('head_logado');
 

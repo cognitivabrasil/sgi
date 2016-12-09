@@ -27,14 +27,19 @@ class Login extends CI_Controller {
 
         } else {
             if (count($query)) { // VERIFICA LOGIN E SENHA
-                print_r($query);
+                $notificarequisicao = 0;
+                if($query[0]->id_acesso == 1){
+                  $this->load->model('pendencias_model');
+                  $notificarequisicao = $this->pendencias_model->getUnread();
+                }
                 $data = array(
                     'username' => $query[0]->username,
                     'id_usuario' => $query[0]->id_usuario,
                     'nome' => $query[0]->nome,
                     'id_acesso' => $query[0]->id_acesso,
                     'id_empreendimento' => $query[0]->id_empreendimento,
-                    'logged' => true
+                    'logged' => true,
+                    'notifica_requisicao' => $notificarequisicao
                 );
                 $this->session->set_userdata($data);
                 redirect('index.php/inicial');

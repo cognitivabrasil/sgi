@@ -1,6 +1,6 @@
 <div id="container-central">
   <div id="topo_principal">
-    <p class="titulo_principal">Seja bem vindo <strong><?php echo $data;?></strong></p>
+    <p class="titulo_principal">Seja bem vindo(a) <strong><?php echo $data;?></strong></p>
     <p>Veja abaixo o mapa do CEI e clique em cada sala para visualizar informações detalhadas</p>
   </div>
   <div id="mapa_cei">
