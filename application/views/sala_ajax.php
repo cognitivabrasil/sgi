@@ -12,17 +12,19 @@
   </div>
   <select multiple size="4" style="height:140px;" name="horario[]">
     <?php
-    for($i=8,$j=1;$i<18;$j++){
+    for($i=8,$j=1;$i<17;$j++){
       $min="30";
+      $prox_hr = ($i+1).":00";
       if(($j % 2) == 0){
         if($i==17){
           break;
         }
         $min = "00";
         $i++;
+        $prox_hr = $i.":30";
       }
     ?>
-    <option value="<?php echo $i."_".$min;?>"><?php echo $i.":".$min;?></option>
+    <option value="<?php echo $i."_".$min;?>"><?php echo $i.":".$min." - ".$prox_hr;?></option>
     <?php
     }
     ?>

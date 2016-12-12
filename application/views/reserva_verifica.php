@@ -20,8 +20,9 @@
     <?php
     $hora = 8;
     $dias_semana = array('Segunda-feira','Terça-feira','Quarta-feira','Quinta-feira','Sexta-feira');
-    for($i=0;$i<21;$i++){
+    for($i=0;$i<20;$i++){
       $min="30";
+      $prox_hr = ($hora+1).":30";
       echo "<tr>";
       for($j=0;$j<6;$j++){
         if($i==0 && $j==0){
@@ -39,16 +40,20 @@
             }else{
               if($j==0){
                 if(($i % 2) == 0){
+                  $min = "30";
+                  $prox_hr = ($hora+1).":00";
+                }else{
                   $min = "00";
                   $hora++;
+                  $prox_hr = $hora.":30";
                 }
-                $msg = "<td>".$hora.":".$min."</td>";
+                $msg = "<td>".$hora.":".$min." - ".$prox_hr."</td>";
               }else{
                 $msg103 = "<td>&nbsp;</td>";
                 $msg111 = "<td>&nbsp;</td>";
                 foreach($data as $reservas){
                   if($reservas->dayweek == $j && $reservas->horario == $hora."_".$min && $reservas->id_sala == 2){
-                    $msg103 = "<td data-toggle='tooltip' data-placement='top' title='Reservado por: ".$reservas->usuario_data."'>".$reservas->titulo;;
+                    $msg103 = "<td data-toggle='tooltip' data-placement='top' title='Reservado por: ".$reservas->usuario_data."'>".$reservas->titulo;
                     if($this->session->userdata('id_usuario') == $reservas->id_usuario){
                       $msg103 .= "&nbsp;&nbsp;&nbsp;<a href='".base_url()."index.php/reserva/remove/".$reservas->id."' class='deleta_agendamento'><button type='button' class='btn btn-default btn-xs'>
                                     <span class='glyphicon glyphicon-remove' aria-hidden='true'></span>
