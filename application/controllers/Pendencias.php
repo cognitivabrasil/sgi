@@ -24,7 +24,7 @@ class Pendencias extends CI_Controller {
         $queryEmp = $this->pendencias_model->selectEmpreendimento($row->id_usuario);
         $dados[$count]->nome_empresa = "Sem vínculo";
         if(count($queryEmp->result())>0){
-          $dados[$count]->nome_empresa = $queryEmp->result()[0]->nome_fantasia;
+          $dados[$count]->nome_empresa = $queryEmp->result()[0]->nome;
         }
 
         $dados[$count]->situacao_final = $this->pendencias_model->verifica_resolvida($row->id);

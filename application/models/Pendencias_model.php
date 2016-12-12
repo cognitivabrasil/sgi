@@ -75,7 +75,7 @@ class Pendencias_model extends CI_Model {
 
     function selectEmpreendimento($idUsuario) {
 
-      $sql = 'Select erp_empreendimentos.nome_fantasia from erp_empreendimentos
+      $sql = 'Select erp_empreendimentos.nome_fantasia, erp_empreendimentos.nome from erp_empreendimentos
       inner join erp_usuarios on erp_usuarios.id_empreendimento = erp_empreendimentos.id
       where erp_usuarios.id_usuario = '.$idUsuario;
 
