@@ -128,7 +128,13 @@ class Pendencias extends CI_Controller {
       $count=0;
       foreach ($dados as $row) {
         $queryEmp = $this->pendencias_model->selectEmpreendimento($row->id_usuario);
-        $dados[$count]->nome_empresa = $queryEmp->result()[0]->nome_fantasia;
+        $dados[$count]->nome_empresa = "Sem vínculo";
+        if(count($queryEmp->result())>0){
+          $dados[$count]->nome_empresa = $queryEmp->result()[0]->nome;
+        }
+
+        $dados[$count]->situacao_final = $this->pendencias_model->verifica_resolvida($row->id);
+
         $count++;
       }
 
@@ -155,7 +161,13 @@ class Pendencias extends CI_Controller {
       $count=0;
       foreach ($dados as $row) {
         $queryEmp = $this->pendencias_model->selectEmpreendimento($row->id_usuario);
-        $dados[$count]->nome_empresa = $queryEmp->result()[0]->nome_fantasia;
+        $dados[$count]->nome_empresa = "Sem vínculo";
+        if(count($queryEmp->result())>0){
+          $dados[$count]->nome_empresa = $queryEmp->result()[0]->nome;
+        }
+
+        $dados[$count]->situacao_final = $this->pendencias_model->verifica_resolvida($row->id);
+
         $count++;
       }
 
@@ -182,7 +194,12 @@ class Pendencias extends CI_Controller {
       $count=0;
       foreach ($dados as $row) {
         $queryEmp = $this->pendencias_model->selectEmpreendimento($row->id_usuario);
-        $dados[$count]->nome_empresa = $queryEmp->result()[0]->nome_fantasia;
+        $dados[$count]->nome_empresa = "Sem vínculo";
+        if(count($queryEmp->result())>0){
+          $dados[$count]->nome_empresa = $queryEmp->result()[0]->nome_fantasia;
+        }
+        $dados[$count]->situacao_final = $this->pendencias_model->verifica_resolvida($row->id);
+
         $count++;
       }
 
