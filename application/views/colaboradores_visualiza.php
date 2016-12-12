@@ -1,6 +1,6 @@
 <div id="container-central">
 <div>
-  <p id="titulo_usuario">Colaboradores - Cognitiva Brasil</p>
+  <p id="titulo_usuario">Colaboradores - <?php echo $emp->nome;?></p>
   <div id="block_usuario">
     <div class="row empreendimento_row">
       <div class="col-md-12"><?php echo $data->nome;?><br><?php echo $data->funcao;?><br><?php switch ($data->vinculo) {

@@ -1,6 +1,6 @@
 <div id="container-central">
 <div>
-  <p id="titulo_usuario">Colaboradores - Cognitiva Brasil</p>
+  <p id="titulo_usuario">Colaboradores - <?php echo $emp->nome;?></p>
   <div id="block_usuario">
     <?php
     foreach($data as $row){

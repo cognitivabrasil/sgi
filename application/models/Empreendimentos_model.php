@@ -136,6 +136,14 @@ class Empreendimentos_model extends CI_Model {
 
         return $query;
     }
+
+    function selectColaboradorEmpreendimento($id) {
+
+        $query = $this->db->query("Select erp_empreendimentos.* from erp_empreendimentos INNER JOIN erp_colaboradores on erp_colaboradores.id_empreendimento = erp_empreendimentos.id where erp_colaboradores.id = ".$id);
+
+        return $query;
+    }
+
     function select_weak_entities($id,$type) {
       if($type == 'ps'){
         $query = $this->db->query("Select erp_empreendimentos_ps.* from erp_empreendimentos

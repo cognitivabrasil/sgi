@@ -46,7 +46,10 @@ class Colaboradores extends CI_Controller {
       $this->load->model('colaboradores_model');
       $query = $this->colaboradores_model->lista($id);
 
-      $this->load->view('colaboradores_lista', array('data'=>$query->result()));
+      $this->load->model('empreendimentos_model');
+      $queryEmp = $this->empreendimentos_model->select($id);
+
+      $this->load->view('colaboradores_lista', array('data'=>$query->result(),'emp'=>$queryEmp->result()[0]));
       $this->load->view('footer');
     }
 
@@ -96,7 +99,10 @@ class Colaboradores extends CI_Controller {
       $this->load->model('colaboradores_model');
       $query = $this->colaboradores_model->select($id);
 
-      $this->load->view('colaboradores_visualiza', array('data'=>$query->result()[0]));
+      $this->load->model('empreendimentos_model');
+      $queryEmp = $this->empreendimentos_model->selectColaboradorEmpreendimento($id);
+
+      $this->load->view('colaboradores_visualiza', array('data'=>$query->result()[0],'emp'=>$queryEmp->result()[0]));
       $this->load->view('footer');
     }
 
@@ -111,7 +117,7 @@ class Colaboradores extends CI_Controller {
       $query = $this->colaboradores_model->select($id);
 
       $this->load->model('empreendimentos_model');
-      $queryEmp = $this->empreendimentos_model->select();
+      $queryEmp = $this->empreendimentos_model->selectColaboradorEmpreendimento($id);
 
       $this->load->view('colaboradores_edita', array('data'=>$query->result()[0],'emp'=>$queryEmp->result()));
       $this->load->view('footer');
