@@ -66,7 +66,7 @@ class Pendencias extends CI_Controller {
       $dadosAtualizacoes = $queryAtualizacoes->result();
 
       $queryEmp = $this->pendencias_model->selectEmpreendimento($dados->id_usuario);
-      $dados->nome_empresa = $queryEmp->result()[0]->nome_fantasia;
+      $dados->nome_empresa = $queryEmp->result()[0]->nome;
 
       $this->load->view('pendencias_visualiza', array('data'=>$dados,'atualizacoes'=>$dadosAtualizacoes));
       $this->load->view('footer');
