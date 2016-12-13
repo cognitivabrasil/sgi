@@ -1,6 +1,9 @@
 <div id="container-central">
   <div>
     <p id="titulo_usuario">Cadastro de usuário</p>
+    <?php
+    if($this->session->userdata('id_acesso') == 1){
+    ?>
     <div id="block_usuario">
       <form method="post" action="<?php echo base_url();?>index.php/usuarios/insert">
           <input type="text" name="nome" placeholder="Nome">
@@ -29,4 +32,5 @@
           </button>
       </form>
     </div>
+    <?php } ?>
   </div>

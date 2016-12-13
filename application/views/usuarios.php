@@ -46,6 +46,9 @@
     <?php
     }
     ?>
+    <?php
+    if($this->session->userdata('id_acesso') == 1){
+    ?>
     <div style="text-align:center; margin-top:15px;">
       <a href="<?php echo base_url();?>index.php/usuarios/cadastra" class="button_action">
         <button type="button" class="btn btn-default btn-lg">
@@ -53,5 +56,6 @@
         </button>
       </a>
     </div>
+    <?php } ?>
   </div>
 </div>
