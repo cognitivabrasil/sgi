@@ -53,22 +53,22 @@
                 $msg111 = "<td>&nbsp;</td>";
                 foreach($data as $reservas){
                   if($reservas->dayweek == $j && $reservas->horario == $hora."_".$min && $reservas->id_sala == 2){
-                    $msg103 = "<td data-toggle='tooltip' data-placement='top' title='Reservado por: ".$reservas->usuario_data."'>".$reservas->titulo;
+                    $msg103 = "<td><span data-toggle='tooltip' data-placement='top' title='Reservado por: ".$reservas->usuario_data."'>".$reservas->titulo;
                     if($this->session->userdata('id_usuario') == $reservas->id_usuario){
                       $msg103 .= "&nbsp;&nbsp;&nbsp;<a href='".base_url()."index.php/reserva/remove/".$reservas->id."' class='deleta_agendamento'><button type='button' class='btn btn-default btn-xs'>
                                     <span class='glyphicon glyphicon-remove' aria-hidden='true'></span>
                                   </button></a>";
                     }
-                    $msg103 .= "</td>";
+                    $msg103 .= "</span></td>";
                   }
                   if($reservas->dayweek == $j && $reservas->horario == $hora."_".$min && $reservas->id_sala == 6){
-                    $msg111 = "<td data-toggle='tooltip' data-placement='top' title='Reservado por: ".$reservas->usuario_data."'>".$reservas->titulo;
+                    $msg111 = "<td><span data-toggle='tooltip' data-placement='top' title='Reservado por: ".$reservas->usuario_data."'>".$reservas->titulo;
                     if($this->session->userdata('id_usuario') == $reservas->id_usuario){
                       $msg111 .= "&nbsp;&nbsp;&nbsp;<a href='".base_url()."index.php/reserva/remove/".$reservas->id."' class='deleta_agendamento'><button type='button' class='btn btn-default btn-xs'>
                                     <span class='glyphicon glyphicon-remove' aria-hidden='true'></span>
                                   </button></a>";
                     }
-                    $msg111 .= "</td>";
+                    $msg111 .= "</span></td>";
                   }
                 }
                 $msg = $msg103.$msg111;
