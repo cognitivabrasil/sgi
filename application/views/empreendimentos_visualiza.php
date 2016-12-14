@@ -25,16 +25,20 @@
       <!--  <div class="selo_gamification_pequeno">Empresa<br>Consciente</div> -->
       </div>
       <div style="clear:both; margin-left:15px; text-align:center;">
+        <?php if($data[0]->canvas!=''){?>
         <a target="_blank" href="<?php echo base_url();?>index.php/empreendimentos/download/<?php echo $data[0]->id;?>/canvas">
           <button type="button" class="btn btn-default btn-lg">
             <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> Canvas
           </button>
         </a>
+        <?php }
+        if($data[0]->logo!=''){?>
         <a target="_blank" href="<?php echo base_url();?>index.php/empreendimentos/download/<?php echo $data[0]->id;?>/logo">
           <button type="button" class="btn btn-default btn-lg">
             <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> Logo
           </button>
         </a>
+        <?php } ?>
       </div>
       <div style="clear:both; margin-left:15px;">
         <br><p><b>Produtos/Serviços</b></p>

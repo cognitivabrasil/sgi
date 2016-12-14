@@ -14,39 +14,7 @@ class Empreendimentos_model extends CI_Model {
       $this->cpf_cnpj = $_POST['cpfcnpj'];
       //$this->descricao = $_POST['descricao'];
 
-      //file upload
-    /*$config['upload_path'] = './uploads/';
-      $config['allowed_types'] = 'gif|jpg|png';
-  		$config['max_size']	= '0';
-  		$config['max_width']  = '0';
-  		$config['max_height']  = '0';
 
-  	  $this->load->library('upload', $config);
-
-  		if ( ! $this->upload->do_upload('logo'))
-  		{
-  			$error = array('error' => $this->upload->display_errors());
-
-  			print_r($error);
-  		}
-  		else
-  		{
-  			$data = array('upload_logo' => $this->upload->data());
-        $this->logo = $data['upload_logo']['full_path'];
-  		}
-
-      if ( ! $this->upload->do_upload('canvas'))
-  		{
-  			$error = array('error' => $this->upload->display_errors());
-
-  			print_r($error);
-  		}
-  		else
-  		{
-  			$data = array('upload_canvas' => $this->upload->data());
-        $this->canvas = $data['upload_canvas']['full_path'];
-  		}
-      */
       $this->db->insert('erp_empreendimentos',$this);
       /*$idEmpreendimento = $this->db->insert_id();
 
@@ -109,9 +77,34 @@ class Empreendimentos_model extends CI_Model {
       $this->cpf_cnpj = $_POST['cpfcnpj'];
       $this->descricao = $_POST['descricao'];
 
-      //Futuramente teremos que editar isso tambem =D
-      $this->logo = $_POST['logo'];
-      $this->canvas = $_POST['canvas'];
+      $this->logo = $_POST['logo_old'];
+      $this->canvas = $_POST['canvas_old'];
+
+      //inicio uploads
+      $config['upload_path'] = './uploads/';
+      $config['allowed_types'] = 'gif|jpg|png';
+  		$config['max_size']	= '0';
+  		$config['max_width']  = '0';
+  		$config['max_height']  = '0';
+
+  	  $this->load->library('upload', $config);
+
+  		if (!$this->upload->do_upload('logo')){
+  			$error = array('error' => $this->upload->display_errors());
+  			$upload_logo = 'erro';
+  		}else{
+  			$data = array('upload_logo' => $this->upload->data());
+        $this->logo = $data['upload_logo']['full_path'];
+  		}
+
+      if (!$this->upload->do_upload('canvas')){
+  			$error = array('error' => $this->upload->display_errors());
+  			$upload_canvas = 'erro';
+  		}else{
+  			$data = array('upload_canvas' => $this->upload->data());
+        $this->canvas = $data['upload_canvas']['full_path'];
+  		}
+      //Final uploads
 
       $this->db->where('id', $_POST['id']);
 

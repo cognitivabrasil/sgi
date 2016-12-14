@@ -24,21 +24,26 @@
           </div>
           <textarea name="descricao" placeholder="Descrição" style="clear:both; width:70%; height:150px;"><?php echo $data->descricao;?></textarea>
           <div style="clear:both; margin-left:15px; text-align:center;">
+            <input type="hidden" name="logo_old" value="<?php echo $data->logo; ?>">
+            <input type="hidden" name="canvas_old" value="<?php echo $data->canvas; ?>">
+            <?php if($data->canvas!=''){?>
             <a target="_blank" href="<?php echo base_url();?>index.php/empreendimentos/download/<?php echo $data->id;?>/canvas">
               <button type="button" class="btn btn-default btn-lg">
                 <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> Canvas
               </button>
             </a>
+            <?php }
+            if($data->logo!=''){ ?>
             <a target="_blank" href="<?php echo base_url();?>index.php/empreendimentos/download/<?php echo $data->id;?>/logo">
               <button type="button" class="btn btn-default btn-lg">
                 <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> Logo
               </button>
             </a>
+            <?php } ?>
           </div>
-          <input type="hidden" name="logo" value="<?php echo $data->logo; ?>">
-          <input type="hidden" name="canvas" value="<?php echo $data->canvas; ?>">
-          <!--<label for="logo" style="margin-left:5px; font-weight:normal;">Logo: </label><input type="file" name="logo" id="logo">
-          <label for="canvas" style="margin-left:5px; font-weight:normal;">Canvas: </label><input type="file" name="canvas" id="canvas">-->
+
+          <label for="logo" style="margin-left:5px; font-weight:normal;">Logo: </label><input type="file" name="logo" id="logo">
+          <label for="canvas" style="margin-left:5px; font-weight:normal;">Canvas: </label><input type="file" name="canvas" id="canvas">
 
           <hr>
           <div id="produtos_container">
