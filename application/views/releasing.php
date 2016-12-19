@@ -11,7 +11,9 @@
       echo "<br>";
       echo $releasing->nome_empreendimento;
       echo "<br>";
-      echo date("d/m/Y", strtotime($releasing->data));
+      if($releasing->data != '0000-00-00 00:00:00'){
+        echo date("d/m/Y", strtotime($releasing->data));
+      }
       ?></div>
       <div class="col-md-8">
         <?php
@@ -21,7 +23,7 @@
         <?php
         }else{
         ?>
-        <div class="selo_gamification_pequeno">Preview<br>Imagem</div>
+        <div class="selo_gamification_pequeno">Sem<br>Imagem</div>
         <?php } ?>
         <div class="visualizar_dados" style="float:right; padding-top:20px;">
           <a href="<?php echo base_url();?>index.php/releasing/lista/<?php echo $releasing->id;?>" class="button_action">

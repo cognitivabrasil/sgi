@@ -4,7 +4,9 @@
   <div id="block_usuario">
       <div class="row empreendimento_row" style="padding-left:10px;">
         <p><?php echo $data->nome; ?></p>
-        <p><?php echo date("d/m/Y", strtotime($data->data)); ?></p>
+        <?php if($data->data != '0000-00-00 00:00:00'){?>
+          <p><?php echo date("d/m/Y", strtotime($data->data)); echo "->".$data->data;?></p>
+        <?php }?>
         <p><?php echo $data->nome_empreendimento; ?></p>
         <p><?php echo $data->descricao; ?></p>
         <?php

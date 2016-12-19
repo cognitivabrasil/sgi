@@ -40,8 +40,10 @@ class Releasing extends CI_Controller {
         }
 
         //arrumando path da imagem
-        $aux = explode('uploads',$dados[$count]->anexo);
-        $dados[$count]->anexo = "uploads".$aux[1];
+        if($dados[$count]->anexo && $dados[$count]->anexo!=''){
+          $aux = explode('uploads',$dados[$count]->anexo);
+          $dados[$count]->anexo = "uploads".$aux[1];
+        }
 
         $count++;
       }
@@ -75,8 +77,10 @@ class Releasing extends CI_Controller {
       }
 
       //arrumando path da imagem
-      $aux = explode('uploads',$dados[0]->anexo);
-      $dados[0]->anexo = "uploads".$aux[1];
+      if($dados[0]->anexo && $dados[0]->anexo!=''){
+        $aux = explode('uploads',$dados[0]->anexo);
+        $dados[0]->anexo = "uploads".$aux[1];
+      }      
 
       $this->load->view('releasing_visualiza', array('data'=>$dados[0]));
       $this->load->view('footer');
