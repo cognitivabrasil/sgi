@@ -1,3 +1,8 @@
+<script>
+  webshims.setOptions('waitReady', false);
+  webshims.setOptions('forms-ext', {types: 'date'});
+  webshims.polyfill('forms forms-ext');
+</script>
 <div id="container-central">
   <div>
     <p id="titulo_usuario">Cadastro de release</p>
@@ -16,7 +21,7 @@
             }
             ?>
           </select>-->
-          <p><span style="float:left; margin-top:7px;">&nbsp;Data: </span><input style="float:left;" type="date" name="data"></p>
+          <p style="position:relative;" class="data-release"><span style="float:left; margin-top:7px;">&nbsp;Data: </span><input style="float:left;" type="date" name="data" data-date='{"startView": 2, "openOnMouseFocus": true}' placeholder="yyyy-mm-dd"></p>
           <textarea name="descricao" placeholder="Descrição do evento, prêmio ou acontecimento" style="width:400px; height:100px; clear:both;"></textarea>
           <input type="file" name="imagem">
           <button type="submit" class="btn btn-default btn-lg">
