@@ -32,6 +32,14 @@ class Usuarios_model extends CI_Model {
         $this->db->update('erp_usuarios',$this);
     }
 
+    function restaurasenha() {
+        $senha = 'mudar'.mt_rand(10000, 99999);
+        $this->senha = md5($senha);
+        $this->db->where('id_usuario',$_POST['id']);
+        $this->db->update('erp_usuarios',$this);
+        echo $senha;
+    }
+
     // Verifica se está logado
     function logged() {
         $logged = $this->session->userdata('logged');

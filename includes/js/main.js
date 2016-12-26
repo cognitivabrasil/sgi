@@ -43,6 +43,15 @@ $(document).ready(function(){
   /*Fim Faturamento*/
 
   /*Usuários*/
+  $('.restaura_senha').click(function(){
+    if(confirm('Deseja realmente resetar a senha do usuário?')){
+      $.post('./usuarios/restaurasenha',{id: $(this).attr('href')},function(data){
+        alert('A nova senha do usuário é: '+data);
+      });
+    }
+    return false;
+  });
+
   $('#altera_senha').click(function(){
     if(($('#nova_senha').val() != $('#confirma_nova_senha').val()) || $('#nova_senha').val() == ''){
       alert('As novas senhas não conferem!');

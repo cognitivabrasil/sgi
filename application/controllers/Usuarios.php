@@ -99,6 +99,11 @@ class Usuarios extends CI_Controller {
       $this->load->view('footer');
     }
 
+    function restaurasenha() {
+      $this->load->model('usuarios_model');
+      $this->usuarios_model->restaurasenha();
+    }
+
     function cadastra() {
       $this->load->model('usuarios_model');
       $this->usuarios_model->verifica_login();

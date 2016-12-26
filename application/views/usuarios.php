@@ -24,16 +24,25 @@
          <?php
          if($this->session->userdata('id_acesso') == 1){
          ?>
-           <a href='<?php echo base_url(); ?>index.php/usuarios/remove/<?php echo $row->id_usuario;?>' class='deleta_agendamento'>
+           <a href='<?php echo base_url(); ?>index.php/usuarios/remove/<?php echo $row->id_usuario;?>' class='deleta_agendamento' title="Remove usuário" data-toggle="tooltip">
              <button type='button' class='btn btn-default btn-xs'>
                <span class='glyphicon glyphicon-remove' aria-hidden='true'></span>
              </button>
            </a>
          <?php
           }
+         if($this->session->userdata('id_acesso') == 1){
+         ?>
+           <a href='<?php echo $row->id_usuario;?>' class='restaura_senha' title="Restaurar senha" data-toggle="tooltip">
+             <button type='button' class='btn btn-default btn-xs'>
+               <span class='glyphicon glyphicon-refresh' aria-hidden='true'></span>
+             </button>
+           </a>
+         <?php
+          }
           if($row->id_usuario == $id_logado){
          ?>
-         <a href="<?php echo base_url();?>index.php/usuarios/alterasenha/<?php echo $row->id_usuario;?>" class="button_action" alt="Alterar Senha" title="Alterar Senha">
+         <a href="<?php echo base_url();?>index.php/usuarios/alterasenha/<?php echo $row->id_usuario;?>" class="button_action" title="Alterar Senha" data-toggle="tooltip">
            <button type="button" class="btn btn-default btn-xs">
              <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
            </button>
