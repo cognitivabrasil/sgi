@@ -51,7 +51,7 @@ class Login extends CI_Controller {
                 //redirect($this->index());
                 // VALIDATION RULES
                 $this->load->view('header');
-                echo "<div class='alert alert-danger fade in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Usuário ou senha errados!</div>";
+                echo "<div class='alert alert-danger fade in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Usuário ou senha incorretos!<br>Caso tenha esquecido as credenciais, entre em contato com o CEI</div>";
                 $this->load->view('login_view');
                 $this->load->view('footer');
 
