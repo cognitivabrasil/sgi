@@ -29,7 +29,94 @@ class Patrimonios extends CI_Controller {
         $count++;
       }
 
-      $this->load->view('patrimonios', array('data'=>$dados));
+      $dataResponsaveis = $this->patrimonios_model->selectResponsaveis();
+      $dataSalas = $this->patrimonios_model->selectSalas();
+
+      $this->load->view('patrimonios', array('data'=>$dados, 'responsaveis'=>$dataResponsaveis->result(), 'salas'=>$dataSalas->result()));
+      $this->load->view('footer');
+    }
+
+    function consulta_resp($var) {
+      $this->load->model('usuarios_model');
+      $this->usuarios_model->verifica_login();
+
+      $this->load->view('header');
+      $this->load->view('head_logado');
+
+      $this->load->model('patrimonios_model');
+      $query = $this->patrimonios_model->select_relatorio('resp',$var);
+
+      $dados = $query->result();
+      $count=0;
+      foreach ($dados as $row) {
+        $queryIn = $this->patrimonios_model->selectSala($row->id);
+        if(count($queryIn->result())>0){
+          $dados[$count]->sala = $queryIn->result()[0];
+          $dados[$count]->sala->data_atribuicao = date("d/m/Y", strtotime($dados[$count]->sala->data_atribuicao));
+        }
+        $count++;
+      }
+
+      $dataResponsaveis = $this->patrimonios_model->selectResponsaveis();
+      $dataSalas = $this->patrimonios_model->selectSalas();
+
+      $this->load->view('patrimonios_consultas', array('data'=>$dados, 'responsaveis'=>$dataResponsaveis->result(), 'salas'=>$dataSalas->result()));
+      $this->load->view('footer');
+    }
+
+    function consulta_sala($var) {
+      $this->load->model('usuarios_model');
+      $this->usuarios_model->verifica_login();
+
+      $this->load->view('header');
+      $this->load->view('head_logado');
+
+      $this->load->model('patrimonios_model');
+      $query = $this->patrimonios_model->select_relatorio('sala',$var);
+
+      $dados = $query->result();
+      $count=0;
+      foreach ($dados as $row) {
+        $queryIn = $this->patrimonios_model->selectSala($row->id);
+        if(count($queryIn->result())>0){
+          $dados[$count]->sala = $queryIn->result()[0];
+          $dados[$count]->sala->data_atribuicao = date("d/m/Y", strtotime($dados[$count]->sala->data_atribuicao));
+        }
+        $count++;
+      }
+
+      $dataResponsaveis = $this->patrimonios_model->selectResponsaveis();
+      $dataSalas = $this->patrimonios_model->selectSalas();
+
+      $this->load->view('patrimonios_consultas', array('data'=>$dados, 'responsaveis'=>$dataResponsaveis->result(), 'salas'=>$dataSalas->result()));
+      $this->load->view('footer');
+    }
+
+    function consulta_nr($var) {
+      $this->load->model('usuarios_model');
+      $this->usuarios_model->verifica_login();
+
+      $this->load->view('header');
+      $this->load->view('head_logado');
+
+      $this->load->model('patrimonios_model');
+      $query = $this->patrimonios_model->select_relatorio('nr',$var);
+
+      $dados = $query->result();
+      $count=0;
+      foreach ($dados as $row) {
+        $queryIn = $this->patrimonios_model->selectSala($row->id);
+        if(count($queryIn->result())>0){
+          $dados[$count]->sala = $queryIn->result()[0];
+          $dados[$count]->sala->data_atribuicao = date("d/m/Y", strtotime($dados[$count]->sala->data_atribuicao));
+        }
+        $count++;
+      }
+
+      $dataResponsaveis = $this->patrimonios_model->selectResponsaveis();
+      $dataSalas = $this->patrimonios_model->selectSalas();
+
+      $this->load->view('patrimonios_consultas', array('data'=>$dados, 'responsaveis'=>$dataResponsaveis->result(), 'salas'=>$dataSalas->result()));
       $this->load->view('footer');
     }
 

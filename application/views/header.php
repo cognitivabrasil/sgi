@@ -4,6 +4,8 @@
         <title>CEI - Centro de Empreendimentos em Informática</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
         <!-- Latest compiled and minified CSS -->
@@ -25,7 +27,7 @@
         <script src="http://cdn.jsdelivr.net/webshim/1.12.4/extras/modernizr-custom.js"></script>
 
         <!-- polyfiller file to detect and load polyfills -->
-        <script src="http://cdn.jsdelivr.net/webshim/1.12.4/polyfiller.js"></script>        
+        <script src="http://cdn.jsdelivr.net/webshim/1.12.4/polyfiller.js"></script>
 
     </head>
 

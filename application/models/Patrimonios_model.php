@@ -49,10 +49,39 @@ class Patrimonios_model extends CI_Model {
 
     }
 
-    // Seleciona usuários do banco
-
     function select() {
         $query = $this->db->query('Select * from erp_patrimonios');
+
+        return $query;
+    }
+
+    function selectResponsaveis() {
+        $query = $this->db->query('Select * from erp_patrimonios group by responsavel');
+
+        return $query;
+    }
+
+    function selectSalas() {
+        $query = $this->db->query('Select erp_salas.* from erp_patrimonios
+        inner join erp_patrimonio_sala on erp_patrimonios.id = erp_patrimonio_sala.id_patrimonio
+        inner join erp_salas on erp_salas.id = erp_patrimonio_sala.id_sala
+        group by erp_patrimonio_sala.id_sala');
+
+        return $query;
+    }
+
+    function select_relatorio($tipo,$var) {
+        switch ($tipo) {
+          case 'sala':
+            $query = $this->db->query('Select * from erp_patrimonios inner join erp_patrimonio_sala on erp_patrimonios.id = erp_patrimonio_sala.id_patrimonio where erp_patrimonio_sala.id_sala = '.$var);
+            break;
+          case 'resp':
+            $query = $this->db->query('Select * from erp_patrimonios where responsavel like "%'.$var.'%"');
+            break;
+          case 'nr':
+            $query = $this->db->query('Select * from erp_patrimonios where nrpatrimonio like "%'.$var.'%"');
+            break;
+        }
 
         return $query;
     }

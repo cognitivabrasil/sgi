@@ -81,6 +81,10 @@ function salvaPrevisao(){
   });
 }
 
+function patrimonio_resp(tipo){
+  window.location.replace('/gestaocei/index.php/patrimonios/consulta_'+tipo+'/'+$('#search_'+tipo).val());
+}
+
 function salvaNota(){
   $.ajax({
    url: "../salvaNota",
