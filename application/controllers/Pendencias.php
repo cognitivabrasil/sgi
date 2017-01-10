@@ -39,6 +39,37 @@ class Pendencias extends CI_Controller {
       $this->load->view('footer');
     }
 
+    function resolvidas() {
+      $this->load->model('usuarios_model');
+      $this->usuarios_model->verifica_login();
+
+      $this->load->view('header');
+      $this->load->view('head_logado');
+
+      $this->load->model('pendencias_model');
+      $query = $this->pendencias_model->select();
+
+      $dados = $query->result();
+      $count=0;
+      foreach ($dados as $row) {
+        $queryEmp = $this->pendencias_model->selectEmpreendimento($row->id_usuario);
+        $dados[$count]->nome_empresa = "Sem vínculo";
+        if(count($queryEmp->result())>0){
+          $dados[$count]->nome_empresa = $queryEmp->result()[0]->nome;
+        }
+
+        $dados[$count]->situacao_final = $this->pendencias_model->verifica_resolvida($row->id);
+
+        $count++;
+      }
+      if($this->session->userdata('notifica_requisicao')>0 && $this->session->userdata('id_acesso')==1){
+          $this->pendencias_model->zeraUnread();
+          $this->session->set_userdata('notifica_requisicao',0);
+      }
+      $this->load->view('pendencias_resolvidas', array('data'=>$dados));
+      $this->load->view('footer');
+    }
+
     function cadastra() {
       $this->load->model('usuarios_model');
       $this->usuarios_model->verifica_login();

@@ -1,16 +1,16 @@
 <div id="container-central">
 <div>
   <p style="float:right; padding-right:20px;">
-    <a href="<?php echo base_url();?>index.php/pendencias/resolvidas" class="button_action">
+    <a href="<?php echo base_url();?>index.php/pendencias" class="button_action">
       <button type="button" class="btn btn-default btn-lg">
-        <span class="glyphicon glyphicon-list" aria-hidden="true"></span> Resolvidas
+        <span class="glyphicon glyphicon-list" aria-hidden="true"></span> Em aberto
       </button>
     </a>
   </p>
   <p id="titulo_usuario">Requisições</p><br>
   <div id="block_usuario">
     <?php foreach($data as $row){
-        if(!($row->situacao == 3 or $row->situacao_final > 0)){?>
+        if($row->situacao == 3 or $row->situacao_final > 0){?>
           <div class="row <?php if($row->situacao == 3 or $row->situacao_final > 0){ echo 'empreendimento_row_green'; }else{ echo 'empreendimento_row'; }?>">
             <div class="col-md-4"><?php echo $row->nome; ?></div>
             <div class="col-md-5">
