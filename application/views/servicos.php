@@ -1,24 +1,26 @@
 <div id="container-central">
 <div>
   <p id="titulo_usuario">Parceiros</p>
-  <select style="float:right; margin-right:20px;" id="filtra_area">
-    <option value="">Área de atuação</option>
-    <option value="todos">Todos</option>
-    <?php foreach ($areas as $row) { ?>
-      <option value="<?php echo urlencode(str_replace(' ','_',$row->atuacao));?>"><?php echo $row->atuacao;?></option>
-    <?php } ?>
-  </select><br>
+  <div style="float:right; padding-right:10px;">
+    <select class="form-control" id="filtra_area">
+      <option value="">Área de atuação</option>
+      <option value="todos">Todos</option>
+      <?php foreach ($areas as $row) { ?>
+        <option value="<?php echo urlencode(str_replace(' ','_',$row->atuacao));?>"><?php echo $row->atuacao;?></option>
+      <?php } ?>
+    </select>
+  </div><br><br>
   <div id="block_usuario">
     <?php
     foreach($data as $row){
     ?>
     <div class="row empreendimento_row">
-      <div class="col-md-4"><?php echo $row->nome;?><br>
+      <div class="col-md-8"><?php echo $row->nome;?><br>
       <?php echo $row->empresa; ?><br>
       Área: <?php echo $row->atuacao; ?><br>
       <?php echo $row->telefone; ?><br>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-2">
       <!--  <div class="selo_gamification_pequeno">Empresa<br>Consciente</div> -->
       &nbsp;
       </div>
