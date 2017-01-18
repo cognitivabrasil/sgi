@@ -21,10 +21,16 @@ class Pendencias extends CI_Controller {
       $dados = $query->result();
       $count=0;
       foreach ($dados as $row) {
-        $queryEmp = $this->pendencias_model->selectEmpreendimento($row->id_usuario);
         $dados[$count]->nome_empresa = "Sem vínculo";
+        $queryEmp = $this->pendencias_model->selectEmpreendimento($row->id_usuario);
         if(count($queryEmp->result())>0){
-          $dados[$count]->nome_empresa = $queryEmp->result()[0]->nome;
+          if($queryEmp->result()[0]->nome == 'CEI'){
+            $this->load->model('empreendimentos_model');
+            $queryUserEmp = $this->empreendimentos_model->select($dados[$count]->empresa);
+            $dados[$count]->nome_empresa =$queryUserEmp->result()[0]->nome;
+          }else{
+            $dados[$count]->nome_empresa = $queryEmp->result()[0]->nome;
+          }
         }
 
         $dados[$count]->situacao_final = $this->pendencias_model->verifica_resolvida($row->id);
@@ -52,10 +58,16 @@ class Pendencias extends CI_Controller {
       $dados = $query->result();
       $count=0;
       foreach ($dados as $row) {
-        $queryEmp = $this->pendencias_model->selectEmpreendimento($row->id_usuario);
         $dados[$count]->nome_empresa = "Sem vínculo";
+        $queryEmp = $this->pendencias_model->selectEmpreendimento($row->id_usuario);
         if(count($queryEmp->result())>0){
-          $dados[$count]->nome_empresa = $queryEmp->result()[0]->nome;
+          if($queryEmp->result()[0]->nome == 'CEI'){
+            $this->load->model('empreendimentos_model');
+            $queryUserEmp = $this->empreendimentos_model->select($dados[$count]->empresa);
+            $dados[$count]->nome_empresa =$queryUserEmp->result()[0]->nome;
+          }else{
+            $dados[$count]->nome_empresa = $queryEmp->result()[0]->nome;
+          }
         }
 
         $dados[$count]->situacao_final = $this->pendencias_model->verifica_resolvida($row->id);
@@ -76,7 +88,11 @@ class Pendencias extends CI_Controller {
 
       $this->load->view('header');
       $this->load->view('head_logado');
-      $this->load->view('pendencias_cadastra');
+
+      $this->load->model('empreendimentos_model');
+      $empQuery = $this->empreendimentos_model->select();
+
+      $this->load->view('pendencias_cadastra', array('empresas'=>$empQuery->result()));
       $this->load->view('footer');
     }
 
@@ -158,10 +174,16 @@ class Pendencias extends CI_Controller {
       $dados = $query->result();
       $count=0;
       foreach ($dados as $row) {
-        $queryEmp = $this->pendencias_model->selectEmpreendimento($row->id_usuario);
         $dados[$count]->nome_empresa = "Sem vínculo";
+        $queryEmp = $this->pendencias_model->selectEmpreendimento($row->id_usuario);
         if(count($queryEmp->result())>0){
-          $dados[$count]->nome_empresa = $queryEmp->result()[0]->nome;
+          if($queryEmp->result()[0]->nome == 'CEI'){
+            $this->load->model('empreendimentos_model');
+            $queryUserEmp = $this->empreendimentos_model->select($dados[$count]->empresa);
+            $dados[$count]->nome_empresa =$queryUserEmp->result()[0]->nome;
+          }else{
+            $dados[$count]->nome_empresa = $queryEmp->result()[0]->nome;
+          }
         }
 
         $dados[$count]->situacao_final = $this->pendencias_model->verifica_resolvida($row->id);
@@ -224,11 +246,18 @@ class Pendencias extends CI_Controller {
       $dados = $query->result();
       $count=0;
       foreach ($dados as $row) {
-        $queryEmp = $this->pendencias_model->selectEmpreendimento($row->id_usuario);
         $dados[$count]->nome_empresa = "Sem vínculo";
+        $queryEmp = $this->pendencias_model->selectEmpreendimento($row->id_usuario);
         if(count($queryEmp->result())>0){
-          $dados[$count]->nome_empresa = $queryEmp->result()[0]->nome_fantasia;
+          if($queryEmp->result()[0]->nome == 'CEI'){
+            $this->load->model('empreendimentos_model');
+            $queryUserEmp = $this->empreendimentos_model->select($dados[$count]->empresa);
+            $dados[$count]->nome_empresa =$queryUserEmp->result()[0]->nome;
+          }else{
+            $dados[$count]->nome_empresa = $queryEmp->result()[0]->nome;
+          }
         }
+        
         $dados[$count]->situacao_final = $this->pendencias_model->verifica_resolvida($row->id);
 
         $count++;

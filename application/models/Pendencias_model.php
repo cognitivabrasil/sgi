@@ -23,6 +23,9 @@ class Pendencias_model extends CI_Model {
       $query = $this->usuarios_model->selectBySession();
       $usuario = $query->result()[0];
 
+      if($this->session->userdata('id_acesso')==1){
+        $this->empresa = $_POST['empresa'];
+      }
 
       $this->id_usuario = $usuario->id_usuario;
       $this->db->insert('erp_pendencias',$this);
