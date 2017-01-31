@@ -71,4 +71,13 @@ class Reserva extends CI_Controller {
       echo $this->reserva_model->remove_locacao($id);
     }
 
+    function getSalasReservaveis(){
+      $this->load->model('salas_model');
+
+      $query = $this->salas_model->selectSalasDisponiveis();
+
+      echo json_encode($query->result());
+
+    }
+
 }

@@ -8,6 +8,9 @@
           <span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> Royalties pagos
         </button>
       </a>
+      <form method="post" action="faturamento/uploadxml" id="uploadform" enctype="multipart/form-data">
+        <label style="float:right; margin-right:40px;">Upload xml: <input type="file" name="uploadxml[]" onchange="uploadXml();"></label>
+      </form>
       <form method="post" action="faturamento/salvaPrevisao" id="faturamentoForm">
         <input type="hidden" value="<?php echo $id_empreendimento;?>" name="id_empreendimento" id="id_empreendimento">
         <div id="faturamento_prev">

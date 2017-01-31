@@ -29,6 +29,47 @@ class Extras extends CI_Controller {
       print_r($lines);
     }
 
+    function import_patrimonios() {
+      $file = fopen(base_url()."uploads/patrimonio.txt", "r");
+      $count = 0;
+      $patData = [];
+      $patUnicData = [];
+      $total = 0;
+      while (($emapData = fgets($file, 10000)) !== FALSE)
+      {
+         if($count > 0){
+           $aux = explode(':',$emapData);
+           if(isset($aux[0])){
+             if($aux[0]=='Descrição'){
+               $aux = explode(' - ',$emapData);
+               $patUnicData[$count] = $aux[1];
+               $count=2;
+             }
+             if($aux[0]=='Características'){
+               $aux = explode('Características:',$emapData);
+               $patUnicData[$count] = $aux[1];
+               array_push($patData, $patUnicData);
+               $count=0;
+             }
+           }
+         }else{
+           if($count==0){
+             $aux = explode(' ',$emapData);
+             if(isset($aux[1]) && $aux[0]!="Emissão:"){
+               $aux2 = explode('/',$aux[1]);
+               if(isset($aux2[2])){
+                 $patUnicData[$count] = $aux[0];
+                 $count=1;
+               }
+             }
+           }
+         }
+      }
+      fclose($file);
+      print_r($patData);
+
+    }
+
     function visualiza($id=0) {
       $this->load->model('usuarios_model');
       $this->usuarios_model->verifica_login();

@@ -100,13 +100,25 @@ function salvaNota(){
      });
    }
   });
-  /*$.post('../salvaNota',$('#notasform').serialize(),function(data){
-    console.log(data);
-    $("#autosave").fadeTo(1000, 200).slideUp(200, function(){
-        $("#autosave").hide();
-    });
-  });*/
 }
+
+function uploadXml(){
+  $.ajax({
+   url: "../uploadxml",
+   type: "POST",
+   data: new FormData($('#uploadform')[0]),
+   contentType: false,
+   cache: false,
+   processData:false,
+   success: function(data) {
+     console.log(data);
+     $("#autosave").fadeTo(1000, 200).slideUp(200, function(){
+         $("#autosave").hide();
+     });
+   }
+  });
+}
+
 
 function salvaContador(){
   $.post('../salvaContador', {'contador': $('#contador').val(), 'id_empreendimento': $('#id_empreendimento').val()},function(data){

@@ -94,6 +94,28 @@ class Faturamento extends CI_Controller {
 	    $this->faturamento_model->salvaNota();
     }
 
+    function uploadxml() {
+      $this->load->library('unzip');
+      $dezip = $this->unzip->extract($_FILES['uploadxml']['tmp_name'][0]);
+      foreach ($dezip as $file_by_file) {
+        if($xml_content = simplexml_load_file($file_by_file)){
+            if(isset($xml_content->NFe)){
+              $produto = $xml_content->NFe->infNFe;
+              $numero = $produto->ide->nNF;
+              $emissao = $produto->ide->dhEmi;
+              $valor = $produto->total->ICMSTot->vProd;
+              echo 'Numero: '.$numero.' Emissao: '.$emissao.' Valor: '.$valor;
+            }else if(isset($xml_content->Nfse)){
+              $servico = $xml_content->Nfse->InfNfse;
+              $numero = $servico->Numero;
+              $emissao = $servico->DataEmissao;
+              $valor = $servico->Servico->Valores->ValorLiquidoNfse;
+              echo 'Numero: '.$numero.' Emissao: '.$emissao.' Valor: '.$valor;
+            }
+        }
+      }
+    }
+
     function salvaRoyalt() {
       $this->load->model('faturamento_model');
 	    $this->faturamento_model->salvaRoyalt();
