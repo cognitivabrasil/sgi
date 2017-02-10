@@ -80,7 +80,7 @@ class Salas extends CI_Controller {
     function save() {
       $this->load->model('usuarios_model');
       $this->usuarios_model->verifica_login();
-      
+
       $this->load->model('salas_model');
 	    $this->salas_model->save();
 
@@ -92,5 +92,15 @@ class Salas extends CI_Controller {
 
       $this->load->view('salas', array('data'=>$query->result()));
       $this->load->view('footer');
+    }
+
+    function getSalas() {
+
+      header('Access-Control-Allow-Origin: *');
+
+      $this->load->model('salas_model');
+      $query = $this->salas_model->select();
+
+      echo json_encode($query->result());
     }
 }
