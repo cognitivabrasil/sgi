@@ -59,6 +59,33 @@ class Patrimonios_model extends CI_Model {
 
     }
 
+    function atribuirPatrimonioApp($pat,$sala) {
+      $query = $this->db->query('select erp_patrimonios.id from erp_patrimonio_sala
+      INNER JOIN erp_salas on erp_salas.id = erp_patrimonio_sala.id_sala
+      INNER JOIN erp_patrimonios on erp_patrimonio_sala.id_patrimonio = erp_patrimonios.id
+      where erp_patrimonios.nrpatrimonio = '.$pat);
+
+      $dados = $query->result();
+
+      if(count($dados)>0){
+
+        $this->id_patrimonio = $dados[0]->id;
+        $this->id_sala = $sala;
+        $this->data_atribuicao = date('Y-m-d');
+        $this->db->where('id_patrimonio',$dados[0]->id);
+        $this->db->update('erp_patrimonio_sala',$this);
+
+      }else{
+        $query = $this->db->query('select * from erp_patrimonios
+        where erp_patrimonios.nrpatrimonio = '.$pat);
+        $this->id_patrimonio = $query->result()[0]->id;
+        $this->id_sala = $sala;
+        $this->data_atribuicao = date('Y-m-d');
+        $this->db->insert('erp_patrimonio_sala',$this);
+      }
+
+    }
+
     function select() {
         $query = $this->db->query('Select * from erp_patrimonios');
 

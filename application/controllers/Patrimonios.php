@@ -120,29 +120,6 @@ class Patrimonios extends CI_Controller {
       $this->load->view('footer');
     }
 
-    function getPtNr($var){
-
-      header('Access-Control-Allow-Origin: *');
-
-      $this->load->model('patrimonios_model');
-      $query = $this->patrimonios_model->select_relatorio('nr',$var);
-
-      $dados = $query->result();
-      $count=0;
-      foreach ($dados as $row) {
-        $queryIn = $this->patrimonios_model->selectSala($row->id);
-        if(count($queryIn->result())>0){
-          $dados[$count]->sala = $queryIn->result()[0];
-          $dados[$count]->sala->data_atribuicao = date("d/m/Y", strtotime($dados[$count]->sala->data_atribuicao));
-        }
-        $count++;
-      }
-
-      echo json_encode($dados);
-
-    }
-
-
     function visualiza($id) {
       $this->load->model('usuarios_model');
       $this->usuarios_model->verifica_login();
@@ -292,5 +269,38 @@ class Patrimonios extends CI_Controller {
     function remove($id) {
       $this->load->model('patrimonios_model');
       echo $this->patrimonios_model->remove($id);
+    }
+
+    function getPtNr($var){
+
+      header('Access-Control-Allow-Origin: *');
+
+      $this->load->model('patrimonios_model');
+      $query = $this->patrimonios_model->select_relatorio('nr',$var);
+
+      $dados = $query->result();
+      $count=0;
+      foreach ($dados as $row) {
+        $queryIn = $this->patrimonios_model->selectSala($row->id);
+        if(count($queryIn->result())>0){
+          $dados[$count]->sala = $queryIn->result()[0];
+          $dados[$count]->sala->data_atribuicao = date("d/m/Y", strtotime($dados[$count]->sala->data_atribuicao));
+        }
+        $count++;
+      }
+
+      echo json_encode($dados);
+
+    }
+
+    function atribuiApp($pat,$sala) {
+
+      header('Access-Control-Allow-Origin: *');
+
+      $this->load->model('patrimonios_model');
+	    $this->patrimonios_model->atribuirPatrimonioApp($pat,$sala);
+
+      echo json_encode('ok');
+
     }
 }
