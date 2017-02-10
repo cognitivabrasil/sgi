@@ -10,7 +10,8 @@ class Extras extends CI_Controller {
 
     function index() {
       echo "Extras";
-      echo "<br><a href='/erpcei/index.php/extras/save_consultores'>ler csv consultores</a>";
+      echo "<br><a href='/erpcei/index.php/extras/save_consultores'>ler csv consultores</a><br>";
+      echo "<br><a href='/erpcei/index.php/extras/import_patrimonios'>ler pdf patrimonios</a>";
     }
 
     function save_consultores() {
@@ -66,7 +67,12 @@ class Extras extends CI_Controller {
          }
       }
       fclose($file);
-      print_r($patData);
+
+      $this->load->model('patrimonios_model');
+
+      foreach ($patData as $row) {          
+          $this->patrimonios_model->insert_extra($row[0],$row[1],$row[2]);
+      }
 
     }
 

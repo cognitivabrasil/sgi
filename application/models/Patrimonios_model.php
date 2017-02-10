@@ -13,6 +13,16 @@ class Patrimonios_model extends CI_Model {
 
     }
 
+    function insert_extra($nr,$nome,$desc) {
+      $this->nome = $nome;
+      $this->nrpatrimonio = $nr;
+      $this->responsavel = "CEI";
+      $this->descricao = $desc;
+
+      $this->db->insert('erp_patrimonios',$this);
+
+    }
+
     function save() {
       $this->nome = $_POST['nome'];
       $this->nrpatrimonio = $_POST['nr'];
