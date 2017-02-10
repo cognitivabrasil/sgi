@@ -72,6 +72,9 @@ class Reserva extends CI_Controller {
     }
 
     function getSalasReservaveis(){
+
+      header('Access-Control-Allow-Origin: *');
+
       $this->load->model('salas_model');
 
       $query = $this->salas_model->selectSalasDisponiveis();
