@@ -116,7 +116,7 @@ class Patrimonios_model extends CI_Model {
             $query = $this->db->query('Select * from erp_patrimonios where responsavel like "%'.$var.'%"');
             break;
           case 'nr':
-            $query = $this->db->query('Select * from erp_patrimonios where nrpatrimonio like "%'.$var.'%"');
+            $query = $this->db->query('Select * from erp_patrimonios where nrpatrimonio = "'.$var.'"');
             break;
         }
 
