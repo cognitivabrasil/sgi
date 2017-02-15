@@ -293,6 +293,13 @@ class Patrimonios extends CI_Controller {
 
     }
 
+    function insertApp() {
+
+      $this->load->model('patrimonios_model');
+	    $this->patrimonios_model->insert();
+
+    }
+
     function atribuiApp($pat,$sala) {
 
       header('Access-Control-Allow-Origin: *');
