@@ -17,11 +17,14 @@
         case 3:
           echo "Parque";
           break;
+        case 4:
+          echo "Outros";
+          break;
       }?><br>sala 107<br><?php echo $row->nr;?> colaborador(es)</div>
       <div class="col-md-5">
         <!--<div class="selo_gamification_pequeno">Empresa<br>Consciente</div> -->
       </div>
-      <div class="col-md-3">        
+      <div class="col-md-3">
         <div class="visualizar_dados" style="float:right; padding-top:10px;">
           <a href="<?php echo base_url();?>index.php/colaboradores/lista/<?php echo $row->id;?>" class="button_action">
             <button type="button" class="btn btn-default btn-lg">

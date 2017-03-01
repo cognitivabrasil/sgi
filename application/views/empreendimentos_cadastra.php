@@ -10,9 +10,10 @@
               <option value="1">Pré-Incubada</option>
               <option value="2">Incubada</option>
               <option value="3">Parque</option>
+              <option value="4">Outros</option>
             </select>
             <input type="text" name="cpfcnpj" placeholder="CPF / CNPJ">
-            <input type="text" name="responsavel" placeholder="Nome responsável">          
+            <input type="text" name="responsavel" placeholder="Nome responsável">
 
           <button type="submit" class="btn btn-default btn-lg">
             <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Salvar

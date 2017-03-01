@@ -12,6 +12,7 @@
               <option value="1" <?php if($data->vinculo == 1) echo "selected";?> >Pré-Incubada</option>
               <option value="2" <?php if($data->vinculo == 2) echo "selected";?> >Incubada</option>
               <option value="3" <?php if($data->vinculo == 3) echo "selected";?> >Parque</option>
+              <option value="3" <?php if($data->vinculo == 4) echo "selected";?> >Outros</option>
             </select>
             <input type="text" name="site" placeholder="Site" value="<?php echo $data->site;?>" >
             <input type="text" name="cpfcnpj" placeholder="CPF / CNPJ" value="<?php echo $data->cpf_cnpj;?>" >

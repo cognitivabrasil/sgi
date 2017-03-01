@@ -20,6 +20,9 @@
         case 3:
           echo "Parque";
           break;
+        case 4:
+          echo "Outros";
+          break;
       }?><br><?php echo $data[0]->nr;?> colaborador(es)</div>
       <div class="col-md-4">
       <!--  <div class="selo_gamification_pequeno">Empresa<br>Consciente</div> -->

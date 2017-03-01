@@ -18,6 +18,9 @@
         case 3:
           echo "Parque";
           break;
+        case 4:
+          echo "Outros";
+          break;
       }?><br><?php echo $row->nr;?> colaborador(es)
       </div>
       <div class="col-md-5">
