@@ -15,7 +15,7 @@
       </button>
     </a>
   </div><br><br>
-  <div id="block_usuario">
+  <div id="block_usuario" class="table-responsive">
     <table class="table table-bordered table-hover">
     <?php
     $hora = 8;
