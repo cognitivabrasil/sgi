@@ -61,6 +61,8 @@ class Reserva_model extends CI_Model {
           }
 
         }
+        $semana_full = [date("Y-m-d", strtotime("{$year}-W{$week}-1")),date("Y-m-d", strtotime("{$year}-W{$week}-2")),
+        date("Y-m-d", strtotime("{$year}-W{$week}-3")),date("Y-m-d", strtotime("{$year}-W{$week}-4")),date("Y-m-d", strtotime("{$year}-W{$week}-5"))];
         $from = date("Y-m-d", strtotime("{$year}-W{$week}-1"));
         $to = date("Y-m-d", strtotime("{$year}-W{$week}-5"));
         $this->db->where('dia >=', $from);
@@ -79,7 +81,7 @@ class Reserva_model extends CI_Model {
         $from = date("d/m/Y", strtotime("{$year}-W{$week}-1"));
         $to = date("d/m/Y", strtotime("{$year}-W{$week}-5"));
 
-        return array('data'=>$data,'from'=>$from,'to'=>$to);
+        return array('data'=>$data,'from'=>$from,'to'=>$to, 'semana_full'=>$semana_full);
     }
 
 }

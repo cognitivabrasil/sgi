@@ -49,8 +49,8 @@
                 }
                 $msg = "<td>".$hora.":".$min." - ".$prox_hr."</td>";
               }else{
-                $msg103 = "<td>&nbsp;</td>";
-                $msg111 = "<td>&nbsp;</td>";
+                $msg103 = "<td data-toggle='modal' data-target='#myModal' data-sala='2' data-hora='".$hora."_".$min."' data-dia='".$semana_full[$j-1]."'>&nbsp</td>";
+                $msg111 = "<td data-toggle='modal' data-target='#myModal' data-sala='6' data-hora='".$hora."_".$min."' data-dia='".$semana_full[$j-1]."'>&nbsp;</td>";
                 foreach($data as $reservas){
                   if($reservas->dayweek == $j && $reservas->horario == $hora."_".$min && $reservas->id_sala == 2){
                     $msg103 = "<td><span data-toggle='tooltip' data-placement='top' title='Reservado por: ".$reservas->usuario_data."'>".$reservas->titulo;
@@ -84,5 +84,52 @@
     </table>
   </div>
 </div>
+
+<!-- modal para reserva de salas -->
+<div class="modal fade" tabindex="-1" role="dialog" id="myModal" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+
+    <div class="modal-content">
+      <form method="post" action="<?php echo base_url();?>index.php/reserva/efetua_reserva_semana">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Reservar Sala</h4>
+        </div>
+        <div class="modal-body">
+            <input type="hidden" value="<?php echo $proxima_semana-1;?>" name="semana">
+            <input type="hidden" value="" name="id_sala" class="id-sala">
+            <div style="width:50%; float:right; position:relative;" class="data-titulo-reserva">
+              <input type="date" name="data" data-date='{"startView": 2, "openOnMouseFocus": true}' placeholder="yyyy-mm-dd" class="id-data"><br><br>
+              <input type="text" name="titulo" placeholder="Título">
+            </div>
+            <select multiple size="4" style="height:140px;" name="horario[]" class="id-horario">
+              <?php
+              for($i=8,$j=1;$i<17;$j++){
+                $min="30";
+                $prox_hr = ($i+1).":00";
+                if(($j % 2) == 0){
+                  if($i==17){
+                    break;
+                  }
+                  $min = "00";
+                  $i++;
+                  $prox_hr = $i.":30";
+                }
+              ?>
+              <option value="<?php echo $i."_".$min;?>"><?php echo $i.":".$min." - ".$prox_hr;?></option>
+              <?php
+              }
+              ?>
+            </select>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Reservar</button>
+        </div>
+      </form>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- fechando modal de reserva de salas -->
+
 <!--Fechando container geral-->
 </div>

@@ -3,6 +3,17 @@ $(document).ready(function(){
   //Inicializando os tooltips
   $('[data-toggle="tooltip"]').tooltip();
 
+  $('#myModal').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget);
+    var sala = button.data('sala');
+    var hora = button.data('hora');
+    var dia = button.data('dia');
+    var modal = $(this);
+    modal.find('.id-sala').val(sala);
+    modal.find('.id-horario').val(hora);
+    modal.find('.id-data').val(dia);
+  });
+
   $('.deleta_agendamento').click(function(){
     if(confirm('Você deseja realmente excluir?')){
       $.get($(this).attr('href'),function(data){

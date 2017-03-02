@@ -46,6 +46,38 @@ class Reserva extends CI_Controller {
 
     }
 
+    function efetua_reserva_semana() {
+
+      $this->load->model('usuarios_model');
+      $this->usuarios_model->verifica_login();
+
+      $semana = $_POST['semana'];
+
+      $this->load->model('reserva_model');
+      $query = $this->reserva_model->efetuaReserva();
+
+      if($query){
+        $this->load->view('success');
+      }else{
+        $this->load->view('error');
+      }
+
+      $this->load->view('header');
+      $this->load->view('head_logado');
+
+      $this->load->model('reserva_model');
+      $query = $this->reserva_model->verificaReserva($semana);
+
+      $proxima_semana = $semana+1;
+      $semana_anterior = $semana-1;
+      $atual = $query['from']." - ".$query['to'];
+
+      $this->load->view('reserva_verifica', array('data'=>$query['data'],'proxima_semana'=>$proxima_semana,'semana_anterior'=>$semana_anterior,'atual'=>$atual,'semana_full'=>$query['semana_full']));
+
+      $this->load->view('footer');
+
+    }
+
     function verifica($semana=0) {
       $this->load->model('usuarios_model');
       $this->usuarios_model->verifica_login();
@@ -60,7 +92,7 @@ class Reserva extends CI_Controller {
       $semana_anterior = $semana-1;
       $atual = $query['from']." - ".$query['to'];
 
-      $this->load->view('reserva_verifica', array('data'=>$query['data'],'proxima_semana'=>$proxima_semana,'semana_anterior'=>$semana_anterior,'atual'=>$atual));
+      $this->load->view('reserva_verifica', array('data'=>$query['data'],'proxima_semana'=>$proxima_semana,'semana_anterior'=>$semana_anterior,'atual'=>$atual,'semana_full'=>$query['semana_full']));
 
       $this->load->view('footer');
 
