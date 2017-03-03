@@ -100,7 +100,7 @@
             <input type="hidden" value="" name="id_sala" class="id-sala">
             <div style="width:50%; float:right; position:relative;" class="data-titulo-reserva">
               <input type="date" name="data" data-date='{"startView": 2, "openOnMouseFocus": true}' placeholder="yyyy-mm-dd" class="id-data"><br><br>
-              <input type="text" name="titulo" placeholder="Título">
+              <input type="text" name="titulo" placeholder="Título">              
             </div>
             <select multiple size="4" style="height:140px;" name="horario[]" class="id-horario">
               <?php
