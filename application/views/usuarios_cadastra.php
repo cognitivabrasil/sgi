@@ -24,7 +24,8 @@
             <option value="0">Nível de acesso</option>
             <option value="1">Administrador</option>
             <option value="2">CEI</option>
-            <option value="3">Usuário</option>
+            <option value="3">Admin Empresa</option>
+            <option value="4">Usuário Empresa</option>
           </select>
           <input type="text" name="contato" placeholder="Contato">
           <button type="submit" class="btn btn-default btn-lg">

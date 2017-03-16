@@ -3,11 +3,14 @@
   <p id="titulo_usuario">Usuários</p>
   <div id="block_usuario">
     <?php
-    foreach($data as $row){ ?>
+    foreach($data as $row){?>
     <div class="row">
       <div class="col-md-3"><?php echo $row->nome; ?></div>
-      <div class="col-md-3"><?php echo $row->nome_empreendimento; ?></div>
-      <div class="col-md-3"><?php
+      <?php if($this->session->userdata('id_acesso') == 1){?>
+      <div class="col-md-2"><?php echo $row->username; ?></div>
+      <?php }?>
+      <div class="col-md-2"><?php echo $row->nome_empreendimento; ?></div>
+      <div class="col-md-2"><?php
       switch ($row->id_acesso) {
         case 1:
           echo "Administrador";
@@ -16,11 +19,14 @@
           echo "CEI";
           break;
         case 3:
-          echo "Usuário";
+          echo "Admin Empresa";
+          break;
+        case 4:
+          echo "Usuário Empresa";
           break;
       }
        ?></div>
-       <div class="col-md-3">
+       <div class="col-md-2">
          <?php
          if($this->session->userdata('id_acesso') == 1){
          ?>
