@@ -142,6 +142,52 @@ class Faturamento_model extends CI_Model {
 
     }
 
+    function salvaNotaXml($id_empreendimento,$numero,$emissao,$valor,$arquivo) {
+
+      $files = $_FILES;
+
+      $this->numero = $numero;
+      $this->data = $emissao;
+      $this->valor = $valor;
+
+      $this->arquivo_nota = "";
+      $arquivo_name = str_replace('/tmp/','',$arquivo);
+      echo "<br>".$arquivo."<br>";
+
+      if (copy($arquivo, '../../uploads/'+$arquivo_name)) {
+        echo "\o funfou o/";
+      } else {
+        echo "\o non funfou o/";
+      }
+
+      /*if ( ! $this->upload->do_upload()){
+  			$error = array('error' => $this->upload->display_errors());
+  			print_r($error);
+  		}else{
+  			$data = array('upload_nota' => $this->upload->data());
+        $this->arquivo_nota = $data['upload_nota']['full_path'];
+  		}
+      */
+
+      $this->id_empreendimento = $id_empreendimento;
+      /*if($numero!=''){
+        $query = $this->db->query("Select * from erp_faturamento_notas where id_empreendimento = ".$id_empreendimento." and numero = ".$numero);
+
+        $data = $query->result();
+
+        if(isset($data[0])){
+          if($this->arquivo_nota==""){
+            $this->arquivo_nota = $data[0]->arquivo_nota;
+          }
+          $this->db->where('id',$data[0]->id);
+          $this->db->update('erp_faturamento_notas',$this);
+        }else{
+          $this->db->insert('erp_faturamento_notas',$this);
+        }
+      }*/
+
+    }
+
     function salvaRoyalt() {
 
       $this->royalt = $_POST['royalt'];

@@ -95,6 +95,7 @@ class Faturamento extends CI_Controller {
     }
 
     function uploadxml() {
+      $this->load->model('faturamento_model');
       $this->load->library('unzip');
       $dezip = $this->unzip->extract($_FILES['uploadxml']['tmp_name'][0]);
       foreach ($dezip as $file_by_file) {
@@ -104,13 +105,17 @@ class Faturamento extends CI_Controller {
               $numero = $produto->ide->nNF;
               $emissao = $produto->ide->dhEmi;
               $valor = $produto->total->ICMSTot->vProd;
-              echo 'Numero: '.$numero.' Emissao: '.$emissao.' Valor: '.$valor;
+
+              $this->faturamento_model->salvaNotaXml($_POST['id_empreendimento_xml'],$numero,$emissao,$valor,$file_by_file);
+              echo 'Numero: '.$numero.' Emissao: '.$emissao.' Valor: '.$valor.' ID Empreendimento:'.$_POST['id_empreendimento_xml'];
             }else if(isset($xml_content->Nfse)){
               $servico = $xml_content->Nfse->InfNfse;
               $numero = $servico->Numero;
               $emissao = $servico->DataEmissao;
               $valor = $servico->Servico->Valores->ValorLiquidoNfse;
-              echo 'Numero: '.$numero.' Emissao: '.$emissao.' Valor: '.$valor;
+
+              $this->faturamento_model->salvaNotaXml($_POST['id_empreendimento_xml'],$numero,$emissao,$valor,$file_by_file);
+              echo 'Numero: '.$numero.' Emissao: '.$emissao.' Valor: '.$valor.' ID Empreendimento:'.$_POST['id_empreendimento_xml'];
             }
         }
       }

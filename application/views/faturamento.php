@@ -9,6 +9,7 @@
         </button>
       </a>
       <form method="post" action="faturamento/uploadxml" id="uploadform" enctype="multipart/form-data">
+        <input type="hidden" value="<?php echo $id_empreendimento;?>" name="id_empreendimento_xml">
         <label style="float:right; margin-right:40px;">Upload xml: <input type="file" name="uploadxml[]" onchange="uploadXml();"></label>
       </form>
       <form method="post" action="faturamento/salvaPrevisao" id="faturamentoForm">
