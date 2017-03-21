@@ -16,8 +16,9 @@ $(document).ready(function(){
 
   $('.deleta_agendamento').click(function(){
     if(confirm('Você deseja realmente excluir?')){
+      var pagina_atual = $(this).attr('rel')-1;
       $.get($(this).attr('href'),function(data){
-        window.location.replace('/gestaocei/index.php/reserva/verifica');
+        window.location.replace('/gestaocei/index.php/reserva/verifica/'+pagina_atual);
       });
     }
     return false;

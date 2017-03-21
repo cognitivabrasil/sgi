@@ -55,7 +55,7 @@
                   if($reservas->dayweek == $j && $reservas->horario == $hora."_".$min && $reservas->id_sala == 2){
                     $msg103 = "<td><span data-toggle='tooltip' data-placement='top' title='Reservado por: ".$reservas->usuario_data."'>".$reservas->titulo;
                     if($this->session->userdata('id_usuario') == $reservas->id_usuario){
-                      $msg103 .= "&nbsp;&nbsp;&nbsp;<a href='".base_url()."index.php/reserva/remove/".$reservas->id."' class='deleta_agendamento'><button type='button' class='btn btn-default btn-xs'>
+                      $msg103 .= "&nbsp;&nbsp;&nbsp;<a href='".base_url()."index.php/reserva/remove/".$reservas->id."' class='deleta_agendamento' rel='".$proxima_semana."' ><button type='button' class='btn btn-default btn-xs'>
                                     <span class='glyphicon glyphicon-remove' aria-hidden='true'></span>
                                   </button></a>";
                     }
@@ -64,7 +64,7 @@
                   if($reservas->dayweek == $j && $reservas->horario == $hora."_".$min && $reservas->id_sala == 6){
                     $msg111 = "<td><span data-toggle='tooltip' data-placement='top' title='Reservado por: ".$reservas->usuario_data."'>".$reservas->titulo;
                     if($this->session->userdata('id_usuario') == $reservas->id_usuario){
-                      $msg111 .= "&nbsp;&nbsp;&nbsp;<a href='".base_url()."index.php/reserva/remove/".$reservas->id."' class='deleta_agendamento'><button type='button' class='btn btn-default btn-xs'>
+                      $msg111 .= "&nbsp;&nbsp;&nbsp;<a href='".base_url()."index.php/reserva/remove/".$reservas->id."' class='deleta_agendamento' rel='".$proxima_semana."' ><button type='button' class='btn btn-default btn-xs'>
                                     <span class='glyphicon glyphicon-remove' aria-hidden='true'></span>
                                   </button></a>";
                     }
@@ -100,7 +100,7 @@
             <input type="hidden" value="" name="id_sala" class="id-sala">
             <div style="width:50%; float:right; position:relative;" class="data-titulo-reserva">
               <input type="date" name="data" data-date='{"startView": 2, "openOnMouseFocus": true}' placeholder="yyyy-mm-dd" class="id-data"><br><br>
-              <input type="text" name="titulo" placeholder="Título">              
+              <input type="text" name="titulo" placeholder="Título">
             </div>
             <select multiple size="4" style="height:140px;" name="horario[]" class="id-horario">
               <?php
