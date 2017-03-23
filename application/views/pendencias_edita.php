@@ -10,7 +10,8 @@
             <option value="0" <?php if($data->situacao==0) echo "selected"; ?> >Situação</option>
             <option value="1" <?php if($data->situacao==1) echo "selected"; ?> >enviada</option>
             <option value="2" <?php if($data->situacao==2) echo "selected"; ?> >em andamento</option>
-            <option value="2" <?php if($data->situacao==3) echo "selected"; ?> >resolvida</option>
+            <option value="3" <?php if($data->situacao==3) echo "selected"; ?> >resolvida</option>
+            <option value="4" <?php if($data->situacao==4) echo "selected"; ?> >cancelada</option>
           </select>
           <textarea name="descricao" placeholder="Descrição" style="width:70%; height:150px;"><?php echo $data->descricao; ?></textarea>
           <button type="submit" class="btn btn-default btn-lg">

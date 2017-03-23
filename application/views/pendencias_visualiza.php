@@ -17,6 +17,9 @@
             case 3:
               echo "resolvida";
               break;
+            case 4:
+              echo "cancelada";
+              break;
         } ?></p>
         <p>Pendência: <?php echo $data->descricao; ?></p>
         <p>Empresa: <?php echo $data->nome_empresa; ?></p>
@@ -24,7 +27,7 @@
         <br><br>
         <div id="block_usuario">
           <?php foreach ($atualizacoes as $row) { ?>
-          <div <?php if($row->situacao == 3) echo "style='background:rgba(112,219,147,0.2);'"?>>
+          <div <?php if($row->situacao == 3 or $row->situacao == 4) echo "style='background:rgba(112,219,147,0.2);'"?>>
             <p>Em: <?php echo date("d/m/Y", strtotime($row->data_modificada));?></p>
             <p><?php echo $row->descricao; ?></p>
             <p>Situação: <?php switch($row->situacao){
@@ -39,6 +42,9 @@
                   break;
                 case 3:
                   echo "resolvida";
+                  break;
+                case 4:
+                  echo "cancelada";
                   break;
             } ?></p>
           </div>

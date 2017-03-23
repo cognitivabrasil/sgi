@@ -54,7 +54,7 @@ class Pendencias_model extends CI_Model {
 
     function verifica_resolvida($id){
 
-      $query = $this->db->query('Select count(*) as count from erp_pendencia_dados where erp_pendencia_dados.situacao=3 and erp_pendencia_dados.id_pendencia = '.$id);
+      $query = $this->db->query('Select count(*) as count from erp_pendencia_dados where (erp_pendencia_dados.situacao=3 or erp_pendencia_dados.situacao=4) and erp_pendencia_dados.id_pendencia = '.$id);
 
       return $query->result()[0]->count;
     }

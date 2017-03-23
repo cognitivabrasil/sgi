@@ -17,6 +17,7 @@
             <option value="1">enviada</option>
             <option value="2">em andamento</option>
             <option value="3">resolvida</option>
+            <option value="4">cancelada</option>
           </select>
           <textarea name="descricao" placeholder="Descrição" style="width:70%; height:150px;"></textarea>
           <button type="submit" class="btn btn-default btn-lg">
