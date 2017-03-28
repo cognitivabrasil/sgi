@@ -8,6 +8,7 @@ class Salas_model extends CI_Model {
       $this->funcao = $_POST['funcao'];
       $this->descricao = $_POST['descricao'];
       $this->disponivel = $_POST['disponivel'];
+      $this->travada_cei = $_POST['travada_cei'];
 
       $this->db->insert('erp_salas',$this);
 
@@ -18,6 +19,7 @@ class Salas_model extends CI_Model {
       $this->funcao = $_POST['funcao'];
       $this->descricao = $_POST['descricao'];
       $this->disponivel = $_POST['disponivel'];
+      $this->travada_cei = $_POST['travada_cei'];
 
       $this->db->where('id', $_POST['id']);
 

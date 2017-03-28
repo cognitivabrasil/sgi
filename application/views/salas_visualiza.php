@@ -12,6 +12,12 @@
     }else{
       echo "Sim";
     }
+    echo "<br><b>Locável apenas pelo CEI?:</b> ";
+    if($data->travada_cei == 0){
+      echo "Não";
+    }else{
+      echo "Sim";
+    }
     ?><br><br>
     <a href="<?php echo base_url();?>index.php/salas/edita/<?php echo $data->id;?>" class="button_action">
     <button type="button" class="btn btn-default btn-lg">

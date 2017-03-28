@@ -1,4 +1,4 @@
-<div id="container-central">
+<div id="container-central" style="width:90%; margin:0 auto;">
   <div id="topo_principal">
     <p>Reservas marcadas</p>
   </div>
@@ -15,7 +15,7 @@
       </button>
     </a>
   </div><br><br>
-  <div id="block_usuario" class="table-responsive">
+  <div id="block_usuario" class="table-responsive" style="margin: 0 auto;">
     <table class="table table-bordered table-hover">
     <?php
     $hora = 8;
@@ -32,11 +32,19 @@
             if($j==0){
               $msg = "<td>&nbsp;</td>";
             }else{
-              $msg = "<td style='text-align:center;'>103</td><td style='text-align:center;'>111</td>";
+              if($this->session->userdata('id_acesso') == 1){
+                $msg = "<td style='text-align:center;'>102</td><td style='text-align:center;'>103</td><td style='text-align:center;'>111</td>";
+              }else{
+                $msg = "<td style='text-align:center;'>103</td><td style='text-align:center;'>111</td>";
+              }
             }
           }else{
             if($i==0){
-              $msg = "<td colspan='2' style='text-align:center;'>".$dias_semana[$j-1]."</td>";
+              if($this->session->userdata('id_acesso') == 1){
+                $msg = "<td colspan='3' style='text-align:center;'>".$dias_semana[$j-1]."</td>";
+              }else{
+                $msg = "<td colspan='2' style='text-align:center;'>".$dias_semana[$j-1]."</td>";
+              }
             }else{
               if($j==0){
                 if(($i % 2) == 0){
@@ -49,6 +57,9 @@
                 }
                 $msg = "<td>".$hora.":".$min." - ".$prox_hr."</td>";
               }else{
+                if($this->session->userdata('id_acesso') == 1){
+                  $msg102 = "<td data-toggle='modal' data-target='#myModal' data-sala='23' data-hora='".$hora."_".$min."' data-dia='".$semana_full[$j-1]."'>&nbsp</td>";
+                }
                 $msg103 = "<td data-toggle='modal' data-target='#myModal' data-sala='2' data-hora='".$hora."_".$min."' data-dia='".$semana_full[$j-1]."'>&nbsp</td>";
                 $msg111 = "<td data-toggle='modal' data-target='#myModal' data-sala='6' data-hora='".$hora."_".$min."' data-dia='".$semana_full[$j-1]."'>&nbsp;</td>";
                 foreach($data as $reservas){
@@ -70,8 +81,17 @@
                     }
                     $msg111 .= "</span></td>";
                   }
+                  if($reservas->dayweek == $j && $reservas->horario == $hora."_".$min && $reservas->id_sala == 23){
+                    $msg102 = "<td><span data-toggle='tooltip' data-placement='top' title='Reservado por: ".$reservas->usuario_data."'>".$reservas->titulo;
+                    if($this->session->userdata('id_usuario') == $reservas->id_usuario){
+                      $msg102 .= "&nbsp;&nbsp;&nbsp;<a href='".base_url()."index.php/reserva/remove/".$reservas->id."' class='deleta_agendamento' rel='".$proxima_semana."' ><button type='button' class='btn btn-default btn-xs'>
+                                    <span class='glyphicon glyphicon-remove' aria-hidden='true'></span>
+                                  </button></a>";
+                    }
+                    $msg102 .= "</span></td>";
+                  }
                 }
-                $msg = $msg103.$msg111;
+                $msg = $msg102.$msg103.$msg111;
               }
             }
           }
