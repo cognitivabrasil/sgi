@@ -1,4 +1,4 @@
-<div id="container-central" style="width:90%; margin:0 auto;">
+<div id="container-central" style="width:100%; margin:0 auto;">
   <div id="topo_principal">
     <p>Reservas marcadas</p>
   </div>
@@ -91,7 +91,11 @@
                     $msg102 .= "</span></td>";
                   }
                 }
-                $msg = $msg102.$msg103.$msg111;
+                if($this->session->userdata('id_acesso') == 1){
+                  $msg = $msg102.$msg103.$msg111;
+                }else{
+                  $msg = $msg103.$msg111;
+                }
               }
             }
           }
