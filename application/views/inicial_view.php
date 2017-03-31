@@ -37,5 +37,20 @@
     </div>
   </div>
 </div>
+<div id="timeline">
+  <h1>Novidades do sistema</h1>
+  <div>
+    <h3><span class="data-nov">31/03/2017</span> - Timeline de novidades</h3>
+    Você poderá ver neste espaço à partir do dia 31/03 todas as novidades que o sistema de gestão está disponibilizando para você.
+  </div>
+  <div>
+    <h3><span class="data-nov">31/03/2017</span> - Reserva de salas</h3>
+    Agora é possível reservar salas clicando no menu de verificar reservas e após, clicando na célula correspondente ao horário que deseja reservar. Ao clicar na célula disponível, o sistema irá apresentar uma tela para o usuário escrever o título da reserva e, escolher mais horários além do que foi selecionado.
+  </div>
+  <div>
+    <h3><span class="data-nov">20/03/2017</span> - Novo tipo de usuário</h3>
+    Foi criado um novo tipo de usuário no sistem de gestão focado nos funcionários das empresas. Mais informações podem ser obtidas no e-mail enviado para os diretores das empresas ou diretamente na administração do CEI.
+  </div>
+</div>
 <!--Fechando container geral-->
 </div>

@@ -1,6 +1,29 @@
 /*css particular*/
 
 /* CSS GERAL*/
+#timeline{
+    border:1px solid;
+    width: 70%;
+    margin-left: 14%;
+    height: 200px;
+    padding: 6px;
+    border-radius: 20px;
+    margin-top: 10px;
+    overflow-y: scroll;
+}
+#timeline h1{
+  font-size: 20px;
+  margin-top: 5px;
+  text-align: center;
+  border-bottom: 1px solid #CCCCCC;
+}
+#timeline div{
+  padding: 10px;
+  padding-top: 0px;
+}
+#timeline div h3{
+  font-size: 18px;
+}
 #block_usuario{
   border: none !important;
 }
@@ -55,6 +78,7 @@
   border: 1px solid #000;
   width: 70%;
   margin-left: 14%;
+  border-radius: 20px;
 }
 #topo-logado p{
   font-size: 25px;
