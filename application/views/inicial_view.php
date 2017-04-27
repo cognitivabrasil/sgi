@@ -40,6 +40,10 @@
 <div id="timeline">
   <h1>Novidades do sistema</h1>
   <div>
+    <h3><span class="data-nov">27/04/2017</span> - Upload de Notas Fiscais</h3>
+    O administrador da empresa agora tem a possibilidade de fazer o upload de uma ou mais notas fiscais via xml dentro do sistema do CEI. Para isso, é necessário criar um arquivo do tipo .zip contendo a nota ou as várias notas que deseja enviar para o sistema e logo após fazer o upload do mesmo no menu faturamento.
+  </div>
+  <div>
     <h3><span class="data-nov">31/03/2017</span> - Timeline de novidades</h3>
     Você poderá ver neste espaço à partir do dia 31/03 todas as novidades que o sistema de gestão está disponibilizando para você.
   </div>
