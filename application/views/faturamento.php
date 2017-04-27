@@ -15,15 +15,21 @@
       <form method="post" action="faturamento/salvaPrevisao" id="faturamentoForm">
         <input type="hidden" value="<?php echo $id_empreendimento;?>" name="id_empreendimento" id="id_empreendimento">
         <div id="faturamento_prev">
-          <button type="button" class="btn btn-default btn-xs" id="add_ano" style="margin-top:7px;">
-            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-          </button>
-          <?php if(count($faturamento)==0) { ?>
-          <input type="text" name="ano[]" placeholder="Ano" style="float:left;" onblur="salvaPrevisao();"><input type="text" name="previsao[]" placeholder="Previsão de faturamento" style="float:left;" onblur="salvaPrevisao();">
-          <?php } ?>
-          <?php foreach ($faturamento as $row) { ?>
-          <input type="text" name="ano[]" placeholder="Ano" style="float:left;" onblur="salvaPrevisao();" value="<?php echo $row->ano;?>"><input type="text" name="previsao[]" placeholder="Previsão de faturamento" style="float:left;" onblur="salvaPrevisao();" value="<?php echo $row->previsao;?>">
-          <?php } ?>
+            <div style="position:relative; width:34%;">
+              <button type="button" class="btn btn-default btn-xs" id="add_ano" style="position:absolute; right:0;">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+              </button>
+            </div>
+            <?php if(count($faturamento)==0) { ?>
+            <divstyle="width:40%; border-bottom: 1px dashed #CCCCCC;">
+              <input type="text" name="ano[]" placeholder="Ano" style="float:left;" onblur="salvaPrevisao();"><input type="text" name="previsao[]" placeholder="Previsão de faturamento" style="float:left;" onblur="salvaPrevisao();">
+            </div>
+            <?php } ?>
+            <?php foreach ($faturamento as $row) { ?>
+            <div style="width:40%; border-bottom: 1px dashed #CCCCCC;">
+              <input type="text" name="ano[]" placeholder="Ano" onblur="salvaPrevisao();" value="<?php echo $row->ano;?>"><input type="text" name="previsao[]" placeholder="Previsão de faturamento" onblur="salvaPrevisao();" value="<?php echo $row->previsao;?>">
+            </div>
+            <?php } ?>
         </div>
         <input type="text" name="contador" placeholder="Contador responsável" value="<?php echo $contador->contador;?>" style="clear:both; float:left;" id="contador" onblur="salvaContador()">
       </form>

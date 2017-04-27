@@ -45,7 +45,7 @@ $(document).ready(function(){
 
   /*Faturamento*/
   $('#add_ano').click(function(){
-    $('#faturamento_prev').append('<div style="clear:both;"><input type="text" name="ano[]" placeholder="Ano" style="float:left;" onblur="salvaPrevisao();"><input type="text" name="previsao[]" placeholder="Previsão de faturamento" style="float:left;" onblur="salvaPrevisao();"></div>');
+    $('#faturamento_prev').append('<div style="clear:both; width:40%; border-bottom: 1px dashed #CCCCCC;"><input type="text" name="ano[]" placeholder="Ano" style="float:left;" onblur="salvaPrevisao();"><input type="text" name="previsao[]" placeholder="Previsão de faturamento" style="float:left;" onblur="salvaPrevisao();"></div>');
   });
 
   $('#add_nota').click(function(){

@@ -107,7 +107,7 @@ class Faturamento extends CI_Controller {
               $valor = $produto->total->ICMSTot->vProd;
 
               $this->faturamento_model->salvaNotaXml($_POST['id_empreendimento_xml'],$numero,$emissao,$valor,$file_by_file);
-              echo 'Numero: '.$numero.' Emissao: '.$emissao.' Valor: '.$valor.' ID Empreendimento:'.$_POST['id_empreendimento_xml'];
+              #echo 'Numero: '.$numero.' Emissao: '.$emissao.' Valor: '.$valor.' ID Empreendimento:'.$_POST['id_empreendimento_xml'];
             }else if(isset($xml_content->Nfse)){
               $servico = $xml_content->Nfse->InfNfse;
               $numero = $servico->Numero;
@@ -115,7 +115,7 @@ class Faturamento extends CI_Controller {
               $valor = $servico->Servico->Valores->ValorLiquidoNfse;
 
               $this->faturamento_model->salvaNotaXml($_POST['id_empreendimento_xml'],$numero,$emissao,$valor,$file_by_file);
-              echo 'Numero: '.$numero.' Emissao: '.$emissao.' Valor: '.$valor.' ID Empreendimento:'.$_POST['id_empreendimento_xml'];
+              #echo 'Numero: '.$numero.' Emissao: '.$emissao.' Valor: '.$valor.' ID Empreendimento:'.$_POST['id_empreendimento_xml'];
             }
         }
       }

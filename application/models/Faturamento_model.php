@@ -133,6 +133,7 @@ class Faturamento_model extends CI_Model {
               $this->db->where('id',$data[0]->id);
               $this->db->update('erp_faturamento_notas',$this);
             }else{
+              $this->royalt = 0;
               $this->db->insert('erp_faturamento_notas',$this);
             }
           }
@@ -144,21 +145,16 @@ class Faturamento_model extends CI_Model {
 
     function salvaNotaXml($id_empreendimento,$numero,$emissao,$valor,$arquivo) {
 
-      $files = $_FILES;
-
-      $this->numero = $numero;
-      $this->data = $emissao;
-      $this->valor = $valor;
+      //$files = $_FILES;
+      echo 'Numero: '.$numero.' Emissao: '.$emissao.' Valor: '.$valor.' ID Empreendimento:'.$id_empreendimento;
+      $this->numero = $numero+0;
+      $this->data = date($emissao);
+      $this->valor = $valor+0;
+      $this->royalt = 0;
 
       $this->arquivo_nota = "";
-      $arquivo_name = str_replace('/tmp/','',$arquivo);
-      echo "<br>".$arquivo."<br>";
 
-      if (copy($arquivo, '../../uploads/'+$arquivo_name)) {
-        echo "\o funfou o/";
-      } else {
-        echo "\o non funfou o/";
-      }
+      print_r($this);
 
       /*if ( ! $this->upload->do_upload()){
   			$error = array('error' => $this->upload->display_errors());
@@ -170,21 +166,7 @@ class Faturamento_model extends CI_Model {
       */
 
       $this->id_empreendimento = $id_empreendimento;
-      /*if($numero!=''){
-        $query = $this->db->query("Select * from erp_faturamento_notas where id_empreendimento = ".$id_empreendimento." and numero = ".$numero);
-
-        $data = $query->result();
-
-        if(isset($data[0])){
-          if($this->arquivo_nota==""){
-            $this->arquivo_nota = $data[0]->arquivo_nota;
-          }
-          $this->db->where('id',$data[0]->id);
-          $this->db->update('erp_faturamento_notas',$this);
-        }else{
-          $this->db->insert('erp_faturamento_notas',$this);
-        }
-      }*/
+      $this->db->insert('erp_faturamento_notas',$this);
 
     }
 
