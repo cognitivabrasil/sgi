@@ -5,6 +5,7 @@
     <?php
     $tipo_atual = 0;
     foreach($data as $row){
+     if($this->session->userdata('id_acesso') == 1 || $row->id_usuario == $id_logado){
       if($tipo_atual!=$row->id_acesso){
         $tipo_atual = $row->id_acesso;
         ?>
@@ -84,6 +85,7 @@
        </div>
     </div>
     <?php
+     }// fechando if para testar se usuario eh adm
     }
     ?>
     <?php
