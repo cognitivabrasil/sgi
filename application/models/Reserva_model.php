@@ -10,7 +10,12 @@ class Reserva_model extends CI_Model {
     }
 
     function remove_locacao($id) {
-        $query = $this->db->query('Delete from erp_reservas_salas where id='.$id);
+
+        $this->load->model('usuarios_model');
+        $query_user = $this->usuarios_model->selectBySession();
+        $usuario = $query_user->result()[0];
+
+        $query = $this->db->query('UPDATE erp_reservas_salas set deletado = 1, id_usuario_del = '.$usuario->id_usuario.', horario_del = "'.date("Y-m-d H:i:s").'" where id='.$id);
 
         return $query;
     }
@@ -67,6 +72,7 @@ class Reserva_model extends CI_Model {
         $to = date("Y-m-d", strtotime("{$year}-W{$week}-5"));
         $this->db->where('dia >=', $from);
         $this->db->where('dia <=', $to);
+        $this->db->where('deletado =', 0);
         $this->db->order_by("dia", "asc");
         $query = $this->db->get('erp_reservas_salas');
 

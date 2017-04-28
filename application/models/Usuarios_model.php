@@ -13,8 +13,15 @@ class Usuarios_model extends CI_Model {
         $this->db->where('senha', md5($this->input->post('senha')));
 
         $query = $this->db->get('erp_usuarios');
+        $user = $query->result();
 
-        return $query->result();
+        if(count($user)){
+          $this->ultimo_login = date("Y-m-d H:i:s");
+          $this->db->where('id_usuario',$user[0]->id_usuario);
+          $this->db->update('erp_usuarios',$this);
+        }
+
+        return $user;
     }
 
     function validatepasswd() {
