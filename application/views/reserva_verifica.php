@@ -65,7 +65,7 @@
                 foreach($data as $reservas){
                   if($reservas->dayweek == $j && $reservas->horario == $hora."_".$min && $reservas->id_sala == 2){
                     $msg103 = "<td><span data-toggle='tooltip' data-placement='top' title='Reservado por: ".$reservas->usuario_data."'>".$reservas->titulo;
-                    if($this->session->userdata('id_usuario') == $reservas->id_usuario){
+                    if($this->session->userdata('id_usuario') == $reservas->id_usuario || $this->session->userdata('id_acesso') == 1){
                       $msg103 .= "&nbsp;&nbsp;&nbsp;<a href='".base_url()."index.php/reserva/remove/".$reservas->id."' class='deleta_agendamento' rel='".$proxima_semana."' ><button type='button' class='btn btn-default btn-xs'>
                                     <span class='glyphicon glyphicon-remove' aria-hidden='true'></span>
                                   </button></a>";
@@ -74,7 +74,7 @@
                   }
                   if($reservas->dayweek == $j && $reservas->horario == $hora."_".$min && $reservas->id_sala == 6){
                     $msg111 = "<td><span data-toggle='tooltip' data-placement='top' title='Reservado por: ".$reservas->usuario_data."'>".$reservas->titulo;
-                    if($this->session->userdata('id_usuario') == $reservas->id_usuario){
+                    if($this->session->userdata('id_usuario') == $reservas->id_usuario || $this->session->userdata('id_acesso') == 1){
                       $msg111 .= "&nbsp;&nbsp;&nbsp;<a href='".base_url()."index.php/reserva/remove/".$reservas->id."' class='deleta_agendamento' rel='".$proxima_semana."' ><button type='button' class='btn btn-default btn-xs'>
                                     <span class='glyphicon glyphicon-remove' aria-hidden='true'></span>
                                   </button></a>";
