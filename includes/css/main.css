@@ -114,6 +114,18 @@
   width: 90%;
   margin: 0 auto 20px auto;
 }
+.titulo_user{
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 4px;
+  margin-top: 4px;
+}
+.titulo_user span{
+  border-bottom: 1px solid #CCCCCC;
+}
+.linha_usuarios{
+  padding-left: 10px;
+}
 /* Final usuários */
 
 /* Empreendimentos */

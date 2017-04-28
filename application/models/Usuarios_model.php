@@ -84,6 +84,12 @@ class Usuarios_model extends CI_Model {
         return $query;
     }
 
+    function select_group() {
+        $query = $this->db->query('SELECT * FROM erp_usuarios order by id_acesso,nome');
+
+        return $query;
+    }
+
     function selectByID($id) {
         $this->db->where('id_usuario', $id);
         $query = $this->db->get('erp_usuarios');

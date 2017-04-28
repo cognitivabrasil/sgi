@@ -16,7 +16,7 @@ class Usuarios extends CI_Controller {
       $this->load->view('head_logado');
 
       $this->load->model('usuarios_model');
-      $query = $this->usuarios_model->select();
+      $query = $this->usuarios_model->select_group();
 
       $dados = $query->result();
       $this->load->model('empreendimentos_model');

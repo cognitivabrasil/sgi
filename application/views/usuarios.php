@@ -3,14 +3,39 @@
   <p id="titulo_usuario">Usuários</p>
   <div id="block_usuario">
     <?php
-    foreach($data as $row){?>
-    <div class="row">
+    $tipo_atual = 0;
+    foreach($data as $row){
+      if($tipo_atual!=$row->id_acesso){
+        $tipo_atual = $row->id_acesso;
+        ?>
+        <div class="titulo_user"><span>
+          <?php
+          switch ($row->id_acesso) {
+            case 1:
+              echo "Administradores";
+              break;
+            case 2:
+              echo "Usuários CEI";
+              break;
+            case 3:
+              echo "Administradores de empresas";
+              break;
+            case 4:
+              echo "Usuários de Empresas";
+              break;
+          }
+           ?><span>
+        </div>
+        <?php
+      }
+      ?>
+    <div class="row linha_usuarios">
       <div class="col-md-3"><?php echo $row->nome; ?></div>
       <?php if($this->session->userdata('id_acesso') == 1){?>
       <div class="col-md-2"><?php echo $row->username; ?></div>
       <?php }?>
       <div class="col-md-2"><?php echo $row->nome_empreendimento; ?></div>
-      <div class="col-md-2"><?php
+      <!--<div class="col-md-2"><?php
       switch ($row->id_acesso) {
         case 1:
           echo "Administrador";
@@ -25,7 +50,7 @@
           echo "Usuário Empresa";
           break;
       }
-       ?></div>
+       ?></div> -->
        <div class="col-md-2">
          <?php
          if($this->session->userdata('id_acesso') == 1){
