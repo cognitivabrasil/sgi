@@ -19,7 +19,8 @@
             }
             ?>
           </select>
-          <input type="password" name="senha" placeholder="Senha">
+          <span style="float:right; padding-right:15%;">* A senha deve ter no mínimo 8 caracteres, uma letra minúscula, <br>uma letra maiúscula, um caractere numérico e um caractere especial</span>
+          <input type="password" name="senha" placeholder="Senha" id="senha_testa">
           <select name="acesso">
             <option value="0">Nível de acesso</option>
             <option value="1">Administrador</option>
@@ -28,7 +29,7 @@
             <option value="4">Usuário Empresa</option>
           </select>
           <input type="text" name="contato" placeholder="Contato">
-          <button type="submit" class="btn btn-default btn-lg">
+          <button type="submit" class="btn btn-default btn-lg" disabled="false" id="bt_salvar" onclick="verificaQualidadeSenha();">
             <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Salvar
           </button>
       </form>

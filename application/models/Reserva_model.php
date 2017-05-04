@@ -27,6 +27,7 @@ class Reserva_model extends CI_Model {
           $this->db->where('dia', $_POST['data']);
           $this->db->where('id_sala', $_POST['id_sala']);
           $this->db->where('horario', $horarios);
+          $this->db->where('deletado <> 1');
           $query = $this->db->get('erp_reservas_salas');
           if($query->num_rows()!=0){
             $possivelReservar = 0;

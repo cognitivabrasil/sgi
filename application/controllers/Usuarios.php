@@ -8,6 +8,27 @@ class Usuarios extends CI_Controller {
         parent::__construct();
     }
 
+    function vpass($pass)
+    {
+      $len = strlen($pass);
+      $count = 0;
+      $array = array("/[a-z]/", "/[A-Z]/", "/[0-9]/", "/[\!\#\_\-\@\*\&\$\%\(\)\{\}\[\]\:\<\>]/");
+
+      foreach($array as $a)
+      {
+      	if(preg_match($a, $pass))
+      	{
+      		$count++;
+      	}
+      }
+
+      if($len >= 8){
+      	$count++;
+      }
+      echo $count;
+      return $count;
+    }
+
     function index() {
       $this->load->model('usuarios_model');
       $this->usuarios_model->verifica_login();

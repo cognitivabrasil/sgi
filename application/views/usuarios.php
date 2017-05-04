@@ -35,7 +35,7 @@
       <?php if($this->session->userdata('id_acesso') == 1){?>
       <div class="col-md-2"><?php echo $row->username; ?></div>
       <?php }?>
-      <div class="col-md-2"><?php echo $row->nome_empreendimento; ?></div>
+      <div class="col-md-3"><?php echo $row->nome_empreendimento; ?></div>
       <!--<div class="col-md-2"><?php
       switch ($row->id_acesso) {
         case 1:

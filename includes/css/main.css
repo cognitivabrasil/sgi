@@ -117,8 +117,8 @@
 .titulo_user{
   font-size: 12px;
   font-weight: bold;
-  margin-bottom: 4px;
-  margin-top: 4px;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
 .titulo_user span{
   border-bottom: 1px solid #CCCCCC;

@@ -3,6 +3,12 @@ $(document).ready(function(){
   //Inicializando os tooltips
   $('[data-toggle="tooltip"]').tooltip();
 
+  $('#senha_testa').on('blur',function(){
+
+    verificaQualidadeSenha();
+
+  });
+
   $('#myModal').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget);
     var sala = button.data('sala');
@@ -55,6 +61,13 @@ $(document).ready(function(){
   /*Fim Faturamento*/
 
   /*Usuários*/
+  $('#form_alterasenha').on('submit',function(){
+    if(($('#senha_testa').val() != $('#confirma_nova_senha').val()) || $('#senha_testa').val() == ''){
+      alert('As novas senhas não conferem!');
+      return false;
+    }
+  });
+
   $('.restaura_senha').click(function(){
     if(confirm('Deseja realmente resetar a senha do usuário?')){
       $.post('./usuarios/restaurasenha',{id: $(this).attr('href')},function(data){
@@ -62,13 +75,6 @@ $(document).ready(function(){
       });
     }
     return false;
-  });
-
-  $('#altera_senha').click(function(){
-    if(($('#nova_senha').val() != $('#confirma_nova_senha').val()) || $('#nova_senha').val() == ''){
-      alert('As novas senhas não conferem!');
-      return false;
-    }
   });
   /*Fim Usuários*/
 
@@ -84,6 +90,17 @@ $(document).ready(function(){
   });
 
 });
+
+function verificaQualidadeSenha(){
+  $.get('/gestaocei/index.php/usuarios/vpass/'+$('#senha_testa').val(),function(data){
+    if(data=='5'){
+      $('#bt_salvar').removeAttr("disabled");
+    }else{
+      $('#bt_salvar').attr('disabled','disabled');
+      return false;
+    }
+  });
+}
 
 function salvaPrevisao(){
   $.post('../salvaPrevisao',$('#faturamentoForm').serialize(),function(data){
