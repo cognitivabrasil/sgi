@@ -30,6 +30,15 @@ $(document).ready(function(){
     return false;
   });
 
+  $('.deleta_usuario').click(function(){
+    if(confirm('Você deseja realmente excluir?')){
+      $.get($(this).attr('href'),function(data){
+        window.location.replace('/gestaocei/index.php/usuarios');
+      });
+    }
+    return false;
+  });
+
   $('map').imageMapResize();
 
   $('#filtra_area').change(function(){

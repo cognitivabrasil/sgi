@@ -56,7 +56,7 @@
          <?php
          if($this->session->userdata('id_acesso') == 1){
          ?>
-           <a href='<?php echo base_url(); ?>index.php/usuarios/remove/<?php echo $row->id_usuario;?>' class='deleta_agendamento' title="Remove usuário" data-toggle="tooltip">
+           <a href='<?php echo base_url(); ?>index.php/usuarios/remove/<?php echo $row->id_usuario;?>' class='deleta_usuario' title="Remove usuário" data-toggle="tooltip">
              <button type='button' class='btn btn-default btn-xs'>
                <span class='glyphicon glyphicon-remove' aria-hidden='true'></span>
              </button>
