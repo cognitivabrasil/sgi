@@ -40,6 +40,10 @@
 <div id="timeline">
   <h1>Novidades do sistema</h1>
   <div>
+    <h3><span class="data-nov">05/05/2017</span> - Mais segurança nas senhas</h3>
+    Para aumentar a segurança dentro do sistema, foram implementadas novas regras para as senhas dos usuários. A partir de segunda-feira dia 08/05, se tornará obrigatório o uso de senhas com mínimo 8 caracteres contendo pelo menos uma letra maiúscula, uma letra minúscula, um numeral e um caractere especial.
+  </div>
+  <div>
     <h3><span class="data-nov">27/04/2017</span> - Upload de Notas Fiscais</h3>
     O administrador da empresa agora tem a possibilidade de fazer o upload de uma ou mais notas fiscais via xml dentro do sistema do CEI. Para isso, é necessário criar um arquivo do tipo .zip contendo a nota ou as várias notas que deseja enviar para o sistema e logo após fazer o upload do mesmo no menu faturamento.
   </div>

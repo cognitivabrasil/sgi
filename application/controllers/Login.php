@@ -27,6 +27,10 @@ class Login extends CI_Controller {
 
         } else {
             if (count($query)) { // VERIFICA LOGIN E SENHA
+
+                #apenas para fazer o teste na epoca de transicao de senhas
+                $senhaNova = $this->usuarios->vpass();
+
                 $notificarequisicao = 0;
                 $notificarelease = 0;
                 if($query[0]->id_acesso == 1){
@@ -46,7 +50,13 @@ class Login extends CI_Controller {
                     'notifica_release' => $notificarelease
                 );
                 $this->session->set_userdata($data);
-                redirect('index.php/inicial');
+
+                #apenas para fazer o teste na epoca de transicao de senhas
+                if($senhaNova < 5){
+                  redirect('index.php/usuarios/alterasenhacompulsivo/'.$query[0]->id_usuario);
+                }else{
+                  redirect('index.php/inicial');
+                }
             } else {
                 //redirect($this->index());
                 // VALIDATION RULES

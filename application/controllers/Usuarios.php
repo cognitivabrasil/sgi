@@ -61,7 +61,7 @@ class Usuarios extends CI_Controller {
       $this->load->view('footer');
     }
 
-    function alterasenhafinal(){
+    function alterasenhafinal($cp='none'){
       $this->load->model('usuarios_model');
       $this->usuarios_model->verifica_login();
 
@@ -76,6 +76,9 @@ class Usuarios extends CI_Controller {
           echo "<div class='alert alert-success fade in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Senha alterada com sucesso!</div>";
         }else{
           echo "<div class='alert alert-danger fade in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Senha antiga errada!</div>";
+          if($cp!='none'){
+            redirect('/index.php/usuarios/alterasenhacompulsivo/'.$cp.'/err', 'location');
+          }
         }
       }
 
@@ -117,6 +120,22 @@ class Usuarios extends CI_Controller {
       $query = $this->usuarios_model->selectByID($id);
 
       $this->load->view('usuarios_alterasenha', array('data'=>$query->result()));
+      $this->load->view('footer');
+    }
+
+    function alterasenhacompulsivo($id,$err='none') {
+      $this->load->model('usuarios_model');
+      $this->usuarios_model->verifica_login();
+
+      $this->load->view('header');
+      if($err!='none'){
+        echo "<div class='alert alert-danger fade in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Senha antiga errada!</div>";
+      }
+
+      $this->load->model('usuarios_model');
+      $query = $this->usuarios_model->selectByID($id);
+
+      $this->load->view('usuarios_alterasenhacompulsivo', array('data'=>$query->result()));
       $this->load->view('footer');
     }
 

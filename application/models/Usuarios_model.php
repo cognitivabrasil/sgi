@@ -7,6 +7,29 @@ class Usuarios_model extends CI_Model {
       }
     }
 
+    #apenas para o uso na epoca de transição das senhas na pagina de login
+    function vpass()
+    {
+      $pass = $this->input->post('senha');
+      $len = strlen($pass);
+      $count = 0;
+      $array = array("/[a-z]/", "/[A-Z]/", "/[0-9]/", "/[\.\,\!\#\_\-\@\*\&\$\%\(\)\{\}\[\]\:\<\>]/");
+
+      foreach($array as $a)
+      {
+      	if(preg_match($a, $pass))
+      	{
+      		$count++;
+      	}
+      }
+
+      if($len >= 8){
+      	$count++;
+      }
+
+      return $count;
+    }
+
     // Valida usuário
     function validate() {
         $this->db->where('username', $this->input->post('username'));
