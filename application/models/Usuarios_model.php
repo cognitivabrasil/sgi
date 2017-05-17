@@ -7,10 +7,12 @@ class Usuarios_model extends CI_Model {
       }
     }
 
+    #PRESTA ATENÇÃO BOCABERTA
     #apenas para o uso na epoca de transição das senhas na pagina de login
     function vpass()
     {
       $pass = $this->input->post('senha');
+      $pass = urldecode($pass);
       $len = strlen($pass);
       $count = 0;
       $array = array("/[a-z]/", "/[A-Z]/", "/[0-9]/", "/[\.\,\!\#\_\-\@\*\&\$\%\(\)\{\}\[\]\:\<\>]/");
@@ -62,6 +64,12 @@ class Usuarios_model extends CI_Model {
         $this->db->update('erp_usuarios',$this);
     }
 
+    function changeduracao() {
+        $this->duracao = $_POST['duracao_nova'];
+        $this->db->where('id_usuario',$_POST['id_usuario']);
+        $this->db->update('erp_usuarios',$this);
+    }
+
     function restaurasenha() {
         $senha = '@Mudar'.mt_rand(10000, 99999);
         $this->senha = md5($senha);
@@ -89,6 +97,8 @@ class Usuarios_model extends CI_Model {
       $this->id_acesso = $_POST['acesso'];
       $this->contato = $_POST['contato'];
       $this->nome = $_POST['nome'];
+      $this->duracao = $_POST['duracao'];
+
       $this->db->insert('erp_usuarios',$this);
     }
 

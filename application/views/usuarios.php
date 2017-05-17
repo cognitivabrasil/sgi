@@ -52,7 +52,7 @@
           break;
       }
        ?></div> -->
-       <div class="col-md-2">
+       <div class="col-md-3">
          <?php
          if($this->session->userdata('id_acesso') == 1){
          ?>
@@ -72,6 +72,15 @@
            </a>
          <?php
           }
+          if($this->session->userdata('id_acesso') == 1){
+          ?>
+            <a href='<?php echo base_url(); ?>index.php/usuarios/alteraduracao/<?php echo $row->id_usuario;?>' class='button_action' title="Altera duração do usuário" data-toggle="tooltip">
+              <button type='button' class='btn btn-default btn-xs'>
+                <span class='glyphicon glyphicon-time' aria-hidden='true'></span>
+              </button>
+            </a>
+          <?php
+           }
           if($row->id_usuario == $id_logado){
          ?>
          <a href="<?php echo base_url();?>index.php/usuarios/alterasenha/<?php echo $row->id_usuario;?>" class="button_action" title="Alterar Senha" data-toggle="tooltip">

@@ -27,7 +27,7 @@ class Login extends CI_Controller {
 
         } else {
             if (count($query)) { // VERIFICA LOGIN E SENHA
-
+              if(!$query[0]->duracao || strtotime(date("Y-m-d H:i:s")) < strtotime($query[0]->duracao)){
                 #apenas para fazer o teste na epoca de transicao de senhas
                 $senhaNova = $this->usuarios->vpass();
 
@@ -57,6 +57,12 @@ class Login extends CI_Controller {
                 }else{
                   redirect('index.php/inicial');
                 }
+              }else{
+                $this->load->view('header');
+                echo "<div class='alert alert-danger fade in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Este usuário está desativado porque acabou o tempo de uso do mesmo. Entre em contato com o CEI no caso de dúvidas</div>";
+                $this->load->view('login_view');
+                $this->load->view('footer');
+              }
             } else {
                 //redirect($this->index());
                 // VALIDATION RULES

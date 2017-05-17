@@ -85,6 +85,7 @@ $(document).ready(function(){
     }
     return false;
   });
+
   /*Fim Usuários*/
 
   //Colaboradores
@@ -100,8 +101,23 @@ $(document).ready(function(){
 
 });
 
+function verificaPreenchimento(){
+  if(!$('#data_reserva').val()){
+    alert('Preencha a data de reserva!');
+    return false;
+  }else if ($('#titulo_reserva').val()=='') {
+    alert('Preencha o título da reserva!');
+    return false;
+  }else if (!$('#horario_reserva option:selected').length) {
+    alert('Escolha o horário da reserva!');
+    return false;
+  }else{
+    $('#form_reserva').submit();
+  }
+}
+
 function verificaQualidadeSenha(){
-  $.get('/gestaocei/index.php/usuarios/vpass/'+$('#senha_testa').val(),function(data){
+  $.get('/gestaocei/index.php/usuarios/vpass/'+encodeURIComponent($('#senha_testa').val()),function(data){
     if(data=='5'){
       $('#bt_salvar').removeAttr("disabled");
     }else{
