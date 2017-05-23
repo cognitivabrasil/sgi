@@ -223,7 +223,7 @@ class Usuarios extends CI_Controller {
       echo "<div class='alert alert-success fade in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Usuário cadastrado com sucesso!</div>";
 
       $this->load->model('usuarios_model');
-      $query = $this->usuarios_model->select();
+      $query = $this->usuarios_model->select_group();
       $dados = $query->result();
       $this->load->model('empreendimentos_model');
       $count=0;

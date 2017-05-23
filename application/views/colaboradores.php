@@ -20,7 +20,7 @@
         case 4:
           echo "Outros";
           break;
-      }?><br>sala 107<br><?php echo $row->nr;?> colaborador(es)</div>
+      }?><br><?php echo $row->nr;?> colaborador(es)</div>
       <div class="col-md-5">
         <!--<div class="selo_gamification_pequeno">Empresa<br>Consciente</div> -->
       </div>

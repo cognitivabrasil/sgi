@@ -40,6 +40,14 @@
 <div id="timeline">
   <h1>Novidades do sistema</h1>
   <div>
+    <h3><span class="data-nov">22/05/2017</span> - Segurança HTTPS</h3>
+    Tendo em vista o tráfego de dados sigilosos dentro do sistema de gestão do CEI, foi implementado pelo departamento de redes do instituto de informática o certificado https que transita os dados por meio de uma conexão criptografada entre cliente e servidor verificando a autenticidade dos mesmos.
+  </div>
+  <div>
+    <h3><span class="data-nov">19/05/2017</span> - Usuários com tempo determinado no sistema</h3>
+    Com o intuito de deixarmos o sistema de gestão do CEI mais robusto, agora os usuários terão um tempo de duração determinado dentro do sistema que será relativo ao tempo do contrato da empresa com o CEI. Após o vencimento do tempo do usuário, o mesmo continuará no sistema com todos os dados, apenas impossibilitado de acessar.
+  </div>
+  <div>
     <h3><span class="data-nov">05/05/2017</span> - Mais segurança nas senhas</h3>
     Para aumentar a segurança dentro do sistema, foram implementadas novas regras para as senhas dos usuários. A partir de segunda-feira dia 08/05, se tornará obrigatório o uso de senhas com mínimo 8 caracteres contendo pelo menos uma letra maiúscula, uma letra minúscula, um numeral e um caractere especial.
   </div>

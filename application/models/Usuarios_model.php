@@ -65,7 +65,11 @@ class Usuarios_model extends CI_Model {
     }
 
     function changeduracao() {
-        $this->duracao = $_POST['duracao_nova'];
+        if(isset($_POST['duracao_indeterminada'])){
+          $this->duracao = NULL;
+        }else{
+          $this->duracao = $_POST['duracao_nova'];
+        }
         $this->db->where('id_usuario',$_POST['id_usuario']);
         $this->db->update('erp_usuarios',$this);
     }
@@ -97,7 +101,11 @@ class Usuarios_model extends CI_Model {
       $this->id_acesso = $_POST['acesso'];
       $this->contato = $_POST['contato'];
       $this->nome = $_POST['nome'];
-      $this->duracao = $_POST['duracao'];
+      if(isset($_POST['duracao_indeterminada'])){
+        $this->duracao = NULL;
+      }else{
+        $this->duracao = $_POST['duracao'];
+      }
 
       $this->db->insert('erp_usuarios',$this);
     }
