@@ -82,7 +82,11 @@ class Reserva_model extends CI_Model {
         foreach($data as $reserva){
             $reserva->dayweek = $dayweek = date('N', strtotime($reserva->dia));
             $query = $this->usuarios_model->selectByID($reserva->id_usuario);
-            $reserva->usuario_data = $query->result()[0]->username;
+            if(sizeof($query->result())>0){
+              $reserva->usuario_data = $query->result()[0]->username;
+            }else{
+              $reserva->usuario_data = 'Excluído';
+            }
         }
 
         $from = date("d/m/Y", strtotime("{$year}-W{$week}-1"));

@@ -17,7 +17,7 @@
           <input type="text" name="saida" placeholder="Saída" style="float:left; width:95px;">
           <input type="checkbox" name="em_atividade" style="float:left; width:10px;" value="1"><span style="float:left;">Ainda em atividade</span>
           <input type="checkbox" name="socio" style="float:left; width:10px; clear:both;" value="1"><span style="float:left;">Sócio</span>
-          <input type="hidden" name="empresa" value="<?php echo $this->session->userdata('id_empreendimento');?>">
+          <input type="hidden" name="empresa" value="<?php if($this->session->userdata('id_empreendimento') == 1){echo 32; }else{ echo $this->session->userdata('id_empreendimento');}?>">
           <!--<select name="empresa" style="clear:both;">
             <option value="0">Empresa</option>
             <?php foreach($data as $row){ ?>
