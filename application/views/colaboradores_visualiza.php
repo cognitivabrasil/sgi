@@ -14,7 +14,18 @@
           echo "Sem Vinculo com a UFRGS";
           break;
 
-      }?><br><?php echo $data->email;?><br>Entrada: <?php echo $data->entrada;?> - <?php if($data->em_atividade == 1){echo "Ainda em atividade";}else{echo "Saída: ".$data->saida;}?>
+      }?>
+      <?php
+      $aux = explode(' ',$data->entrada);
+      $aux2 = explode('-',$aux[0]);
+      $data->entrada = $aux2[2].'/'.$aux2[1].'/'.$aux2[0];
+      if(!($data->em_atividade == 1)){
+        $aux = explode(' ',$data->saida);
+        $aux2 = explode('-',$aux[0]);
+        $data->saida = $aux2[2].'/'.$aux2[1].'/'.$aux2[0];
+      }
+      ?>
+      <br><?php echo $data->email;?><br>Entrada: <?php echo $data->entrada;?> - <?php if($data->em_atividade == 1){echo "Ainda em atividade";}else{echo "Saída: ".$data->saida;}?>
       <?php
       if($data->sem_funcao == 1){
         echo "<br>Sem função designada";
@@ -24,7 +35,7 @@
       }?></div>
     </div>
     <div style="text-align:center; margin-top:15px;">
-      <?php if($this->session->userdata('id_acesso') == 3){?>
+      <?php if(($this->session->userdata('id_acesso') == 3 && $this->session->userdata('id_empreendimento') == $emp->id) || ($this->session->userdata('id_acesso')==1 && $emp->id==32)){?>
       <a href="<?php echo base_url();?>index.php/colaboradores/edita/<?php echo $data->id;?>" class="button_action">
         <button type="button" class="btn btn-default btn-lg">
           <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Editar

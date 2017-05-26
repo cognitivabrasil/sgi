@@ -53,7 +53,7 @@ class Colaboradores extends CI_Controller {
       $this->load->view('footer');
     }
 
-    function insert() {
+    function insert($id=0) {
       $this->load->model('usuarios_model');
       $this->usuarios_model->verifica_login();
 
@@ -64,10 +64,13 @@ class Colaboradores extends CI_Controller {
       $this->load->view('head_logado');
       echo "<div class='alert alert-success fade in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Colaborador cadastrado com sucesso!</div>";
 
-      $this->load->model('empreendimentos_model');
-      $query = $this->empreendimentos_model->select();
+      $this->load->model('colaboradores_model');
+      $query = $this->colaboradores_model->lista($id);
 
-      $this->load->view('colaboradores', array('data'=>$query->result()));
+      $this->load->model('empreendimentos_model');
+      $queryEmp = $this->empreendimentos_model->select($id);
+
+      $this->load->view('colaboradores_lista', array('data'=>$query->result(),'emp'=>$queryEmp->result()[0]));
       $this->load->view('footer');
     }
 

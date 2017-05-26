@@ -21,11 +21,12 @@
       <div class="col-md-6">
         &nbsp;
       </div>
+      <input type="hidden" value="<?php echo $emp->id;?>" id="id_empreendimento_colaboradores">
       <div class="col-md-2">
         <?php
-        if($this->session->userdata('id_empreendimento') == $row->id_empreendimento){
+        if($this->session->userdata('id_acesso')==3 && $this->session->userdata('id_empreendimento') == $emp->id || ($this->session->userdata('id_acesso')==1 && $emp->id==32)){
         ?>
-          <a href='<?php echo base_url(); ?>index.php/colaboradores/remove/<?php echo $row->id;?>' class='deleta_agendamento' style="float:right; margin-top:-7px; margin-right:-15px;">
+          <a href='<?php echo base_url(); ?>index.php/colaboradores/remove/<?php echo $row->id;?>' class='deleta_colaboradores' style="float:right; margin-top:-7px; margin-right:-15px;">
             <button type='button' class='btn btn-default btn-xs'>
               <span class='glyphicon glyphicon-remove' aria-hidden='true'></span>
             </button>

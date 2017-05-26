@@ -1,8 +1,13 @@
+<script>
+  webshims.setOptions('waitReady', false);
+  webshims.setOptions('forms-ext', {types: 'date'});
+  webshims.polyfill('forms forms-ext');
+</script>
 <div id="container-central">
   <div>
     <p id="titulo_usuario">Cadastro de colaboradores</p>
     <div id="block_usuario">
-      <form method="post" action="<?php echo base_url();?>index.php/colaboradores/insert">
+      <form method="post" class="colaboradores_cadastra" action="<?php echo base_url();?>index.php/colaboradores/insert/<?php if($this->session->userdata('id_empreendimento') == 1){echo 32; }else{ echo $this->session->userdata('id_empreendimento');}?>">
           <input type="text" name="nome" placeholder="Nome">
           <div style="width:30%; float:right; margin-right:40%;"><input id="habilita_funcao" type="checkbox" name="sem_funcao" style="float:left; width:10px;" value="1" checked><span style="float:left;">Sem função designada</span></div>
           <input type="text" name="funcao" placeholder="Função" id="funcao_colaborador">
@@ -13,8 +18,8 @@
             <option value="3">Sem Vínculo</option>
           </select>
           <input type="text" name="email" placeholder="E-mail">
-          <input type="text" name="entrada" placeholder="Entrada" style="float:left; width:95px;">
-          <input type="text" name="saida" placeholder="Saída" style="float:left; width:95px;">
+          <input type="date" name="entrada" data-date='{"startView": 2, "openOnMouseFocus": true}' placeholder="Entrada" style="float:left; width:140px;">
+          <input type="date" name="saida" data-date='{"startView": 2, "openOnMouseFocus": true}' placeholder="Saída" style="float:left; width:140px;">
           <input type="checkbox" name="em_atividade" style="float:left; width:10px;" value="1"><span style="float:left;">Ainda em atividade</span>
           <input type="checkbox" name="socio" style="float:left; width:10px; clear:both;" value="1"><span style="float:left;">Sócio</span>
           <input type="hidden" name="empresa" value="<?php if($this->session->userdata('id_empreendimento') == 1){echo 32; }else{ echo $this->session->userdata('id_empreendimento');}?>">

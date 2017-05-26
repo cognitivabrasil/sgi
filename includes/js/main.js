@@ -32,6 +32,15 @@ $(document).ready(function(){
     return false;
   });
 
+  $('.deleta_colaboradores').click(function(){
+    if(confirm('Você deseja realmente excluir?')){
+      $.get($(this).attr('href'),function(data){
+        window.location.replace('/gestaocei/index.php/colaboradores/lista/'+$('#id_empreendimento_colaboradores').val());
+      });
+    }
+    return false;
+  });
+
   $('.deleta_usuario').click(function(){
     if(confirm('Você deseja realmente excluir?')){
       $.get($(this).attr('href'),function(data){

@@ -179,8 +179,8 @@
   background: #CCCCCC;
 }
 /* Final Patrimônio */
-
-/* Reserva de salas*/
+.date-input-buttons
+/* Reserva de salas */
 .reservas-table span{
   font-size: 12px !important;
   word-wrap: break-word;
@@ -189,3 +189,9 @@
   margin: 0 auto;
 }
 /* Final Reserva de salas*/
+
+/* Colaboradores*/
+.colaboradores_cadastra .input-buttons{
+  display: none !important;
+}
+/* Final Colaboradores*/
