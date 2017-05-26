@@ -179,3 +179,13 @@
   background: #CCCCCC;
 }
 /* Final Patrimônio */
+
+/* Reserva de salas*/
+.reservas-table span{
+  font-size: 12px !important;
+  word-wrap: break-word;
+}
+.doubleScroll-scroll-wrapper{
+  margin: 0 auto;
+}
+/* Final Reserva de salas*/

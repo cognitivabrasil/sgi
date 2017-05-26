@@ -15,8 +15,8 @@
       </button>
     </a>
   </div><br><br>
-  <div id="block_usuario" class="table-responsive" style="margin: 0 auto;">
-    <table class="table table-bordered table-hover">
+  <div id="block_usuario" class="table-responsive reservas-container" style="margin: 0 auto;">
+    <table class="table table-bordered table-hover reservas-table">
     <?php
     $hora = 8;
     $dias_semana = array('Segunda-feira','Terça-feira','Quarta-feira','Quinta-feira','Sexta-feira');

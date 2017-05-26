@@ -1,5 +1,7 @@
 $(document).ready(function(){
 
+  $('.reservas-container').doubleScroll({resetOnWindowResize: true});
+
   //Inicializando os tooltips
   $('[data-toggle="tooltip"]').tooltip();
 

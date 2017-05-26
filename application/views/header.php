@@ -29,6 +29,8 @@
         <!-- polyfiller file to detect and load polyfills -->
         <script src="https://cdn.jsdelivr.net/webshim/1.12.4/polyfiller.js"></script>
 
+        <script type="text/javascript" src="<?php echo base_url('includes/js/doublescroll.js') ?>"></script>
+
     </head>
 
     <body>
