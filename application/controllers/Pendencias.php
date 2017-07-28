@@ -27,7 +27,12 @@ class Pendencias extends CI_Controller {
           if($queryEmp->result()[0]->nome == 'CEI'){
             $this->load->model('empreendimentos_model');
             $queryUserEmp = $this->empreendimentos_model->select($dados[$count]->empresa);
-            $dados[$count]->nome_empresa =$queryUserEmp->result()[0]->nome;
+            $resultado = $queryUserEmp->result();
+            if($resultado){
+              $dados[$count]->nome_empresa =$resultado[0]->nome;
+            }else{
+              $dados[$count]->nome_empresa = "Empresa excluída";
+            }
           }else{
             $dados[$count]->nome_empresa = $queryEmp->result()[0]->nome;
           }
@@ -64,7 +69,12 @@ class Pendencias extends CI_Controller {
           if($queryEmp->result()[0]->nome == 'CEI'){
             $this->load->model('empreendimentos_model');
             $queryUserEmp = $this->empreendimentos_model->select($dados[$count]->empresa);
-            $dados[$count]->nome_empresa =$queryUserEmp->result()[0]->nome;
+            $resultado = $queryUserEmp->result();
+            if($resultado){
+              $dados[$count]->nome_empresa =$resultado[0]->nome;
+            }else{
+              $dados[$count]->nome_empresa = "Empresa excluída";
+            }
           }else{
             $dados[$count]->nome_empresa = $queryEmp->result()[0]->nome;
           }
@@ -180,7 +190,12 @@ class Pendencias extends CI_Controller {
           if($queryEmp->result()[0]->nome == 'CEI'){
             $this->load->model('empreendimentos_model');
             $queryUserEmp = $this->empreendimentos_model->select($dados[$count]->empresa);
-            $dados[$count]->nome_empresa =$queryUserEmp->result()[0]->nome;
+            $resultado = $queryUserEmp->result();
+            if($resultado){
+              $dados[$count]->nome_empresa =$resultado[0]->nome;
+            }else{
+              $dados[$count]->nome_empresa = "Empresa excluída";
+            }
           }else{
             $dados[$count]->nome_empresa = $queryEmp->result()[0]->nome;
           }
@@ -252,12 +267,17 @@ class Pendencias extends CI_Controller {
           if($queryEmp->result()[0]->nome == 'CEI'){
             $this->load->model('empreendimentos_model');
             $queryUserEmp = $this->empreendimentos_model->select($dados[$count]->empresa);
-            $dados[$count]->nome_empresa =$queryUserEmp->result()[0]->nome;
+            $resultado = $queryUserEmp->result();
+            if($resultado){
+              $dados[$count]->nome_empresa =$resultado[0]->nome;
+            }else{
+              $dados[$count]->nome_empresa = "Empresa excluída";
+            }                        
           }else{
             $dados[$count]->nome_empresa = $queryEmp->result()[0]->nome;
           }
         }
-        
+
         $dados[$count]->situacao_final = $this->pendencias_model->verifica_resolvida($row->id);
 
         $count++;
