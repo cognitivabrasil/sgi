@@ -72,9 +72,10 @@ class Patrimonios extends CI_Controller {
       $this->load->view('head_logado');
 
       $this->load->model('patrimonios_model');
-      $query = $this->patrimonios_model->select_relatorio('sala',$var);
 
+      $query = $this->patrimonios_model->select_relatorio('sala',$var);
       $dados = $query->result();
+      
       $count=0;
       foreach ($dados as $row) {
         $queryIn = $this->patrimonios_model->selectSala($row->id);

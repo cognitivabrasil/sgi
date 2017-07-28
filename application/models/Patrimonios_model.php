@@ -110,7 +110,7 @@ class Patrimonios_model extends CI_Model {
     function select_relatorio($tipo,$var) {
         switch ($tipo) {
           case 'sala':
-            $query = $this->db->query('Select * from erp_patrimonios inner join erp_patrimonio_sala on erp_patrimonios.id = erp_patrimonio_sala.id_patrimonio where erp_patrimonio_sala.id_sala = '.$var);
+            $query = $this->db->query('Select erp_patrimonios.* from erp_patrimonios inner join erp_patrimonio_sala on erp_patrimonios.id = erp_patrimonio_sala.id_patrimonio where erp_patrimonio_sala.id_sala = '.$var);
             break;
           case 'resp':
             $query = $this->db->query('Select * from erp_patrimonios where responsavel like "%'.$var.'%"');
