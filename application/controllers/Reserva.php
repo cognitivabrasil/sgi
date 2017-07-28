@@ -114,4 +114,15 @@ class Reserva extends CI_Controller {
 
     }
 
+    function getReservas(){
+
+      header('Access-Control-Allow-Origin: *');
+
+      $this->load->model('reserva_model');
+      $query = $this->reserva_model->verificaReserva(0);
+
+      echo json_encode($query['data']);
+
+    }
+
 }

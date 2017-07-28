@@ -71,11 +71,12 @@ class Reserva_model extends CI_Model {
         date("Y-m-d", strtotime("{$year}-W{$week}-3")),date("Y-m-d", strtotime("{$year}-W{$week}-4")),date("Y-m-d", strtotime("{$year}-W{$week}-5"))];
         $from = date("Y-m-d", strtotime("{$year}-W{$week}-1"));
         $to = date("Y-m-d", strtotime("{$year}-W{$week}-5"));
-        $this->db->where('dia >=', $from);
-        $this->db->where('dia <=', $to);
-        $this->db->where('deletado =', 0);
-        $this->db->order_by("dia", "asc");
-        $query = $this->db->get('erp_reservas_salas');
+        $query = $this->db->query('SELECT * FROM erp_reservas_salas WHERE dia >="'.$from.'" AND dia <="'.$to.'" AND deletado = 0 ORDER BY dia, CAST(SPLIT_STR(horario,"_",1) AS UNSIGNED),CAST(SPLIT_STR(horario,"_",2) AS UNSIGNED) ASC');
+        //$this->db->where('dia >=', $from);
+        //$this->db->where('dia <=', $to);
+        //$this->db->where('deletado =', 0);
+        //$this->db->order_by("dia, CAST(SPLIT_STR(horario,'_',1) AS UNSIGNED),CAST(SPLIT_STR(horario,'_',2) AS UNSIGNED)", "asc");
+        //$query = $this->db->get('erp_reservas_salas');
 
         $data = $query->result();
         $this->load->model('usuarios_model');
