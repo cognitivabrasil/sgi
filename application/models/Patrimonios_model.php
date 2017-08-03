@@ -133,7 +133,7 @@ class Patrimonios_model extends CI_Model {
     }
 
     function selectAllSalas() {
-      $query = $this->db->query('select * from erp_salas');
+      $query = $this->db->query('select * from erp_salas order by nr_sala');
 
       return $query;
 
