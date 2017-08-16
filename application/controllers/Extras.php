@@ -67,12 +67,14 @@ class Extras extends CI_Controller {
          }
       }
       fclose($file);
-
+      echo "<pre>";
+      print_r($patData);
+      echo "</pre>";
       $this->load->model('patrimonios_model');
 
-      foreach ($patData as $row) {          
-          $this->patrimonios_model->insert_extra($row[0],$row[1],$row[2]);
-      }
+      // foreach ($patData as $row) {
+      //     $this->patrimonios_model->insert_extra($row[0],$row[1],$row[2]);
+      // }
 
     }
 

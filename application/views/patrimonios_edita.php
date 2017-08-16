@@ -8,6 +8,7 @@
           <input type="text" name="nome" value="<?php echo $data->nome;?>">
           <input type="text" name="nr" value="<?php echo $data->nrpatrimonio;?>">
           <input type="text" name="responsavel" value="<?php echo $data->responsavel?>">
+          <input type="text" name="observacoes" value="<?php echo $data->observacoes?>">
           <textarea name="descricao" style="width:70%; height:150px;"><?php echo $data->descricao?></textarea>
           <button type="submit" class="btn btn-default btn-lg">
             <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Salvar

@@ -75,7 +75,7 @@ class Patrimonios extends CI_Controller {
 
       $query = $this->patrimonios_model->select_relatorio('sala',$var);
       $dados = $query->result();
-      
+
       $count=0;
       foreach ($dados as $row) {
         $queryIn = $this->patrimonios_model->selectSala($row->id);
@@ -302,8 +302,10 @@ class Patrimonios extends CI_Controller {
 
       header("Access-Control-Allow-Headers: X-Requested-With");
 
+      header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+
       $this->load->model('patrimonios_model');
-	    $this->patrimonios_model->insert();
+	    $this->patrimonios_model->insert_app();
 
     }
 

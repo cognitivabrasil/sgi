@@ -6,6 +6,7 @@
     echo "<b>Nome:</b> ".$data->nome."<br>";
     echo "<b>Patrimônio:</b> ".$data->nrpatrimonio."<br>";
     echo "<b>Responsável na UFRGS:</b> ".$data->responsavel."<br>";
+    echo "<b>Observações:</b> ".$data->observacoes."<br>";
     echo "<b>Descrição:</b> ".$data->descricao."<br>";
     if(isset($data->sala)){
       echo "<h4>Localização</h4>";

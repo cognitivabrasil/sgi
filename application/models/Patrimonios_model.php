@@ -7,9 +7,23 @@ class Patrimonios_model extends CI_Model {
       $this->nome = $_POST['nome'];
       $this->nrpatrimonio = $_POST['nr'];
       $this->responsavel = $_POST['responsavel'];
+      $this->observacoes = $_POST['observacoes'];
       $this->descricao = $_POST['descricao'];
 
       $this->db->insert('erp_patrimonios',$this);
+
+    }
+
+    function insert_app() {
+      $var = json_decode(file_get_contents("php://input"));
+      if(isset($var->nome)){
+        $this->nome = $var->nome;
+        $this->nrpatrimonio = $var->nr;
+        $this->responsavel = $var->responsavel;
+        $this->descricao = $var->descricao;
+
+        $this->db->insert('erp_patrimonios',$this);
+      }
 
     }
 
@@ -27,6 +41,7 @@ class Patrimonios_model extends CI_Model {
       $this->nome = $_POST['nome'];
       $this->nrpatrimonio = $_POST['nr'];
       $this->responsavel = $_POST['responsavel'];
+      $this->observacoes = $_POST['observacoes'];
       $this->descricao = $_POST['descricao'];
 
       $this->db->where('id', $_POST['id']);
