@@ -316,11 +316,11 @@ class Patrimonios extends CI_Controller {
       $dataSalas = $this->patrimonios_model->selectSalas();
 
       foreach ($dados as $row) {
-        echo "'".$row->nome."';'".$row->descricao."';'".$row->nrpatrimonio."';'".$row->responsavel."';";
+        echo '"'.str_replace("\"", "\'\'", $row->nome).'";"'.str_replace("\"", "\'\'", $row->descricao).'";"'.$row->nrpatrimonio.'";"'.$row->responsavel.'";';
         if(isset($row->sala)){
-          echo "'".$row->sala->nr_sala."';'".$row->sala->data_atribuicao."';'".$row->observacoes."'";
+          echo '"'.$row->sala->nr_sala.'";"'.$row->sala->data_atribuicao.'";"'.$row->observacoes.'"';
         }else{
-          echo ";;'".$row->observacoes."'";
+          echo '"";"";"'.$row->observacoes.'"';
         }
         echo "\n";
       }
