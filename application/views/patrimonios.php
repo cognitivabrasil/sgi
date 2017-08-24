@@ -1,6 +1,24 @@
 <div id="container-central">
 <div>
   <p id="titulo_usuario">Patrimônios</p>
+  <?php
+  if($this->session->userdata('id_acesso') == 1){
+  ?>
+  <div style="float:right; padding-right:10px;">
+    <a href="extras/import_patrimonios">
+      <button type="button" class="btn btn-default" aria-label="Importar dados" title="Importar dados">
+        <span class="glyphicon glyphicon-open-file" aria-hidden="true"></span>
+      </button>
+    </a>
+  </div>
+  <div style="float:right; padding-right:10px;">
+    <a href="patrimonios/export_patrimonios" download="patrimonios.csv">
+      <button type="button" class="btn btn-default" aria-label="Exportar dados" title="Exportar dados">
+        <span class="glyphicon glyphicon-save-file" aria-hidden="true"></span>
+      </button>
+    </a>
+  </div>
+  <?php } ?>
   <div style="float:right; padding-right:10px;">
     <select class="form-control" id="search_sala" onchange="patrimonio_resp('sala');">
       <option value="0">Selecione uma sala</option>

@@ -294,6 +294,38 @@ class Patrimonios extends CI_Controller {
 
     }
 
+    function export_patrimonios() {
+      $this->load->model('usuarios_model');
+      $this->usuarios_model->verifica_login();
+
+      $this->load->model('patrimonios_model');
+      $query = $this->patrimonios_model->select();
+
+      $dados = $query->result();
+      $count=0;
+      foreach ($dados as $row) {
+        $queryIn = $this->patrimonios_model->selectSala($row->id);
+        if(count($queryIn->result())>0){
+          $dados[$count]->sala = $queryIn->result()[0];
+          $dados[$count]->sala->data_atribuicao = date("d/m/Y", strtotime($dados[$count]->sala->data_atribuicao));
+        }
+        $count++;
+      }
+
+      $dataResponsaveis = $this->patrimonios_model->selectResponsaveis();
+      $dataSalas = $this->patrimonios_model->selectSalas();
+
+      foreach ($dados as $row) {
+        echo "'".$row->nome."';'".$row->descricao."';'".$row->nrpatrimonio."';'".$row->responsavel."';";
+        if(isset($row->sala)){
+          echo "'".$row->sala->nr_sala."';'".$row->sala->data_atribuicao."';'".$row->observacoes."'";
+        }else{
+          echo ";;'".$row->observacoes."'";
+        }
+        echo "\n";
+      }
+    }
+
     function insertApp() {
 
       header('Access-Control-Allow-Origin: *');
