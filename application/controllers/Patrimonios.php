@@ -315,6 +315,8 @@ class Patrimonios extends CI_Controller {
       $dataResponsaveis = $this->patrimonios_model->selectResponsaveis();
       $dataSalas = $this->patrimonios_model->selectSalas();
 
+      echo '"Nome";"Descrição";"Número";"Empresa";"Sala";"Data de atribuição";"Observações"';
+      echo "\n";
       foreach ($dados as $row) {
         echo '"'.str_replace("\"", "\'\'", $row->nome).'";"'.str_replace("\"", "\'\'", $row->descricao).'";"'.$row->nrpatrimonio.'";"'.$row->responsavel.'";';
         if(isset($row->sala)){
