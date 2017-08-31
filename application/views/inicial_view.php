@@ -1,5 +1,12 @@
 <div id="container-central">
   <div id="topo_principal">
+    <p style="float:right;">
+      <a href="<?php echo base_url();?>index.php/reserva/verifica" class="button_action">
+        <button type="button" class="btn btn-default btn-lg">
+          <span class="glyphicon glyphicon-list" aria-hidden="true"></span> Reservas
+        </button>
+      </a>
+    </p>
     <p class="titulo_principal">Seja bem vindo(a) <strong><?php echo $data;?></strong></p>
     <p>Veja abaixo o mapa do CEI e clique em cada sala para visualizar informações detalhadas</p>
   </div>

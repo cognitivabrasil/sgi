@@ -30,7 +30,7 @@
         <?php if($this->session->userdata('id_acesso')!=4){ ?>
           <li <?php if($atual == 'patrimonios') echo 'class="active"' ?>><a href="<?php echo base_url();?>index.php/patrimonios">Patrimônio</a></li>
         <?php } ?>
-        <li <?php if($atual == 'reserva') echo 'class="active"' ?>><a href="<?php echo base_url();?>index.php/reserva">Reserva de Salas</a></li>
+        <!--<li <?php if($atual == 'reserva') echo 'class="active"' ?>><a href="<?php echo base_url();?>index.php/reserva">Reserva de Salas</a></li>-->
         <li <?php if($atual == 'pendencias') echo 'class="active"' ?>><a href="<?php echo base_url();?>index.php/pendencias">Requisições
           <?php if($this->session->userdata('id_acesso')==1 && $this->session->userdata('notifica_requisicao')>0){ ?><sup style="color:red;"> <?php echo $this->session->userdata('notifica_requisicao');?></sup><?php } ?>
           </a></li>
