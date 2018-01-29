@@ -4,13 +4,22 @@ class Patrimonios_model extends CI_Model {
     // Insere empreendimento
 
     function insert() {
-      $this->nome = $_POST['nome'];
-      $this->nrpatrimonio = $_POST['nr'];
-      $this->responsavel = $_POST['responsavel'];
-      $this->observacoes = $_POST['observacoes'];
-      $this->descricao = $_POST['descricao'];
 
-      $this->db->insert('erp_patrimonios',$this);
+      $pode_gravar = $this->db->query('select count(*) as nr from erp_patrimonios where nrpatrimonio = "'.$_POST['nr'].'"')->result();
+
+      if($pode_gravar == 0){
+
+        $this->nome = $_POST['nome'];
+        $this->nrpatrimonio = $_POST['nr'];
+        $this->responsavel = $_POST['responsavel'];
+        $this->observacoes = $_POST['observacoes'];
+        $this->descricao = $_POST['descricao'];
+
+        $this->db->insert('erp_patrimonios',$this);
+        return 1;
+      }else{
+        return 0;
+      }
 
     }
 
@@ -108,16 +117,16 @@ class Patrimonios_model extends CI_Model {
     }
 
     function selectResponsaveis() {
-        $query = $this->db->query('Select * from erp_patrimonios group by responsavel');
+        $query = $this->db->query('Select responsavel from erp_patrimonios group by responsavel');
 
         return $query;
     }
 
-    function selectSalas() {
+    function las() {
         $query = $this->db->query('Select erp_salas.* from erp_patrimonios
-        inner join erp_patrimonio_sala on erp_patrimonios.id = erp_patrimonio_sala.id_patrimonio
-        inner join erp_salas on erp_salas.id = erp_patrimonio_sala.id_sala
-        group by erp_patrimonio_sala.id_sala');
+        inner join erp_patrimonio_sala_emp on erp_patrimonios.id = erp_patrimonio_sala_emp.id_patrimonio
+        inner join erp_salas on erp_salas.id = erp_patrimonio_sala_emp.id_sala
+        group by erp_patrimonio_sala_emp.id_sala');
 
         return $query;
     }
@@ -139,9 +148,9 @@ class Patrimonios_model extends CI_Model {
     }
 
     function selectSala($id) {
-      $query = $this->db->query('select * from erp_patrimonio_sala
-      INNER JOIN erp_salas on erp_salas.id = erp_patrimonio_sala.id_sala
-      where erp_patrimonio_sala.id_patrimonio = '.$id);
+      $query = $this->db->query('select * from erp_patrimonio_sala_emp
+      INNER JOIN erp_salas on erp_salas.id = erp_patrimonio_sala_emp.id_sala
+      where erp_patrimonio_sala_emp.id_patrimonio = '.$id);
 
       return $query;
 
@@ -149,6 +158,13 @@ class Patrimonios_model extends CI_Model {
 
     function selectAllSalas() {
       $query = $this->db->query('select * from erp_salas order by nr_sala');
+
+      return $query;
+
+    }
+
+    function selectAllEmp() {
+      $query = $this->db->query('select * from erp_empreendimentos order by nome');
 
       return $query;
 

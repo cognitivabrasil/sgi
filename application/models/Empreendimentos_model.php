@@ -138,29 +138,60 @@ class Empreendimentos_model extends CI_Model {
     }
 
     function select_weak_entities($id,$type) {
-      if($type == 'ps'){
-        $query = $this->db->query("Select erp_empreendimentos_ps.* from erp_empreendimentos
-  inner join erp_empreendimentos_ps on erp_empreendimentos.id = erp_empreendimentos_ps.id_empreendimento
-  where erp_empreendimentos.id =".$id);
-      }else{
-        $query = $this->db->query("Select erp_empreendimentos_contrato.* from erp_empreendimentos
-  inner join erp_empreendimentos_contrato on erp_empreendimentos.id = erp_empreendimentos_contrato.id_empreendimento
-  where erp_empreendimentos.id =".$id);
+      switch ($type) {
+        case 'ps':
+          $query = $this->db->query("Select erp_empreendimentos_ps.* from erp_empreendimentos
+    inner join erp_empreendimentos_ps on erp_empreendimentos.id = erp_empreendimentos_ps.id_empreendimento
+    where erp_empreendimentos.id =".$id);
+          break;
+        case 'ct':
+          $query = $this->db->query("Select erp_empreendimentos_contrato.* from erp_empreendimentos
+    inner join erp_empreendimentos_contrato on erp_empreendimentos.id = erp_empreendimentos_contrato.id_empreendimento
+    where erp_empreendimentos.id =".$id);
+          break;
+        case 'sl':
+          $query = $this->db->query("Select erp_salas.* from erp_salas
+    inner join erp_salas_emp on erp_salas.id = erp_salas_emp.id_sala
+    where erp_salas_emp.id_emp =".$id);
+          break;
       }
+
       return $query;
     }
 
     function select_weak_entities_by_id($id,$type) {
-      if($type == 'ps'){
-        $query = $this->db->query("Select erp_empreendimentos_ps.* from erp_empreendimentos
-  inner join erp_empreendimentos_ps on erp_empreendimentos.id = erp_empreendimentos_ps.id_empreendimento
-  where erp_empreendimentos_ps.id =".$id);
-      }else{
-        $query = $this->db->query("Select erp_empreendimentos_contrato.* from erp_empreendimentos
-  inner join erp_empreendimentos_contrato on erp_empreendimentos.id = erp_empreendimentos_contrato.id_empreendimento
-  where erp_empreendimentos_contrato.id =".$id);
+      switch ($type) {
+        case 'ps':
+          $query = $this->db->query("Select erp_empreendimentos_ps.* from erp_empreendimentos
+    inner join erp_empreendimentos_ps on erp_empreendimentos.id = erp_empreendimentos_ps.id_empreendimento
+    where erp_empreendimentos_ps.id =".$id);
+          break;
+        case 'ct':
+          $query = $this->db->query("Select erp_empreendimentos_contrato.* from erp_empreendimentos
+    inner join erp_empreendimentos_contrato on erp_empreendimentos.id = erp_empreendimentos_contrato.id_empreendimento
+    where erp_empreendimentos_contrato.id =".$id);
+          break;
+        case 'sl':
+          $query = $this->db->query("Select erp_salas.* from erp_salas
+    inner join erp_salas_emp on erp_salas.id = erp_salas_emp.id_sala
+    where erp_salas_emp.id_emp =".$id);
+          break;
       }
+
       return $query;
     }
 
+    function aloca_sala() {
+      $this->id_sala = $_POST['sala'];
+      $this->id_emp = $_POST['id_emp'];
+      $this->timecreated = date('Y-m-d');
+
+      $this->db->insert('erp_salas_emp',$this);
+    }
+
+    function remove_sala($id_sala, $id){
+      $query = $this->db->query('Delete from erp_salas_emp where id_emp='.$id.' and id_sala='.$id_sala);
+
+      return $query;
+    }
 }

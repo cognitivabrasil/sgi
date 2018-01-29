@@ -8,6 +8,7 @@ class Salas_model extends CI_Model {
       $this->funcao = $_POST['funcao'];
       $this->descricao = $_POST['descricao'];
       $this->disponivel = $_POST['disponivel'];
+      $this->dimensoes = $_POST['dimensoes'];
       $this->travada_cei = $_POST['travada_cei'];
 
       $this->db->insert('erp_salas',$this);
@@ -18,6 +19,7 @@ class Salas_model extends CI_Model {
       $this->nr_sala = $_POST['nr'];
       $this->funcao = $_POST['funcao'];
       $this->descricao = $_POST['descricao'];
+      $this->dimensoes = $_POST['dimensoes'];
       $this->disponivel = $_POST['disponivel'];
       $this->travada_cei = $_POST['travada_cei'];
 
@@ -62,6 +64,12 @@ class Salas_model extends CI_Model {
         where erp_salas.id = '.$id);
 
         return $query;
+    }
+
+    function selectSalaNaoAlocada($id_emp) {
+        $query = $this->db->query('SELECT * FROM erp_salas where erp_salas.id NOT IN (select id_sala from erp_salas_emp) order by nr_sala');
+
+        return $query->result();
     }
 
 }

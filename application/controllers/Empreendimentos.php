@@ -34,8 +34,9 @@ class Empreendimentos extends CI_Controller {
 
       $query_weak_ps = $this->empreendimentos_model->select_weak_entities($id,'ps');
       $query_weak_ct = $this->empreendimentos_model->select_weak_entities($id,'ct');
+      $query_weak_sl = $this->empreendimentos_model->select_weak_entities($id,'sl');
 
-      $this->load->view('empreendimentos_visualiza', array('data'=>$query->result(),'weak_data_ps'=>$query_weak_ps->result(), 'weak_data_ct'=>$query_weak_ct->result()));
+      $this->load->view('empreendimentos_visualiza', array('data'=>$query->result(),'weak_data_ps'=>$query_weak_ps->result(), 'weak_data_ct'=>$query_weak_ct->result(), 'weak_data_sl'=>$query_weak_sl->result()));
       $this->load->view('footer');
     }
 
@@ -127,6 +128,67 @@ class Empreendimentos extends CI_Controller {
     function remove($id) {
       $this->load->model('empreendimentos_model');
       echo $this->empreendimentos_model->remove($id);
+    }
+
+    function aloca($id) {
+      $this->load->model('usuarios_model');
+      $this->usuarios_model->verifica_login();
+
+      $this->load->view('header');
+      $this->load->view('head_logado');
+
+      $this->load->model('empreendimentos_model');
+      $query = $this->empreendimentos_model->select($id);
+
+      $this->load->model('salas_model');
+      $querySalas = $this->salas_model->selectSalaNaoAlocada($id);
+
+      $dados = $query->result()[0];
+
+      $this->load->view('empreendimentos_atribui_sala', array('data'=>$dados, 'salas'=>$querySalas));
+      $this->load->view('footer');
+    }
+
+    function remove_sala($id_sala,$id) {
+      $this->load->model('usuarios_model');
+      $this->usuarios_model->verifica_login();
+
+      $this->load->view('header');
+      $this->load->view('head_logado');
+
+      $this->load->model('empreendimentos_model');
+      $query = $this->empreendimentos_model->select($id);
+
+      //Remove a sala
+      $this->empreendimentos_model->remove_sala($id_sala,$id);
+
+      $query_weak_ps = $this->empreendimentos_model->select_weak_entities($id,'ps');
+      $query_weak_ct = $this->empreendimentos_model->select_weak_entities($id,'ct');
+      $query_weak_sl = $this->empreendimentos_model->select_weak_entities($id,'sl');
+
+      $this->load->view('empreendimentos_visualiza', array('data'=>$query->result(),'weak_data_ps'=>$query_weak_ps->result(), 'weak_data_ct'=>$query_weak_ct->result(), 'weak_data_sl'=>$query_weak_sl->result()));
+      $this->load->view('footer');
+    }
+
+    function atribuicao_sala($id) {
+      $this->load->model('usuarios_model');
+      $this->usuarios_model->verifica_login();
+
+      $this->load->view('header');
+      $this->load->view('head_logado');
+
+      $this->load->model('empreendimentos_model');
+      $query = $this->empreendimentos_model->select($id);
+
+      //Alocando a sala
+      $this->empreendimentos_model->aloca_sala();
+
+      $query_weak_ps = $this->empreendimentos_model->select_weak_entities($id,'ps');
+      $query_weak_ct = $this->empreendimentos_model->select_weak_entities($id,'ct');
+      $query_weak_sl = $this->empreendimentos_model->select_weak_entities($id,'sl');
+
+      $this->load->view('empreendimentos_visualiza', array('data'=>$query->result(),'weak_data_ps'=>$query_weak_ps->result(), 'weak_data_ct'=>$query_weak_ct->result(), 'weak_data_sl'=>$query_weak_sl->result()));
+      $this->load->view('footer');
     }
 
 }

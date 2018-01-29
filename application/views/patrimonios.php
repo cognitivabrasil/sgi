@@ -41,8 +41,9 @@
   <div id="block_usuario">
     <?php foreach ($data as $row) { ?>
     <div class="row patrimonio_row">
+      <div class="col-md-2"><?php echo $row->nrpatrimonio; ?></div>
       <div class="col-md-4"><?php echo $row->nome; ?></div>
-      <div class="col-md-4"><?php echo $row->responsavel; ?></div>
+      <div class="col-md-2"><?php echo $row->responsavel; ?></div>
       <div class="col-md-2">
         <span class="sobrescrito_empreendimento"><?php if(isset($row->sala)){ echo $row->sala->data_atribuicao; }else{ echo "Não atribuído"; }?></span>
       </div>

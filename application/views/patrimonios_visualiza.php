@@ -23,7 +23,7 @@
       </a>
       <a href="<?php echo base_url();?>index.php/patrimonios/atribui/<?php echo $data->id;?>" class="button_action">
         <button type="button" class="btn btn-default btn-lg">
-          Atribuir localização <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
+          Atribuir <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
         </button>
       </a>
       <?php } ?>

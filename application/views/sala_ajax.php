@@ -6,6 +6,9 @@
 <p>Sala <?php echo $data->nr_sala; ?></p>
 <p><?php echo $data->funcao; ?></p>
 <p><?php echo $data->descricao; ?></p>
+<?php if($data->dimensoes!=''){ ?>
+<p>Dimensões: <?php echo $data->dimensoes; ?></p>
+<?php } ?>
 <?php
   if(($data->disponivel=='1' && $data->travada_cei=='0')||($data->disponivel=='1' && $data->travada_cei=='1' && $this->session->userdata('id_acesso') == 1)){
 ?>

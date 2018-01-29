@@ -30,7 +30,7 @@ class Patrimonios extends CI_Controller {
       }
 
       $dataResponsaveis = $this->patrimonios_model->selectResponsaveis();
-      $dataSalas = $this->patrimonios_model->selectSalas();
+      $dataSalas = $this->patrimonios_model->selectAllSalas();
 
       $this->load->view('patrimonios', array('data'=>$dados, 'responsaveis'=>$dataResponsaveis->result(), 'salas'=>$dataSalas->result()));
       $this->load->view('footer');
@@ -180,9 +180,9 @@ class Patrimonios extends CI_Controller {
         $dados->sala->data_atribuicao = date("d/m/Y", strtotime($dados->sala->data_atribuicao));
       }
 
-      $querySalas = $this->patrimonios_model->selectAllSalas();
+      $queryEmp = $this->patrimonios_model->selectAllEmp();
 
-      $this->load->view('patrimonios_atribui', array('data'=>$dados,'salas'=>$querySalas->result()));
+      $this->load->view('patrimonios_atribui', array('data'=>$dados,'empresas'=>$queryEmp->result()));
       $this->load->view('footer');
     }
 
@@ -227,11 +227,15 @@ class Patrimonios extends CI_Controller {
       $this->usuarios_model->verifica_login();
 
       $this->load->model('patrimonios_model');
-	    $this->patrimonios_model->insert();
+	    $resultado = $this->patrimonios_model->insert();
 
       $this->load->view('header');
       $this->load->view('head_logado');
-      echo "<div class='alert alert-success fade in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Patrimônio cadastrado com sucesso!</div>";
+      if($resultado == 1){
+        echo "<div class='alert alert-success fade in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Patrimônio cadastrado com sucesso!</div>";
+      }else{
+        echo "<div class='alert alert-danger fade in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Já existe um patrimônio com este número!<br>Patrimônio não cadastrado.</div>";
+      }
 
       $query = $this->patrimonios_model->select();
 
