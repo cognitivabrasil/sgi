@@ -19,7 +19,7 @@
     <table class="table table-bordered table-hover reservas-table">
     <?php
     $hora = 8;
-    $dias_semana = array('Segunda-feira','Terça-feira','Quarta-feira','Quinta-feira','Sexta-feira');
+    $dias_semana = array('Segunda-feira<br>'.explode('-',$semana_full[0])[2].'/'.explode('-',$semana_full[0])[1],'Terça-feira<br>'.explode('-',$semana_full[1])[2].'/'.explode('-',$semana_full[1])[1],'Quarta-feira<br>'.explode('-',$semana_full[2])[2].'/'.explode('-',$semana_full[2])[1],'Quinta-feira<br>'.explode('-',$semana_full[3])[2].'/'.explode('-',$semana_full[3])[1],'Sexta-feira<br>'.explode('-',$semana_full[4])[2].'/'.explode('-',$semana_full[4])[1]);
     for($i=0;$i<20;$i++){
       $min="30";
       $prox_hr = ($hora+1).":30";
