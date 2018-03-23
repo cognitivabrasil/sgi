@@ -37,6 +37,12 @@ class Salas_model extends CI_Model {
         return $query;
     }
 
+    function selectSalaByEmp($id_emp) {
+        $query = $this->db->query('Select erp_salas.* from erp_salas inner join erp_salas_emp on erp_salas.id = erp_salas_emp.id_sala where erp_salas_emp.id_emp = '.$id_emp.' order by nr_sala');
+
+        return $query;
+    }
+
     function selectSalasDisponiveis() {
         $query = $this->db->query('Select * from erp_salas where disponivel = 1 order by nr_sala');
 

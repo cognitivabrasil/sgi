@@ -59,9 +59,9 @@ class Patrimonios_model extends CI_Model {
 
 
     function atribuirPatrimonio() {
-      $query = $this->db->query('select * from erp_patrimonio_sala
-      INNER JOIN erp_salas on erp_salas.id = erp_patrimonio_sala.id_sala
-      where erp_patrimonio_sala.id_patrimonio = '.$_POST['id']);
+      $query = $this->db->query('select * from erp_patrimonio_sala_emp
+      INNER JOIN erp_salas on erp_salas.id = erp_patrimonio_sala_emp.id_sala
+      where erp_patrimonio_sala_emp.id_patrimonio = '.$_POST['id']);
 
       $dados = $query->result();
 
@@ -69,16 +69,18 @@ class Patrimonios_model extends CI_Model {
         //Finalizar
         $this->id_patrimonio = $_POST['id'];
         $this->id_sala = $_POST['sala'];
+        $this->id_emp = $_POST['emp'];
         $this->data_atribuicao = date('Y-m-d');
         $this->db->where('id_patrimonio',$_POST['id']);
-        $this->db->update('erp_patrimonio_sala',$this);
+        $this->db->update('erp_patrimonio_sala_emp',$this);
 
       }else{
         $this->id_patrimonio = $_POST['id'];
         $this->id_sala = $_POST['sala'];
+        $this->id_emp = $_POST['emp'];
         $this->data_atribuicao = date('Y-m-d');
 
-        $this->db->insert('erp_patrimonio_sala',$this);
+        $this->db->insert('erp_patrimonio_sala_emp',$this);
       }
 
     }
@@ -150,6 +152,16 @@ class Patrimonios_model extends CI_Model {
     function selectSala($id) {
       $query = $this->db->query('select * from erp_patrimonio_sala_emp
       INNER JOIN erp_salas on erp_salas.id = erp_patrimonio_sala_emp.id_sala
+      where erp_patrimonio_sala_emp.id_patrimonio = '.$id);
+
+      return $query;
+
+    }
+
+    function selectEmpSala($id) {
+      $query = $this->db->query('select * from erp_patrimonio_sala_emp
+      INNER JOIN erp_salas on erp_salas.id = erp_patrimonio_sala_emp.id_sala
+      INNER JOIN erp_empreendimentos on erp_patrimonio_sala_emp.id_emp = erp_empreendimentos.id
       where erp_patrimonio_sala_emp.id_patrimonio = '.$id);
 
       return $query;

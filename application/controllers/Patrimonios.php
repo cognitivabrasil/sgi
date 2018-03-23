@@ -132,7 +132,7 @@ class Patrimonios extends CI_Controller {
       $query = $this->patrimonios_model->selectByID($id);
 
       $dados = $query->result()[0];
-      $queryIn = $this->patrimonios_model->selectSala($dados->id);
+      $queryIn = $this->patrimonios_model->selectEmpSala($dados->id);
       if(count($queryIn->result())>0){
         $dados->sala = $queryIn->result()[0];
         $dados->sala->data_atribuicao = date("d/m/Y", strtotime($dados->sala->data_atribuicao));
@@ -171,6 +171,7 @@ class Patrimonios extends CI_Controller {
       $this->load->view('head_logado');
 
       $this->load->model('patrimonios_model');
+      $this->load->model('salas_model');
       $query = $this->patrimonios_model->selectByID($id);
 
       $dados = $query->result()[0];
@@ -201,7 +202,7 @@ class Patrimonios extends CI_Controller {
       $query = $this->patrimonios_model->selectByID($_POST['id']);
 
       $dados = $query->result()[0];
-      $queryIn = $this->patrimonios_model->selectSala($dados->id);
+      $queryIn = $this->patrimonios_model->selectEmpSala($dados->id);
       if(count($queryIn->result())>0){
         $dados->sala = $queryIn->result()[0];
         $dados->sala->data_atribuicao = date("d/m/Y", strtotime($dados->sala->data_atribuicao));

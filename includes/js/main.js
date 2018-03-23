@@ -1,5 +1,11 @@
 $(document).ready(function(){
 
+  $('#select_emp').change(function(){
+    $.get('../../salas/salas_emp/'+$(this).val(),function(data){
+      $('#sala_emp').html(data);
+    });
+  });
+
   $('.reservas-container').doubleScroll({resetOnWindowResize: true});
 
   //Inicializando os tooltips

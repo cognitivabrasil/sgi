@@ -10,6 +10,7 @@
     echo "<b>Descrição:</b> ".$data->descricao."<br>";
     if(isset($data->sala)){
       echo "<h4>Localização</h4>";
+      echo "<b>Empresa:</b> ".$data->sala->nome."<br>";
       echo "<b>Sala:</b> ".$data->sala->nr_sala."<br>";
       echo "<b>Desde:</b> ".$data->sala->data_atribuicao."<br>";
     }

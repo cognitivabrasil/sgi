@@ -22,6 +22,17 @@ class Salas extends CI_Controller {
       $this->load->view('footer');
     }
 
+    function salas_emp($id) {
+      $this->load->model('usuarios_model');
+      $this->usuarios_model->verifica_login();
+
+      $this->load->model('salas_model');
+      $query = $this->salas_model->selectSalaByEmp($id);
+
+      $this->load->view('salas_emp', array('salas'=>$query->result()));
+      $this->load->view('footer');
+    }
+
     function visualiza($id) {
       $this->load->model('usuarios_model');
       $this->usuarios_model->verifica_login();

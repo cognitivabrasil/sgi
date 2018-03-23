@@ -17,11 +17,15 @@
       ?>
       <form method="post" action="<?php echo base_url();?>index.php/patrimonios/atribuicao">
           <input type="hidden" value="<?php echo $data->id;?>" name="id">
-          <select name="sala">
+          Empresa:
+          <select name="emp" id="select_emp">
+              <<option value="0">Selecione...</option>
             <?php foreach ($empresas as $empresa){ ?>
               <option value="<?php echo $empresa->id; ?>"><?php echo $empresa->nome; ?></option>
             <?php } ?>
           </select>
+          <div id="sala_emp">
+          </div>
           <button type="submit" class="btn btn-default btn-lg">
             <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Salvar
           </button>
