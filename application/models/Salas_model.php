@@ -72,6 +72,13 @@ class Salas_model extends CI_Model {
         return $query;
     }
 
+    function selectByNumber($nr) {
+        $query = $this->db->query('Select * from erp_salas
+        where erp_salas.nr_sala = "'.$nr.'"');
+
+        return $query;
+    }
+
     function selectSalaNaoAlocada($id_emp) {
         $query = $this->db->query('SELECT * FROM erp_salas where erp_salas.id NOT IN (select id_sala from erp_salas_emp) order by nr_sala');
 

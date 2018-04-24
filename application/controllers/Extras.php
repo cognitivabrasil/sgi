@@ -11,7 +11,8 @@ class Extras extends CI_Controller {
     function index() {
       echo "Extras";
       echo "<br><a href='/erpcei/index.php/extras/save_consultores'>ler csv consultores</a><br>";
-      echo "<br><a href='/erpcei/index.php/extras/import_patrimonios'>ler pdf patrimonios</a>";
+      echo "<br><a href='/erpcei/index.php/extras/import_patrimonios'>ler pdf patrimonios</a><br>";
+      echo "<br><a href='/erpcei/index.php/extras/import_csv_patrimonios'>importar csv patrimonios</a><br>";
     }
 
     function save_consultores() {
@@ -75,6 +76,23 @@ class Extras extends CI_Controller {
       // foreach ($patData as $row) {
       //     $this->patrimonios_model->insert_extra($row[0],$row[1],$row[2]);
       // }
+
+    }
+
+    function import_csv_patrimonios() {
+      $file = fopen(base_url()."uploads/pat.csv", "r");
+      while (($emapData = fgetcsv($file, 10000, ",")) !== FALSE)
+      {
+        $lines->nome[] = $emapData[0];
+        $lines->descricao[] = $emapData[1];
+        $lines->pat[] = $emapData[2];
+        $lines->emp[] = $emapData[3];
+        $lines->sala[] = $emapData[4];
+        $lines->data[] = $emapData[5];
+      }
+      fclose($file);
+      $this->load->model('extras_model');
+      $this->extras_model->salva_csv_patrimonio($lines);
 
     }
 

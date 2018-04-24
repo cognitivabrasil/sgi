@@ -195,4 +195,10 @@ class Patrimonios_model extends CI_Model {
         return $query;
     }
 
+    function remove_alocacao($id) {
+        $query = $this->db->query('Delete from erp_patrimonio_sala_emp where id_patrimonio='.$id);
+
+        return $query;
+    }
+
 }

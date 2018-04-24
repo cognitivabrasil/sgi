@@ -130,6 +130,12 @@ class Empreendimentos_model extends CI_Model {
         return $query;
     }
 
+    function selectByName($name) {
+        $query = $this->db->query('Select * from erp_empreendimentos emp where emp.id<>1 and emp.nome = "'.$name.'"');
+
+        return $query;
+    }
+
     function selectColaboradorEmpreendimento($id) {
 
         $query = $this->db->query("Select erp_empreendimentos.* from erp_empreendimentos INNER JOIN erp_colaboradores on erp_colaboradores.id_empreendimento = erp_empreendimentos.id where erp_colaboradores.id = ".$id);
