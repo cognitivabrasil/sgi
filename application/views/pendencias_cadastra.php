@@ -19,6 +19,13 @@
             <option value="3">resolvida</option>
             <option value="4">cancelada</option>
           </select>
+          <select type="text" name="tipo">
+            <option value="0">Tipo</option>
+            <option value="1">Consultoria</option>
+            <option value="2">Participação em eventos</option>
+            <option value="3">Espaço físico</option>
+            <option value="4">Outros</option>
+          </select>
           <textarea name="descricao" placeholder="Descrição" style="width:70%; height:150px;"></textarea>
           <button type="submit" class="btn btn-default btn-lg">
             <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Salvar
