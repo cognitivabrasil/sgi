@@ -56,6 +56,24 @@ $(document).ready(function(){
     return false;
   });
 
+  $('.deleta_consultores').click(function(){
+    if(confirm('Você deseja realmente excluir?')){
+      $.get($(this).attr('href'),function(data){
+        window.location.replace('/gestaocei/index.php/consultores');
+      });
+    }
+    return false;
+  });
+
+  $('.deleta_empreendimentos').click(function(){
+      if(confirm('Você deseja realmente excluir?')){
+        $.get($(this).attr('href'),function(data){
+          window.location.replace('/gestaocei/index.php/empreendimentos'+pagina_atual);
+        });
+      }
+      return false;
+    });
+
   $('map').imageMapResize();
 
   $('#filtra_area').change(function(){

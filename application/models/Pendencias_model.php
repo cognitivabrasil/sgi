@@ -15,9 +15,13 @@ class Pendencias_model extends CI_Model {
 
     function insert() {
       $this->nome = $_POST['nome'];
+      $this->tipo = $_POST['tipo'];
       $this->situacao = $_POST['situacao'];
       $this->descricao = $_POST['descricao'];
       $this->data_modificada = date('Y-m-d');
+      $this->visto = 0;
+      $this->empresa = $_POST['empresa'];
+      $this->id_consultores = $_POST['consultor'];
 
       $this->load->model('usuarios_model');
       $query = $this->usuarios_model->selectBySession();
@@ -29,10 +33,51 @@ class Pendencias_model extends CI_Model {
 
       $this->id_usuario = $usuario->id_usuario;
       $this->db->insert('erp_pendencias',$this);
+
+      unset ($this->nome, $this->tipo, $this->situacao, $this->descricao, $this->data_modificada, $this->visto, $this->empresa, $this->id_usuario, $this->id_consultores);
+
+      //LOGs
+      $query = $this->db->query('select * from erp_pendencias where id = (select max(id) from erp_pendencias)');
+      $data = $query->result();
+      $id_pendencia = $data[0]->id;
+      $id_empreendimento = $_POST['empresa'];
+      switch ($_POST['tipo']) {
+        case 1:
+          $tipo = "consultoria";
+          break;
+        case 2:
+          $tipo = "Participação em eventos";
+          break;
+        case 3:
+          $tipo = "Espaço fisíco";
+          break;
+        case 4:
+          $tipo = "Outros";
+          break;
+      }
+      switch ($_POST['situacao']) {
+        case 1:
+          $situacao = "Enviada";
+          break;
+        case 2:
+          $situacao = "Em andamento";
+          break;
+        case 3:
+          $situacao = "Resolvida";
+          break;
+        case 4:
+          $situacao = "Cancelada";
+          break;
+      }
+      $mensagem = "Foi solicitado por ". $_POST['nome']. " serviço de ". $tipo. "    Situacao: ".$situacao;
+      $acao = 'Requisição de serviço';
+      $this->pendencias_model->logs($mensagem, $id_empreendimento, $id_pendencia,$acao);
+      //Final LOGs
     }
 
     function save() {
       $this->nome = $_POST['nome'];
+      $this->tipo = $_POST['tipo'];
       $this->situacao = $_POST['situacao'];
       $this->descricao = $_POST['descricao'];
       $this->data_modificada = date('Y-m-d');
@@ -43,6 +88,29 @@ class Pendencias_model extends CI_Model {
     }
 
     function save_atualiza() {
+      //LOGs
+       $id_empreendimento = 1;
+       $id_pendencia =  $_POST['id_pendencia'];
+       switch ($_POST['situacao']) {
+        case 1:
+          $situacao = "Enviada";
+          break;
+        case 2:
+          $situacao = "Em andamento";
+          break;
+        case 3:
+          $situacao = "Resolvida";
+          break;
+        case 4:
+          $situacao = "Cancelada";
+          break;
+      }
+
+       $mensagem = "Retorno do pedido ".$_POST['id_pendencia'].": ". $_POST['descricao']. "    Situacao: ".$situacao;
+       $acao = 'Retorno de requisição';
+       $this->pendencias_model->logs($mensagem, $id_empreendimento, $id_pendencia,$acao);
+      //Final LOGs
+
       $this->id_pendencia = $_POST['id_pendencia'];
       $this->situacao = $_POST['situacao'];
       $this->descricao = $_POST['descricao'];
@@ -50,6 +118,8 @@ class Pendencias_model extends CI_Model {
       $this->id_usuario = $_POST['usuario'];
 
       $this->db->insert('erp_pendencia_dados',$this);
+
+      $this->pendencias_model->zeraUnread();
     }
 
     function verifica_resolvida($id){
@@ -87,4 +157,17 @@ class Pendencias_model extends CI_Model {
       return $query;
     }
 
+    function logs($mensagem, $id_empreendimento, $id_pendencia, $acao){
+        $this->data = date('Y-m-d H:i:s');
+        $this->usuario = $_SESSION['username'];
+        $this->mensagem = $mensagem;
+        $this->local = 'pendencias';
+        $this->acao = $acao;
+        $this->id_empreendimento = $id_empreendimento;
+        $this->id_pendencia = $id_pendencia;
+
+        $this->db->insert('erp_logs', $this);
+
+        unset ($this->data, $this->usuario, $this->mensagem, $this->local, $this->acao, $this->id_empreendimento, $this->id_pendencia);
+    }
 }

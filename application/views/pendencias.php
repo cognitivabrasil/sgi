@@ -1,5 +1,6 @@
 <div id="container-central">
 <div>
+  <p id="titulo_usuario">Requisições</p><br>
   <p style="float:right; padding-right:20px;">
     <a href="<?php echo base_url();?>index.php/pendencias/resolvidas" class="button_action">
       <button type="button" class="btn btn-default btn-lg">
@@ -7,7 +8,13 @@
       </button>
     </a>
   </p>
-  <p id="titulo_usuario">Requisições</p><br>
+  <div style="text-align:center; margin-top:5px; margin-right: 70%;">
+      <a href="<?php echo base_url();?>index.php/pendencias/cadastra" class="button_action">
+      <button type="button" class="btn btn-default btn-lg">
+        <span class="glyphicon glyphicon-duplicate" aria-hidden="true"></span> Novo
+      </button>
+      </a>
+    </div>
   <div id="block_usuario">
     <?php foreach($data as $row){
         if(!($row->situacao == 3 or $row->situacao_final > 0)){?>
@@ -28,13 +35,6 @@
             </div>
           </div><br>
     <?php }
-        } ?>
-    <div style="text-align:center; margin-top:15px;">
-      <a href="<?php echo base_url();?>index.php/pendencias/cadastra" class="button_action">
-      <button type="button" class="btn btn-default btn-lg">
-        <span class="glyphicon glyphicon-duplicate" aria-hidden="true"></span> Novo
-      </button>
-      </a>
-    </div>
+        } ?>    
   </div>
 </div>

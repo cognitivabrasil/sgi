@@ -5,6 +5,8 @@ class Consultores_model extends CI_Model {
 
     function insert() {
       $this->nome = $_POST['nome'];
+      $this->contato = $_POST['contato'];
+      $this->area_atuacao = $_POST['area_atuacao'];
       //Calcula os minutos totais baseado na hora inserida
       $aux = explode(':',$_POST['horas_disponiveis']);
       $this->minutos_totais = ($aux[0]*60)+$aux[1];
@@ -16,13 +18,18 @@ class Consultores_model extends CI_Model {
 
     function save() {
       $this->nome = $_POST['nome'];
-      $this->funcao = $_POST['funcao'];
+      $this->contato = $_POST['contato'];
+      $this->area_atuacao = $_POST['area_atuacao'];
+      //Calcula os minutos totais baseado na hora inserida
+      $aux = explode(':',$_POST['horas_disponiveis']);
+      $this->minutos_totais = ($aux[0]*60)+$aux[1];
+
 
       $this->db->where('id', $_POST['id']);
 
       $this->db->update('erp_consultores',$this);
-
     }
+
     function select($id=0) {
         if($id==0){
           $query = $this->db->query("Select * from erp_consultores");
@@ -30,12 +37,24 @@ class Consultores_model extends CI_Model {
           $query = $this->db->query("Select * from erp_consultores where id = ".$id);
         }
 
+        return $query;
+    }
+
+    function selectByID($id) {
+        $query = $this->db->query("Select * from erp_consultores where id = ".$id);
 
         return $query;
     }
 
+    function selectDisponivel(){
+        $query = $this->db->query("select * from erp_consultores where minutos_totais != ".'00');
+
+        return $query;
+
+    }
+
     function remove($id) {
-        $query = $this->db->query('Delete from erp_colaboradores where id='.$id);
+        $query = $this->db->query('Delete from erp_consultores where id='.$id);
 
         return $query;
     }

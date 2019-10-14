@@ -1,3 +1,15 @@
+  <script type="text/javascript">
+      $(document).ready(function() {
+      $('#inputOculto').hide();
+      $('#tipo').change(function() {
+        if ($('#tipo').val() == '1') {
+          $('#inputOculto').show();
+        } else {
+          $('#inputOculto').hide();
+        }
+      });
+    });
+  </script>
 <div id="container-central">
   <div>
     <p id="titulo_usuario">Cadastro de requisições</p>
@@ -19,13 +31,23 @@
             <option value="3">resolvida</option>
             <option value="4">cancelada</option>
           </select>
-          <select type="text" name="tipo">
+          <select type="text" name="tipo" id="tipo">
             <option value="0">Tipo</option>
             <option value="1">Consultoria</option>
             <option value="2">Participação em eventos</option>
             <option value="3">Espaço físico</option>
             <option value="4">Outros</option>
           </select>
+          <div id="inputOculto">
+            <?php if($this->session->userdata('id_acesso')==1){ ?>
+              <select type="text" name="consultor">
+                <option value="0">Consultor</option>
+                <?php foreach ($consultores as $consultores) { ?>
+                  <option value="<?php echo $consultores->id?>"><?php echo $consultores->nome?></option>
+                <?php }?>
+              </select>
+            <?php } ?>
+          </div>
           <textarea name="descricao" placeholder="Descrição" style="width:70%; height:150px;"></textarea>
           <button type="submit" class="btn btn-default btn-lg">
             <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Salvar

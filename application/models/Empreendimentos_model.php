@@ -58,15 +58,94 @@ class Empreendimentos_model extends CI_Model {
         $this->db->insert('erp_empreendimentos_contrato',$contrato);
         $i++;
       }*/
+
+      unset ($this->nome, $this->vinculo, $this->responsavel, $this->cpf_cnpj);
+
+      //LOGs
+      $query = $this->db->query('select * from erp_empreendimentos where id = (select max(id) from erp_empreendimentos)');
+      $data = $query->result();
+      $id_empreendimento = $data[0]->id;
+      switch ($_POST['vinculo']) {
+        case 1:
+          $vinculo = "Pré Incubada";
+          break;
+        case 2:
+          $vinculo = "Incubada";
+          break;
+        case 3:
+          $vinculo = "Parque";
+          break;
+        case 4:
+          $vinculo = "Outros";
+          break;
+      }
+      $mensagem = "Foi criada uma nova empresa ".$_POST['nome']." com o vínculo ". $vinculo;
+      $acao = "Inserção de empreendimento";
+      $this->empreendimentos_model->logs($mensagem, $id_empreendimento, $acao);
+      //Final LOGs
     }
 
     function remove($id) {
+      //LOGs
+      $id_empreendimento = $id;
+      $query = $this->db->query('Select nome from erp_empreendimentos where id = "'. $id .'"');
+      $data = $query->result();
+      $nome = $data[0]->nome;
+      $mensagem = "A empresa ".$nome." foi excluida";
+      $acao = "Exclusão de empreendimento";
+      $this->empreendimentos_model->logs($mensagem, $id_empreendimento, $acao);       
+      //Final LOGs
+
         $query = $this->db->query('Delete from erp_empreendimentos where id='.$id);
 
         return $query;
     }
 
     function save() {
+      //LOGs
+      $id_empreendimento =  $_POST['id'];
+      $query = $this->db->query('Select vinculo from erp_empreendimentos where id = "'. $id_empreendimento .'"');
+      $data = $query->result();
+      $vinculo_data = $data[0]->vinculo;
+
+      if ($vinculo_data != $_POST['vinculo'])
+        {
+          switch ($_POST['vinculo']) {
+        case 1:
+          $vinculo = "Pré Incubada";
+          break;
+        case 2:
+          $vinculo = "Incubada";
+          break;
+        case 3:
+          $vinculo = "Parque";
+          break;
+        case 4:
+          $vinculo = "Outros";
+          break;
+        }
+
+        switch ($vinculo_data) {
+        case 1:
+          $vinculo_antigo = "Pré Incubada";
+          break;
+        case 2:
+          $vinculo_antigo = "Incubada";
+          break;
+        case 3:
+          $vinculo_antigo = "Parque";
+          break;
+        case 4:
+          $vinculo_antigo = "Outros";
+          break;
+        }
+
+          $acao = 'Alteração no vinculo da empresa';
+          $mensagem = "O vínculo da empresa ".$_POST['nome']." foi alterado de ". $vinculo_antigo  ." para ".$vinculo;
+          $this->empreendimentos_model->logs($mensagem, $id_empreendimento,$acao);
+        }
+      //Final LOGs
+
       $this->nome = $_POST['nome'];
       $this->nome_fantasia = $_POST['fantasia'];
       $this->vinculo = $_POST['vinculo'];
@@ -109,8 +188,6 @@ class Empreendimentos_model extends CI_Model {
       $this->db->where('id', $_POST['id']);
 
       $this->db->update('erp_empreendimentos',$this);
-
-      //Futuramente tambem editar a questao de contratos e produtos e serviços
     }
 
     //Atualiza usuário
@@ -199,5 +276,18 @@ class Empreendimentos_model extends CI_Model {
       $query = $this->db->query('Delete from erp_salas_emp where id_emp='.$id.' and id_sala='.$id_sala);
 
       return $query;
+    }
+
+    function logs($mensagem, $id_empreendimento, $acao){
+        $this->data = date('Y-m-d H:i:s');
+        $this->usuario = $_SESSION['username'];
+        $this->mensagem = $mensagem;
+        $this->local = 'empreendimentos';
+        $this->acao = $acao;
+        $this->id_empreendimento = $id_empreendimento;
+
+        $this->db->insert('erp_logs', $this);
+
+        unset ($this->data, $this->usuario, $this->mensagem, $this->local, $this->acao, $this->id_empreendimento);
     }
 }

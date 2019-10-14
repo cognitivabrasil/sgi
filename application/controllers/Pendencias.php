@@ -102,7 +102,10 @@ class Pendencias extends CI_Controller {
       $this->load->model('empreendimentos_model');
       $empQuery = $this->empreendimentos_model->select();
 
-      $this->load->view('pendencias_cadastra', array('empresas'=>$empQuery->result()));
+      $this->load->model('consultores_model');
+      $dados = $this->consultores_model->selectDisponivel();
+
+      $this->load->view('pendencias_cadastra', array('empresas'=>$empQuery->result(),'consultores'=>$dados->result()));
       $this->load->view('footer');
     }
 
