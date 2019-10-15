@@ -9,9 +9,9 @@
       <div class="row empreendimento_row">
 
         <div class="col-md-8">
-          <?php echo 'Data: '. $row->data;?>
+          <?php echo 'Data: '. date("d/m/Y H:i", strtotime($row->data));?>
           <br>
-          <?php echo 'Usuario: '. $row->usuario;?>
+          <?php echo 'Usuario: '. $row->username;?>
           <br>
           <?php echo $row->mensagem;?>
         </div>

@@ -93,7 +93,7 @@ class Empreendimentos_model extends CI_Model {
       $nome = $data[0]->nome;
       $mensagem = "A empresa ".$nome." foi excluida";
       $acao = "Exclusão de empreendimento";
-      $this->empreendimentos_model->logs($mensagem, $id_empreendimento, $acao);       
+      $this->empreendimentos_model->logs($mensagem, $id_empreendimento, $acao);
       //Final LOGs
 
         $query = $this->db->query('Delete from erp_empreendimentos where id='.$id);
@@ -107,6 +107,10 @@ class Empreendimentos_model extends CI_Model {
       $query = $this->db->query('Select vinculo from erp_empreendimentos where id = "'. $id_empreendimento .'"');
       $data = $query->result();
       $vinculo_data = $data[0]->vinculo;
+
+      if(!$vinculo_data){
+        $vinculo_data = 0;
+      }
 
       if ($vinculo_data != $_POST['vinculo'])
         {
@@ -138,6 +142,8 @@ class Empreendimentos_model extends CI_Model {
         case 4:
           $vinculo_antigo = "Outros";
           break;
+        default:
+          $vinculo_antigo = "Sem Vínculo";
         }
 
           $acao = 'Alteração no vinculo da empresa';
@@ -280,7 +286,7 @@ class Empreendimentos_model extends CI_Model {
 
     function logs($mensagem, $id_empreendimento, $acao){
         $this->data = date('Y-m-d H:i:s');
-        $this->usuario = $_SESSION['username'];
+        $this->usuario = $_SESSION['id_usuario'];
         $this->mensagem = $mensagem;
         $this->local = 'empreendimentos';
         $this->acao = $acao;
