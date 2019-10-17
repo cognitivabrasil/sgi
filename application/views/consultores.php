@@ -2,6 +2,13 @@
 <div>
   <p id="titulo_usuario">Consultores</p>
   <?php if($this->session->userdata('id_acesso')==1){ ?>
+  <div style="text-align:center; margin-top:15px;">
+    <a href="<?php echo base_url();?>index.php/consultores/cadastra" class="button_action">
+      <button type="button" class="btn btn-default btn-lg">
+        <span class="glyphicon glyphicon-duplicate" aria-hidden="true"></span> Novo
+      </button>
+    </a>
+  </div><br>
   <div id="block_usuario">
     <?php
     foreach($data as $row){
@@ -23,12 +30,5 @@
     }
     ?>
   </div>
-  <div style="text-align:center; margin-top:15px;">
-    <a href="<?php echo base_url();?>index.php/consultores/cadastra" class="button_action">
-      <button type="button" class="btn btn-default btn-lg">
-        <span class="glyphicon glyphicon-duplicate" aria-hidden="true"></span> Novo
-      </button>
-    </a>
-  </div><br>
   <?php } ?>
 </div>

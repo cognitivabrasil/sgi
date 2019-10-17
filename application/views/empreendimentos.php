@@ -1,6 +1,15 @@
 <div id="container-central">
 <div>
   <p id="titulo_usuario">Empreendimentos</p>
+  <div style="text-align:center; margin-top:15px;">
+    <?php if($this->session->userdata('id_acesso')==1){?>
+    <a href="<?php echo base_url();?>index.php/empreendimentos/cadastra" class="button_action">
+      <button type="button" class="btn btn-default btn-lg">
+        <span class="glyphicon glyphicon-duplicate" aria-hidden="true"></span> Novo
+      </button>
+    </a>
+    <?php } ?>
+  </div>
   <?php if($this->session->userdata('id_acesso')==1){ ?>
   <div id="block_usuario">
     <?php
@@ -47,15 +56,6 @@
     <?php
     }
     ?>
-    <div style="text-align:center; margin-top:15px;">
-      <?php if($this->session->userdata('id_acesso')==1){?>
-      <a href="<?php echo base_url();?>index.php/empreendimentos/cadastra" class="button_action">
-        <button type="button" class="btn btn-default btn-lg">
-          <span class="glyphicon glyphicon-duplicate" aria-hidden="true"></span> Novo
-        </button>
-      </a>
-      <?php } ?>
-    </div>
   </div>
   <?php } ?>
 </div>
