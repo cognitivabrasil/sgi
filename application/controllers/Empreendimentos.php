@@ -191,4 +191,14 @@ class Empreendimentos extends CI_Controller {
       $this->load->view('footer');
     }
 
+    function getEmpreendimentos() {
+
+      header('Access-Control-Allow-Origin: *');
+
+      $this->load->model('empreendimentos_model');
+      $query = $this->empreendimentos_model->select();
+
+      echo json_encode($query->result());
+    }
+
 }

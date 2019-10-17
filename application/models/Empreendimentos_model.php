@@ -286,7 +286,7 @@ class Empreendimentos_model extends CI_Model {
 
     function logs($mensagem, $id_empreendimento, $acao){
         $this->data = date('Y-m-d H:i:s');
-        $this->usuario = $_SESSION['id_usuario'];
+        $this->id_usuario = $_SESSION['id_usuario'];
         $this->mensagem = $mensagem;
         $this->local = 'empreendimentos';
         $this->acao = $acao;

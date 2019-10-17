@@ -85,10 +85,10 @@ class Patrimonios_model extends CI_Model {
 
     }
 
-    function atribuirPatrimonioApp($pat,$sala) {
-      $query = $this->db->query('select erp_patrimonios.id from erp_patrimonio_sala
-      INNER JOIN erp_salas on erp_salas.id = erp_patrimonio_sala.id_sala
-      INNER JOIN erp_patrimonios on erp_patrimonio_sala.id_patrimonio = erp_patrimonios.id
+    function atribuirPatrimonioApp($pat,$sala,$empresa) {
+      $query = $this->db->query('select * from erp_patrimonio_sala_emp
+      INNER JOIN erp_salas on erp_salas.id = erp_patrimonio_sala_emp.id_sala
+      INNER JOIN erp_patrimonios on erp_patrimonios.id = erp_patrimonio_sala_emp.id_patrimonio
       where erp_patrimonios.nrpatrimonio = '.$pat);
 
       $dados = $query->result();
@@ -97,17 +97,19 @@ class Patrimonios_model extends CI_Model {
 
         $this->id_patrimonio = $dados[0]->id;
         $this->id_sala = $sala;
+        $this->id_emp = $empresa;
         $this->data_atribuicao = date('Y-m-d');
         $this->db->where('id_patrimonio',$dados[0]->id);
-        $this->db->update('erp_patrimonio_sala',$this);
+        $this->db->update('erp_patrimonio_sala_emp',$this);
 
       }else{
         $query = $this->db->query('select * from erp_patrimonios
         where erp_patrimonios.nrpatrimonio = '.$pat);
         $this->id_patrimonio = $query->result()[0]->id;
         $this->id_sala = $sala;
+        $this->id_emp = $empresa;
         $this->data_atribuicao = date('Y-m-d');
-        $this->db->insert('erp_patrimonio_sala',$this);
+        $this->db->insert('erp_patrimonio_sala_emp',$this);
       }
 
     }
