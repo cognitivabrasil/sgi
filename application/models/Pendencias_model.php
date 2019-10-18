@@ -131,7 +131,7 @@ class Pendencias_model extends CI_Model {
 
     function select($id=0) {
         if($id==0){
-          $query = $this->db->query('Select * from erp_pendencias');
+          $query = $this->db->query('Select * from erp_pendencias order by data_modificada desc');
         }else{
           $query = $this->db->query("Select * from erp_pendencias where erp_pendencias.id = ".$id);
         }

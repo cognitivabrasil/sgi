@@ -27,6 +27,12 @@
         case 3:
           echo "Parque";
           break;
+        case 5:
+          echo "Graduada";
+          break;
+        case 6:
+          echo "Descontinuada";
+          break;
         case 4:
           echo "Outros";
           break;
