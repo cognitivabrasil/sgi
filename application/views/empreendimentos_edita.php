@@ -26,6 +26,14 @@
             <input type="text" name="emailresponsavel" placeholder="e-mail responsável" value="<?php echo $data->responsavel_email;?>" >
           </div>
           <textarea name="descricao" placeholder="Descrição" style="clear:both; width:70%; height:150px;"><?php echo $data->descricao;?></textarea>
+          <p>Projeto:
+          <input type="hidden" name="old_project" value="<?php echo $weak_data_pr; ?>">
+          <select name="projeto">
+            <option value=0>Selecione</option>
+            <?php foreach ($all_projects as $projeto) { ?>
+            <option value="<?php echo $projeto->id ?>" <?php if($projeto->id == $weak_data_pr) echo "selected";?> ><?php echo $projeto->nome; ?></option>
+            <?php } ?>
+          </select></p>
           <div style="clear:both; margin-left:15px; text-align:center;">
             <input type="hidden" name="logo_old" value="<?php echo $data->logo; ?>">
             <input type="hidden" name="canvas_old" value="<?php echo $data->canvas; ?>">

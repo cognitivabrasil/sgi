@@ -62,8 +62,16 @@ class Empreendimentos extends CI_Controller {
 
       $query_weak_ps = $this->empreendimentos_model->select_weak_entities($id,'ps');
       $query_weak_ct = $this->empreendimentos_model->select_weak_entities($id,'ct');
+      $query_weak_pr = $this->empreendimentos_model->select_weak_entities($id,'pr');
 
-      $this->load->view('empreendimentos_edita', array('data'=>$query->result()[0],'weak_data_ps'=>$query_weak_ps->result(), 'weak_data_ct'=>$query_weak_ct->result()));
+      $this->load->model('projetos_model');
+      $query_projetos = $this->projetos_model->select();
+      $id_pr = 0;
+      if(isset($query_weak_pr->result()[0])){
+        $id_pr=$query_weak_pr->result()[0]->id;
+      }
+
+      $this->load->view('empreendimentos_edita', array('data'=>$query->result()[0],'weak_data_ps'=>$query_weak_ps->result(), 'weak_data_ct'=>$query_weak_ct->result(), 'weak_data_pr'=>$id_pr,'all_projects'=>$query_projetos->result()));
       $this->load->view('footer');
     }
 

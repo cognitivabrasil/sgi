@@ -44,6 +44,9 @@
         <?php if($this->session->userdata('id_acesso')==1){ ?>
           <li <?php if($atual == 'consultores') echo 'class="active"' ?>><a href="<?php echo base_url();?>index.php/consultores">Consultores</a></li>
         <?php }?>
+        <?php if($this->session->userdata('id_acesso')==1){ ?>
+          <li <?php if($atual == 'projetos') echo 'class="active"' ?>><a href="<?php echo base_url();?>index.php/projetos">Projetos</a></li>
+        <?php }?>
         <?php if($this->session->userdata('id_acesso')!=4){ ?>
           <li <?php if($atual == 'relatorios') echo 'class="active"' ?>><a href="<?php echo base_url();?>index.php/relatorios">Relatórios</a></li>
         <?php } ?>
