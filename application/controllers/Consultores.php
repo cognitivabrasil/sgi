@@ -114,4 +114,19 @@ class Consultores extends CI_Controller {
       $this->load->model('consultores_model');
       echo $this->consultores_model->remove($id);
     }
+
+    function visualiza_relatorios($id) {
+      $this->load->model('usuarios_model');
+      $this->usuarios_model->verifica_login();
+
+      $this->load->view('header');
+      $this->load->view('head_logado');
+
+      $this->load->model('consultores_model');
+      $query = $this->consultores_model->select_consultorias($id);
+
+      $this->load->view('consultores_relatorios', array('data'=>$query->result()));
+      $this->load->view('footer');
+    }
+
 }

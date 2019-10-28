@@ -27,7 +27,7 @@
       <!--  <div class="selo_gamification_pequeno">Empresa<br>Consciente</div> -->
       </div>
       <div class="col-md-3">
-        <a href='<?php echo base_url(); ?>index.php/empreendimentos/remove/<?php echo $row->id;?>' class='deleta_agendamento' style="float:right; margin-top:-7px; margin-right:-15px;">
+        <a href='<?php echo base_url(); ?>index.php/empreendimentos/remove/<?php echo $row->id;?>' class='deleta_usuario' style="float:right; margin-top:-7px; margin-right:-15px;">
           <button type='button' class='btn btn-default btn-xs'>
             <span class='glyphicon glyphicon-remove' aria-hidden='true'></span>
           </button>

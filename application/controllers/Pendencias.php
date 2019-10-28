@@ -22,7 +22,7 @@ class Pendencias extends CI_Controller {
       $count=0;
       foreach ($dados as $row) {
         $dados[$count]->nome_empresa = "Sem vínculo";
-        $queryEmp = $this->pendencias_model->selectEmpreendimento($row->id_usuario);
+        $queryEmp = $this->pendencias_model->selectEmpreendimento();
         if(count($queryEmp->result())>0){
           if($queryEmp->result()[0]->nome == 'CEI'){
             $this->load->model('empreendimentos_model');
@@ -64,7 +64,7 @@ class Pendencias extends CI_Controller {
       $count=0;
       foreach ($dados as $row) {
         $dados[$count]->nome_empresa = "Sem vínculo";
-        $queryEmp = $this->pendencias_model->selectEmpreendimento($row->id_usuario);
+        $queryEmp = $this->pendencias_model->selectEmpreendimento();
         if(count($queryEmp->result())>0){
           if($queryEmp->result()[0]->nome == 'CEI'){
             $this->load->model('empreendimentos_model');
@@ -125,10 +125,14 @@ class Pendencias extends CI_Controller {
 
       $dadosAtualizacoes = $queryAtualizacoes->result();
 
-      $queryEmp = $this->pendencias_model->selectEmpreendimento($dados->id_usuario);
+      $queryConsultorias = $this->pendencias_model->select_consultorias($id);
+
+      $dadosConsultorias = $queryConsultorias->result();
+
+      $queryEmp = $this->pendencias_model->selectEmpreendimento();
       $dados->nome_empresa = $queryEmp->result()[0]->nome;
 
-      $this->load->view('pendencias_visualiza', array('data'=>$dados,'atualizacoes'=>$dadosAtualizacoes));
+      $this->load->view('pendencias_visualiza', array('data'=>$dados,'atualizacoes'=>$dadosAtualizacoes,'consultorias'=>$dadosConsultorias));
       $this->load->view('footer');
     }
 
@@ -161,12 +165,18 @@ class Pendencias extends CI_Controller {
       $this->load->model('pendencias_model');
       $query = $this->pendencias_model->select($id);
 
+      $this->load->model('consultores_model');
+      $data = $this->consultores_model->selectDisponivel();
+      
+      $queryConsultorias = $this->pendencias_model->select_consultorias($id);
+      $dadosConsultorias = $queryConsultorias->result();
+
       $dados = $query->result()[0];
 
       $queryEmp = $this->pendencias_model->selectEmpreendimento($dados->id_usuario);
       $dados->nome_empresa = $queryEmp->result()[0]->nome_fantasia;
 
-      $this->load->view('pendencias_atualiza_status', array('data'=>$dados));
+      $this->load->view('pendencias_atualiza_status', array('data'=>$dados, 'consultores'=>$data->result(),'consultorias'=>$dadosConsultorias));
       $this->load->view('footer');
     }
 
@@ -290,4 +300,61 @@ class Pendencias extends CI_Controller {
       $this->load->view('footer');
 
     }
+
+    function atualiza_aprovada($id) {
+      $this->load->model('usuarios_model');
+      $this->usuarios_model->verifica_login();
+
+      $this->load->view('header');
+      $this->load->view('head_logado');
+
+      $this->load->model('pendencias_model');
+      $query = $this->pendencias_model->select();
+
+      $dados = $query->result()[0];
+
+      $this->load->model('consultores_model');
+      $data = $this->consultores_model->selectDisponivel();
+
+      $queryConsultorias = $this->pendencias_model->select_consultorias($id);
+      $dadosConsultorias = $queryConsultorias->result();
+      
+      $this->load->view('pendencias_aprova_consultoria', array('data'=>$dados, 'consultores'=>$data->result(),'consultorias'=>$dadosConsultorias));
+      $this->load->view('footer');
+    }
+
+    function save_aprovar() {
+      $this->load->model('usuarios_model');
+      $this->usuarios_model->verifica_login();
+
+      $this->load->model('pendencias_model');
+      $this->pendencias_model->aprova_consultoria();
+
+      $this->load->view('header');
+      $this->load->view('head_logado');
+      echo "<div class='alert alert-success fade in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Requisição atualizada com sucesso!</div>";
+
+      $this->load->model('pendencias_model');
+      $query = $this->pendencias_model->select();
+
+      $dados = $query->result();
+      $count=0;
+      foreach ($dados as $row) {
+        $queryEmp = $this->pendencias_model->selectEmpreendimento($row->id_usuario);
+        $dados[$count]->nome_empresa = "Sem vínculo";
+        if(count($queryEmp->result())>0){
+          $dados[$count]->nome_empresa = $queryEmp->result()[0]->nome;
+        }
+
+        $dados[$count]->situacao_final = $this->pendencias_model->verifica_resolvida($row->id);
+
+        $count++;
+      }
+
+      $this->load->view('pendencias', array('data'=>$dados));
+      $this->load->view('footer');
+
+    }
+
+
 }

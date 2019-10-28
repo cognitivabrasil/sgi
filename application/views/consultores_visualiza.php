@@ -7,7 +7,8 @@
         <?php echo 'Nome: '.$data->nome;?><br>
         <?php echo 'Telefone: '.$data->contato;?><br>
         <?php echo 'Area de atuação: '.$data->area_atuacao;?><br>
-        Horas: <?php echo $data->minutos_totais;?>
+        <?php echo 'Minutos totais: '.$data->minutos_totais;?><br>
+        <?php echo 'Minutos atuais: '.$data->minutos_disponiveis;?><br>        
       </div>
     </div>
       <div style="text-align:center; margin-top:15px;">
@@ -19,6 +20,11 @@
         <a href="<?php echo base_url();?>index.php/consultores/remove/<?php echo $data->id;?>" class="deleta_usuario"  data-toggle="tooltip">
           <button type="button" class="btn btn-default btn-lg">
             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Excluir
+          </button>
+        </a>
+        <a href="<?php echo base_url();?>index.php/consultores/visualiza_relatorios/<?php echo $data->id;?>" class="button_action"  data-toggle="tooltip">
+          <button type="button" class="btn btn-default btn-lg">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> Relatórios
           </button>
         </a>
       </div><br>

@@ -4,6 +4,20 @@
     <div id="block_usuario">
       <p><?php echo $data->nome;?></p>
       <p><?php echo $data->descricao;?></p>
+      <p><?php  switch($data->tipo){
+            case 0:
+              echo "";
+              break;
+            case 1:
+              echo "consultoria";
+              break;
+            case 2:
+              echo "participação em eventos";
+              break;
+            case 3:
+              echo "espaço físico";
+              break;
+        } ?></p>
       <form method="post" action="<?php echo base_url();?>index.php/pendencias/save_atualiza">
           <input type="hidden" name="id_pendencia" value="<?php echo $data->id; ?>">
           <input type="hidden" name="usuario" value="<?php echo $data->id_usuario; ?>">
@@ -18,6 +32,5 @@
           <button type="submit" class="btn btn-default btn-lg">
             <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Salvar
           </button>
-      </form>
     </div>
   </div>

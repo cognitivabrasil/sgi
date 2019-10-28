@@ -1,6 +1,7 @@
 <div id="container-central">
   <div>
     <p id="titulo_usuario">Relatórios</p>
+    <?php if($this->session->userdata('id_acesso')==1){ ?>
     <div id="block_usuario">
       <?php
         foreach($data as $row){
@@ -21,5 +22,6 @@
       }
       ?>
     </div>
+    <?php } ?>
   </div>
 </div>

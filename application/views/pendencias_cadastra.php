@@ -39,14 +39,13 @@
             <option value="4">Outros</option>
           </select>
           <div id="inputOculto">
-            <?php if($this->session->userdata('id_acesso')==1){ ?>
               <select type="text" name="consultor">
                 <option value="0">Consultor</option>
                 <?php foreach ($consultores as $consultores) { ?>
                   <option value="<?php echo $consultores->id?>"><?php echo $consultores->nome?></option>
                 <?php }?>
               </select>
-            <?php } ?>
+          <input type="text" name="tempo" placeholder="Horas de consultoria no formato HH:MM">
           </div>
           <textarea name="descricao" placeholder="Descrição" style="width:70%; height:150px;"></textarea>
           <button type="submit" class="btn btn-default btn-lg">

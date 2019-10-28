@@ -44,8 +44,10 @@
         <?php if($this->session->userdata('id_acesso')==1){ ?>
           <li <?php if($atual == 'consultores') echo 'class="active"' ?>><a href="<?php echo base_url();?>index.php/consultores">Consultores</a></li>
         <?php }?>
-        <?php if($this->session->userdata('id_acesso')!=4){ ?>
-          <li <?php if($atual == 'relatorios') echo 'class="active"' ?>><a href="<?php echo base_url();?>index.php/relatorios">Relatórios</a></li>
+       <?php if($this->session->userdata('id_acesso')==1){ ?>
+          <li <?php if($atual == 'relatorios') echo 'class="active"' ?>><a href="<?php echo base_url();?>index.php/relatorios">Relatorios</a></li>
+        <?php }elseif($this->session->userdata('id_acesso')!=4){ ?>
+          <li <?php if($atual == 'relatorios') echo 'class="active"' ?>><a href="<?php echo base_url();?>index.php/relatorios/lista/<?php echo $this->session->userdata('id_empreendimento');?>">Relatorios</a></li>
         <?php } ?>
         <li><a href="<?php echo base_url();?>index.php/login/logout">Sair</a></li>
       </ul>

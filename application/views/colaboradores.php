@@ -31,7 +31,6 @@
               <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
             </button>
           </a><br>
-          <span class="sobrescrito_empreendimento">Última atualização em 10 dias</span>
         </div>
       </div>
     </div>

@@ -15,12 +15,22 @@ class Relatorios_model extends CI_Model {
 
      function selectServicos($id) {
      	$local= 'pendencias';
-        $query = $this->db->query('Select * from erp_logs where local = "'.$local.'" and id_empreendimento ='.$id);
+        $acao = 'Requisição de serviço';
+        $query = $this->db->query('Select * from erp_logs where local = "'.$local.'"and acao ="'.$acao.'"and id_empreendimento ='.$id);
         
         return $query;
     }
 
-    function selectPendencia($id) {
+     function select_consultorias_emp($id) {
+            $local= 'pendencias';
+            $acao = 'Retorno de pedido de consultoria';
+            $query = $this->db->query('Select * from erp_logs where id_consultor != 0 and id_empreendimento ='.$id);
+            
+            return $query;
+        }
+
+
+     function selectPendencia($id) {
         $local= 'pendencias';
         $query = $this->db->query('Select * from erp_logs where id_pendencia ='.$id);
         

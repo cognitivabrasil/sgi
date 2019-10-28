@@ -23,6 +23,21 @@
         } ?></p>
         <p>Pendência: <?php echo $data->descricao; ?></p>
         <p>Empresa: <?php echo $data->nome_empresa; ?></p>
+        <p>Tipo: <?php switch($data->tipo){
+            case 0:
+              echo "Sem tipo";
+              break;
+            case 1:
+              echo "consultoria";
+              break;
+            case 2:
+              echo "participação em eventos";
+              break;
+            case 3:
+              echo "espaço físico";
+              break;
+        } ?></p>        
+        
         <span class="sobrescrito_empreendimento">Alterada/Criada em <?php echo date("d/m/Y", strtotime($data->data_modificada));?></span>
         <br><br>
         <div id="block_usuario">
@@ -57,7 +72,14 @@
             <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Atualizar status
           </button>
         </a>
-        <?php } ?>
+        <?php if ($data->tipo == 1) {?>
+        <a href="<?php echo base_url();?>index.php/pendencias/atualiza_aprovada/<?php echo $data->id;?>" class="button_action">
+          <button type="button" class="btn btn-default btn-lg">
+            <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Aprovar Consultoria
+          </button>
+        </a>
+
+        <?php } } ?>
         <br><br>
       </div>
   </div>
