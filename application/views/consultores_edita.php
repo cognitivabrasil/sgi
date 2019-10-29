@@ -9,6 +9,7 @@
     <div id="block_usuario">
       <form method="post" action="<?php echo base_url();?>index.php/consultores/save" enctype="multipart/form-data">
       	  <input type="hidden" name="id" value="<?php echo $data->id;?>">
+          <input type="hidden" name="minutos_disponiveis" value="<?php echo $data->minutos_disponiveis;?>">
           <input type="text" name="nome" value="<?php echo $data->nome;?>">
           <input type="text" name="contato" value="<?php echo $data->contato;?>">
           <input type="text" name="area_atuacao" value="<?php echo $data->area_atuacao;?>">

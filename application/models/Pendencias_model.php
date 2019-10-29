@@ -81,7 +81,7 @@ class Pendencias_model extends CI_Model {
         $acao = 'Requisição de consultoria';
         $id_consultor =$_POST['consultor'];
         $this->pendencias_model->logs($mensagem, $id_empreendimento, $id_pendencia, $acao, $id_consultor);
-      } 
+      }
       else
       {
         $id_empreendimento = $_POST['empresa'];;;
@@ -173,7 +173,7 @@ class Pendencias_model extends CI_Model {
 
     function select($id=0) {
         if($id==0){
-          $query = $this->db->query('Select * from erp_pendencias');
+          $query = $this->db->query('Select * from erp_pendencias order by data_modificada desc');
         }else{
           $query = $this->db->query("Select * from erp_pendencias where erp_pendencias.id = ".$id);
           $this->pendencias_model->zeraUnread();
@@ -185,7 +185,7 @@ class Pendencias_model extends CI_Model {
     function select_consultorias($id=0) {
 
           $query = $this->db->query("Select * from erp_pendencias_consultoria where erp_pendencias_consultoria.id_pendencias = ".$id);
-        
+
         return $query;
     }
 
@@ -209,7 +209,7 @@ class Pendencias_model extends CI_Model {
 
     function logs($mensagem, $id_empreendimento, $id_pendencia, $acao, $id_consultor){
         $this->data = date('Y-m-d H:i:s');
-        $this->usuario = $_SESSION['username'];
+        $this->id_usuario = $_SESSION['id_usuario'];
         $this->mensagem = $mensagem;
         $this->local = 'pendencias';
         $this->acao = $acao;
@@ -229,7 +229,7 @@ class Pendencias_model extends CI_Model {
             $tempo_consultoria =  ($aux[0]*60)+$aux[1];
             $this->tempo_consultoria = $tempo_consultoria;
             $this->aprovada = $_POST['aprovar'];
-            $this->usuario_aprova = $_SESSION['username'];
+            $this->usuario_aprova = $_SESSION['id_usuario'];
 
             $this->db->where('id_pendencias', $_POST['id']);
             $this->db->update('erp_pendencias_consultoria',$this);
@@ -240,8 +240,8 @@ class Pendencias_model extends CI_Model {
             $query = $this->db->query('select id_consultor from erp_pendencias_consultoria where id_pendencias ='.$_POST['id']);
             $data = $query->result();
             $id_consultor = $data[0]->id_consultor;
-            //função que muda hora do consultor            
-            $this->pendencias_model->atualiza_horas($id_consultor); 
+            //função que muda hora do consultor
+            $this->pendencias_model->atualiza_horas($id_consultor);
 
            //LOGs
             $id_empreendimento = $_SESSION['id_empreendimento'];
@@ -261,9 +261,9 @@ class Pendencias_model extends CI_Model {
     function atualiza_horas($id_consultor)
     {
         $query = $this->db->query('select erp_consultores.minutos_totais -  sum(erp_pendencias_consultoria.tempo_consultoria) as atualizacao_minutos from erp_pendencias_consultoria inner join erp_consultores on erp_pendencias_consultoria.id_consultor = erp_consultores.id where erp_pendencias_consultoria.aprovada = 1 and erp_consultores.id ='.$id_consultor);
-      
+
         $data = $query->result();
-        $atualizacao_minutos = $data[0]->atualizacao_minutos; 
+        $atualizacao_minutos = $data[0]->atualizacao_minutos;
 
         $this->minutos_disponiveis = $atualizacao_minutos;
 

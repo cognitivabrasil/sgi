@@ -28,6 +28,15 @@ $(document).ready(function(){
     modal.find('.id-data').val(dia);
   });
 
+  $('.deleta_projetos').click(function(){
+    if(confirm('Você deseja realmente excluir?')){
+      $.get($(this).attr('href'),function(data){
+        window.location.replace('/gestaocei/index.php/projetos');
+      });
+    }
+    return false;
+  });
+
   $('.deleta_agendamento').click(function(){
     if(confirm('Você deseja realmente excluir?')){
       var pagina_atual = $(this).attr('rel')-1;

@@ -1,6 +1,17 @@
 <div id="container-central">
 <div>
   <p id="titulo_usuario">Usuários</p>
+  <?php
+  if($this->session->userdata('id_acesso') == 1){
+  ?>
+  <div style="text-align:center; margin-top:15px;">
+    <a href="<?php echo base_url();?>index.php/usuarios/cadastra" class="button_action">
+      <button type="button" class="btn btn-default btn-lg">
+        <span class="glyphicon glyphicon-duplicate" aria-hidden="true"></span> Novo
+      </button>
+    </a>
+  </div>
+  <?php } ?>
   <div id="block_usuario">
     <?php
     $tipo_atual = 0;
@@ -97,16 +108,5 @@
      }// fechando if para testar se usuario eh adm
     }
     ?>
-    <?php
-    if($this->session->userdata('id_acesso') == 1){
-    ?>
-    <div style="text-align:center; margin-top:15px;">
-      <a href="<?php echo base_url();?>index.php/usuarios/cadastra" class="button_action">
-        <button type="button" class="btn btn-default btn-lg">
-          <span class="glyphicon glyphicon-duplicate" aria-hidden="true"></span> Novo
-        </button>
-      </a>
-    </div>
-    <?php } ?>
   </div>
 </div>

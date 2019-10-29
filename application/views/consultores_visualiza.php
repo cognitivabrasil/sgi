@@ -7,8 +7,8 @@
         <?php echo 'Nome: '.$data->nome;?><br>
         <?php echo 'Telefone: '.$data->contato;?><br>
         <?php echo 'Area de atuação: '.$data->area_atuacao;?><br>
-        <?php echo 'Minutos totais: '.$data->minutos_totais;?><br>
-        <?php echo 'Minutos atuais: '.$data->minutos_disponiveis;?><br>        
+        <?php echo 'Total de horas: '.$data->minutos_totais;?><br>
+        <?php echo 'Horas disponíveis: '.$data->minutos_disponiveis;?><br>        
       </div>
     </div>
       <div style="text-align:center; margin-top:15px;">

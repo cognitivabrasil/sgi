@@ -289,7 +289,9 @@ class Patrimonios extends CI_Controller {
       foreach ($dados as $row) {
         $queryIn = $this->patrimonios_model->selectSala($row->id);
         if(count($queryIn->result())>0){
+          $queryEmp = $this->patrimonios_model->selectEmpSala($row->id);
           $dados[$count]->sala = $queryIn->result()[0];
+          $dados[$count]->empreendimento = $queryEmp->result()[0];
           $dados[$count]->sala->data_atribuicao = date("d/m/Y", strtotime($dados[$count]->sala->data_atribuicao));
         }
         $count++;
@@ -348,12 +350,12 @@ class Patrimonios extends CI_Controller {
 
     }
 
-    function atribuiApp($pat,$sala) {
+    function atribuiApp($pat,$sala,$empresa) {
 
       header('Access-Control-Allow-Origin: *');
 
       $this->load->model('patrimonios_model');
-	    $this->patrimonios_model->atribuirPatrimonioApp($pat,$sala);
+	    $this->patrimonios_model->atribuirPatrimonioApp($pat,$sala,$empresa);
 
       echo json_encode('ok');
 

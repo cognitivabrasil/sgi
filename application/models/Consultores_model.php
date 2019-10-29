@@ -10,7 +10,7 @@ class Consultores_model extends CI_Model {
       //Calcula os minutos totais baseado na hora inserida
       $aux = explode(':',$_POST['horas_disponiveis']);
       $this->minutos_totais = ($aux[0]*60)+$aux[1];
-      $this->minutos_disponiveis = ($aux[0]*60)+$aux[1];
+      $this->minutos_disponiveis = $this->minutos_totais;
 
 
       $this->db->insert('erp_consultores',$this);
@@ -24,7 +24,7 @@ class Consultores_model extends CI_Model {
       //Calcula os minutos totais baseado na hora inserida
       $aux = explode(':',$_POST['horas_disponiveis']);
       $this->minutos_totais = ($aux[0]*60)+$aux[1];
-      $this->minutos_disponiveis = 0;
+      $this->minutos_disponiveis = $_POST['minutos_disponiveis'];
 
       $this->db->where('id', $_POST['id']);
 
@@ -62,9 +62,9 @@ class Consultores_model extends CI_Model {
     }
 
     function select_consultorias($id) {
-            
+
         $query = $this->db->query('select * from erp_logs where id_consultor ='. $id);
-            
+
         return $query;
     }
 

@@ -93,7 +93,7 @@ class Empreendimentos_model extends CI_Model {
       $nome = $data[0]->nome;
       $mensagem = "A empresa ".$nome." foi excluida";
       $acao = "Exclusão de empreendimento";
-      $this->empreendimentos_model->logs($mensagem, $id_empreendimento, $acao);       
+      $this->empreendimentos_model->logs($mensagem, $id_empreendimento, $acao);
       //Final LOGs
 
         $query = $this->db->query('Delete from erp_empreendimentos where id='.$id);
@@ -107,6 +107,10 @@ class Empreendimentos_model extends CI_Model {
       $query = $this->db->query('Select vinculo from erp_empreendimentos where id = "'. $id_empreendimento .'"');
       $data = $query->result();
       $vinculo_data = $data[0]->vinculo;
+
+      if(!$vinculo_data){
+        $vinculo_data = 0;
+      }
 
       if ($vinculo_data != $_POST['vinculo'])
         {
@@ -138,6 +142,8 @@ class Empreendimentos_model extends CI_Model {
         case 4:
           $vinculo_antigo = "Outros";
           break;
+        default:
+          $vinculo_antigo = "Sem Vínculo";
         }
 
           $acao = 'Alteração no vinculo da empresa';
@@ -188,6 +194,26 @@ class Empreendimentos_model extends CI_Model {
       $this->db->where('id', $_POST['id']);
 
       $this->db->update('erp_empreendimentos',$this);
+
+      if($_POST['projeto']==0){
+        $this->db->query('Delete from erp_empresa_projeto where id_empreendimento='.$id_empreendimento);
+      }else{
+        $projeto = new stdClass;
+        if($_POST['old_project']==0){
+          $projeto->id_projeto = $_POST['projeto'];
+          $projeto->id_empreendimento = $id_empreendimento;
+
+          $this->db->insert('erp_empresa_projeto', $projeto);
+        }else{
+          $projeto->id_projeto = $_POST['projeto'];
+          $this->db->where('id_empreendimento', $id_empreendimento);
+
+          $this->db->update('erp_empresa_projeto',$projeto);
+        }
+        $acao = 'Alteração no projeto da empresa';
+        $mensagem = "O projeto da empresa ".$_POST['nome']." foi alterado para ". $_POST['projeto'];
+        $this->empreendimentos_model->logs($mensagem, $id_empreendimento, $acao);
+      }
     }
 
     //Atualiza usuário
@@ -237,6 +263,11 @@ class Empreendimentos_model extends CI_Model {
     inner join erp_salas_emp on erp_salas.id = erp_salas_emp.id_sala
     where erp_salas_emp.id_emp =".$id);
           break;
+        case 'pr':
+          $query = $this->db->query("Select erp_projetos.* from erp_projetos
+    inner join erp_empresa_projeto on erp_projetos.id = erp_empresa_projeto.id_projeto
+    where erp_empresa_projeto.id_empreendimento =".$id);
+          break;
       }
 
       return $query;
@@ -279,15 +310,16 @@ class Empreendimentos_model extends CI_Model {
     }
 
     function logs($mensagem, $id_empreendimento, $acao){
-        $this->data = date('Y-m-d H:i:s');
-        $this->usuario = $_SESSION['username'];
-        $this->mensagem = $mensagem;
-        $this->local = 'empreendimentos';
-        $this->acao = $acao;
-        $this->id_empreendimento = $id_empreendimento;
+        $logs = new stdClass;
+        $logs->data = date('Y-m-d H:i:s');
+        $logs->id_usuario = $_SESSION['id_usuario'];
+        $logs->mensagem = $mensagem;
+        $logs->local = 'empreendimentos';
+        $logs->acao = $acao;
+        $logs->id_empreendimento = $id_empreendimento;
 
-        $this->db->insert('erp_logs', $this);
+        $this->db->insert('erp_logs', $logs);
 
-        unset ($this->data, $this->usuario, $this->mensagem, $this->local, $this->acao, $this->id_empreendimento);
+        unset ($logs->data, $logs->usuario, $logs->mensagem, $logs->local, $logs->acao, $logs->id_empreendimento);
     }
 }

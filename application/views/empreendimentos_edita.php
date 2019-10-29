@@ -12,6 +12,8 @@
               <option value="1" <?php if($data->vinculo == 1) echo "selected";?> >Pré-Incubada</option>
               <option value="2" <?php if($data->vinculo == 2) echo "selected";?> >Incubada</option>
               <option value="3" <?php if($data->vinculo == 3) echo "selected";?> >Parque</option>
+              <option value="3" <?php if($data->vinculo == 5) echo "selected";?> >Graduada</option>
+              <option value="3" <?php if($data->vinculo == 6) echo "selected";?> >Descontinuada</option>
               <option value="4" <?php if($data->vinculo == 4) echo "selected";?> >Outros</option>
             </select>
             <input type="text" name="site" placeholder="Site" value="<?php echo $data->site;?>" >
@@ -24,6 +26,14 @@
             <input type="text" name="emailresponsavel" placeholder="e-mail responsável" value="<?php echo $data->responsavel_email;?>" >
           </div>
           <textarea name="descricao" placeholder="Descrição" style="clear:both; width:70%; height:150px;"><?php echo $data->descricao;?></textarea>
+          <p>Projeto:
+          <input type="hidden" name="old_project" value="<?php echo $weak_data_pr; ?>">
+          <select name="projeto">
+            <option value=0>Selecione</option>
+            <?php foreach ($all_projects as $projeto) { ?>
+            <option value="<?php echo $projeto->id ?>" <?php if($projeto->id == $weak_data_pr) echo "selected";?> ><?php echo $projeto->nome; ?></option>
+            <?php } ?>
+          </select></p>
           <div style="clear:both; margin-left:15px; text-align:center;">
             <input type="hidden" name="logo_old" value="<?php echo $data->logo; ?>">
             <input type="hidden" name="canvas_old" value="<?php echo $data->canvas; ?>">

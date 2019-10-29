@@ -17,8 +17,15 @@ class Consultores extends CI_Controller {
 
       $this->load->model('consultores_model');
       $query = $this->consultores_model->select();
+      $return = array();
+      foreach ($query->result() as $row) {
+        $horas = number_format($row->minutos_disponiveis/60 ,0);
+        $minutos = str_pad($row->minutos_disponiveis%60,2,'0', STR_PAD_LEFT);
+        $row->minutos_disponiveis = $horas.":".$minutos;
+        array_push($return, $row);
+      }
 
-      $this->load->view('consultores', array('data'=>$query->result()));
+      $this->load->view('consultores', array('data'=>$return));
       $this->load->view('footer');
     }
 
@@ -31,8 +38,17 @@ class Consultores extends CI_Controller {
 
       $this->load->model('consultores_model');
       $query = $this->consultores_model->select($id);
+      $data = $query->result()[0];
 
-      $this->load->view('consultores_visualiza', array('data'=>$query->result()[0]));
+      $horas = number_format($data->minutos_totais/60,0);
+      $minutos = str_pad($data->minutos_totais%60,2,'0', STR_PAD_LEFT);
+      $data->minutos_totais = $horas.":".$minutos;
+
+      $horas = number_format($data->minutos_disponiveis/60,0);
+      $minutos = str_pad($data->minutos_disponiveis%60,2,'0', STR_PAD_LEFT);
+      $data->minutos_disponiveis = $horas.":".$minutos;
+
+      $this->load->view('consultores_visualiza', array('data'=>$data));
       $this->load->view('footer');
     }
 
@@ -56,8 +72,12 @@ class Consultores extends CI_Controller {
 
       $this->load->model('consultores_model');
       $query = $this->consultores_model->selectByID($id);
+      $data = $query->result()[0];
+      $horas = number_format($data->minutos_totais/60,0);
+      $minutos = str_pad($data->minutos_totais%60,2,'0', STR_PAD_LEFT);
+      $data->minutos_totais = $horas.":".$minutos;
 
-      $this->load->view('consultores_edita', array('data'=>$query->result()[0]));
+      $this->load->view('consultores_edita', array('data'=>$data));
       $this->load->view('footer');
     }
 
@@ -86,8 +106,15 @@ class Consultores extends CI_Controller {
 
       $this->load->model('consultores_model');
       $query = $this->consultores_model->select();
+      $return = array();
+      foreach ($query->result() as $row) {
+        $horas = $row->minutos_disponiveis/60;
+        $minutos = str_pad($row->minutos_disponiveis%60 , 2,'0', STR_PAD_LEFT);
+        $row->minutos_disponiveis = $horas.":".$minutos;
+        array_push($return, $row);
+      }
 
-      $this->load->view('consultores', array('data'=>$query->result()));
+      $this->load->view('consultores', array('data'=>$return));
       $this->load->view('footer');
     }
 
@@ -109,7 +136,7 @@ class Consultores extends CI_Controller {
       $this->load->view('footer');
     }
 
-    
+
     function remove($id) {
       $this->load->model('consultores_model');
       echo $this->consultores_model->remove($id);
