@@ -29,7 +29,7 @@
                 <option value="1" <?php if($dados->aprovada==1) echo "selected"; ?>>Aprovada</option>
                 <option value="2" <?php if($dados->aprovada==2) echo "selected"; ?>>Reprovada</option>
                 </select>
-                
+
                 <select type="text" name="consultor">
                   <option value="0">Consultor</option>
                   <?php foreach ($consultores as $row) {?>
@@ -37,7 +37,7 @@
                   <?php } ?>
                   </option>
                 </select>
-                <input type="text" name="tempo" placeholder="Horas de consultoria no formato HH:MM" value = '<?php echo $dados->tempo_consultoria." minutos"; ?> '>
+                <input type="text" name="tempo" value = '<?php echo $dados->tempo_consultoria ?> '>
 
                 <button type="submit" class="btn btn-default btn-lg">
                   <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Salvar

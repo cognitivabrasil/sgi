@@ -130,7 +130,10 @@ class Pendencias extends CI_Controller {
       $dadosConsultorias = $queryConsultorias->result();
 
       $queryEmp = $this->pendencias_model->selectEmpreendimento();
-      $dados->nome_empresa = $queryEmp->result()[0]->nome;
+      $dados->nome_empresa = 'Sem vínculo';
+      if($queryEmp->result()){
+        $dados->nome_empresa = $queryEmp->result()[0]->nome;
+      }
 
       $this->load->view('pendencias_visualiza', array('data'=>$dados,'atualizacoes'=>$dadosAtualizacoes,'consultorias'=>$dadosConsultorias));
       $this->load->view('footer');
@@ -167,7 +170,7 @@ class Pendencias extends CI_Controller {
 
       $this->load->model('consultores_model');
       $data = $this->consultores_model->selectDisponivel();
-      
+
       $queryConsultorias = $this->pendencias_model->select_consultorias($id);
       $dadosConsultorias = $queryConsultorias->result();
 
@@ -285,7 +288,7 @@ class Pendencias extends CI_Controller {
               $dados[$count]->nome_empresa =$resultado[0]->nome;
             }else{
               $dados[$count]->nome_empresa = "Empresa excluída";
-            }                        
+            }
           }else{
             $dados[$count]->nome_empresa = $queryEmp->result()[0]->nome;
           }
@@ -317,9 +320,15 @@ class Pendencias extends CI_Controller {
       $data = $this->consultores_model->selectDisponivel();
 
       $queryConsultorias = $this->pendencias_model->select_consultorias($id);
-      $dadosConsultorias = $queryConsultorias->result();
-      
-      $this->load->view('pendencias_aprova_consultoria', array('data'=>$dados, 'consultores'=>$data->result(),'consultorias'=>$dadosConsultorias));
+      $return = array();
+      foreach ($queryConsultorias->result() as $row) {
+        $horas = number_format($row->tempo_consultoria/60 ,0);
+        $minutos = str_pad($row->tempo_consultoria%60,2,'0', STR_PAD_LEFT);
+        $row->tempo_consultoria = $horas.":".$minutos;
+        array_push($return, $row);
+      }
+
+      $this->load->view('pendencias_aprova_consultoria', array('data'=>$dados, 'consultores'=>$data->result(),'consultorias'=>$return));
       $this->load->view('footer');
     }
 
