@@ -21,6 +21,12 @@
         case 4:
           echo "Outros";
           break;
+        case 5:
+          echo "Parque";
+          break;
+        case 6:
+          echo "Descontinuada";
+          break;
       }?><br>
       </div>
       <div class="col-md-5">

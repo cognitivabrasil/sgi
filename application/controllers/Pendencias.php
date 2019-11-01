@@ -12,8 +12,11 @@ class Pendencias extends CI_Controller {
       $this->load->model('usuarios_model');
       $this->usuarios_model->verifica_login();
 
+      $this->load->model('incubadoras_model');
+      $incubadora = $this->incubadoras_model->select(ID_INCUBADORA);
+
       $this->load->view('header');
-      $this->load->view('head_logado');
+      $this->load->view('head_logado', array('titulo'=>$incubadora[0]->titulo));
 
       $this->load->model('pendencias_model');
       $query = $this->pendencias_model->select();
@@ -54,8 +57,11 @@ class Pendencias extends CI_Controller {
       $this->load->model('usuarios_model');
       $this->usuarios_model->verifica_login();
 
+      $this->load->model('incubadoras_model');
+      $incubadora = $this->incubadoras_model->select(ID_INCUBADORA);
+
       $this->load->view('header');
-      $this->load->view('head_logado');
+      $this->load->view('head_logado', array('titulo'=>$incubadora[0]->titulo));
 
       $this->load->model('pendencias_model');
       $query = $this->pendencias_model->select();
@@ -96,8 +102,11 @@ class Pendencias extends CI_Controller {
       $this->load->model('usuarios_model');
       $this->usuarios_model->verifica_login();
 
+      $this->load->model('incubadoras_model');
+      $incubadora = $this->incubadoras_model->select(ID_INCUBADORA);
+
       $this->load->view('header');
-      $this->load->view('head_logado');
+      $this->load->view('head_logado', array('titulo'=>$incubadora[0]->titulo));
 
       $this->load->model('empreendimentos_model');
       $empQuery = $this->empreendimentos_model->select();
@@ -113,8 +122,11 @@ class Pendencias extends CI_Controller {
       $this->load->model('usuarios_model');
       $this->usuarios_model->verifica_login();
 
+      $this->load->model('incubadoras_model');
+      $incubadora = $this->incubadoras_model->select(ID_INCUBADORA);
+
       $this->load->view('header');
-      $this->load->view('head_logado');
+      $this->load->view('head_logado', array('titulo'=>$incubadora[0]->titulo));
 
       $this->load->model('pendencias_model');
       $query = $this->pendencias_model->select($id);
@@ -143,8 +155,11 @@ class Pendencias extends CI_Controller {
       $this->load->model('usuarios_model');
       $this->usuarios_model->verifica_login();
 
+      $this->load->model('incubadoras_model');
+      $incubadora = $this->incubadoras_model->select(ID_INCUBADORA);
+
       $this->load->view('header');
-      $this->load->view('head_logado');
+      $this->load->view('head_logado', array('titulo'=>$incubadora[0]->titulo));
 
       $this->load->model('pendencias_model');
       $query = $this->pendencias_model->select($id);
@@ -162,8 +177,11 @@ class Pendencias extends CI_Controller {
       $this->load->model('usuarios_model');
       $this->usuarios_model->verifica_login();
 
+      $this->load->model('incubadoras_model');
+      $incubadora = $this->incubadoras_model->select(ID_INCUBADORA);
+
       $this->load->view('header');
-      $this->load->view('head_logado');
+      $this->load->view('head_logado', array('titulo'=>$incubadora[0]->titulo));
 
       $this->load->model('pendencias_model');
       $query = $this->pendencias_model->select($id);
@@ -190,8 +208,11 @@ class Pendencias extends CI_Controller {
       $this->load->model('pendencias_model');
       $this->pendencias_model->save();
 
+      $this->load->model('incubadoras_model');
+      $incubadora = $this->incubadoras_model->select(ID_INCUBADORA);
+
       $this->load->view('header');
-      $this->load->view('head_logado');
+      $this->load->view('head_logado', array('titulo'=>$incubadora[0]->titulo));
       echo "<div class='alert alert-success fade in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Requisição editada com sucesso!</div>";
 
       $this->load->model('pendencias_model');
@@ -234,8 +255,11 @@ class Pendencias extends CI_Controller {
       $this->load->model('pendencias_model');
       $this->pendencias_model->save_atualiza();
 
+      $this->load->model('incubadoras_model');
+      $incubadora = $this->incubadoras_model->select(ID_INCUBADORA);
+
       $this->load->view('header');
-      $this->load->view('head_logado');
+      $this->load->view('head_logado', array('titulo'=>$incubadora[0]->titulo));
       echo "<div class='alert alert-success fade in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Requisição atualizada com sucesso!</div>";
 
       $this->load->model('pendencias_model');
@@ -267,8 +291,11 @@ class Pendencias extends CI_Controller {
       $this->load->model('pendencias_model');
 	    $this->pendencias_model->insert();
 
+      $this->load->model('incubadoras_model');
+      $incubadora = $this->incubadoras_model->select(ID_INCUBADORA);
+
       $this->load->view('header');
-      $this->load->view('head_logado');
+      $this->load->view('head_logado', array('titulo'=>$incubadora[0]->titulo));
       echo "<div class='alert alert-success fade in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Requisição cadastrada com sucesso!</div>";
 
       $this->load->model('pendencias_model');
@@ -308,8 +335,11 @@ class Pendencias extends CI_Controller {
       $this->load->model('usuarios_model');
       $this->usuarios_model->verifica_login();
 
+      $this->load->model('incubadoras_model');
+      $incubadora = $this->incubadoras_model->select(ID_INCUBADORA);
+
       $this->load->view('header');
-      $this->load->view('head_logado');
+      $this->load->view('head_logado', array('titulo'=>$incubadora[0]->titulo));
 
       $this->load->model('pendencias_model');
       $query = $this->pendencias_model->select();
@@ -336,11 +366,14 @@ class Pendencias extends CI_Controller {
       $this->load->model('usuarios_model');
       $this->usuarios_model->verifica_login();
 
+      $this->load->model('incubadoras_model');
+      $incubadora = $this->incubadoras_model->select(ID_INCUBADORA);
+
       $this->load->model('pendencias_model');
       $this->pendencias_model->aprova_consultoria();
 
       $this->load->view('header');
-      $this->load->view('head_logado');
+      $this->load->view('head_logado', array('titulo'=>$incubadora[0]->titulo));
       echo "<div class='alert alert-success fade in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Requisição atualizada com sucesso!</div>";
 
       $this->load->model('pendencias_model');

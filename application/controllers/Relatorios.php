@@ -12,8 +12,11 @@ class Relatorios extends CI_Controller {
       $this->load->model('usuarios_model');
       $this->usuarios_model->verifica_login();
 
+      $this->load->model('incubadoras_model');
+      $incubadora = $this->incubadoras_model->select(ID_INCUBADORA);
+
       $this->load->view('header');
-      $this->load->view('head_logado');
+      $this->load->view('head_logado', array('titulo'=>$incubadora[0]->titulo));
 
       $this->load->model('empreendimentos_model');
       $query = $this->empreendimentos_model->select();
@@ -26,8 +29,11 @@ class Relatorios extends CI_Controller {
       $this->load->model('usuarios_model');
       $this->usuarios_model->verifica_login();
 
+      $this->load->model('incubadoras_model');
+      $incubadora = $this->incubadoras_model->select(ID_INCUBADORA);
+
       $this->load->view('header');
-      $this->load->view('head_logado');
+      $this->load->view('head_logado', array('titulo'=>$incubadora[0]->titulo));
 
       $this->load->model('relatorios_model');
       $query = $this->relatorios_model->lista($id);
@@ -40,8 +46,11 @@ class Relatorios extends CI_Controller {
       $this->load->model('usuarios_model');
       $this->usuarios_model->verifica_login();
 
+      $this->load->model('incubadoras_model');
+      $incubadora = $this->incubadoras_model->select(ID_INCUBADORA);
+
       $this->load->view('header');
-      $this->load->view('head_logado');
+      $this->load->view('head_logado', array('titulo'=>$incubadora[0]->titulo));
 
       $this->load->model('relatorios_model');
       $query = $this->relatorios_model->selectStatus($id);
@@ -54,8 +63,11 @@ class Relatorios extends CI_Controller {
       $this->load->model('usuarios_model');
       $this->usuarios_model->verifica_login();
 
+      $this->load->model('incubadoras_model');
+      $incubadora = $this->incubadoras_model->select(ID_INCUBADORA);
+
       $this->load->view('header');
-      $this->load->view('head_logado');
+      $this->load->view('head_logado', array('titulo'=>$incubadora[0]->titulo));
 
       $this->load->model('relatorios_model');
       $query = $this->relatorios_model->selectServicos($id);
@@ -67,8 +79,11 @@ class Relatorios extends CI_Controller {
       $this->load->model('usuarios_model');
       $this->usuarios_model->verifica_login();
 
+      $this->load->model('incubadoras_model');
+      $incubadora = $this->incubadoras_model->select(ID_INCUBADORA);
+
       $this->load->view('header');
-      $this->load->view('head_logado');
+      $this->load->view('head_logado', array('titulo'=>$incubadora[0]->titulo));
 
       $this->load->model('relatorios_model');
       $query = $this->relatorios_model->select_consultorias_emp($id);
@@ -81,8 +96,11 @@ class Relatorios extends CI_Controller {
       $this->load->model('usuarios_model');
       $this->usuarios_model->verifica_login();
 
+      $this->load->model('incubadoras_model');
+      $incubadora = $this->incubadoras_model->select(ID_INCUBADORA);
+
       $this->load->view('header');
-      $this->load->view('head_logado');
+      $this->load->view('head_logado', array('titulo'=>$incubadora[0]->titulo));
 
       $this->load->model('relatorios_model');
       $query = $this->relatorios_model->selectPendencia($id);

@@ -20,6 +20,12 @@
         case 4:
           echo "Outros";
           break;
+        case 5:
+          echo "Graduada";
+          break;
+        case 6:
+          echo "Descontinuada";
+          break;
       }?><br><?php echo $row->nr;?> colaborador(es)</div>
       <div class="col-md-5">
         <!--<div class="selo_gamification_pequeno">Empresa<br>Consciente</div> -->

@@ -11,7 +11,7 @@
         <div class="col-md-8">
           <?php echo $row->acao;?>
           <br>
-          <?php echo 'Criada/Alterada em :'.$row->data;?>          
+          <?php echo 'Criada/Alterada em :'.date("d/m/Y H:i", strtotime($row->data));?>          
           <br>
         </div>
         <div class="col-md-3">

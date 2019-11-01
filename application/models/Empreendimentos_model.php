@@ -127,6 +127,12 @@ class Empreendimentos_model extends CI_Model {
         case 4:
           $vinculo = "Outros";
           break;
+        case 5:
+          $vinculo = "Graduada";
+          break;
+        case 6:
+          $vinculo = "Descontinuada";
+          break;
         }
 
         switch ($vinculo_data) {
@@ -141,6 +147,12 @@ class Empreendimentos_model extends CI_Model {
           break;
         case 4:
           $vinculo_antigo = "Outros";
+          break;
+        case 5:
+          $vinculo_antigo = "Graduada";
+          break;
+        case 6:
+          $vinculo_antigo = "Descontinuada";
           break;
         default:
           $vinculo_antigo = "Sem Vínculo";

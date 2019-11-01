@@ -1,4 +1,5 @@
 <?php
+
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
@@ -20,9 +21,12 @@ class Login extends CI_Controller {
         $this->load->model('usuarios_model', 'usuarios');
         $query = $this->usuarios->validate();
 
+        $this->load->model('incubadoras_model');
+        $incubadora = $this->incubadoras_model->select(ID_INCUBADORA);
+
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('header');
-            $this->load->view('login_view');
+            $this->load->view('login_view', array('titulo'=>$incubadora[0]->titulo));
             $this->load->view('footer');
 
         } else {
@@ -60,7 +64,7 @@ class Login extends CI_Controller {
               }else{
                 $this->load->view('header');
                 echo "<div class='alert alert-danger fade in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Este usuário está desativado porque acabou o tempo de uso do mesmo. Entre em contato com o CEI no caso de dúvidas</div>";
-                $this->load->view('login_view');
+                $this->load->view('login_view', array('titulo'=>$incubadora[0]->titulo));
                 $this->load->view('footer');
               }
             } else {
@@ -68,7 +72,7 @@ class Login extends CI_Controller {
                 // VALIDATION RULES
                 $this->load->view('header');
                 echo "<div class='alert alert-danger fade in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Usuário ou senha incorretos!<br>Caso tenha esquecido as credenciais, entre em contato com o CEI</div>";
-                $this->load->view('login_view');
+                $this->load->view('login_view', array('titulo'=>$incubadora[0]->titulo));
                 $this->load->view('footer');
 
             }
