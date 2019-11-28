@@ -12,8 +12,11 @@ class Patrimonios extends CI_Controller {
       $this->load->model('usuarios_model');
       $this->usuarios_model->verifica_login();
 
+      $this->load->model('incubadoras_model');
+      $incubadora = $this->incubadoras_model->select(ID_INCUBADORA);
+
       $this->load->view('header');
-      $this->load->view('head_logado');
+      $this->load->view('head_logado', array('titulo'=>$incubadora[0]->titulo));
 
       $this->load->model('patrimonios_model');
       $query = $this->patrimonios_model->select();
@@ -40,8 +43,11 @@ class Patrimonios extends CI_Controller {
       $this->load->model('usuarios_model');
       $this->usuarios_model->verifica_login();
 
+      $this->load->model('incubadoras_model');
+      $incubadora = $this->incubadoras_model->select(ID_INCUBADORA);
+
       $this->load->view('header');
-      $this->load->view('head_logado');
+      $this->load->view('head_logado', array('titulo'=>$incubadora[0]->titulo));
 
       $this->load->model('patrimonios_model');
       $query = $this->patrimonios_model->select_relatorio('resp',$var);
@@ -58,7 +64,7 @@ class Patrimonios extends CI_Controller {
       }
 
       $dataResponsaveis = $this->patrimonios_model->selectResponsaveis();
-      $dataSalas = $this->patrimonios_model->selectSalas();
+      $dataSalas = $this->patrimonios_model->selectAllSalas();
 
       $this->load->view('patrimonios_consultas', array('data'=>$dados, 'responsaveis'=>$dataResponsaveis->result(), 'salas'=>$dataSalas->result()));
       $this->load->view('footer');
@@ -68,8 +74,11 @@ class Patrimonios extends CI_Controller {
       $this->load->model('usuarios_model');
       $this->usuarios_model->verifica_login();
 
+      $this->load->model('incubadoras_model');
+      $incubadora = $this->incubadoras_model->select(ID_INCUBADORA);
+
       $this->load->view('header');
-      $this->load->view('head_logado');
+      $this->load->view('head_logado', array('titulo'=>$incubadora[0]->titulo));
 
       $this->load->model('patrimonios_model');
 
@@ -87,7 +96,7 @@ class Patrimonios extends CI_Controller {
       }
 
       $dataResponsaveis = $this->patrimonios_model->selectResponsaveis();
-      $dataSalas = $this->patrimonios_model->selectSalas();
+      $dataSalas = $this->patrimonios_model->selectAllSalas();
 
       $this->load->view('patrimonios_consultas', array('data'=>$dados, 'responsaveis'=>$dataResponsaveis->result(), 'salas'=>$dataSalas->result()));
       $this->load->view('footer');

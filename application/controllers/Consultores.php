@@ -12,8 +12,11 @@ class Consultores extends CI_Controller {
       $this->load->model('usuarios_model');
       $this->usuarios_model->verifica_login();
 
+      $this->load->model('incubadoras_model');
+      $incubadora = $this->incubadoras_model->select(ID_INCUBADORA);
+
       $this->load->view('header');
-      $this->load->view('head_logado');
+      $this->load->view('head_logado', array('titulo'=>$incubadora[0]->titulo));
 
       $this->load->model('consultores_model');
       $query = $this->consultores_model->select();
@@ -33,8 +36,11 @@ class Consultores extends CI_Controller {
       $this->load->model('usuarios_model');
       $this->usuarios_model->verifica_login();
 
+      $this->load->model('incubadoras_model');
+      $incubadora = $this->incubadoras_model->select(ID_INCUBADORA);
+
       $this->load->view('header');
-      $this->load->view('head_logado');
+      $this->load->view('head_logado', array('titulo'=>$incubadora[0]->titulo));
 
       $this->load->model('consultores_model');
       $query = $this->consultores_model->select($id);
@@ -56,8 +62,11 @@ class Consultores extends CI_Controller {
       $this->load->model('usuarios_model');
       $this->usuarios_model->verifica_login();
 
+      $this->load->model('incubadoras_model');
+      $incubadora = $this->incubadoras_model->select(ID_INCUBADORA);
+
       $this->load->view('header');
-      $this->load->view('head_logado');
+      $this->load->view('head_logado', array('titulo'=>$incubadora[0]->titulo));
 
       $this->load->view('consultores_cadastra');
       $this->load->view('footer');
@@ -67,8 +76,11 @@ class Consultores extends CI_Controller {
       $this->load->model('usuarios_model');
       $this->usuarios_model->verifica_login();
 
+      $this->load->model('incubadoras_model');
+      $incubadora = $this->incubadoras_model->select(ID_INCUBADORA);
+
       $this->load->view('header');
-      $this->load->view('head_logado');
+      $this->load->view('head_logado', array('titulo'=>$incubadora[0]->titulo));
 
       $this->load->model('consultores_model');
       $query = $this->consultores_model->selectByID($id);
@@ -76,6 +88,10 @@ class Consultores extends CI_Controller {
       $horas = number_format($data->minutos_totais/60,0);
       $minutos = str_pad($data->minutos_totais%60,2,'0', STR_PAD_LEFT);
       $data->minutos_totais = $horas.":".$minutos;
+
+      $horas_ds = number_format($data->minutos_disponiveis/60,0);
+      $minutos_ds = str_pad($data->minutos_disponiveis%60,2,'0', STR_PAD_LEFT);
+      $data->minutos_disponiveis = $horas_ds.":".$minutos_ds;
 
       $this->load->view('consultores_edita', array('data'=>$data));
       $this->load->view('footer');
@@ -86,8 +102,11 @@ class Consultores extends CI_Controller {
       $this->load->model('usuarios_model');
       $this->usuarios_model->verifica_login();
 
+      $this->load->model('incubadoras_model');
+      $incubadora = $this->incubadoras_model->select(ID_INCUBADORA);
+
       $this->load->view('header');
-      $this->load->view('head_logado');
+      $this->load->view('head_logado', array('titulo'=>$incubadora[0]->titulo));
 
       $this->load->view('consultores_inserehora');
       $this->load->view('footer');
@@ -100,8 +119,11 @@ class Consultores extends CI_Controller {
       $this->load->model('consultores_model');
 	    $this->consultores_model->insert();
 
+      $this->load->model('incubadoras_model');
+      $incubadora = $this->incubadoras_model->select(ID_INCUBADORA);
+
       $this->load->view('header');
-      $this->load->view('head_logado');
+      $this->load->view('head_logado', array('titulo'=>$incubadora[0]->titulo));
       echo "<div class='alert alert-success fade in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Consultor cadastrado com sucesso!</div>";
 
       $this->load->model('consultores_model');
@@ -125,8 +147,11 @@ class Consultores extends CI_Controller {
       $this->load->model('consultores_model');
 	    $this->consultores_model->save();
 
+      $this->load->model('incubadoras_model');
+      $incubadora = $this->incubadoras_model->select(ID_INCUBADORA);
+
       $this->load->view('header');
-      $this->load->view('head_logado');
+      $this->load->view('head_logado', array('titulo'=>$incubadora[0]->titulo));
       echo "<div class='alert alert-success fade in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Consultor salvo com sucesso!</div>";
 
       $this->load->model('consultores_model');

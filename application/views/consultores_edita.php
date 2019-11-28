@@ -13,7 +13,8 @@
           <input type="text" name="nome" value="<?php echo $data->nome;?>">
           <input type="text" name="contato" value="<?php echo $data->contato;?>">
           <input type="text" name="area_atuacao" value="<?php echo $data->area_atuacao;?>">
-          <input type="text" name="horas_disponiveis" value="<?php echo $data->minutos_totais;?>">
+          Total: <input type="text" name="horas_totais" value="<?php echo $data->minutos_totais;?>">
+          Disponível: <input type="text" name="horas_disponiveis" value="<?php echo $data->minutos_disponiveis;?>">
           <button type="submit" class="btn btn-default btn-lg">
             <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Salvar
           </button>

@@ -240,8 +240,17 @@ class Pendencias_model extends CI_Model {
             $query = $this->db->query('select id_consultor from erp_pendencias_consultoria where id_pendencias ='.$_POST['id']);
             $data = $query->result();
             $id_consultor = $data[0]->id_consultor;
+
             //função que muda hora do consultor
-            $this->pendencias_model->atualiza_horas($id_consultor);
+            //$this->pendencias_model->atualiza_horas($id_consultor);
+
+            //Nova mudança de horas manual
+            $query_consultor = $this->db->query('select * from erp_consultores where erp_consultores.id ='.$id_consultor);
+            $data_consultor = $query_consultor->result();
+
+            $data_consultor[0]->minutos_disponiveis = $data_consultor[0]->minutos_disponiveis-$tempo_consultoria;
+            $this->db->where('id', $id_consultor);
+            $this->db->update('erp_consultores',$data_consultor[0]);
 
            //LOGs
             $id_empreendimento = $_SESSION['id_empreendimento'];

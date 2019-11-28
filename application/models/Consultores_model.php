@@ -21,10 +21,13 @@ class Consultores_model extends CI_Model {
       $this->nome = $_POST['nome'];
       $this->contato = $_POST['contato'];
       $this->area_atuacao = $_POST['area_atuacao'];
+
       //Calcula os minutos totais baseado na hora inserida
-      $aux = explode(':',$_POST['horas_disponiveis']);
+      $aux = explode(':',$_POST['horas_totais']);
       $this->minutos_totais = ($aux[0]*60)+$aux[1];
-      $this->minutos_disponiveis = $_POST['minutos_disponiveis'];
+
+      $aux2 = explode(':',$_POST['horas_disponiveis']);
+      $this->minutos_disponiveis = ($aux2[0]*60)+$aux2[1];
 
       $this->db->where('id', $_POST['id']);
 
