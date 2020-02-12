@@ -58,5 +58,5 @@
 <div id="container-geral">
 <div id="topo-logado">
   <p class="titulo-principal">Sistema de Gerenciamento</p>
-  <p>CEI - Centro de Empreendimentos em Informática</p>
+  <p><?php echo $titulo;?></p>
 </div>

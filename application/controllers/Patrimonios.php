@@ -106,8 +106,11 @@ class Patrimonios extends CI_Controller {
       $this->load->model('usuarios_model');
       $this->usuarios_model->verifica_login();
 
+      $this->load->model('incubadoras_model');
+      $incubadora = $this->incubadoras_model->select(ID_INCUBADORA);
+
       $this->load->view('header');
-      $this->load->view('head_logado');
+      $this->load->view('head_logado', array('titulo'=>$incubadora[0]->titulo));
 
       $this->load->model('patrimonios_model');
       $query = $this->patrimonios_model->select_relatorio('nr',$var);
@@ -124,7 +127,7 @@ class Patrimonios extends CI_Controller {
       }
 
       $dataResponsaveis = $this->patrimonios_model->selectResponsaveis();
-      $dataSalas = $this->patrimonios_model->selectSalas();
+      $dataSalas = $this->patrimonios_model->selectAllSalas();
 
       $this->load->view('patrimonios_consultas', array('data'=>$dados, 'responsaveis'=>$dataResponsaveis->result(), 'salas'=>$dataSalas->result()));
       $this->load->view('footer');
@@ -134,8 +137,11 @@ class Patrimonios extends CI_Controller {
       $this->load->model('usuarios_model');
       $this->usuarios_model->verifica_login();
 
+      $this->load->model('incubadoras_model');
+      $incubadora = $this->incubadoras_model->select(ID_INCUBADORA);
+
       $this->load->view('header');
-      $this->load->view('head_logado');
+      $this->load->view('head_logado', array('titulo'=>$incubadora[0]->titulo));
 
       $this->load->model('patrimonios_model');
       $query = $this->patrimonios_model->selectByID($id);
@@ -155,8 +161,11 @@ class Patrimonios extends CI_Controller {
       $this->load->model('usuarios_model');
       $this->usuarios_model->verifica_login();
 
+      $this->load->model('incubadoras_model');
+      $incubadora = $this->incubadoras_model->select(ID_INCUBADORA);
+
       $this->load->view('header');
-      $this->load->view('head_logado');
+      $this->load->view('head_logado', array('titulo'=>$incubadora[0]->titulo));
 
       $this->load->model('patrimonios_model');
       $query = $this->patrimonios_model->selectByID($id);
@@ -176,8 +185,11 @@ class Patrimonios extends CI_Controller {
       $this->load->model('usuarios_model');
       $this->usuarios_model->verifica_login();
 
+      $this->load->model('incubadoras_model');
+      $incubadora = $this->incubadoras_model->select(ID_INCUBADORA);
+
       $this->load->view('header');
-      $this->load->view('head_logado');
+      $this->load->view('head_logado', array('titulo'=>$incubadora[0]->titulo));
 
       $this->load->model('patrimonios_model');
       $this->load->model('salas_model');
@@ -200,11 +212,14 @@ class Patrimonios extends CI_Controller {
       $this->load->model('usuarios_model');
       $this->usuarios_model->verifica_login();
 
+      $this->load->model('incubadoras_model');
+      $incubadora = $this->incubadoras_model->select(ID_INCUBADORA);
+
       $this->load->model('patrimonios_model');
 	    $this->patrimonios_model->atribuirPatrimonio();
 
       $this->load->view('header');
-      $this->load->view('head_logado');
+      $this->load->view('head_logado', array('titulo'=>$incubadora[0]->titulo));
       echo "<div class='alert alert-success fade in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Localização do patrimônio atribuída com sucesso!</div>";
 
       $this->load->model('patrimonios_model');
@@ -226,8 +241,11 @@ class Patrimonios extends CI_Controller {
       $this->load->model('usuarios_model');
       $this->usuarios_model->verifica_login();
 
+      $this->load->model('incubadoras_model');
+      $incubadora = $this->incubadoras_model->select(ID_INCUBADORA);
+
       $this->load->view('header');
-      $this->load->view('head_logado');
+      $this->load->view('head_logado', array('titulo'=>$incubadora[0]->titulo));
       $this->load->view('patrimonios_cadastra');
       $this->load->view('footer');
     }
@@ -236,11 +254,14 @@ class Patrimonios extends CI_Controller {
       $this->load->model('usuarios_model');
       $this->usuarios_model->verifica_login();
 
+      $this->load->model('incubadoras_model');
+      $incubadora = $this->incubadoras_model->select(ID_INCUBADORA);
+
       $this->load->model('patrimonios_model');
 	    $resultado = $this->patrimonios_model->insert();
 
       $this->load->view('header');
-      $this->load->view('head_logado');
+      $this->load->view('head_logado', array('titulo'=>$incubadora[0]->titulo));
       if($resultado == 1){
         echo "<div class='alert alert-success fade in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Patrimônio cadastrado com sucesso!</div>";
       }else{
@@ -257,11 +278,14 @@ class Patrimonios extends CI_Controller {
       $this->load->model('usuarios_model');
       $this->usuarios_model->verifica_login();
 
+      $this->load->model('incubadoras_model');
+      $incubadora = $this->incubadoras_model->select(ID_INCUBADORA);
+
       $this->load->model('patrimonios_model');
 	    $this->patrimonios_model->save();
 
       $this->load->view('header');
-      $this->load->view('head_logado');
+      $this->load->view('head_logado', array('titulo'=>$incubadora[0]->titulo));
       echo "<div class='alert alert-success fade in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Patrimônio editado com sucesso!</div>";
 
       $query = $this->patrimonios_model->select();
